@@ -1,0 +1,53 @@
+name: juice
+description: "이번 주 쓸 수 있는 신선한 에너지(Juice)가 얼마나 남았지? 초간편 주간 예산 앱."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State management
+  flutter_riverpod: ^2.6.1
+
+  # Local DB (lightweight, no-backend)
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # Utils
+  intl: ^0.19.0
+  uuid: ^4.5.1
+
+  # Charts
+  fl_chart: ^0.69.0
+
+  # Calendar view
+  table_calendar: ^3.1.2
+
+  # Export & share
+  csv: ^6.0.0
+  share_plus: ^10.1.4
+  path_provider: ^2.1.5
+
+  # Home screen widget
+  home_widget: ^0.7.0
+  flutter_slidable: ^4.0.3
+  google_fonts: ^6.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+  # Hive code generation
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.13
+
+flutter:
+  uses-material-design: true
