@@ -17,7 +17,8 @@ class CategoryDonutChart extends ConsumerWidget {
       return SizedBox(
         height: 160,
         child: Center(
-          child: Text('해당 기간에 지출 내역이 없어요', style: Theme.of(context).textTheme.bodyMedium),
+          child: Text('해당 기간에 지출 내역이 없어요',
+              style: Theme.of(context).textTheme.bodyMedium),
         ),
       );
     }
@@ -33,12 +34,16 @@ class CategoryDonutChart extends ConsumerWidget {
               sectionsSpace: 2,
               centerSpaceRadius: 56,
               sections: breakdown.map((item) {
-                final color = item.category != null ? Color(item.category!.colorValue) : Colors.grey;
+                final color = item.category != null
+                    ? Color(item.category!.colorValue)
+                    : Colors.grey;
                 return PieChartSectionData(
                   value: item.amount,
                   color: color,
                   radius: 44,
-                  title: item.percent >= 0.08 ? '${(item.percent * 100).round()}%' : '',
+                  title: item.percent >= 0.08
+                      ? '${(item.percent * 100).round()}%'
+                      : '',
                   titleStyle: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
@@ -59,7 +64,9 @@ class CategoryDonutChart extends ConsumerWidget {
                   width: 10,
                   height: 10,
                   decoration: BoxDecoration(
-                    color: item.category != null ? Color(item.category!.colorValue) : Colors.grey,
+                    color: item.category != null
+                        ? Color(item.category!.colorValue)
+                        : Colors.grey,
                     shape: BoxShape.circle,
                   ),
                 ),

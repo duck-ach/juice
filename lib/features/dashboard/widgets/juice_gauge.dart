@@ -14,12 +14,16 @@ class JuiceGauge extends StatefulWidget {
     required this.total,
     required this.periodLabel,
     required this.color,
+    this.isOverBudget = false,
   });
 
   final double remainingRatio;
+
+  /// 목표 초과 시 음수가 될 수 있는 raw 잔여량(마이너스 표시/소진율 계산용).
   final double remaining;
   final double total;
   final Color color;
+  final bool isOverBudget;
 
   /// "이번 주"/"오늘"/"이번 달"처럼 기준 기간을 가리키는 접두어.
   final String periodLabel;
@@ -28,18 +32,33 @@ class JuiceGauge extends StatefulWidget {
   State<JuiceGauge> createState() => _JuiceGaugeState();
 }
 
+/// 목표 초과 시 상단에 무작위로 노출되는 위트 있는 멘트.
+const _overBudgetMessages = [
+  '아쉬워요! 다음 주엔 주스 남기기 꼭 성공해 봐요 🍊',
+  '주스 통이 텅 비었어요! 이번 주는 잠시 쉬어가요 🥲',
+  '넘친 주스는 어쩔 수 없죠! 다음 주에 다시 꽉 채워봐요 🧃',
+  '마지막 한 방울까지 탈탈! 다음 주엔 조금만 천천히 마셔요 ✨',
+];
+
 class _JuiceGaugeState extends State<JuiceGauge> with TickerProviderStateMixin {
   late final AnimationController _waveController;
   late final AnimationController _levelController;
   late Animation<double> _levelAnimation;
+  late final String _overBudgetMessage;
 
   @override
   void initState() {
     super.initState();
-    _waveController = AnimationController(vsync: this, duration: const Duration(seconds: 3))..repeat();
-    _levelController = AnimationController(vsync: this, duration: const Duration(milliseconds: 700));
+    _overBudgetMessage =
+        _overBudgetMessages[Random().nextInt(_overBudgetMessages.length)];
+    _waveController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 3))
+          ..repeat();
+    _levelController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 700));
     _levelAnimation = Tween<double>(begin: 0, end: widget.remainingRatio)
-        .animate(CurvedAnimation(parent: _levelController, curve: Curves.easeOutCubic));
+        .animate(CurvedAnimation(
+            parent: _levelController, curve: Curves.easeOutCubic));
     _levelController.forward();
   }
 
@@ -47,8 +66,10 @@ class _JuiceGaugeState extends State<JuiceGauge> with TickerProviderStateMixin {
   void didUpdateWidget(covariant JuiceGauge oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.remainingRatio != widget.remainingRatio) {
-      _levelAnimation = Tween<double>(begin: _levelAnimation.value, end: widget.remainingRatio)
-          .animate(CurvedAnimation(parent: _levelController, curve: Curves.easeOutCubic));
+      _levelAnimation = Tween<double>(
+              begin: _levelAnimation.value, end: widget.remainingRatio)
+          .animate(CurvedAnimation(
+              parent: _levelController, curve: Curves.easeOutCubic));
       _levelController
         ..reset()
         ..forward();
@@ -67,7 +88,9 @@ class _JuiceGaugeState extends State<JuiceGauge> with TickerProviderStateMixin {
     final color = widget.color;
     final spentPercent = widget.total <= 0
         ? 0
-        : (((widget.total - widget.remaining) / widget.total) * 100).round().clamp(0, 999);
+        : (((widget.total - widget.remaining) / widget.total) * 100)
+            .round()
+            .clamp(0, 999);
     final formatter = NumberFormat('#,###');
 
     return Column(
@@ -78,12 +101,14 @@ class _JuiceGaugeState extends State<JuiceGauge> with TickerProviderStateMixin {
           child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: color.withValues(alpha: 0.35), width: 4),
+              border:
+                  Border.all(color: color.withValues(alpha: 0.35), width: 4),
               color: Theme.of(context).colorScheme.surface,
             ),
             child: ClipOval(
               child: AnimatedBuilder(
-                animation: Listenable.merge([_waveController, _levelController]),
+                animation:
+                    Listenable.merge([_waveController, _levelController]),
                 builder: (context, _) {
                   return CustomPaint(
                     size: Size.infinite,
@@ -111,7 +136,10 @@ class _JuiceGaugeState extends State<JuiceGauge> with TickerProviderStateMixin {
             '${formatter.format(widget.remaining)} / ${formatter.format(widget.total)} mL',
             textAlign: TextAlign.center,
             maxLines: 1,
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800),
+            style: Theme.of(context)
+                .textTheme
+                .headlineSmall
+                ?.copyWith(fontWeight: FontWeight.w800),
           ),
         ),
         const SizedBox(height: 6),
@@ -119,6 +147,17 @@ class _JuiceGaugeState extends State<JuiceGauge> with TickerProviderStateMixin {
           '소진율 $spentPercent%',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
+        if (widget.isOverBudget) ...[
+          const SizedBox(height: 10),
+          Text(
+            _overBudgetMessage,
+            textAlign: TextAlign.center,
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall
+                ?.copyWith(color: widget.color, fontWeight: FontWeight.w600),
+          ),
+        ],
       ],
     );
   }
@@ -140,7 +179,9 @@ class _WavePainter extends CustomPainter {
     final backPaint = Paint()..color = color.withValues(alpha: 0.45);
     final backPath = Path()..moveTo(0, baseline + 5);
     for (double x = 0; x <= size.width; x += 4) {
-      final y = baseline + 5 + sin((x / size.width * 2 * pi) + phase + pi / 2) * (amplitude * 0.7);
+      final y = baseline +
+          5 +
+          sin((x / size.width * 2 * pi) + phase + pi / 2) * (amplitude * 0.7);
       backPath.lineTo(x, y);
     }
     backPath
@@ -164,6 +205,8 @@ class _WavePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _WavePainter oldDelegate) {
-    return oldDelegate.level != level || oldDelegate.phase != phase || oldDelegate.color != color;
+    return oldDelegate.level != level ||
+        oldDelegate.phase != phase ||
+        oldDelegate.color != color;
   }
 }

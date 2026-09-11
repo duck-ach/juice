@@ -39,6 +39,9 @@ dependencies:
   home_widget: ^0.7.0
   flutter_slidable: ^4.0.3
   google_fonts: ^6.3.0
+  file_picker: ^11.0.3
+  local_auth: ^2.3.0
+  flutter_secure_storage: ^10.3.2
 
 dev_dependencies:
   flutter_test:

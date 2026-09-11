@@ -33,10 +33,25 @@ class CategoryAssets {
 
   /// 카테고리 추천 아이콘 목록 (지출 성격별)
   static const List<IconData> icons = [
-    Icons.restaurant, Icons.local_cafe, Icons.shopping_bag, Icons.home,
-    Icons.directions_bus, Icons.movie, Icons.card_giftcard, Icons.pets,
-    Icons.fitness_center, Icons.local_hospital, Icons.flight, Icons.school,
-    Icons.sports_esports, Icons.content_cut, Icons.receipt_long, Icons.local_bar,
-    Icons.savings, Icons.phone_iphone, Icons.work, Icons.more_horiz,
+    Icons.restaurant,
+    Icons.local_cafe,
+    Icons.shopping_bag,
+    Icons.home,
+    Icons.directions_bus,
+    Icons.movie,
+    Icons.card_giftcard,
+    Icons.pets,
+    Icons.fitness_center,
+    Icons.local_hospital,
+    Icons.flight,
+    Icons.school,
+    Icons.sports_esports,
+    Icons.content_cut,
+    Icons.receipt_long,
+    Icons.local_bar,
+    Icons.savings,
+    Icons.phone_iphone,
+    Icons.work,
+    Icons.more_horiz,
   ];
 }

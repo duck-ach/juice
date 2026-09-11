@@ -7,6 +7,7 @@ import 'core/theme/app_theme.dart';
 import 'core/widget/home_widget_service.dart';
 import 'data/local/hive_service.dart';
 import 'features/splash/splash_screen.dart';
+import 'providers/juice_theme_provider.dart';
 import 'providers/theme_provider.dart';
 
 Future<void> main() async {
@@ -23,13 +24,14 @@ class JuiceApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
+    final accent = ref.watch(resolvedJuiceThemeProvider).highColor;
 
     return MaterialApp(
       title: '주스',
       debugShowCheckedModeBanner: false,
       navigatorKey: rootNavigatorKey,
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
+      theme: AppTheme.light(accent),
+      darkTheme: AppTheme.dark(accent),
       themeMode: themeMode,
       home: const SplashScreen(),
     );

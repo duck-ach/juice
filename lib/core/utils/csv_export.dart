@@ -32,6 +32,7 @@ Future<File> buildExpenseCsvFile(
 
   final csvString = const ListToCsvConverter().convert(rows);
   final dir = await getTemporaryDirectory();
-  final file = File('${dir.path}/juice_expenses_${DateTime.now().millisecondsSinceEpoch}.csv');
+  final file = File(
+      '${dir.path}/juice_expenses_${DateTime.now().millisecondsSinceEpoch}.csv');
   return file.writeAsBytes(utf8.encode('$_utf8Bom$csvString'));
 }

@@ -36,7 +36,8 @@ class EditDeleteSlidable extends StatelessWidget {
             foregroundColor: Colors.white,
             icon: Icons.delete,
             label: '삭제',
-            borderRadius: const BorderRadius.horizontal(right: Radius.circular(12)),
+            borderRadius:
+                const BorderRadius.horizontal(right: Radius.circular(12)),
           ),
         ],
       ),

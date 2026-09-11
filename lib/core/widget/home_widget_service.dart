@@ -28,7 +28,8 @@ class HomeWidgetService {
     final formatter = NumberFormat('#,###');
     final total = targetAmount ?? 0;
     final remaining = (total - spent).clamp(0, total).toDouble();
-    final percent = total <= 0 ? 0 : ((remaining / total) * 100).round().clamp(0, 100);
+    final percent =
+        total <= 0 ? 0 : ((remaining / total) * 100).round().clamp(0, 100);
 
     await HomeWidget.saveWidgetData<String>(
       HomeWidgetKeys.remainingText,
@@ -39,7 +40,8 @@ class HomeWidgetService {
       hideAmount ? '***mL' : '${formatter.format(total)} mL',
     );
     await HomeWidget.saveWidgetData<int>(HomeWidgetKeys.percent, percent);
-    await HomeWidget.saveWidgetData<String>(HomeWidgetKeys.weekLabel, _labelFor(period, range));
+    await HomeWidget.saveWidgetData<String>(
+        HomeWidgetKeys.weekLabel, _labelFor(period, range));
 
     await HomeWidget.updateWidget(
       androidName: HomeWidgetNames.androidGaugeProvider,
@@ -50,7 +52,8 @@ class HomeWidgetService {
   static String _labelFor(BudgetPeriod period, DateRange range) {
     return switch (period) {
       BudgetPeriod.daily => DateFormat('M.d (E)', 'ko').format(range.start),
-      BudgetPeriod.weekly => '${DateFormat('M.d').format(range.start)} - ${DateFormat('M.d').format(range.end)}',
+      BudgetPeriod.weekly =>
+        '${DateFormat('M.d').format(range.start)} - ${DateFormat('M.d').format(range.end)}',
       BudgetPeriod.monthly => DateFormat('yyyy.M', 'ko').format(range.start),
     };
   }

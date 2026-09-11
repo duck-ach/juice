@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
-enum JuiceThemeType { orange, strawberry, apple, grape, mulberry, random }
+enum JuiceThemeType {
+  orange,
+  strawberry,
+  apple,
+  grape,
+  blueberry,
+  mulberry,
+  random
+}
 
 /// 잔여 비율 3단계(충분/주의/임박)에 따라 색이 바뀌는 홈 화면 주스 테마.
 class JuiceTheme {
@@ -57,6 +65,14 @@ final List<JuiceTheme> juiceThemes = [
     type: JuiceThemeType.grape,
     name: '포도',
     emoji: '🍇',
+    highColor: Color(0xFF8B2FC9),
+    mediumColor: Color(0xFFB368E6),
+    lowColor: Color(0xFFE1BEE7),
+  ),
+  const JuiceTheme(
+    type: JuiceThemeType.blueberry,
+    name: '블루베리',
+    emoji: '🫐',
     highColor: Color(0xFF3232FF),
     mediumColor: Color(0xFF8C8CFF),
     lowColor: Color(0xFFC8C8FF),

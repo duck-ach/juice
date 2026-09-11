@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../providers/expense_provider.dart';
 import '../../providers/stats_provider.dart';
 import 'widgets/category_donut_chart.dart';
+import 'widgets/payment_method_chart.dart';
 import 'widgets/spend_bar_chart.dart';
 
 class StatsScreen extends ConsumerWidget {
@@ -34,7 +35,8 @@ class StatsScreen extends ConsumerWidget {
                 return ChoiceChip(
                   label: Text(p.label),
                   selected: p == period,
-                  onSelected: (_) => ref.read(statsPeriodProvider.notifier).state = p,
+                  onSelected: (_) =>
+                      ref.read(statsPeriodProvider.notifier).state = p,
                 );
               },
             ),
@@ -42,16 +44,19 @@ class StatsScreen extends ConsumerWidget {
           const SizedBox(height: 12),
           SegmentedButton<ExpenseFilter>(
             segments: const [
-              ButtonSegment(value: ExpenseFilter.variableOnly, label: Text('변동지출만')),
+              ButtonSegment(
+                  value: ExpenseFilter.variableOnly, label: Text('변동지출만')),
               ButtonSegment(value: ExpenseFilter.all, label: Text('고정비 포함')),
             ],
             selected: {filter},
-            onSelectionChanged: (selection) =>
-                ref.read(statsExpenseFilterProvider.notifier).state = selection.first,
+            onSelectionChanged: (selection) => ref
+                .read(statsExpenseFilterProvider.notifier)
+                .state = selection.first,
           ),
           const SizedBox(height: 20),
           Text('총 지출', style: Theme.of(context).textTheme.bodyMedium),
-          Text('${formatter.format(total)}원', style: Theme.of(context).textTheme.headlineMedium),
+          Text('${formatter.format(total)}원',
+              style: Theme.of(context).textTheme.headlineMedium),
           const SizedBox(height: 20),
           if (period.isTrend) ...[
             const SpendBarChart(),
@@ -60,6 +65,10 @@ class StatsScreen extends ConsumerWidget {
           Text('카테고리별 소비', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 12),
           const CategoryDonutChart(),
+          const SizedBox(height: 24),
+          Text('결제 수단별 소비', style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(height: 12),
+          const PaymentMethodChart(),
         ],
       ),
     );

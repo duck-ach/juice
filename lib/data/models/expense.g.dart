@@ -23,14 +23,19 @@ class ExpenseAdapter extends TypeAdapter<Expense> {
       date: fields[3] as DateTime,
       memo: fields[4] as String?,
       isFixed: fields[5] as bool,
+      isIncome: fields[7] == null ? false : fields[7] as bool,
       createdAt: fields[6] as DateTime?,
-    );
+      installmentMonths: fields[9] == null ? 1 : fields[9] as int,
+      currentInstallmentIndex: fields[10] == null ? 1 : fields[10] as int,
+      installmentGroupId: fields[11] as String?,
+    )..paymentMethodName =
+        fields[8] == null ? 'checkCard' : fields[8] as String;
   }
 
   @override
   void write(BinaryWriter writer, Expense obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(12)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -44,7 +49,17 @@ class ExpenseAdapter extends TypeAdapter<Expense> {
       ..writeByte(5)
       ..write(obj.isFixed)
       ..writeByte(6)
-      ..write(obj.createdAt);
+      ..write(obj.createdAt)
+      ..writeByte(7)
+      ..write(obj.isIncome)
+      ..writeByte(8)
+      ..write(obj.paymentMethodName)
+      ..writeByte(9)
+      ..write(obj.installmentMonths)
+      ..writeByte(10)
+      ..write(obj.currentInstallmentIndex)
+      ..writeByte(11)
+      ..write(obj.installmentGroupId);
   }
 
   @override

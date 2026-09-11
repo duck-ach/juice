@@ -5,12 +5,14 @@ import 'app_colors.dart';
 class AppTheme {
   AppTheme._();
 
-  static ThemeData get light {
+  /// [accent]는 유저가 선택한 주스 테마의 대표 색(JuiceTheme.highColor).
+  /// primary/secondary 모두 이 색으로 물들여, 앱 전역 인터랙션 요소가 함께 바뀌게 한다.
+  static ThemeData light(Color accent) {
     final scheme = ColorScheme.fromSeed(
-      seedColor: AppColors.freshOrange,
+      seedColor: accent,
       brightness: Brightness.light,
-      primary: AppColors.freshOrange,
-      secondary: AppColors.citrusYellow,
+      primary: accent,
+      secondary: accent,
       error: AppColors.warningCherry,
       surface: AppColors.lightSurface,
     );
@@ -27,7 +29,8 @@ class AppTheme {
         elevation: 0,
         centerTitle: true,
       ),
-      textTheme: _textTheme(AppColors.lightTextPrimary, AppColors.lightTextSecondary),
+      textTheme:
+          _textTheme(AppColors.lightTextPrimary, AppColors.lightTextSecondary),
       cardTheme: CardThemeData(
         color: AppColors.lightSurface,
         elevation: 0,
@@ -36,8 +39,8 @@ class AppTheme {
           side: const BorderSide(color: AppColors.lightBorder),
         ),
       ),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: AppColors.freshOrange,
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: accent,
         foregroundColor: Colors.white,
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -47,16 +50,22 @@ class AppTheme {
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide.none,
         ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: accent, width: 1.5),
+        ),
       ),
+      textSelectionTheme: TextSelectionThemeData(
+          cursorColor: accent, selectionHandleColor: accent),
     );
   }
 
-  static ThemeData get dark {
+  static ThemeData dark(Color accent) {
     final scheme = ColorScheme.fromSeed(
-      seedColor: AppColors.freshOrange,
+      seedColor: accent,
       brightness: Brightness.dark,
-      primary: AppColors.freshOrange,
-      secondary: AppColors.citrusYellow,
+      primary: accent,
+      secondary: accent,
       error: AppColors.warningCherry,
       surface: AppColors.darkSurface,
     );
@@ -73,7 +82,8 @@ class AppTheme {
         elevation: 0,
         centerTitle: true,
       ),
-      textTheme: _textTheme(AppColors.darkTextPrimary, AppColors.darkTextSecondary),
+      textTheme:
+          _textTheme(AppColors.darkTextPrimary, AppColors.darkTextSecondary),
       cardTheme: CardThemeData(
         color: AppColors.darkSurface,
         elevation: 0,
@@ -82,8 +92,8 @@ class AppTheme {
           side: const BorderSide(color: AppColors.darkBorder),
         ),
       ),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: AppColors.freshOrange,
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: accent,
         foregroundColor: Colors.white,
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -93,18 +103,28 @@ class AppTheme {
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide.none,
         ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: accent, width: 1.5),
+        ),
       ),
+      textSelectionTheme: TextSelectionThemeData(
+          cursorColor: accent, selectionHandleColor: accent),
     );
   }
 
   static TextTheme _textTheme(Color primary, Color secondary) {
     return TextTheme(
-      headlineLarge: TextStyle(color: primary, fontWeight: FontWeight.w800, fontSize: 32),
-      headlineMedium: TextStyle(color: primary, fontWeight: FontWeight.w700, fontSize: 24),
-      titleLarge: TextStyle(color: primary, fontWeight: FontWeight.w700, fontSize: 20),
+      headlineLarge:
+          TextStyle(color: primary, fontWeight: FontWeight.w800, fontSize: 32),
+      headlineMedium:
+          TextStyle(color: primary, fontWeight: FontWeight.w700, fontSize: 24),
+      titleLarge:
+          TextStyle(color: primary, fontWeight: FontWeight.w700, fontSize: 20),
       bodyLarge: TextStyle(color: primary, fontSize: 16),
       bodyMedium: TextStyle(color: secondary, fontSize: 14),
-      labelLarge: TextStyle(color: primary, fontWeight: FontWeight.w600, fontSize: 14),
+      labelLarge:
+          TextStyle(color: primary, fontWeight: FontWeight.w600, fontSize: 14),
     );
   }
 }

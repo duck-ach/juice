@@ -1,5 +1,7 @@
 import 'package:hive/hive.dart';
 
+import 'payment_method.dart';
+
 part 'expense.g.dart';
 
 @HiveType(typeId: 1)
@@ -11,8 +13,14 @@ class Expense extends HiveObject {
     required this.date,
     this.memo,
     this.isFixed = false,
+    this.isIncome = false,
     DateTime? createdAt,
-  }) : createdAt = createdAt ?? DateTime.now();
+    PaymentMethod paymentMethod = PaymentMethod.checkCard,
+    this.installmentMonths = 1,
+    this.currentInstallmentIndex = 1,
+    this.installmentGroupId,
+  })  : createdAt = createdAt ?? DateTime.now(),
+        paymentMethodName = paymentMethod.name;
 
   @HiveField(0)
   String id;
@@ -35,4 +43,36 @@ class Expense extends HiveObject {
 
   @HiveField(6)
   DateTime createdAt;
+
+  /// true면 지출이 아닌 수입 기록. 주스 게이지/지출 통계 계산에서는 항상 제외되고
+  /// 캘린더·자산 화면에만 반영된다.
+  @HiveField(7, defaultValue: false)
+  bool isIncome;
+
+  /// [PaymentMethod.name] 문자열로 저장. 직접 쓰지 말고 [paymentMethod]를 통해 접근할 것.
+  @HiveField(8, defaultValue: 'checkCard')
+  String paymentMethodName;
+
+  /// 할부 개월 수. 일시불/체크카드/현금은 항상 1.
+  @HiveField(9, defaultValue: 1)
+  int installmentMonths;
+
+  /// 할부 회차(1부터 시작). 일시불은 항상 1.
+  @HiveField(10, defaultValue: 1)
+  int currentInstallmentIndex;
+
+  /// 같은 할부로 묶여 자동 생성된 거래들을 식별하는 UUID. 일시불/할부 아님이면 null.
+  @HiveField(11)
+  String? installmentGroupId;
+
+  PaymentMethod get paymentMethod => PaymentMethod.values.firstWhere(
+        (e) => e.name == paymentMethodName,
+        orElse: () => PaymentMethod.checkCard,
+      );
+
+  set paymentMethod(PaymentMethod value) => paymentMethodName = value.name;
+
+  /// 할부(2개월 이상 분할)로 등록된 거래인지.
+  bool get isInstallment =>
+      paymentMethod == PaymentMethod.creditCard && installmentMonths > 1;
 }

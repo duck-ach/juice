@@ -44,7 +44,10 @@ class SavingsCard extends StatelessWidget {
                 const SizedBox(width: 8),
                 const Text(
                   '주스',
-                  style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w800),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w800),
                 ),
                 const Spacer(),
                 Text(
@@ -66,7 +69,10 @@ class SavingsCard extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               '${formatter.format(budget)}원 중 ${formatter.format(spent)}원 소비',
-              style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w600),
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 4),
             ClipRRect(
@@ -84,7 +90,8 @@ class SavingsCard extends StatelessWidget {
               child: Transform.rotate(
                 angle: -0.2,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.white, width: 3),
                     borderRadius: BorderRadius.circular(10),

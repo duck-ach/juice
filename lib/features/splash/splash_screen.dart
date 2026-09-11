@@ -7,6 +7,7 @@ import '../../app_root.dart';
 import '../../core/widget/home_widget_launcher.dart';
 import '../../core/widget/home_widget_sync.dart';
 import '../../data/models/splash_flavor.dart';
+import '../security/app_lock_gate.dart';
 
 /// 앱 시작 시 랜덤 주스 플레이버로 컵이 차오르는 스플래시 화면.
 /// 연출이 끝나면 페이드 트랜지션으로 실제 앱 화면으로 전환된다.
@@ -65,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen>
         transitionDuration: const Duration(milliseconds: 500),
         pageBuilder: (context, animation, secondaryAnimation) =>
             const HomeWidgetSync(
-          child: HomeWidgetLauncher(child: AppRoot()),
+          child: HomeWidgetLauncher(child: AppLockGate(child: AppRoot())),
         ),
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             FadeTransition(opacity: animation, child: child),

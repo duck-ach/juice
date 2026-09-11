@@ -14,9 +14,11 @@ class SpendBarChart extends ConsumerWidget {
     final trend = ref.watch(trendProvider);
     if (trend.isEmpty) return const SizedBox.shrink();
 
-    final maxAmount = trend.map((t) => t.amount).fold(0.0, (a, b) => a > b ? a : b);
+    final maxAmount =
+        trend.map((t) => t.amount).fold(0.0, (a, b) => a > b ? a : b);
     final maxY = maxAmount <= 0 ? 10000.0 : maxAmount * 1.2;
-    final labelStyle = Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 11);
+    final labelStyle =
+        Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 11);
 
     return SizedBox(
       height: 220,
@@ -26,15 +28,19 @@ class SpendBarChart extends ConsumerWidget {
           gridData: const FlGridData(show: false),
           borderData: FlBorderData(show: false),
           titlesData: FlTitlesData(
-            leftTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-            rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-            topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            leftTitles:
+                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            rightTitles:
+                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            topTitles:
+                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
             bottomTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
                 getTitlesWidget: (value, meta) {
                   final index = value.toInt();
-                  if (index < 0 || index >= trend.length) return const SizedBox.shrink();
+                  if (index < 0 || index >= trend.length)
+                    return const SizedBox.shrink();
                   return Padding(
                     padding: const EdgeInsets.only(top: 6),
                     child: Text(trend[index].label, style: labelStyle),

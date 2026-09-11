@@ -6,7 +6,8 @@ import '../models/category.dart';
 class CategoryRepository {
   Box<Category> get _box => Hive.box<Category>(HiveBoxes.categories);
 
-  List<Category> getAll() => _box.values.toList()..sort((a, b) => a.orderIndex.compareTo(b.orderIndex));
+  List<Category> getAll() => _box.values.toList()
+    ..sort((a, b) => a.orderIndex.compareTo(b.orderIndex));
 
   Future<void> add(Category category) => _box.put(category.id, category);
 

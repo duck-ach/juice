@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/utils/thousands_formatter.dart';
+import '../../data/models/budget_period.dart';
 import '../../providers/budget_settings_provider.dart';
 
-/// 첫 실행 시 노출되는 단일 인풋 온보딩 화면.
-/// 목표 금액 입력 즉시 저장되며, AppRoot가 targetAmountProvider 상태 변화를 감지해
-/// 별도 네비게이션 없이 대시보드로 전환된다.
+/// 첫 실행 시 노출되는 단일 인풋 온보딩 화면. "이번 주" 기준으로 물어보므로
+/// 주간 목표 금액을 저장하며(기본 활성 주기도 주간), AppRoot가 상태 변화를 감지해
+/// 별도 네비게이션 없이 대시보드로 전환된다. 일간/월간 목표는 설정 > 목표 설정에서 추가로 정할 수 있다.
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -29,7 +30,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     if (amount == null || amount <= 0) return;
 
     setState(() => _submitting = true);
-    await ref.read(targetAmountProvider.notifier).setTargetAmount(amount);
+    await ref
+        .read(periodTargetAmountsProvider.notifier)
+        .setForPeriod(BudgetPeriod.weekly, amount);
   }
 
   @override

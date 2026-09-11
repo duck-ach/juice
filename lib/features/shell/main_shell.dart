@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../assets/assets_screen.dart';
 import '../calendar/calendar_screen.dart';
 import '../dashboard/dashboard_screen.dart';
 import '../settings/settings_screen.dart';
 import '../stats/stats_screen.dart';
 
-/// 홈(대시보드)/캘린더/통계/설정 탭을 오가는 최상위 셸.
+/// 홈(대시보드)/캘린더/자산/지출통계/설정 탭을 오가는 최상위 셸.
 class MainShell extends StatefulWidget {
   const MainShell({super.key});
 
@@ -16,7 +17,13 @@ class MainShell extends StatefulWidget {
 class _MainShellState extends State<MainShell> {
   int _index = 0;
 
-  static const _screens = [DashboardScreen(), CalendarScreen(), StatsScreen(), SettingsScreen()];
+  static const _screens = [
+    DashboardScreen(),
+    CalendarScreen(),
+    AssetsScreen(),
+    StatsScreen(),
+    SettingsScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +44,14 @@ class _MainShellState extends State<MainShell> {
             label: '캘린더',
           ),
           NavigationDestination(
-            icon: Icon(Icons.insert_chart_outlined),
-            selectedIcon: Icon(Icons.insert_chart),
-            label: '통계',
+            icon: Icon(Icons.account_balance_wallet_outlined),
+            selectedIcon: Icon(Icons.account_balance_wallet),
+            label: '자산',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.pie_chart_outline),
+            selectedIcon: Icon(Icons.pie_chart),
+            label: '지출통계',
           ),
           NavigationDestination(
             icon: Icon(Icons.settings_outlined),

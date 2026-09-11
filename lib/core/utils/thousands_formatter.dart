@@ -7,7 +7,8 @@ class ThousandsSeparatorInputFormatter extends TextInputFormatter {
   static final _formatter = NumberFormat('#,###');
 
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
     final digitsOnly = newValue.text.replaceAll(RegExp(r'[^0-9]'), '');
     if (digitsOnly.isEmpty) {
       return newValue.copyWith(text: '');

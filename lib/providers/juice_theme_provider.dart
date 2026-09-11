@@ -12,7 +12,8 @@ const _juiceThemeTypeKey = 'juiceThemeType';
 class JuiceThemeTypeNotifier extends Notifier<JuiceThemeType> {
   @override
   JuiceThemeType build() {
-    final stored = Hive.box(HiveBoxes.settings).get(_juiceThemeTypeKey) as String?;
+    final stored =
+        Hive.box(HiveBoxes.settings).get(_juiceThemeTypeKey) as String?;
     return JuiceThemeType.values.firstWhere(
       (t) => t.name == stored,
       orElse: () => JuiceThemeType.orange,
@@ -25,7 +26,8 @@ class JuiceThemeTypeNotifier extends Notifier<JuiceThemeType> {
   }
 }
 
-final juiceThemeTypeProvider = NotifierProvider<JuiceThemeTypeNotifier, JuiceThemeType>(
+final juiceThemeTypeProvider =
+    NotifierProvider<JuiceThemeTypeNotifier, JuiceThemeType>(
   JuiceThemeTypeNotifier.new,
 );
 
@@ -33,8 +35,10 @@ final juiceThemeTypeProvider = NotifierProvider<JuiceThemeTypeNotifier, JuiceThe
 final resolvedJuiceThemeProvider = Provider<JuiceTheme>((ref) {
   final type = ref.watch(juiceThemeTypeProvider);
   if (type == JuiceThemeType.random) {
-    final pool = juiceThemes.where((t) => t.type != JuiceThemeType.random).toList();
+    final pool =
+        juiceThemes.where((t) => t.type != JuiceThemeType.random).toList();
     return pool[Random().nextInt(pool.length)];
   }
-  return juiceThemes.firstWhere((t) => t.type == type, orElse: () => juiceThemes.first);
+  return juiceThemes.firstWhere((t) => t.type == type,
+      orElse: () => juiceThemes.first);
 });

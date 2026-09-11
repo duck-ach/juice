@@ -16,7 +16,8 @@ Future<String?> showAddCategorySheet(BuildContext context, WidgetRef ref) {
 }
 
 /// 기존 카테고리(기본 카테고리 포함)를 수정하는 바텀시트.
-Future<void> showEditCategorySheet(BuildContext context, WidgetRef ref, Category category) {
+Future<void> showEditCategorySheet(
+    BuildContext context, WidgetRef ref, Category category) {
   return showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -50,9 +51,12 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
     _descriptionController = TextEditingController(
       text: editing?.description ?? CategoryAssets.defaultCustomDescription,
     );
-    _selectedColor = editing != null ? Color(editing.colorValue) : CategoryAssets.palette.first;
+    _selectedColor = editing != null
+        ? Color(editing.colorValue)
+        : CategoryAssets.palette.first;
     _selectedIcon = editing != null
-        ? IconData(editing.iconCodePoint, fontFamily: editing.iconFontFamily ?? 'MaterialIcons')
+        ? IconData(editing.iconCodePoint,
+            fontFamily: editing.iconFontFamily ?? 'MaterialIcons')
         : CategoryAssets.icons.first;
   }
 
@@ -101,8 +105,12 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
         title: const Text('카테고리 삭제'),
         content: Text('\'${editing.name}\' 카테고리를 삭제할까요?\n이미 기록된 지출 내역은 유지돼요.'),
         actions: [
-          TextButton(onPressed: () => Navigator.of(dialogContext).pop(false), child: const Text('취소')),
-          FilledButton(onPressed: () => Navigator.of(dialogContext).pop(true), child: const Text('삭제')),
+          TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(false),
+              child: const Text('취소')),
+          FilledButton(
+              onPressed: () => Navigator.of(dialogContext).pop(true),
+              child: const Text('삭제')),
         ],
       ),
     );
@@ -114,14 +122,16 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
         ),
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
-        constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.85),
+        constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.85),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -159,7 +169,8 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
                 child: Container(
                   width: 64,
                   height: 64,
-                  decoration: BoxDecoration(color: _selectedColor, shape: BoxShape.circle),
+                  decoration: BoxDecoration(
+                      color: _selectedColor, shape: BoxShape.circle),
                   child: Icon(_selectedIcon, color: Colors.white, size: 30),
                 ),
               ),
@@ -195,7 +206,10 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
                           color: c,
                           shape: BoxShape.circle,
                           border: selected
-                              ? Border.all(color: Theme.of(context).colorScheme.onSurface, width: 2)
+                              ? Border.all(
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
+                                  width: 2)
                               : null,
                         ),
                       ),
@@ -221,10 +235,14 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
                         width: 44,
                         height: 44,
                         decoration: BoxDecoration(
-                          color: selected ? _selectedColor : _selectedColor.withValues(alpha: 0.14),
+                          color: selected
+                              ? _selectedColor
+                              : _selectedColor.withValues(alpha: 0.14),
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(icon, size: 22, color: selected ? Colors.white : _selectedColor),
+                        child: Icon(icon,
+                            size: 22,
+                            color: selected ? Colors.white : _selectedColor),
                       ),
                     );
                   },
@@ -233,7 +251,8 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
               const SizedBox(height: 16),
               SizedBox(
                 height: 52,
-                child: FilledButton(onPressed: _save, child: Text(_isEditing ? '저장' : '추가')),
+                child: FilledButton(
+                    onPressed: _save, child: Text(_isEditing ? '저장' : '추가')),
               ),
             ],
           ),

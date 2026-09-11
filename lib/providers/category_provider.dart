@@ -5,7 +5,8 @@ import '../core/constants/category_assets.dart';
 import '../data/models/category.dart';
 import '../data/repositories/category_repository.dart';
 
-final categoryRepositoryProvider = Provider<CategoryRepository>((ref) => CategoryRepository());
+final categoryRepositoryProvider =
+    Provider<CategoryRepository>((ref) => CategoryRepository());
 
 class CategoryNotifier extends Notifier<List<Category>> {
   @override
@@ -20,7 +21,9 @@ class CategoryNotifier extends Notifier<List<Category>> {
     String description = CategoryAssets.defaultCustomDescription,
   }) async {
     final repo = ref.read(categoryRepositoryProvider);
-    final nextOrder = state.isEmpty ? 0 : state.map((c) => c.orderIndex).reduce((a, b) => a > b ? a : b) + 1;
+    final nextOrder = state.isEmpty
+        ? 0
+        : state.map((c) => c.orderIndex).reduce((a, b) => a > b ? a : b) + 1;
     final category = Category(
       id: const Uuid().v4(),
       name: name,
@@ -64,4 +67,5 @@ class CategoryNotifier extends Notifier<List<Category>> {
   }
 }
 
-final categoryProvider = NotifierProvider<CategoryNotifier, List<Category>>(CategoryNotifier.new);
+final categoryProvider =
+    NotifierProvider<CategoryNotifier, List<Category>>(CategoryNotifier.new);
