@@ -19,6 +19,7 @@ class Expense extends HiveObject {
     this.installmentMonths = 1,
     this.currentInstallmentIndex = 1,
     this.installmentGroupId,
+    this.cardId,
   })  : createdAt = createdAt ?? DateTime.now(),
         paymentMethodName = paymentMethod.name;
 
@@ -64,6 +65,10 @@ class Expense extends HiveObject {
   /// 같은 할부로 묶여 자동 생성된 거래들을 식별하는 UUID. 일시불/할부 아님이면 null.
   @HiveField(11)
   String? installmentGroupId;
+
+  /// 이 지출에 사용한 [CardItem.id]. 체크/신용카드 결제일 때만 값이 있고, 그 외(현금/더치페이)는 null.
+  @HiveField(12)
+  String? cardId;
 
   PaymentMethod get paymentMethod => PaymentMethod.values.firstWhere(
         (e) => e.name == paymentMethodName,

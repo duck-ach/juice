@@ -94,6 +94,7 @@ class ExpenseRepository {
       installmentMonths: months,
       currentInstallmentIndex: index,
       installmentGroupId: groupId,
+      cardId: base.cardId,
     );
     return _box.put(expense.id, expense);
   }

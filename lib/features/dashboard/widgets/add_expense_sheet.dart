@@ -6,10 +6,12 @@ import 'package:uuid/uuid.dart';
 
 import '../../../core/utils/korean_josa.dart';
 import '../../../core/utils/thousands_formatter.dart';
+import '../../../data/models/card_item.dart';
 import '../../../data/models/category.dart';
 import '../../../data/models/expense.dart';
 import '../../../data/models/income_category.dart';
 import '../../../data/models/payment_method.dart';
+import '../../../providers/card_provider.dart';
 import '../../../providers/category_provider.dart';
 import '../../../providers/expense_provider.dart';
 import '../../categories/widgets/add_category_dialog.dart';
@@ -54,6 +56,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
   bool _isIncome = false;
   late DateTime _selectedDate;
   PaymentMethod _paymentMethod = PaymentMethod.checkCard;
+  String? _selectedCardId;
   int _installmentMonths = 1;
   bool _customInstallment = false;
   int _splitPeopleCount = 2;
@@ -75,6 +78,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
     _isIncome = editing?.isIncome ?? false;
     _selectedDate = editing?.date ?? widget.initialDate ?? DateTime.now();
     _paymentMethod = editing?.paymentMethod ?? PaymentMethod.checkCard;
+    _selectedCardId = editing?.cardId;
     _installmentMonths = editing?.installmentMonths ?? 1;
     _customInstallment = !_installmentPresets.contains(_installmentMonths);
     _customInstallmentController = TextEditingController(
@@ -179,6 +183,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
         date: _selectedDate,
         memo: memo,
         isFixed: _isFixed,
+        cardId: _selectedCardId,
       );
       await ref
           .read(expenseProvider.notifier)
@@ -198,6 +203,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
         currentInstallmentIndex:
             widget.editingExpense?.currentInstallmentIndex ?? 1,
         installmentGroupId: widget.editingExpense?.installmentGroupId,
+        cardId: _isIncome ? null : _selectedCardId,
       );
       await ref.read(expenseProvider.notifier).upsert(expense);
     }
@@ -256,6 +262,19 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
           categories.isNotEmpty ? categories.first.id : null;
     }
     final typeLabel = _isIncome ? '수입' : '지출';
+
+    final matchingCards = switch (_paymentMethod) {
+      PaymentMethod.checkCard => ref.watch(checkCardsProvider),
+      PaymentMethod.creditCard => ref.watch(creditCardsProvider),
+      _ => const <CardItem>[],
+    };
+    if (matchingCards.isEmpty) {
+      _selectedCardId = null;
+    } else if (!matchingCards.any((c) => c.id == _selectedCardId)) {
+      _selectedCardId = matchingCards
+          .firstWhere((c) => c.isDefault, orElse: () => matchingCards.first)
+          .id;
+    }
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -413,6 +432,27 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                             onSelectionChanged: (selection) => setState(
                                 () => _paymentMethod = selection.first),
                           ),
+                          if (matchingCards.isNotEmpty) ...[
+                            const SizedBox(height: 8),
+                            DropdownButtonFormField<String>(
+                              value: _selectedCardId,
+                              decoration:
+                                  const InputDecoration(labelText: '카드 선택'),
+                              items: [
+                                for (final c in matchingCards)
+                                  DropdownMenuItem(
+                                      value: c.id, child: Text(c.name)),
+                              ],
+                              onChanged: (value) => setState(() {
+                                _selectedCardId = value;
+                                final card = matchingCards
+                                    .firstWhere((c) => c.id == value);
+                                if (card.type == CardType.corporate) {
+                                  _isFixed = true;
+                                }
+                              }),
+                            ),
+                          ],
                           if (_isEditing &&
                               widget.editingExpense!.isInstallment) ...[
                             const SizedBox(height: 4),

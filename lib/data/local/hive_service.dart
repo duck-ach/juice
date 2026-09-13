@@ -1,6 +1,8 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/constants/default_categories.dart';
+import '../../core/constants/default_cards.dart';
+import '../models/card_item.dart';
 import '../models/category.dart';
 import '../models/expense.dart';
 import '../models/weekly_budget.dart';
@@ -12,6 +14,7 @@ class HiveBoxes {
   static const expenses = 'expenses';
   static const weeklyBudgets = 'weeklyBudgets';
   static const settings = 'settings';
+  static const cards = 'cards';
 }
 
 /// 로컬 DB(Hive) 초기화 및 박스 오픈을 담당. 서버 없이 앱 내 영구 저장을 처리한다.
@@ -24,15 +27,18 @@ class HiveService {
     Hive.registerAdapter(CategoryAdapter());
     Hive.registerAdapter(ExpenseAdapter());
     Hive.registerAdapter(WeeklyBudgetAdapter());
+    Hive.registerAdapter(CardItemAdapter());
 
     await Future.wait([
       Hive.openBox<Category>(HiveBoxes.categories),
       Hive.openBox<Expense>(HiveBoxes.expenses),
       Hive.openBox<WeeklyBudget>(HiveBoxes.weeklyBudgets),
       Hive.openBox(HiveBoxes.settings),
+      Hive.openBox<CardItem>(HiveBoxes.cards),
     ]);
 
     await _seedDefaultCategoriesIfNeeded();
+    await _seedDefaultCardsIfNeeded();
   }
 
   static Future<void> _seedDefaultCategoriesIfNeeded() async {
@@ -40,6 +46,15 @@ class HiveService {
     if (box.isEmpty) {
       for (final category in DefaultCategories.seed) {
         await box.put(category.id, category);
+      }
+    }
+  }
+
+  static Future<void> _seedDefaultCardsIfNeeded() async {
+    final box = Hive.box<CardItem>(HiveBoxes.cards);
+    if (box.isEmpty) {
+      for (final card in DefaultCards.seed) {
+        await box.put(card.id, card);
       }
     }
   }

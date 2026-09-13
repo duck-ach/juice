@@ -12,7 +12,9 @@ import '../../core/utils/week_utils.dart';
 import '../../providers/budget_settings_provider.dart';
 import '../../providers/expense_provider.dart';
 import 'backup_settings_screen.dart';
+import 'card_management_screen.dart';
 import 'goal_settings_screen.dart';
+import 'notification_settings_screen.dart';
 import 'security_settings_screen.dart';
 import 'theme_settings_screen.dart';
 import 'widget_settings_screen.dart';
@@ -113,6 +115,23 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             subtitle: '홈 화면 위젯 금액 가리기',
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => const WidgetSettingsScreen()),
+            ),
+          ),
+          _SettingsMenuTile(
+            emoji: '💳',
+            title: '내 카드 관리',
+            subtitle: '보유 카드 등록, 순서 변경',
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const CardManagementScreen()),
+            ),
+          ),
+          _SettingsMenuTile(
+            emoji: '🔔',
+            title: '알림 설정',
+            subtitle: '아침/저녁 리마인더 알림 켜기/끄기',
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                  builder: (_) => const NotificationSettingsScreen()),
             ),
           ),
           _SettingsMenuTile(

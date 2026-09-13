@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 import '../../providers/expense_provider.dart';
 import '../../providers/stats_provider.dart';
+import 'widgets/card_breakdown_list.dart';
 import 'widgets/category_donut_chart.dart';
 import 'widgets/payment_method_chart.dart';
 import 'widgets/spend_bar_chart.dart';
@@ -15,6 +16,7 @@ class StatsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final period = ref.watch(statsPeriodProvider);
     final filter = ref.watch(statsExpenseFilterProvider);
+    final cardView = ref.watch(cardStatsViewProvider);
     final expenses = ref.watch(statsFilteredExpensesProvider);
     final total = expenses.fold(0.0, (sum, e) => sum + e.amount);
     final formatter = NumberFormat('#,###');
@@ -68,7 +70,20 @@ class StatsScreen extends ConsumerWidget {
           const SizedBox(height: 24),
           Text('결제 수단별 소비', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 12),
-          const PaymentMethodChart(),
+          SegmentedButton<CardStatsView>(
+            segments: CardStatsView.values
+                .map((v) => ButtonSegment(value: v, label: Text(v.label)))
+                .toList(),
+            selected: {cardView},
+            onSelectionChanged: (selection) => ref
+                .read(cardStatsViewProvider.notifier)
+                .state = selection.first,
+          ),
+          const SizedBox(height: 12),
+          if (cardView == CardStatsView.summary)
+            const PaymentMethodChart()
+          else
+            const CardBreakdownList(),
         ],
       ),
     );

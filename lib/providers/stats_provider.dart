@@ -1,10 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/utils/week_utils.dart';
+import '../data/models/card_item.dart';
 import '../data/models/category.dart';
 import '../data/models/expense.dart';
 import '../data/models/payment_method.dart';
 import 'budget_settings_provider.dart';
+import 'card_provider.dart';
 import 'category_provider.dart';
 import 'expense_provider.dart';
 
@@ -115,6 +117,53 @@ final paymentMethodBreakdownProvider =
             percent: total <= 0 ? 0 : (totals[m] ?? 0) / total,
           ))
       .toList();
+});
+
+/// '결제 수단별 소비' 섹션의 표시 방식: 대분류(체크/신용/현금) 요약 vs 카드별 상세.
+enum CardStatsView { summary, byCard }
+
+extension CardStatsViewLabel on CardStatsView {
+  String get label => switch (this) {
+        CardStatsView.summary => '대분류 요약',
+        CardStatsView.byCard => '카드별 상세',
+      };
+}
+
+final cardStatsViewProvider =
+    StateProvider<CardStatsView>((ref) => CardStatsView.summary);
+
+class CardAmount {
+  const CardAmount(
+      {required this.card, required this.amount, required this.percent});
+
+  /// null이면 카드가 지정되지 않은 지출(현금/더치페이 등) 또는 이미 삭제된 카드.
+  final CardItem? card;
+  final double amount;
+  final double percent;
+}
+
+/// 선택된 기간 + 필터 기준 카드별 실사용 합계(내림차순).
+final cardBreakdownProvider = Provider<List<CardAmount>>((ref) {
+  final expenses = ref.watch(statsFilteredExpensesProvider);
+  final cards = ref.watch(cardProvider);
+  final cardMap = {for (final c in cards) c.id: c};
+
+  final totals = <String, double>{};
+  for (final e in expenses) {
+    final key = e.cardId ?? '_none';
+    totals.update(key, (v) => v + e.amount, ifAbsent: () => e.amount);
+  }
+  final total = totals.values.fold(0.0, (a, b) => a + b);
+
+  final result = totals.entries
+      .map((entry) => CardAmount(
+            card: cardMap[entry.key],
+            amount: entry.value,
+            percent: total <= 0 ? 0 : entry.value / total,
+          ))
+      .toList()
+    ..sort((a, b) => b.amount.compareTo(a.amount));
+  return result;
 });
 
 class TrendPoint {
