@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/widgets/edit_delete_slidable.dart';
 import '../../data/models/card_item.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/card_provider.dart';
 import 'widgets/add_card_dialog.dart';
 
@@ -12,10 +13,11 @@ class CardManagementScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final loc = AppLocalizations.of(context)!;
     final cards = ref.watch(cardProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('내 카드 관리')),
+      appBar: AppBar(title: Text(loc.cardManagementTitle)),
       body: ReorderableListView.builder(
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 96),
         buildDefaultDragHandles: false,
@@ -47,7 +49,7 @@ class CardManagementScreen extends ConsumerWidget {
                   ),
                   title: Text(card.name,
                       style: const TextStyle(fontWeight: FontWeight.w700)),
-                  subtitle: Text(card.subtitleLabel),
+                  subtitle: Text(card.subtitleLabel(loc)),
                   trailing: ReorderableDragStartListener(
                     index: index,
                     child: const Padding(
@@ -73,26 +75,27 @@ class CardManagementScreen extends ConsumerWidget {
   /// 기본 카드는 삭제할 수 없음. 커스텀 카드는 확인 후 삭제.
   Future<void> _confirmDelete(
       BuildContext context, WidgetRef ref, CardItem card) async {
+    final loc = AppLocalizations.of(context)!;
     if (card.isDefault) {
       ScaffoldMessenger.of(context)
         ..clearSnackBars()
-        ..showSnackBar(const SnackBar(content: Text('기본 카드는 삭제할 수 없어요')));
+        ..showSnackBar(SnackBar(content: Text(loc.defaultCardUndeletable)));
       return;
     }
 
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('카드 삭제'),
-        content: Text('\'${card.name}\' 카드를 삭제할까요?\n이미 기록된 지출 내역은 유지돼요.'),
+        title: Text(loc.cardDeleteTitle),
+        content: Text(loc.cardDeleteConfirm(card.name)),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(dialogContext).pop(false),
-            child: const Text('취소'),
+            child: Text(loc.commonCancel),
           ),
           FilledButton(
             onPressed: () => Navigator.of(dialogContext).pop(true),
-            child: const Text('삭제'),
+            child: Text(loc.commonDelete),
           ),
         ],
       ),

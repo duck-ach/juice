@@ -64,6 +64,21 @@ DateRange rangeForPeriod(BudgetPeriod period,
   };
 }
 
+/// [current] 바로 이전 주기(일/주/월) 범위. 주기 마감 히스토리를 과거로 거슬러 올라가며
+/// 생성할 때(예: [JuiceSavingHistory]) 사용.
+DateRange previousPeriodRange(BudgetPeriod period, DateRange current,
+    [WeekStartDay weekStartDay = WeekStartDay.monday]) {
+  return switch (period) {
+    BudgetPeriod.daily =>
+      currentDayRange(current.start.subtract(const Duration(days: 1))),
+    BudgetPeriod.weekly =>
+      currentWeekRange(current.start.subtract(const Duration(days: 1)), weekStartDay),
+    BudgetPeriod.monthly => monthRange(
+        current.start.month == 1 ? current.start.year - 1 : current.start.year,
+        current.start.month == 1 ? 12 : current.start.month - 1),
+  };
+}
+
 /// 오늘이 포함된 주를 포함해 최근 4주(설정된 주 시작 요일 기준) 범위.
 DateRange last4WeeksRange(
     [DateTime? now, WeekStartDay startDay = WeekStartDay.monday]) {

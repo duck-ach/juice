@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../../l10n/app_localizations.dart';
 import '../../../providers/stats_provider.dart';
 
 /// 선택된 기간의 카드별 실사용 총액과 점유율 바 그래프.
@@ -10,13 +11,14 @@ class CardBreakdownList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final loc = AppLocalizations.of(context)!;
     final breakdown = ref.watch(cardBreakdownProvider);
 
     if (breakdown.isEmpty) {
       return SizedBox(
         height: 120,
         child: Center(
-          child: Text('해당 기간에 지출 내역이 없어요',
+          child: Text(loc.noExpensesInPeriod,
               style: Theme.of(context).textTheme.bodyMedium),
         ),
       );
@@ -46,7 +48,7 @@ class CardBreakdownList extends ConsumerWidget {
                     ),
                     const SizedBox(width: 8),
                     Expanded(
-                      child: Text(item.card?.name ?? '카드 미지정',
+                      child: Text(item.card?.name ?? loc.cardUnassigned,
                           style: Theme.of(context).textTheme.bodyMedium),
                     ),
                     Text(

@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/widgets/edit_delete_slidable.dart';
+import '../../core/widgets/juice_segmented_tab.dart';
 import '../../data/models/budget_period.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/budget_settings_provider.dart';
 import '../../providers/category_provider.dart';
 import '../../providers/expense_provider.dart';
@@ -15,12 +17,15 @@ import 'widgets/add_expense_sheet.dart';
 import 'widgets/expense_actions.dart';
 import 'widgets/expense_tile.dart';
 import 'widgets/juice_gauge.dart';
+import 'widgets/juice_tip_card.dart';
+import 'widgets/saved_juice_badge.dart';
 
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final loc = AppLocalizations.of(context)!;
     final targetAmount = ref.watch(targetAmountProvider);
     final period = ref.watch(budgetPeriodProvider);
     if (targetAmount == null) return _NoGoalForPeriod(period: period);
@@ -42,11 +47,11 @@ class DashboardScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('주스'),
+        title: Text(AppLocalizations.of(context)!.appTitle),
         actions: [
           IconButton(
             icon: const Icon(Icons.sell_outlined),
-            tooltip: '카테고리 관리',
+            tooltip: loc.categoryManageTitle,
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => const CategoryManageScreen()),
             ),
@@ -61,7 +66,7 @@ class DashboardScreen extends ConsumerWidget {
               remainingRatio: ratio,
               remaining: remaining,
               total: targetAmount,
-              periodLabel: period.label,
+              periodLabel: period.label(loc),
               color: gaugeColor,
               isOverBudget: isOverBudget,
             ),
@@ -83,7 +88,7 @@ class DashboardScreen extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
-                    '🧊 오늘의 할부 분할액: ${formatter.format(todayInstallment)} mL',
+                    loc.todayInstallmentLabel(formatter.format(todayInstallment)),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.w700),
@@ -91,20 +96,22 @@ class DashboardScreen extends ConsumerWidget {
                 ),
               ),
             ),
-          const SizedBox(height: 4),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(24, 12, 24, 0),
+            child: SavedJuiceBadge(),
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            child: JuiceTipCard(),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: SegmentedButton<ExpenseFilter>(
-              segments: const [
-                ButtonSegment(
-                    value: ExpenseFilter.variableOnly, label: Text('변동지출만 보기')),
-                ButtonSegment(
-                    value: ExpenseFilter.all, label: Text('전체 내역 보기')),
-              ],
-              selected: {filter},
-              onSelectionChanged: (selection) => ref
+            child: JuiceSegmentedTab(
+              items: [loc.filterVariableOnlyLong, loc.filterAllLong],
+              selectedIndex: ExpenseFilter.values.indexOf(filter),
+              onTabChanged: (index) => ref
                   .read(expenseFilterProvider.notifier)
-                  .state = selection.first,
+                  .state = ExpenseFilter.values[index],
             ),
           ),
           const SizedBox(height: 8),
@@ -155,8 +162,9 @@ class _NoGoalForPeriod extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: const Text('주스')),
+      appBar: AppBar(title: Text(loc.appTitle)),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -166,13 +174,13 @@ class _NoGoalForPeriod extends StatelessWidget {
               const Text('🍊', style: TextStyle(fontSize: 48)),
               const SizedBox(height: 16),
               Text(
-                '${period.label} 목표 금액이 아직 없어요',
+                loc.noGoalTitle(period.label(loc)),
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 8),
               Text(
-                '목표 설정에서 ${period.settingLabel} 목표 금액을 채워주세요.',
+                loc.noGoalDescription(period.settingLabel(loc)),
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
@@ -181,7 +189,7 @@ class _NoGoalForPeriod extends StatelessWidget {
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => const GoalSettingsScreen()),
                 ),
-                child: const Text('목표 설정으로 이동'),
+                child: Text(loc.goToGoalSettings),
               ),
             ],
           ),
@@ -198,7 +206,7 @@ class _EmptyExpenseList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        '아직 기록된 지출이 없어요',
+        AppLocalizations.of(context)!.noExpensesYet,
         style: Theme.of(context).textTheme.bodyMedium,
       ),
     );

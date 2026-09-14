@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../data/models/juice_theme.dart';
+import '../../../l10n/app_localizations.dart';
 
 /// '목표 금액' 등 다른 설정 타일과 같은 스타일로 여는 주스 테마 선택 바텀시트.
 /// 체크 아이콘 대신 선택된 타일 전체가 해당 과일의 시그니처 색으로 물든다.
@@ -60,8 +61,8 @@ class _JuiceThemePickerSheet extends StatelessWidget {
             const SizedBox(height: 12),
             Align(
               alignment: Alignment.centerLeft,
-              child:
-                  Text('주스 테마', style: Theme.of(context).textTheme.titleLarge),
+              child: Text(AppLocalizations.of(context)!.juiceThemeLabel,
+                  style: Theme.of(context).textTheme.titleLarge),
             ),
             const SizedBox(height: 8),
             Flexible(
@@ -127,7 +128,7 @@ class _JuiceThemeCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(theme.name,
+                    Text(theme.label(AppLocalizations.of(context)!),
                         style: Theme.of(context).textTheme.bodyLarge),
                     const SizedBox(height: 8),
                     ClipRRect(

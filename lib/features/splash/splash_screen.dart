@@ -7,6 +7,7 @@ import '../../app_root.dart';
 import '../../core/widget/home_widget_launcher.dart';
 import '../../core/widget/home_widget_sync.dart';
 import '../../data/models/splash_flavor.dart';
+import '../../l10n/app_localizations.dart';
 import '../security/app_lock_gate.dart';
 
 /// 앱 시작 시 랜덤 주스 플레이버로 컵이 차오르는 스플래시 화면.
@@ -152,7 +153,7 @@ class _SplashScreenState extends State<SplashScreen>
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      _flavor.subText,
+                      _flavor.subText(AppLocalizations.of(context)!),
                       style: const TextStyle(
                           fontSize: 12, color: Color(0xFF9A9A9A)),
                     ),

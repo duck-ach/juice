@@ -25,6 +25,7 @@ class BackupService {
               'orderIndex': c.orderIndex,
               'description': c.description,
               'iconFontFamily': c.iconFontFamily,
+              'type': c.typeName,
             });
 
     final expenses = Hive.box<Expense>(HiveBoxes.expenses).values.map((e) => {
@@ -82,6 +83,10 @@ class BackupService {
           orderIndex: m['orderIndex'] as int? ?? 0,
           description: m['description'] as String? ?? '나만의 특별한 주스 레시피 🍊',
           iconFontFamily: m['iconFontFamily'] as String? ?? 'MaterialIcons',
+          type: CategoryType.values.firstWhere(
+            (t) => t.name == (m['type'] as String? ?? 'expense'),
+            orElse: () => CategoryType.expense,
+          ),
         ),
       );
     }

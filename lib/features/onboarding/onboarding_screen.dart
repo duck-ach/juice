@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/utils/thousands_formatter.dart';
 import '../../data/models/budget_period.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/budget_settings_provider.dart';
 
 /// 첫 실행 시 노출되는 단일 인풋 온보딩 화면. "이번 주" 기준으로 물어보므로
@@ -50,7 +51,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 const Text('🍊', style: TextStyle(fontSize: 56)),
                 const SizedBox(height: 20),
                 Text(
-                  '이번 주 쓸 돈(예산)을\n적어보세요',
+                  AppLocalizations.of(context)!.setBudgetTitle,
                   textAlign: TextAlign.center,
                   style: textTheme.headlineMedium,
                 ),
@@ -74,7 +75,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   height: 52,
                   child: FilledButton(
                     onPressed: _submitting ? null : _submit,
-                    child: const Text('주스 채우기'),
+                    child: Text(AppLocalizations.of(context)!.fillJuiceButton),
                   ),
                 ),
               ],

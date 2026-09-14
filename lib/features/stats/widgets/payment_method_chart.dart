@@ -1,9 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 
 import '../../../data/models/payment_method.dart';
+import '../../../l10n/app_localizations.dart';
+import '../../../providers/currency_provider.dart';
 import '../../../providers/stats_provider.dart';
 
 const _paymentMethodColors = {
@@ -19,6 +20,7 @@ class PaymentMethodChart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final loc = AppLocalizations.of(context)!;
     final breakdown = ref.watch(paymentMethodBreakdownProvider);
     final total = breakdown.fold(0.0, (sum, b) => sum + b.amount);
 
@@ -26,13 +28,13 @@ class PaymentMethodChart extends ConsumerWidget {
       return SizedBox(
         height: 120,
         child: Center(
-          child: Text('해당 기간에 지출 내역이 없어요',
+          child: Text(loc.noExpensesInPeriod,
               style: Theme.of(context).textTheme.bodyMedium),
         ),
       );
     }
 
-    final formatter = NumberFormat('#,###');
+    final currency = ref.watch(currencyProvider).currency;
 
     return Column(
       children: [
@@ -80,11 +82,11 @@ class PaymentMethodChart extends ConsumerWidget {
                 const SizedBox(width: 4),
                 Expanded(
                   child: Text(b.method == PaymentMethod.creditCard
-                      ? '${b.method.label} (할부 포함)'
-                      : b.method.label),
+                      ? '${b.method.label(loc)} (${loc.installmentIncludedSuffix})'
+                      : b.method.label(loc)),
                 ),
                 Text(
-                  '${formatter.format(b.amount)}원  ${(b.percent * 100).round()}%',
+                  '${currency.format(b.amount)}  ${(b.percent * 100).round()}%',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],

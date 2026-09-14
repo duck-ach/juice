@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-import '../../../core/theme/app_colors.dart';
+import '../../../data/models/juice_theme.dart';
+import '../../../l10n/app_localizations.dart';
+import '../../../providers/currency_provider.dart';
 
-/// 인스타 스토리용 1:1 정사각형 '주스 절약 성공 카드'.
+/// 인스타 스토리용 1:1 정사각형 '주스 절약 성공 카드'. 배경 그라데이션과 이모지는
+/// 현재 선택된 주스 테마([JuiceTheme])를 따른다.
 class SavingsCard extends StatelessWidget {
   const SavingsCard({
     super.key,
     required this.budget,
     required this.spent,
     required this.weekLabel,
+    required this.currency,
+    required this.theme,
   });
 
   final double budget;
   final double spent;
   final String weekLabel;
+  final CurrencyItem currency;
+  final JuiceTheme theme;
 
   @override
   Widget build(BuildContext context) {
-    final formatter = NumberFormat('#,###');
+    final loc = AppLocalizations.of(context)!;
     final isSuccess = spent <= budget;
     final ratio = budget <= 0 ? 0.0 : (spent / budget).clamp(0.0, 1.0);
 
@@ -30,7 +36,7 @@ class SavingsCard extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: isSuccess
-                ? [AppColors.citrusYellow, AppColors.freshOrange]
+                ? [theme.highColor, theme.mediumColor]
                 : [const Color(0xFFB0B0B0), const Color(0xFF6B6B6B)],
           ),
         ),
@@ -40,11 +46,11 @@ class SavingsCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                const Text('🍊', style: TextStyle(fontSize: 28)),
+                Text(theme.emoji, style: const TextStyle(fontSize: 28)),
                 const SizedBox(width: 8),
-                const Text(
-                  '주스',
-                  style: TextStyle(
+                Text(
+                  loc.appNameShort,
+                  style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.w800),
@@ -58,7 +64,9 @@ class SavingsCard extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              isSuccess ? '이번 주 주스를\n신선하게 지켜냈어요!' : '이번 주 주스가\n조금 넘쳤어요',
+              isSuccess
+                  ? loc.savingsCardSuccessMessage
+                  : loc.savingsCardOverMessage,
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 26,
@@ -68,7 +76,8 @@ class SavingsCard extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              '${formatter.format(budget)}원 중 ${formatter.format(spent)}원 소비',
+              loc.savingsCardSpentLine(
+                  currency.format(budget), currency.format(spent)),
               style: const TextStyle(
                   color: Colors.white,
                   fontSize: 15,
@@ -97,7 +106,7 @@ class SavingsCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Text(
-                    isSuccess ? '성공' : '분발',
+                    isSuccess ? loc.savingsCardSuccessStamp : loc.savingsCardOverStamp,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,

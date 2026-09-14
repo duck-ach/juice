@@ -1,14 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/models/expense.dart';
+import '../l10n/app_localizations.dart';
 import 'expense_provider.dart';
 
 enum AssetPeriod { monthly, yearly }
 
 extension AssetPeriodLabel on AssetPeriod {
-  String get label => switch (this) {
-        AssetPeriod.monthly => '월별',
-        AssetPeriod.yearly => '연도별',
+  String label(AppLocalizations loc) => switch (this) {
+        AssetPeriod.monthly => loc.statsPeriodMonthly,
+        AssetPeriod.yearly => loc.statsPeriodYearly,
       };
 }
 
@@ -17,9 +18,11 @@ final assetPeriodProvider =
 
 class AssetPoint {
   const AssetPoint(
-      {required this.label, required this.income, required this.expense});
+      {required this.periodValue, required this.income, required this.expense});
 
-  final String label;
+  /// 월별 모드에서는 월(1~12), 연도별 모드에서는 연도(예: 2026).
+  /// 화면에 표시할 라벨 문자열은 BuildContext가 있는 위젯 쪽에서 로케일에 맞게 만든다.
+  final int periodValue;
   final double income;
   final double expense;
 
@@ -37,12 +40,12 @@ final assetTrendProvider = Provider<List<AssetPoint>>((ref) {
   final period = ref.watch(assetPeriodProvider);
   final all = ref.watch(expenseProvider);
 
-  AssetPoint pointFor(String label, Iterable<Expense> items) {
+  AssetPoint pointFor(int periodValue, Iterable<Expense> items) {
     final income =
         items.where((e) => e.isIncome).fold(0.0, (s, e) => s + e.amount);
     final expense =
         items.where((e) => !e.isIncome).fold(0.0, (s, e) => s + e.amount);
-    return AssetPoint(label: label, income: income, expense: expense);
+    return AssetPoint(periodValue: periodValue, income: income, expense: expense);
   }
 
   if (period == AssetPeriod.monthly) {
@@ -51,7 +54,7 @@ final assetTrendProvider = Provider<List<AssetPoint>>((ref) {
       final month = i + 1;
       final items =
           all.where((e) => e.date.year == year && e.date.month == month);
-      return pointFor('$month월', items);
+      return pointFor(month, items);
     });
   }
 
@@ -59,6 +62,6 @@ final assetTrendProvider = Provider<List<AssetPoint>>((ref) {
   return List.generate(5, (i) {
     final year = currentYear - 4 + i;
     final items = all.where((e) => e.date.year == year);
-    return pointFor('$year', items);
+    return pointFor(year, items);
   });
 });

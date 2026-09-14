@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 enum JuiceThemeType {
   orange,
   strawberry,
@@ -14,7 +16,6 @@ enum JuiceThemeType {
 class JuiceTheme {
   const JuiceTheme({
     required this.type,
-    required this.name,
     required this.emoji,
     required this.highColor,
     required this.mediumColor,
@@ -22,11 +23,20 @@ class JuiceTheme {
   });
 
   final JuiceThemeType type;
-  final String name;
   final String emoji;
   final Color highColor; // 예산 충분 (가장 많을 때)
   final Color mediumColor; // 예산 주의 (중간)
   final Color lowColor; // 예산 임박/위험 (적을 때)
+
+  String label(AppLocalizations loc) => switch (type) {
+        JuiceThemeType.orange => loc.themeOrange,
+        JuiceThemeType.strawberry => loc.themeStrawberry,
+        JuiceThemeType.apple => loc.themeApple,
+        JuiceThemeType.grape => loc.themeGrape,
+        JuiceThemeType.blueberry => loc.themeBlueberry,
+        JuiceThemeType.mulberry => loc.themeMulberry,
+        JuiceThemeType.random => loc.themeRandom,
+      };
 
   /// 잔여 비율(0.0~1.0)에 따라 현재 주스 색상 반환.
   Color getColorByRatio(double remainingRatio) {
@@ -39,7 +49,6 @@ class JuiceTheme {
 final List<JuiceTheme> juiceThemes = [
   const JuiceTheme(
     type: JuiceThemeType.orange,
-    name: '오렌지',
     emoji: '🍊',
     highColor: Color(0xFFFF7A00),
     mediumColor: Color(0xFFFFA94D),
@@ -47,7 +56,6 @@ final List<JuiceTheme> juiceThemes = [
   ),
   const JuiceTheme(
     type: JuiceThemeType.strawberry,
-    name: '딸기',
     emoji: '🍓',
     highColor: Color(0xFFFF2D55),
     mediumColor: Color(0xFFFF85A1),
@@ -55,7 +63,6 @@ final List<JuiceTheme> juiceThemes = [
   ),
   const JuiceTheme(
     type: JuiceThemeType.apple,
-    name: '사과',
     emoji: '🍏',
     highColor: Color(0xFF34C759),
     mediumColor: Color(0xFF8CE99A),
@@ -63,7 +70,6 @@ final List<JuiceTheme> juiceThemes = [
   ),
   const JuiceTheme(
     type: JuiceThemeType.grape,
-    name: '포도',
     emoji: '🍇',
     highColor: Color(0xFF8B2FC9),
     mediumColor: Color(0xFFB368E6),
@@ -71,7 +77,6 @@ final List<JuiceTheme> juiceThemes = [
   ),
   const JuiceTheme(
     type: JuiceThemeType.blueberry,
-    name: '블루베리',
     emoji: '🫐',
     highColor: Color(0xFF3232FF),
     mediumColor: Color(0xFF8C8CFF),
@@ -79,7 +84,6 @@ final List<JuiceTheme> juiceThemes = [
   ),
   const JuiceTheme(
     type: JuiceThemeType.mulberry,
-    name: '오디',
     emoji: '🫐',
     highColor: Color(0xFF1E272C),
     mediumColor: Color(0xFF4B6584),
@@ -87,7 +91,6 @@ final List<JuiceTheme> juiceThemes = [
   ),
   const JuiceTheme(
     type: JuiceThemeType.random,
-    name: '랜덤 (앱 켤 때마다)',
     emoji: '🎲',
     highColor: Color(0xFFFF7A00),
     mediumColor: Color(0xFFFFA94D),

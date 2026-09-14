@@ -60,10 +60,38 @@ final calendarDailyTotalsProvider = Provider<Map<DateTime, double>>((ref) {
   return totals;
 });
 
-/// 날짜(시각 제외)별 수입이 있었는지 여부 — 캘린더 셀 마커에 사용.
-final calendarDailyIncomeMarkersProvider = Provider<Set<DateTime>>((ref) {
+/// 날짜(시각 제외)별 수입 합계 — 캘린더 셀에 표시(지출 제외).
+final calendarDailyIncomeTotalsProvider = Provider<Map<DateTime, double>>((ref) {
   final items = ref.watch(calendarMonthItemsProvider);
-  return items.where((e) => e.isIncome).map((e) => dateOnly(e.date)).toSet();
+  final totals = <DateTime, double>{};
+  for (final e in items) {
+    if (!e.isIncome) continue;
+    final day = dateOnly(e.date);
+    totals.update(day, (v) => v + e.amount, ifAbsent: () => e.amount);
+  }
+  return totals;
+});
+
+/// '무지출 성공' 날짜 집합 — 오늘까지의 날짜 중 순수 변동 지출(할부·고정지출 제외)이
+/// 0원인 날. 수입만 있거나 기록이 아예 없는 날도 포함된다. 미래 날짜는 제외.
+final calendarNoSpendDaysProvider = Provider<Set<DateTime>>((ref) {
+  final month = ref.watch(calendarFocusedMonthProvider);
+  final items = ref.watch(calendarMonthItemsProvider);
+  final today = dateOnly(DateTime.now());
+
+  final spendDays = <DateTime>{
+    for (final e in items)
+      if (!e.isIncome && !e.isFixed && !e.isInstallment) dateOnly(e.date),
+  };
+
+  final daysInMonth = DateTime(month.year, month.month + 1, 0).day;
+  final noSpendDays = <DateTime>{};
+  for (var d = 1; d <= daysInMonth; d++) {
+    final day = DateTime(month.year, month.month, d);
+    if (day.isAfter(today)) continue;
+    if (!spendDays.contains(day)) noSpendDays.add(day);
+  }
+  return noSpendDays;
 });
 
 /// 그 날 지출이 전부 신용카드 할부 분할액으로만 이뤄진 날짜 집합.

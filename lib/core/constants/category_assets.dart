@@ -54,4 +54,18 @@ class CategoryAssets {
     Icons.work,
     Icons.more_horiz,
   ];
+
+  /// 수입 카테고리 추천 아이콘 목록.
+  static const List<IconData> incomeIcons = [
+    Icons.account_balance_wallet,
+    Icons.work_outline,
+    Icons.card_giftcard,
+    Icons.trending_up,
+    Icons.attach_money,
+    Icons.savings,
+    Icons.redeem,
+    Icons.account_balance,
+    Icons.monetization_on,
+    Icons.more_horiz,
+  ];
 }

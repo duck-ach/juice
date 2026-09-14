@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/category_assets.dart';
+import '../../../core/widgets/juice_segmented_tab.dart';
 import '../../../data/models/card_item.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../../providers/card_provider.dart';
 
 /// 새 카드를 생성하는 바텀시트. 성공 시 새로 생성된 카드의 id를 반환, 취소 시 null.
@@ -82,20 +84,21 @@ class _CardEditSheetState extends ConsumerState<_CardEditSheet> {
   }
 
   Future<void> _delete() async {
+    final loc = AppLocalizations.of(context)!;
     final editing = widget.editing;
     if (editing == null || editing.isDefault) return;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('카드 삭제'),
-        content: Text('\'${editing.name}\' 카드를 삭제할까요?\n이미 기록된 지출 내역은 유지돼요.'),
+        title: Text(loc.cardDeleteTitle),
+        content: Text(loc.cardDeleteConfirm(editing.name)),
         actions: [
           TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(false),
-              child: const Text('취소')),
+              child: Text(loc.commonCancel)),
           FilledButton(
               onPressed: () => Navigator.of(dialogContext).pop(true),
-              child: const Text('삭제')),
+              child: Text(loc.commonDelete)),
         ],
       ),
     );
@@ -106,6 +109,7 @@ class _CardEditSheetState extends ConsumerState<_CardEditSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -137,14 +141,14 @@ class _CardEditSheetState extends ConsumerState<_CardEditSheet> {
                 children: [
                   Expanded(
                     child: Text(
-                      _isEditing ? '카드 수정' : '카드 추가',
+                      _isEditing ? loc.cardEditTitle : loc.cardAddTitle,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
                   if (_isEditing && !widget.editing!.isDefault)
                     IconButton(
                       icon: const Icon(Icons.delete_outline),
-                      tooltip: '삭제',
+                      tooltip: loc.commonDelete,
                       onPressed: _delete,
                     ),
                 ],
@@ -164,21 +168,20 @@ class _CardEditSheetState extends ConsumerState<_CardEditSheet> {
               TextField(
                 controller: _nameController,
                 autofocus: !_isEditing,
-                decoration: const InputDecoration(labelText: '카드 이름'),
+                decoration: InputDecoration(labelText: loc.cardNameLabel),
               ),
               const SizedBox(height: 16),
-              Text('카드 종류', style: Theme.of(context).textTheme.labelLarge),
+              Text(loc.cardTypeLabel,
+                  style: Theme.of(context).textTheme.labelLarge),
               const SizedBox(height: 8),
-              SegmentedButton<CardType>(
-                segments: CardType.values
-                    .map((t) => ButtonSegment(value: t, label: Text(t.label)))
-                    .toList(),
-                selected: {_selectedType},
-                onSelectionChanged: (selection) =>
-                    setState(() => _selectedType = selection.first),
+              JuiceSegmentedTab(
+                items: CardType.values.map((t) => t.label(loc)).toList(),
+                selectedIndex: CardType.values.indexOf(_selectedType),
+                onTabChanged: (index) =>
+                    setState(() => _selectedType = CardType.values[index]),
               ),
               const SizedBox(height: 16),
-              Text('색상', style: Theme.of(context).textTheme.labelLarge),
+              Text(loc.colorLabel, style: Theme.of(context).textTheme.labelLarge),
               const SizedBox(height: 8),
               SizedBox(
                 height: 40,
@@ -213,7 +216,8 @@ class _CardEditSheetState extends ConsumerState<_CardEditSheet> {
               SizedBox(
                 height: 52,
                 child: FilledButton(
-                    onPressed: _save, child: Text(_isEditing ? '저장' : '추가')),
+                    onPressed: _save,
+                    child: Text(_isEditing ? loc.commonSave : loc.commonAdd)),
               ),
             ],
           ),

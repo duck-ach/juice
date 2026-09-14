@@ -20,6 +20,9 @@ class Expense extends HiveObject {
     this.currentInstallmentIndex = 1,
     this.installmentGroupId,
     this.cardId,
+    this.originalAmount,
+    this.originalCurrency,
+    this.exchangeRate,
   })  : createdAt = createdAt ?? DateTime.now(),
         paymentMethodName = paymentMethod.name;
 
@@ -69,6 +72,22 @@ class Expense extends HiveObject {
   /// 이 지출에 사용한 [CardItem.id]. 체크/신용카드 결제일 때만 값이 있고, 그 외(현금/더치페이)는 null.
   @HiveField(12)
   String? cardId;
+
+  /// 외화로 입력한 원본 결제 금액(예: 15.50). 기준 통화로 입력했으면 null.
+  @HiveField(13)
+  double? originalAmount;
+
+  /// 원본 결제 통화 코드(예: 'USD'). 기준 통화로 입력했으면 null.
+  @HiveField(14)
+  String? originalCurrency;
+
+  /// 저장 시점에 적용한 결제일 기준 환율(1 [originalCurrency] = ? 기준 통화). [amount]는
+  /// 이미 이 환율로 환산되어 기준 통화로 저장된 값이므로, 예산/합계 계산은 항상 [amount]만 쓰면 된다.
+  @HiveField(15)
+  double? exchangeRate;
+
+  /// 외화로 입력된 지출인지.
+  bool get isForeignCurrency => originalCurrency != null;
 
   PaymentMethod get paymentMethod => PaymentMethod.values.firstWhere(
         (e) => e.name == paymentMethodName,

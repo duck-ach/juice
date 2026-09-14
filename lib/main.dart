@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -11,7 +12,9 @@ import 'core/widget/home_widget_service.dart';
 import 'data/local/hive_service.dart';
 import 'data/local/prefs_service.dart';
 import 'features/splash/splash_screen.dart';
+import 'l10n/app_localizations.dart';
 import 'providers/juice_theme_provider.dart';
+import 'providers/locale_provider.dart';
 import 'providers/notification_settings_provider.dart';
 import 'providers/theme_provider.dart';
 
@@ -49,14 +52,23 @@ class JuiceApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
     final accent = ref.watch(resolvedJuiceThemeProvider).highColor;
+    final locale = ref.watch(localeProvider).locale;
 
     return MaterialApp(
-      title: '주스',
+      onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
       debugShowCheckedModeBanner: false,
       navigatorKey: rootNavigatorKey,
       theme: AppTheme.light(accent),
       darkTheme: AppTheme.dark(accent),
       themeMode: themeMode,
+      locale: locale,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: AppLocalizations.supportedLocales,
       home: const SplashScreen(),
     );
   }

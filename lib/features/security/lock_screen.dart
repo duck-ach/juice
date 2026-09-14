@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:local_auth/local_auth.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../providers/app_lock_provider.dart';
 import 'widgets/pin_dots.dart';
 import 'widgets/pin_keypad.dart';
@@ -29,12 +30,14 @@ class _LockScreenState extends ConsumerState<LockScreen> {
   }
 
   Future<void> _tryBiometric() async {
-    if (!ref.read(appLockProvider).biometricEnabled || _biometricInFlight)
+    if (!ref.read(appLockProvider).biometricEnabled || _biometricInFlight) {
       return;
+    }
+    final loc = AppLocalizations.of(context)!;
     setState(() => _biometricInFlight = true);
     try {
       final ok = await LocalAuthentication().authenticate(
-        localizedReason: '주스 잠금을 해제해주세요',
+        localizedReason: loc.unlockJuiceReason,
         options: const AuthenticationOptions(stickyAuth: true),
       );
       if (ok) widget.onUnlocked();
@@ -52,13 +55,14 @@ class _LockScreenState extends ConsumerState<LockScreen> {
       _error = null;
     });
     if (_input.length == 4) {
+      final loc = AppLocalizations.of(context)!;
       final ok = await ref.read(appLockProvider.notifier).verifyPin(_input);
       if (!mounted) return;
       if (ok) {
         widget.onUnlocked();
       } else {
         setState(() {
-          _error = '비밀번호가 일치하지 않아요';
+          _error = loc.pinMismatchError;
           _input = '';
         });
       }
@@ -72,6 +76,7 @@ class _LockScreenState extends ConsumerState<LockScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     final biometricEnabled = ref.watch(appLockProvider).biometricEnabled;
 
     return Material(
@@ -82,14 +87,14 @@ class _LockScreenState extends ConsumerState<LockScreen> {
             const SizedBox(height: 72),
             const Text('🍊', style: TextStyle(fontSize: 48)),
             const SizedBox(height: 12),
-            const Text('주스 잠금',
-                style: TextStyle(
+            Text(loc.juiceLockTitle,
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.w700)),
             const SizedBox(height: 8),
             Text(
-              _error ?? 'PIN 4자리를 입력해주세요',
+              _error ?? loc.enterPinPrompt,
               style: TextStyle(
                 color:
                     _error != null ? const Color(0xFFFF3B30) : Colors.white54,
@@ -105,8 +110,8 @@ class _LockScreenState extends ConsumerState<LockScreen> {
               TextButton.icon(
                 onPressed: _tryBiometric,
                 icon: const Icon(Icons.fingerprint, color: Colors.white70),
-                label: const Text('생체인증으로 잠금 해제',
-                    style: TextStyle(color: Colors.white70)),
+                label: Text(loc.unlockWithBiometrics,
+                    style: const TextStyle(color: Colors.white70)),
               ),
             const SizedBox(height: 16),
           ],

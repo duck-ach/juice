@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 
+import '../../core/widgets/juice_segmented_tab.dart';
+import '../../l10n/app_localizations.dart';
+import '../../providers/currency_provider.dart';
 import '../../providers/expense_provider.dart';
+import '../../providers/juice_theme_provider.dart';
 import '../../providers/stats_provider.dart';
 import 'widgets/card_breakdown_list.dart';
 import 'widgets/category_donut_chart.dart';
@@ -14,15 +17,20 @@ class StatsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final loc = AppLocalizations.of(context)!;
     final period = ref.watch(statsPeriodProvider);
     final filter = ref.watch(statsExpenseFilterProvider);
     final cardView = ref.watch(cardStatsViewProvider);
     final expenses = ref.watch(statsFilteredExpensesProvider);
     final total = expenses.fold(0.0, (sum, e) => sum + e.amount);
-    final formatter = NumberFormat('#,###');
+    final currency = ref.watch(currencyProvider).currency;
+    final themeColor = ref.watch(resolvedJuiceThemeProvider).highColor;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final unselectedChipColor =
+        Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('통계')),
+      appBar: AppBar(title: Text(loc.statsTitle)),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 40),
         children: [
@@ -34,9 +42,17 @@ class StatsScreen extends ConsumerWidget {
               separatorBuilder: (_, __) => const SizedBox(width: 8),
               itemBuilder: (context, index) {
                 final p = StatsPeriod.values[index];
+                final selected = p == period;
                 return ChoiceChip(
-                  label: Text(p.label),
-                  selected: p == period,
+                  label: Text(p.label(loc)),
+                  selected: selected,
+                  showCheckmark: false,
+                  selectedColor:
+                      themeColor.withValues(alpha: isDark ? 0.28 : 0.2),
+                  labelStyle: TextStyle(
+                    fontWeight: selected ? FontWeight.w700 : FontWeight.w400,
+                    color: selected ? themeColor : unselectedChipColor,
+                  ),
                   onSelected: (_) =>
                       ref.read(statsPeriodProvider.notifier).state = p,
                 );
@@ -44,40 +60,36 @@ class StatsScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 12),
-          SegmentedButton<ExpenseFilter>(
-            segments: const [
-              ButtonSegment(
-                  value: ExpenseFilter.variableOnly, label: Text('변동지출만')),
-              ButtonSegment(value: ExpenseFilter.all, label: Text('고정비 포함')),
-            ],
-            selected: {filter},
-            onSelectionChanged: (selection) => ref
+          JuiceSegmentedTab(
+            items: [loc.filterVariableOnlyShort, loc.filterFixedIncluded],
+            selectedIndex: ExpenseFilter.values.indexOf(filter),
+            onTabChanged: (index) => ref
                 .read(statsExpenseFilterProvider.notifier)
-                .state = selection.first,
+                .state = ExpenseFilter.values[index],
           ),
           const SizedBox(height: 20),
-          Text('총 지출', style: Theme.of(context).textTheme.bodyMedium),
-          Text('${formatter.format(total)}원',
+          Text(loc.totalExpenseTitle, style: Theme.of(context).textTheme.bodyMedium),
+          Text(currency.format(total),
               style: Theme.of(context).textTheme.headlineMedium),
           const SizedBox(height: 20),
           if (period.isTrend) ...[
             const SpendBarChart(),
             const SizedBox(height: 24),
           ],
-          Text('카테고리별 소비', style: Theme.of(context).textTheme.titleLarge),
+          Text(loc.categorySpendingTitle,
+              style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 12),
           const CategoryDonutChart(),
           const SizedBox(height: 24),
-          Text('결제 수단별 소비', style: Theme.of(context).textTheme.titleLarge),
+          Text(loc.paymentMethodSpendingTitle,
+              style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 12),
-          SegmentedButton<CardStatsView>(
-            segments: CardStatsView.values
-                .map((v) => ButtonSegment(value: v, label: Text(v.label)))
-                .toList(),
-            selected: {cardView},
-            onSelectionChanged: (selection) => ref
+          JuiceSegmentedTab(
+            items: CardStatsView.values.map((v) => v.label(loc)).toList(),
+            selectedIndex: CardStatsView.values.indexOf(cardView),
+            onTabChanged: (index) => ref
                 .read(cardStatsViewProvider.notifier)
-                .state = selection.first,
+                .state = CardStatsView.values[index],
           ),
           const SizedBox(height: 12),
           if (cardView == CardStatsView.summary)

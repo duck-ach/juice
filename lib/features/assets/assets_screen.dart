@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/widgets/juice_segmented_tab.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/asset_provider.dart';
 import 'widgets/net_flow_bar_chart.dart';
 
@@ -11,6 +13,7 @@ class AssetsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final loc = AppLocalizations.of(context)!;
     final period = ref.watch(assetPeriodProvider);
     final netWorth = ref.watch(cumulativeNetWorthProvider);
     final trend = ref.watch(assetTrendProvider);
@@ -18,9 +21,11 @@ class AssetsScreen extends ConsumerWidget {
     final periodExpense = trend.fold(0.0, (sum, p) => sum + p.expense);
     final formatter = NumberFormat('#,###');
     final isPositive = netWorth >= 0;
+    final periodScopeLabel =
+        period == AssetPeriod.monthly ? loc.scopeThisYear : loc.scopeLast5Years;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('자산')),
+      appBar: AppBar(title: Text(loc.assetsTitle)),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 40),
         children: [
@@ -31,7 +36,8 @@ class AssetsScreen extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('누적 순자산', style: Theme.of(context).textTheme.bodyMedium),
+                  Text(loc.cumulativeNetWorthLabel,
+                      style: Theme.of(context).textTheme.bodyMedium),
                   const SizedBox(height: 4),
                   Text(
                     '${isPositive ? '' : '-'}${formatter.format(netWorth.abs())} mL',
@@ -43,7 +49,7 @@ class AssetsScreen extends ConsumerWidget {
                         ),
                   ),
                   Text(
-                    '지금까지 기록된 모든 수입에서 지출을 뺀 값이에요.',
+                    loc.cumulativeNetWorthDescription,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
@@ -51,20 +57,18 @@ class AssetsScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 20),
-          SegmentedButton<AssetPeriod>(
-            segments: AssetPeriod.values
-                .map((p) => ButtonSegment(value: p, label: Text(p.label)))
-                .toList(),
-            selected: {period},
-            onSelectionChanged: (selection) =>
-                ref.read(assetPeriodProvider.notifier).state = selection.first,
+          JuiceSegmentedTab(
+            items: AssetPeriod.values.map((p) => p.label(loc)).toList(),
+            selectedIndex: AssetPeriod.values.indexOf(period),
+            onTabChanged: (index) => ref.read(assetPeriodProvider.notifier).state =
+                AssetPeriod.values[index],
           ),
           const SizedBox(height: 16),
           Row(
             children: [
               Expanded(
                 child: _SummaryTile(
-                  label: '${period == AssetPeriod.monthly ? '올해' : '5년간'} 총 수입',
+                  label: loc.totalIncomeLabel(periodScopeLabel),
                   amount: periodIncome,
                   color: Colors.green.shade600,
                 ),
@@ -72,7 +76,7 @@ class AssetsScreen extends ConsumerWidget {
               const SizedBox(width: 12),
               Expanded(
                 child: _SummaryTile(
-                  label: '${period == AssetPeriod.monthly ? '올해' : '5년간'} 총 지출',
+                  label: loc.totalExpenseLabel(periodScopeLabel),
                   amount: periodExpense,
                   color: Theme.of(context).colorScheme.error,
                 ),
@@ -80,10 +84,11 @@ class AssetsScreen extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 20),
-          Text('순증감 추이', style: Theme.of(context).textTheme.titleLarge),
+          Text(loc.netChangeTrendTitle,
+              style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 4),
           Text(
-            '수입에서 지출을 뺀 순증감이에요. 초록은 흑자, 빨강은 적자예요.',
+            loc.netChangeTrendDescription,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: 12),

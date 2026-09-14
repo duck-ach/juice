@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../../l10n/app_localizations.dart';
+
 /// 왼쪽으로 슬라이드하면 수정(파랑)/삭제(빨강) 액션이 고정 노출되는 공용 래퍼.
 /// 지출 카드, 카테고리 타일 등에서 재사용한다.
 class EditDeleteSlidable extends StatelessWidget {
@@ -17,6 +19,7 @@ class EditDeleteSlidable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Slidable(
       key: key,
       endActionPane: ActionPane(
@@ -28,14 +31,14 @@ class EditDeleteSlidable extends StatelessWidget {
             backgroundColor: Colors.blue,
             foregroundColor: Colors.white,
             icon: Icons.edit,
-            label: '수정',
+            label: loc.commonEdit,
           ),
           SlidableAction(
             onPressed: (_) => onDelete(),
             backgroundColor: Colors.red,
             foregroundColor: Colors.white,
             icon: Icons.delete,
-            label: '삭제',
+            label: loc.commonDelete,
             borderRadius:
                 const BorderRadius.horizontal(right: Radius.circular(12)),
           ),

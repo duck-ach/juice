@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "text": {
+      "ko": "돈은 차가운 숫자가 아니라 삶을 움직이는 신선한 활력입니다.",
+      "en": "Money is not cold numbers, but fresh energy moving your life.",
+      "ja": "お金は冷たい数字ではなく、人生を動かす新鮮な活力です。",
+      "vi": "Tiền không phải là những con số lạnh lùng, mà là năng lượng tươi mới vận hành cuộc sống."
+    },
+    "author": {
+      "ko": "JUICE",
+      "en": "JUICE",
+      "ja": "JUICE",
+      "vi": "JUICE"
+    }
+  },
+  {
+    "id": 2,
+    "text": {
+      "ko": "한 달의 월급이 원액이라면, 오늘은 향긋하게 음미할 한 모금입니다.",
+      "en": "If a monthly salary is concentrate, today is a fragrant sip to savor.",
+      "ja": "毎月の給料が原液なら、今日は香りを味わう一口です。",
+      "vi": "Nếu lương tháng là nước cốt nguyên chất, thì hôm nay là một ngụm thơm lành để thưởng thức."
+    },
+    "author": {
+      "ko": "JUICE",
+      "en": "JUICE",
+      "ja": "JUICE",
+      "vi": "JUICE"
+    }
+  },
+  {
+    "id": 3,
+    "text": {
+      "ko": "무작정 굶는 절약 대신, 나를 진짜 기분 좋게 만드는 한 잔을 남기세요.",
+      "en": "Instead of starving yourself, save a refreshing cup that truly delights you.",
+      "ja": "無理な我慢の節約ではなく、心を満たすとっておきの一杯を残しましょう。",
+      "vi": "Thay vì thắt lưng buộc bụng một cách cực đoan, hãy giữ lại một ly sảng khoái thực sự khiến bạn vui vẻ."
+    },
+    "author": {
+      "ko": "JUICE",
+      "en": "JUICE",
+      "ja": "JUICE",
+      "vi": "JUICE"
+    }
+  },
+  {
+    "id": 4,
+    "text": {
+      "ko": "통장의 과즙이 넉넉할 때 내 하루의 선택지도 달콤해집니다.",
+      "en": "When your wallet has plenty of juice, daily choices turn sweet.",
+      "ja": "口座の果汁がたっぷりあるとき、毎日の選択肢も甘くなります。",
+      "vi": "Khi dòng tiền ví bạn còn dồi dào, những lựa chọn mỗi ngày cũng trở nên ngọt ngào."
+    },
+    "author": {
+      "ko": "JUICE",
+      "en": "JUICE",
+      "ja": "JUICE",
+      "vi": "JUICE"
+    }
+  },
+  {
+    "id": 5,
+    "text": {
+      "ko": "기록하면서 자책하지 마세요. 오늘 남은 주스의 양만 바라보세요.",
+      "en": "Never blame yourself while tracking. Just look at the fresh juice left today.",
+      "ja": "記録しながら自分を責めないで。今日残っているジュースの量だけを見つめましょう。",
+      "vi": "Đừng tự trách mình khi ghi chép. Hãy chỉ nhìn vào lượng nước trái cây tươi mới còn lại hôm nay."
+    },
+    "author": {
+      "ko": "JUICE",
+      "en": "JUICE",
+      "ja": "JUICE",
+      "vi": "JUICE"
+    }
+  },
+  {
+    "id": 6,
+    "text": {
+      "ko": "필요 없는 물건을 사다 보면, 머지않아 필요한 물건을 팔아야 할 때가 온다.",
+      "en": "If you buy things you do not need, soon you will have to sell things you need.",
+      "ja": "必要のないものを買っていると、やがて必要なものを売ることになる。",
+      "vi": "Nếu mua những thứ không cần thiết, chẳng mấy chốc bạn sẽ phải bán đi những thứ mình cần."
+    },
+    "author": {
+      "ko": "워런 버핏",
+      "en": "Warren Buffett",
+      "ja": "ウォーレン・バフェット",
+      "vi": "Warren Buffett"
+    }
+  },
+  {
+    "id": 7,
+    "text": {
+      "ko": "돈은 훌륭한 하인이지만, 끔찍한 주인이기도 하다.",
+      "en": "Money is a terrible master but an excellent servant.",
+      "ja": "金は良き召使いでもあるが、悪しき主人でもある。",
+      "vi": "Tiền là một người đầy tớ tuyệt vời, nhưng lại là một ông chủ tồi tệ."
+    },
+    "author": {
+      "ko": "P.T. 바넘",
+      "en": "P.T. Barnum",
+      "ja": "P・T・バーナム",
+      "vi": "P.T. Barnum"
+    }
+  },
+  {
+    "id": 8,
+    "text": {
+      "ko": "작은 구멍 하나가 결국 거대한 배를 가라앉힌다.",
+      "en": "Beware of little expenses; a small leak will sink a great ship.",
+      "ja": "小さな出費に用心せよ。小さな穴から大きな船が沈む。",
+      "vi": "Hãy cẩn trọng với những khoản chi nhỏ; một lỗ rò bé cũng có thể làm đắm cả một con tàu lớn."
+    },
+    "author": {
+      "ko": "벤저민 프랭클린",
+      "en": "Benjamin Franklin",
+      "ja": "ベンジャミン・フランクリン",
+      "vi": "Benjamin Franklin"
+    }
+  },
+  {
+    "id": 9,
+    "text": {
+      "ko": "부자가 되는 유일한 방법은 수입보다 덜 쓰고, 그 차액을 꾸준히 불리는 것이다.",
+      "en": "The only way to build wealth is to spend less than you make and invest the difference.",
+      "ja": "富を築く唯一の方法は、収入よりも少なく使い、その差額を増やし続けることだ。",
+      "vi": "Cách duy nhất để làm giàu là chi tiêu ít hơn số tiền kiếm được và kiên trì gia tăng khoản chênh lệch đó."
+    },
+    "author": {
+      "ko": "존 보글",
+      "en": "John Bogle",
+      "ja": "ジョン・ボーグル",
+      "vi": "John Bogle"
+    }
+  },
+  {
+    "id": 10,
+    "text": {
+      "ko": "돈을 위해 일하지 말고, 돈이 당신을 위해 일하게 만들어라.",
+      "en": "Don't work for money; make money work for you.",
+      "ja": "お金のために働くのではなく、お金を自分のために働かせなさい。",
+      "vi": "Đừng làm việc vì tiền; hãy để tiền làm việc cho bạn."
+    },
+    "author": {
+      "ko": "로버트 기요사키",
+      "en": "Robert Kiyosaki",
+      "ja": "ロバート・キヨサキ",
+      "vi": "Robert Kiyosaki"
+    }
+  }
+]

@@ -1,15 +1,17 @@
 import 'package:hive/hive.dart';
 
+import '../../l10n/app_localizations.dart';
+
 part 'card_item.g.dart';
 
 /// 카드 분류. Hive에는 [CardItem.typeName]으로 이름(name) 문자열이 저장된다.
 enum CardType { check, credit, corporate }
 
 extension CardTypeLabel on CardType {
-  String get label => switch (this) {
-        CardType.check => '체크카드',
-        CardType.credit => '신용카드',
-        CardType.corporate => '법인/업무용',
+  String label(AppLocalizations loc) => switch (this) {
+        CardType.check => loc.paymentCheckCard,
+        CardType.credit => loc.paymentCreditCard,
+        CardType.corporate => loc.cardTypeCorporate,
       };
 }
 
@@ -61,9 +63,9 @@ class CardItem extends HiveObject {
 }
 
 extension CardItemDisplay on CardItem {
-  String get subtitleLabel => switch (type) {
-        CardType.check => '체크카드',
-        CardType.credit => '신용카드',
-        CardType.corporate => '법인(경비) · 주스 제외',
+  String subtitleLabel(AppLocalizations loc) => switch (type) {
+        CardType.check => loc.paymentCheckCard,
+        CardType.credit => loc.paymentCreditCard,
+        CardType.corporate => loc.cardTypeCorporateExcluded,
       };
 }

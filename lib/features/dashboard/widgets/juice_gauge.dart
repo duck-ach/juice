@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../l10n/app_localizations.dart';
+
 /// 컵에 채워진 주스 수위를 웨이브 애니메이션으로 표현하는 게이지.
 /// [remainingRatio]는 남은 예산 비율(0.0~1.0), [color]는 선택된 주스 테마의
 /// 현재 단계 색상(호출부에서 [JuiceTheme.getColorByRatio]로 계산해 전달).
@@ -32,25 +34,16 @@ class JuiceGauge extends StatefulWidget {
   State<JuiceGauge> createState() => _JuiceGaugeState();
 }
 
-/// 목표 초과 시 상단에 무작위로 노출되는 위트 있는 멘트.
-const _overBudgetMessages = [
-  '아쉬워요! 다음 주엔 주스 남기기 꼭 성공해 봐요 🍊',
-  '주스 통이 텅 비었어요! 이번 주는 잠시 쉬어가요 🥲',
-  '넘친 주스는 어쩔 수 없죠! 다음 주에 다시 꽉 채워봐요 🧃',
-  '마지막 한 방울까지 탈탈! 다음 주엔 조금만 천천히 마셔요 ✨',
-];
-
 class _JuiceGaugeState extends State<JuiceGauge> with TickerProviderStateMixin {
   late final AnimationController _waveController;
   late final AnimationController _levelController;
   late Animation<double> _levelAnimation;
-  late final String _overBudgetMessage;
+  late final int _overBudgetMessageIndex;
 
   @override
   void initState() {
     super.initState();
-    _overBudgetMessage =
-        _overBudgetMessages[Random().nextInt(_overBudgetMessages.length)];
+    _overBudgetMessageIndex = Random().nextInt(4);
     _waveController =
         AnimationController(vsync: this, duration: const Duration(seconds: 3))
           ..repeat();
@@ -85,6 +78,13 @@ class _JuiceGaugeState extends State<JuiceGauge> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final overBudgetMessages = [
+      loc.overBudgetMessage1,
+      loc.overBudgetMessage2,
+      loc.overBudgetMessage3,
+      loc.overBudgetMessage4,
+    ];
     final color = widget.color;
     final spentPercent = widget.total <= 0
         ? 0
@@ -125,7 +125,7 @@ class _JuiceGaugeState extends State<JuiceGauge> with TickerProviderStateMixin {
         ),
         const SizedBox(height: 20),
         Text(
-          '${widget.periodLabel} 남은 주스',
+          loc.remainingJuiceLabel(widget.periodLabel),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
@@ -144,13 +144,13 @@ class _JuiceGaugeState extends State<JuiceGauge> with TickerProviderStateMixin {
         ),
         const SizedBox(height: 6),
         Text(
-          '소진율 $spentPercent%',
+          loc.spentPercentLabel(spentPercent),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         if (widget.isOverBudget) ...[
           const SizedBox(height: 10),
           Text(
-            _overBudgetMessage,
+            overBudgetMessages[_overBudgetMessageIndex],
             textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme

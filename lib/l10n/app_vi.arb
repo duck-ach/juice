@@ -1,0 +1,525 @@
+{
+  "@@locale": "vi",
+  "appTitle": "Ngân Sách Juice",
+  "@appTitle": {
+    "description": "앱 이름"
+  },
+  "selectLanguage": "Chọn ngôn ngữ",
+  "@selectLanguage": {
+    "description": "언어 선택 온보딩 화면 제목"
+  },
+  "setBudgetTitle": "Đặt ngân sách juice của bạn",
+  "@setBudgetTitle": {
+    "description": "최초 목표 예산 설정 화면 제목"
+  },
+  "weeklyBudget": "Juice còn lại tuần này",
+  "@weeklyBudget": {
+    "description": "주간 목표 잔여량 라벨"
+  },
+  "paymentCheckCard": "Thẻ ghi nợ",
+  "paymentCreditCard": "Thẻ tín dụng",
+  "paymentCash": "Tiền mặt · Chuyển khoản",
+  "paymentSplitBill": "Chia hóa đơn",
+  "commonCancel": "Hủy",
+  "commonSave": "Lưu",
+  "commonDelete": "Xóa",
+  "commonEdit": "Sửa",
+  "commonAdd": "Thêm",
+  "commonNext": "Tiếp theo",
+  "goalSettingsTitle": "Cài đặt mục tiêu",
+  "activePeriodSectionTitle": "Chu kỳ mục tiêu đang dùng",
+  "activePeriodSectionDescription": "Chu kỳ mà đồng hồ ở màn hình chính dựa vào. Điền sẵn số tiền mục tiêu cho từng chu kỳ bên dưới để khi chuyển đổi sẽ áp dụng ngay.",
+  "weekStartDayTileTitle": "Ngày bắt đầu tuần",
+  "periodTargetSectionTitle": "Số tiền mục tiêu theo chu kỳ",
+  "periodTargetSectionDescription": "Lưu riêng số tiền mục tiêu cho từng chu kỳ và chọn khi cần.",
+  "periodTargetAmountSuffix": "Số tiền mục tiêu",
+  "installmentSectionTitle": "Cách phản ánh trả góp",
+  "installmentSectionDescription": "Chọn thời điểm và cách chi tiêu trả góp được phản ánh vào lịch/đồng hồ juice.",
+  "recommendedSuffix": "Đề xuất",
+  "savingsPlanSectionTitle": "Kế hoạch tiết kiệm trung/dài hạn",
+  "savingsPlanSectionDescription": "Nhập thu nhập hàng tháng, chi phí cố định và mục tiêu tiết kiệm để tính lượng juice bạn có thể chi tiêu.",
+  "savingsPlanToggleTitle": "Bạn có mục tiêu tiết kiệm trung/dài hạn không?",
+  "autoBudgetSetMessage": "Đã tự động đặt mục tiêu ngày/tuần/tháng 🍊",
+  "savingsPlanSummaryTitle": "🍊 Tóm tắt kế hoạch Juice của tôi",
+  "replanButton": "Lập lại kế hoạch",
+  "applyBudgetButton": "Tự động đặt Juice theo ngân sách này",
+  "durationYearsAndMonths": "{years} năm {months} tháng",
+  "@durationYearsAndMonths": {
+    "placeholders": {
+      "years": {},
+      "months": {}
+    }
+  },
+  "durationYearsOnly": "{years} năm",
+  "@durationYearsOnly": {
+    "placeholders": {
+      "years": {}
+    }
+  },
+  "durationMonthsOnly": "{months} tháng",
+  "@durationMonthsOnly": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanGoalLine": "Mục tiêu: Tiết kiệm {amount} trong {duration}",
+  "@savingsPlanGoalLine": {
+    "placeholders": {
+      "duration": {},
+      "amount": {}
+    }
+  },
+  "savingsPlanFixedExpenseLine": "Chi phí cố định (không thể tránh): {amount}/tháng",
+  "@savingsPlanFixedExpenseLine": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "savingsPlanRecommendedLine": "Juice đề xuất: {daily} mL/ngày · {weekly} mL/tuần · {monthly} mL/tháng",
+  "@savingsPlanRecommendedLine": {
+    "placeholders": {
+      "daily": {},
+      "weekly": {},
+      "monthly": {}
+    }
+  },
+  "settingsTitle": "Cài đặt",
+  "savingsCardSectionTitle": "Thẻ tiết kiệm tuần này",
+  "savingsCardSectionDescription": "Biến một tuần giữ vững ngân sách thành thẻ ảnh và chia sẻ nó.",
+  "generatingCard": "Đang tạo thẻ...",
+  "shareCardButton": "Chia sẻ thẻ",
+  "setTargetAmountFirst": "Vui lòng đặt số tiền mục tiêu trước",
+  "menuGoalSettingsTitle": "Cài đặt mục tiêu",
+  "menuGoalSettingsSubtitle": "Mục tiêu tiết kiệm dài hạn, chu kỳ mục tiêu, số tiền mục tiêu theo chu kỳ",
+  "menuThemeSettingsTitle": "Cài đặt giao diện",
+  "menuThemeSettingsSubtitle": "Chế độ màn hình và chủ đề juice",
+  "menuWidgetSettingsTitle": "Cài đặt widget",
+  "menuWidgetSettingsSubtitle": "Ẩn số tiền trên widget màn hình chính",
+  "menuCardManagementTitle": "Quản lý thẻ của tôi",
+  "menuCardManagementSubtitle": "Đăng ký thẻ bạn sở hữu, sắp xếp lại thứ tự",
+  "menuNotificationSettingsTitle": "Cài đặt thông báo",
+  "menuNotificationSettingsSubtitle": "Bật/tắt nhắc nhở sáng/tối",
+  "menuBackupSettingsTitle": "Sao lưu & Khôi phục dữ liệu",
+  "menuBackupSettingsSubtitle": "Xuất CSV, xuất/nhập tệp sao lưu",
+  "menuSecuritySettingsTitle": "Bảo mật",
+  "menuSecuritySettingsSubtitle": "Mã PIN, xác thực sinh trắc học",
+  "appNameShort": "Juice",
+  "savingsCardSuccessMessage": "Bạn đã giữ juice\ntươi mới tuần này!",
+  "savingsCardOverMessage": "Juice tuần này\nđã tràn một chút",
+  "savingsCardSpentLine": "Đã chi {spent} trong {budget}",
+  "@savingsCardSpentLine": {
+    "placeholders": {
+      "budget": {},
+      "spent": {}
+    }
+  },
+  "savingsCardSuccessStamp": "THÀNH CÔNG",
+  "savingsCardOverStamp": "CỐ GẮNG HƠN",
+  "pinSetupTitle": "Đặt mật khẩu",
+  "biometricUnlockReason": "Xác thực để mở khóa",
+  "pinConfirmTitle": "Xác nhận mật khẩu",
+  "pinConfirmCurrentTitle": "Xác nhận mật khẩu hiện tại",
+  "pinSetupNewTitle": "Đặt mật khẩu mới",
+  "pinChangedMessage": "Đã đổi mật khẩu",
+  "biometricLinkTitle": "Liên kết xác thực sinh trắc học",
+  "biometricLinkConfirm": "Bạn có muốn liên kết xác thực sinh trắc học không?",
+  "biometricLinkAction": "Liên kết",
+  "biometricLinkReason": "Xác thực để liên kết sinh trắc học",
+  "biometricUnavailableMessage": "Không thể sử dụng xác thực sinh trắc học",
+  "securityTitle": "Bảo mật",
+  "securityDescription": "Khóa ứng dụng bằng mã PIN hoặc sinh trắc học.",
+  "appLockTitle": "Khóa ứng dụng",
+  "appLockDescription": "Bảo vệ quyền truy cập ứng dụng bằng mã PIN 4 chữ số.",
+  "changePasswordTitle": "Đổi mật khẩu",
+  "biometricUseTitle": "Dùng sinh trắc học",
+  "biometricUseDescription": "Mở khóa nhanh hơn bằng Face ID/vân tay.",
+  "csvShareText": "Lịch sử chi tiêu Juice",
+  "backupShareText": "Sao lưu dữ liệu Juice",
+  "backupFailedMessage": "Sao lưu thất bại: {error}",
+  "@backupFailedMessage": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "restoreDataTitle": "Khôi phục dữ liệu",
+  "restoreDataConfirm": "Dữ liệu hiện tại sẽ bị thay thế bằng tệp sao lưu. Tiếp tục?",
+  "restoreAction": "Khôi phục",
+  "restoreSuccessMessage": "Khôi phục hoàn tất",
+  "restoreFailedMessage": "Khôi phục thất bại. Vui lòng kiểm tra đây có phải là tệp sao lưu Juice hợp lệ không",
+  "backupSettingsTitle": "Sao lưu & Khôi phục dữ liệu",
+  "exportExpensesTitle": "Xuất lịch sử chi tiêu",
+  "exportExpensesDescription": "Chia sẻ tệp CSV gồm ngày, danh mục, số tiền, cờ chi phí cố định và ghi chú.",
+  "exportingCsv": "Đang xuất...",
+  "exportCsvButton": "Xuất dưới dạng CSV",
+  "backupRestoreTitle": "Sao lưu · Khôi phục dữ liệu",
+  "backupRestoreDescription": "Sao lưu và khôi phục chi tiêu, thu nhập, danh mục và cài đặt ngân sách trong một tệp.",
+  "backupDataTitle": "Sao lưu dữ liệu",
+  "backupDataDescription": "Lưu qua bảng chia sẻ vào Tệp, email, v.v.",
+  "restoreDataTileTitle": "Khôi phục dữ liệu",
+  "restoreDataTileDescription": "Chọn một tệp sao lưu để ghi đè dữ liệu hiện tại.",
+  "categoryDefaultDescription": "Công thức juice đặc biệt của tôi",
+  "categoryDeleteTitle": "Xóa danh mục",
+  "categoryDeleteConfirm": "Xóa danh mục '{name}'?\nCác chi tiêu đã ghi vẫn được giữ lại.",
+  "@categoryDeleteConfirm": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "categoryInUseMessage": "Có khoản thu nhập đang dùng danh mục này. Hãy chuyển chúng sang danh mục khác trước khi xóa.",
+  "categoryEditTitle": "Sửa danh mục",
+  "categoryAddTitle": "Thêm danh mục",
+  "categoryNameLabel": "Tên danh mục",
+  "categoryDescriptionLabel": "Mô tả ngắn",
+  "colorLabel": "Màu sắc",
+  "iconLabel": "Biểu tượng",
+  "categoryManageTitle": "Quản lý danh mục",
+  "expenseCategoryTab": "Danh mục chi tiêu",
+  "incomeCategoryTab": "Danh mục thu nhập",
+  "defaultCategoryUndeletable": "Không thể xóa danh mục mặc định",
+  "cardDeleteTitle": "Xóa thẻ",
+  "cardDeleteConfirm": "Xóa thẻ '{name}'?\nCác chi tiêu đã ghi vẫn được giữ lại.",
+  "@cardDeleteConfirm": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "cardEditTitle": "Sửa thẻ",
+  "cardAddTitle": "Thêm thẻ",
+  "cardNameLabel": "Tên thẻ",
+  "cardTypeLabel": "Loại thẻ",
+  "cardManagementTitle": "Quản lý thẻ của tôi",
+  "defaultCardUndeletable": "Không thể xóa thẻ mặc định",
+  "cardTypeCorporate": "Thẻ công ty/công tác",
+  "cardTypeCorporateExcluded": "Công ty (chi phí) · Loại khỏi juice",
+  "juiceThemeLabel": "Chủ đề Juice",
+  "themeSettingsTitle": "Cài đặt giao diện",
+  "screenModeLabel": "Chế độ màn hình",
+  "themeModeSystem": "Theo hệ thống",
+  "themeModeLight": "Sáng",
+  "themeModeDark": "Tối",
+  "juiceThemeDescription": "Chọn màu juice thay đổi theo ngân sách còn lại. Màu này cũng trở thành màu nhấn của toàn bộ ứng dụng.",
+  "themeOrange": "Cam",
+  "themeStrawberry": "Dâu tây",
+  "themeApple": "Táo",
+  "themeGrape": "Nho",
+  "themeBlueberry": "Việt quất",
+  "themeMulberry": "Dâu tằm",
+  "themeRandom": "Ngẫu nhiên (mỗi lần mở ứng dụng)",
+  "widgetSettingsTitle": "Cài đặt widget",
+  "homeScreenWidgetTitle": "Widget màn hình chính",
+  "homeScreenWidgetDescription": "Bạn có thể thêm widget đồng hồ juice và widget nhập nhanh vào màn hình chính.",
+  "hideWidgetAmountTitle": "Ẩn số tiền trên widget",
+  "hideWidgetAmountDescription": "Hiển thị ***mL và % còn lại thay vì số tiền.",
+  "notificationSettingsTitle": "Cài đặt thông báo",
+  "notificationScheduleDescription": "Chúng tôi sẽ gửi nhắc nhở mỗi ngày lúc 7 giờ sáng và 8 giờ tối để khuyến khích ghi chép.",
+  "receiveNotificationsTitle": "Nhận thông báo Juice",
+  "receiveNotificationsDescription": "Chúng tôi cũng sẽ nhắc bạn quay lại nếu bạn chưa mở ứng dụng một thời gian.",
+  "navHome": "Trang chủ",
+  "navCalendar": "Lịch",
+  "navAssets": "Tài sản",
+  "navStats": "Thống kê",
+  "navSettings": "Cài đặt",
+  "todayInstallmentLabel": "🧊 Phần trả góp hôm nay: {amount} mL",
+  "@todayInstallmentLabel": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "filterVariableOnlyLong": "Chỉ hiện chi tiêu biến đổi",
+  "filterAllLong": "Hiện tất cả",
+  "noGoalTitle": "Chưa đặt số tiền mục tiêu cho {period}",
+  "@noGoalTitle": {
+    "placeholders": {
+      "period": {}
+    }
+  },
+  "noGoalDescription": "Vui lòng điền mục tiêu {period} trong Cài đặt mục tiêu.",
+  "@noGoalDescription": {
+    "placeholders": {
+      "period": {}
+    }
+  },
+  "goToGoalSettings": "Đến Cài đặt mục tiêu",
+  "noExpensesYet": "Chưa có chi tiêu nào được ghi",
+  "remainingJuiceLabel": "Juice còn lại {period}",
+  "@remainingJuiceLabel": {
+    "placeholders": {
+      "period": {}
+    }
+  },
+  "spentPercentLabel": "Đã dùng {percent}%",
+  "@spentPercentLabel": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "overBudgetMessage1": "Tiếc quá! Tuần sau hãy cố để lại chút juice nhé 🍊",
+  "overBudgetMessage2": "Bình juice đã cạn rồi! Tuần này hãy nghỉ ngơi một chút 🥲",
+  "overBudgetMessage3": "Juice tràn thì cũng đành chịu! Tuần sau đổ đầy lại nhé 🧃",
+  "overBudgetMessage4": "Đến giọt cuối cùng luôn! Tuần sau nhấp chậm lại một chút nhé ✨",
+  "incomeFallbackName": "Thu nhập",
+  "unknownCategoryName": "Không xác định",
+  "fixedExpenseLabel": "Cố định",
+  "installmentProgressLabel": "Trả góp {index}/{months}",
+  "@installmentProgressLabel": {
+    "placeholders": {
+      "index": {},
+      "months": {}
+    }
+  },
+  "deletedMessage": "Đã xóa",
+  "undoAction": "Hoàn tác",
+  "amountAndCategoryRequired": "Vui lòng kiểm tra số tiền và danh mục",
+  "expenseLabel": "Chi tiêu",
+  "incomeLabel": "Thu nhập",
+  "editTypeTitle": "Sửa {type}",
+  "@editTypeTitle": {
+    "placeholders": {
+      "type": {}
+    }
+  },
+  "addTypeTitle": "Thêm {type}",
+  "@addTypeTitle": {
+    "placeholders": {
+      "type": {}
+    }
+  },
+  "deleteTypeTitle": "Xóa {type}",
+  "@deleteTypeTitle": {
+    "placeholders": {
+      "type": {}
+    }
+  },
+  "deleteTypeConfirm": "Xóa mục {type} này?",
+  "@deleteTypeConfirm": {
+    "placeholders": {
+      "type": {}
+    }
+  },
+  "splitBillAutoFillHelper": "Nhập tổng số tiền và số người bên dưới để tự động điền",
+  "cardSelectLabel": "Chọn thẻ",
+  "installmentEditNotice": "Trả góp {index}/{months} — các kỳ trả góp khác sẽ không thay đổi theo",
+  "@installmentEditNotice": {
+    "placeholders": {
+      "index": {},
+      "months": {}
+    }
+  },
+  "lumpSumLabel": "Trả một lần",
+  "monthsPresetLabel": "{months} tháng",
+  "@monthsPresetLabel": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "customInputLabel": "Tùy chỉnh",
+  "monthsCountHint": "Số tháng (2-24)",
+  "installmentMonthlyHint": "Phản ánh {amount} mL mỗi tháng trong {months} kỳ trả góp",
+  "@installmentMonthlyHint": {
+    "placeholders": {
+      "amount": {},
+      "months": {}
+    }
+  },
+  "totalPaymentAmountLabel": "Tổng số tiền thanh toán",
+  "splitPeopleCountLabel": "Số người",
+  "peopleCountSuffix": "{count} người",
+  "@peopleCountSuffix": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "splitBillHint": "Phần của tôi: {amount} mL (tổng {total} mL ÷ {count} người)",
+  "@splitBillHint": {
+    "placeholders": {
+      "amount": {},
+      "total": {},
+      "count": {}
+    }
+  },
+  "splitBillMemoTag": "(Tổng {total}mL / chia {count} người)",
+  "@splitBillMemoTag": {
+    "placeholders": {
+      "total": {},
+      "count": {}
+    }
+  },
+  "memoHint": "Ghi chú (tùy chọn)",
+  "excludeAsFixedTitle": "Loại trừ dưới dạng chi phí cố định",
+  "excludeAsFixedSubtitle": "Tiền thuê nhà, bảo hiểm, v.v. — không phản ánh vào đồng hồ juice",
+  "incomeRecordedMessage": "Đã nhận thu nhập '{category}' {amount} mL! 💰",
+  "@incomeRecordedMessage": {
+    "placeholders": {
+      "category": {},
+      "amount": {}
+    }
+  },
+  "expenseRecordedMessage": "Đã ghi {amount} mL cho '{category}'! 🍊",
+  "@expenseRecordedMessage": {
+    "placeholders": {
+      "category": {},
+      "amount": {}
+    }
+  },
+  "calendarTitle": "Lịch",
+  "monthlyTotalsLine": "Tháng này: đã chi {expense} · đã thu {income}",
+  "@monthlyTotalsLine": {
+    "placeholders": {
+      "expense": {},
+      "income": {}
+    }
+  },
+  "filterVariableOnlyShort": "Chỉ biến đổi",
+  "filterAllShort": "Tất cả",
+  "noExpenseTodayMessage": "Một ngày sảng khoái không chi tiêu! 🍊",
+  "assetsTitle": "Tài sản",
+  "cumulativeNetWorthLabel": "Tài sản ròng lũy kế",
+  "cumulativeNetWorthDescription": "Tổng thu nhập trừ chi tiêu đã ghi từ trước đến nay.",
+  "scopeThisYear": "năm nay",
+  "scopeLast5Years": "5 năm gần đây",
+  "totalIncomeLabel": "Tổng thu nhập ({scope})",
+  "@totalIncomeLabel": {
+    "placeholders": {
+      "scope": {}
+    }
+  },
+  "totalExpenseLabel": "Tổng chi tiêu ({scope})",
+  "@totalExpenseLabel": {
+    "placeholders": {
+      "scope": {}
+    }
+  },
+  "netChangeTrendTitle": "Xu hướng biến động ròng",
+  "netChangeTrendDescription": "Biến động ròng = thu nhập trừ chi tiêu. Xanh lá là thặng dư, đỏ là thâm hụt.",
+  "statsTitle": "Thống kê",
+  "filterFixedIncluded": "Bao gồm chi phí cố định",
+  "totalExpenseTitle": "Tổng chi tiêu",
+  "categorySpendingTitle": "Chi tiêu theo danh mục",
+  "paymentMethodSpendingTitle": "Chi tiêu theo phương thức thanh toán",
+  "statsPeriodThisWeek": "Tuần này",
+  "statsPeriodThisMonth": "Tháng này",
+  "statsPeriodLast4Weeks": "4 tuần gần đây",
+  "statsPeriodMonthly": "Theo tháng",
+  "statsPeriodYearly": "Theo năm",
+  "cardStatsViewSummary": "Tóm tắt",
+  "cardStatsViewByCard": "Theo thẻ",
+  "noExpensesInPeriod": "Không có chi tiêu trong khoảng thời gian này",
+  "installmentIncludedSuffix": "gồm cả trả góp",
+  "cardUnassigned": "Chưa gán thẻ",
+  "fillJuiceButton": "Đổ đầy Juice",
+  "finishWizardButton": "Bắt đầu Juice với công thức này",
+  "incomeStepQuestion": "Mỗi tháng bạn có bao nhiêu\njuice (thu nhập)?",
+  "incomeStepSubtitle": "Nhập số tiền thực nhận vào tài khoản sau thuế.",
+  "wonSuffixSpaced": " won",
+  "goalStepQuestion": "Bạn muốn tiết kiệm\nbao lâu và bao nhiêu?",
+  "yearsFieldLabel": "năm",
+  "monthsFieldLabel": "tháng",
+  "goalAmountFieldLabel": "Số tiền mục tiêu tiết kiệm",
+  "wonUnit": "won",
+  "fixedExpenseStepQuestion": "Bạn có khoản chi phí\ncố định hàng tháng nào không?",
+  "fixedExpenseStepSubtitle": "Tiền thuê nhà, bảo hiểm, cước điện thoại, v.v. — chi phí không tính vào bình juice.",
+  "itemNameHint": "Tên khoản mục",
+  "addItemButton": "Thêm khoản mục",
+  "resultStepQuestion": "Kế hoạch juice của riêng bạn\nđã hoàn tất!",
+  "resultNegativeMessage": "Chi phí cố định và tiết kiệm vượt quá thu nhập 😥 Hãy quay lại điều chỉnh mục tiêu hoặc thời gian.",
+  "resultBreakdownLine": "Thu nhập hàng tháng {income} - chi phí cố định {fixed} - tiền tiết kiệm hàng tháng, còn lại:",
+  "@resultBreakdownLine": {
+    "placeholders": {
+      "income": {},
+      "fixed": {}
+    }
+  },
+  "resultWeeklyPrefix": "Tuần này bạn có ",
+  "resultWeeklySuffix": " juice để thưởng thức! 🍊",
+  "resultDailyMonthlyLine": "{daily} mL/ngày · {monthly} mL/tháng",
+  "@resultDailyMonthlyLine": {
+    "placeholders": {
+      "daily": {},
+      "monthly": {}
+    }
+  },
+  "periodDaily": "Hôm nay",
+  "periodWeekly": "Tuần này",
+  "periodMonthly": "Tháng này",
+  "periodSettingDaily": "Hàng ngày",
+  "periodSettingWeekly": "Hàng tuần",
+  "periodSettingMonthly": "Hàng tháng",
+  "weekStartMonday": "Bắt đầu Thứ Hai (T2–CN)",
+  "weekStartSunday": "Bắt đầu Chủ Nhật (CN–T7)",
+  "installmentModeMonthlyLabel": "Tính đủ vào tháng sau",
+  "installmentModeDailyLabel": "Tính đều mỗi ngày",
+  "installmentModeMonthlyDescription": "Giống như sao kê thẻ thực tế, số tiền trả góp được ghi thành một khoản chi vào ngày 1 mỗi tháng.",
+  "installmentModeDailyDescription": "Số tiền trả góp của tháng đó được chia theo số ngày và trừ dần mỗi ngày một ít khỏi đồng hồ juice.",
+  "splashOrangeSubText": "Ngân sách tuần này, được đổ đầy sảng khoái",
+  "splashGreenAppleSubText": "Thói quen chi tiêu tỉnh táo và tươi mới",
+  "splashGrapeSubText": "Bảo vệ ngọt ngào giới hạn của riêng bạn",
+  "splashStrawberrySubText": "Một ngày được lấp đầy trọn vẹn",
+  "confirmNewPinPrompt": "Vui lòng nhập lại mật khẩu mới",
+  "enterCurrentPinPrompt": "Vui lòng nhập mật khẩu hiện tại",
+  "enterNewPinPrompt": "Vui lòng nhập mật khẩu mới",
+  "enterPinPrompt": "Vui lòng nhập mật khẩu",
+  "juiceLockTitle": "Juice đang bị khóa",
+  "pinConfirmMismatchError": "Mật khẩu không khớp. Vui lòng thử lại",
+  "pinMismatchError": "Mật khẩu không khớp",
+  "shareCardText": "Thẻ tiết kiệm Juice của tôi",
+  "unlockJuiceReason": "Xác thực để mở khóa juice của bạn",
+  "unlockWithBiometrics": "Mở khóa bằng sinh trắc học",
+  "yearsPresetLabel": "{years} năm",
+  "@yearsPresetLabel": {
+    "placeholders": {
+      "years": {}
+    }
+  },
+  "settingsLanguage": "Ngôn ngữ",
+  "settingsCurrency": "Đơn vị tiền tệ",
+  "currencySelectTitle": "Chọn đơn vị tiền tệ của bạn",
+  "commonDone": "Xong",
+  "currencyNameKrw": "Won Hàn Quốc (₩)",
+  "currencyNameUsd": "Đô la Mỹ ($)",
+  "currencyNameJpy": "Yên Nhật (¥)",
+  "currencyNameEur": "Euro (€)",
+  "currencyNameVnd": "Việt Nam Đồng (₫)",
+  "foreignCurrencyPickerTitle": "Chọn đơn vị tiền thanh toán",
+  "exchangeRateHint": "≈ {converted} (tỷ giá hôm nay: {rate})",
+  "@exchangeRateHint": {
+    "placeholders": {
+      "converted": {},
+      "rate": {}
+    }
+  },
+  "exchangeRateLoadingMessage": "Đang tải tỷ giá...",
+  "exchangeRateFailedMessage": "Không thể tải tỷ giá. Vui lòng nhập thủ công hoặc dùng tỷ giá gần nhất",
+  "manualRateEntryToggle": "Nhập tỷ giá thủ công",
+  "manualExchangeRateLabel": "1 {code} = ? {baseCode}",
+  "@manualExchangeRateLabel": {
+    "placeholders": {
+      "code": {},
+      "baseCode": {}
+    }
+  },
+  "commonRetry": "Thử lại",
+  "commonConfirm": "Xác nhận",
+  "currencyMigrationConfirmMessage": "Đổi đơn vị tiền tệ cơ bản sang {toCode}? Tất cả số tiền đã ghi trước đó sẽ được tự động quy đổi theo tỷ giá hiện tại.",
+  "currencyMigrationLoadingMessage": "Đang quy đổi dữ liệu sổ chi tiêu hiện có sang đơn vị tiền tệ mới... 🍊",
+  "currencyMigrationFailedMessage": "Không thể tải tỷ giá nên số tiền hiện có vẫn được giữ nguyên",
+  "category_food_name": "Ăn uống",
+  "category_food_desc": "Năng lượng thơm ngon cho ngày mới 🍱",
+  "category_cafe_name": "Cà phê & Ăn vặt",
+  "category_cafe_desc": "Một chút ngọt ngào cho tâm trạng ☕️",
+  "category_transport_name": "Giao thông",
+  "category_transport_desc": "Di chuyển êm ái đến mọi điểm đến 🚌",
+  "category_shopping_name": "Mua sắm",
+  "category_shopping_desc": "Niềm vui từ những món đồ ưng ý 🛍️",
+  "category_culture_name": "Giải trí",
+  "category_culture_desc": "Khoảnh khắc thư giãn ngọt ngào 🎬",
+  "category_life_name": "Sinh hoạt",
+  "category_life_desc": "Tiện nghi cho cuộc sống thường ngày 🧼",
+  "category_etc_name": "Khác",
+  "category_etc_desc": "Các khoản chi tiêu đa dạng 💬",
+  "savedJuiceBadgeLabel": "Juice đã giữ được +{amount} mL",
+  "savingHistoryTitle": "Lịch sử tiết kiệm",
+  "savingHistoryEmpty": "Chưa có chu kỳ nào kết thúc.\nHãy hoàn thành chu kỳ đầu tiên!",
+  "savingHistorySuccessLine": "Đã tiết kiệm +{amount} mL!",
+  "savingHistoryOverLine": "Chi tiêu vượt {amount} mL",
+  "savingHistoryDetailLine": "Mục tiêu {target} / Đã chi {spent}"
+}

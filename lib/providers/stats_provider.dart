@@ -5,6 +5,7 @@ import '../data/models/card_item.dart';
 import '../data/models/category.dart';
 import '../data/models/expense.dart';
 import '../data/models/payment_method.dart';
+import '../l10n/app_localizations.dart';
 import 'budget_settings_provider.dart';
 import 'card_provider.dart';
 import 'category_provider.dart';
@@ -13,12 +14,12 @@ import 'expense_provider.dart';
 enum StatsPeriod { thisWeek, thisMonth, last4Weeks, monthly, yearly }
 
 extension StatsPeriodLabel on StatsPeriod {
-  String get label => switch (this) {
-        StatsPeriod.thisWeek => '이번 주',
-        StatsPeriod.thisMonth => '이번 달',
-        StatsPeriod.last4Weeks => '최근 4주',
-        StatsPeriod.monthly => '월별',
-        StatsPeriod.yearly => '연도별',
+  String label(AppLocalizations loc) => switch (this) {
+        StatsPeriod.thisWeek => loc.statsPeriodThisWeek,
+        StatsPeriod.thisMonth => loc.statsPeriodThisMonth,
+        StatsPeriod.last4Weeks => loc.statsPeriodLast4Weeks,
+        StatsPeriod.monthly => loc.statsPeriodMonthly,
+        StatsPeriod.yearly => loc.statsPeriodYearly,
       };
 
   bool get isTrend => this == StatsPeriod.monthly || this == StatsPeriod.yearly;
@@ -123,9 +124,9 @@ final paymentMethodBreakdownProvider =
 enum CardStatsView { summary, byCard }
 
 extension CardStatsViewLabel on CardStatsView {
-  String get label => switch (this) {
-        CardStatsView.summary => '대분류 요약',
-        CardStatsView.byCard => '카드별 상세',
+  String label(AppLocalizations loc) => switch (this) {
+        CardStatsView.summary => loc.cardStatsViewSummary,
+        CardStatsView.byCard => loc.cardStatsViewByCard,
       };
 }
 
@@ -167,9 +168,11 @@ final cardBreakdownProvider = Provider<List<CardAmount>>((ref) {
 });
 
 class TrendPoint {
-  const TrendPoint({required this.label, required this.amount});
+  const TrendPoint({required this.periodValue, required this.amount});
 
-  final String label;
+  /// 월별 모드에서는 월(1~12), 연도별 모드에서는 연도(예: 2026).
+  /// 화면에 표시할 라벨 문자열은 BuildContext가 있는 위젯 쪽에서 로케일에 맞게 만든다.
+  final int periodValue;
   final double amount;
 }
 
@@ -188,7 +191,7 @@ final trendProvider = Provider<List<TrendPoint>>((ref) {
       final amount = filtered
           .where((e) => e.date.year == year && e.date.month == month)
           .fold(0.0, (sum, e) => sum + e.amount);
-      return TrendPoint(label: '$month월', amount: amount);
+      return TrendPoint(periodValue: month, amount: amount);
     });
   }
 
@@ -199,7 +202,7 @@ final trendProvider = Provider<List<TrendPoint>>((ref) {
       final amount = filtered
           .where((e) => e.date.year == year)
           .fold(0.0, (sum, e) => sum + e.amount);
-      return TrendPoint(label: '$year', amount: amount);
+      return TrendPoint(periodValue: year, amount: amount);
     });
   }
 

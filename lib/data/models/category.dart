@@ -1,6 +1,12 @@
+import 'package:flutter/widgets.dart';
 import 'package:hive/hive.dart';
 
+import '../../l10n/app_localizations.dart';
+
 part 'category.g.dart';
+
+/// 카테고리 분류. Hive에는 [Category.typeName]으로 이름(name) 문자열이 저장된다.
+enum CategoryType { expense, income }
 
 @HiveType(typeId: 0)
 class Category extends HiveObject {
@@ -13,7 +19,8 @@ class Category extends HiveObject {
     this.orderIndex = 0,
     this.description = '나만의 특별한 주스 레시피 🍊',
     this.iconFontFamily = 'MaterialIcons',
-  });
+    CategoryType type = CategoryType.expense,
+  }) : typeName = type.name;
 
   @HiveField(0)
   String id;
@@ -46,4 +53,52 @@ class Category extends HiveObject {
   /// 아이콘 폰트 패밀리.
   @HiveField(7, defaultValue: 'MaterialIcons')
   String? iconFontFamily;
+
+  /// [CategoryType.name] 문자열로 저장. 직접 쓰지 말고 [type]을 통해 접근할 것.
+  /// defaultValue: 이 필드 추가 이전 저장된 카테고리는 모두 지출 카테고리였음.
+  @HiveField(8, defaultValue: 'expense')
+  String typeName;
+
+  CategoryType get type => CategoryType.values.firstWhere(
+        (t) => t.name == typeName,
+        orElse: () => CategoryType.expense,
+      );
+
+  set type(CategoryType value) => typeName = value.name;
+}
+
+/// 기본 제공 카테고리(id로 식별)의 이름/설명을 현재 언어로 실시간 번역해 보여준다.
+/// 사용자가 직접 추가한 커스텀 카테고리는 저장된 값을 그대로 유지한다.
+extension CategoryL10nExtension on Category {
+  /// 다국어 반영 카테고리 이름
+  String getLocalizedName(BuildContext context) {
+    if (!isDefault) return name;
+    final l10n = AppLocalizations.of(context)!;
+    return switch (id) {
+      'food' => l10n.category_food_name,
+      'cafe' => l10n.category_cafe_name,
+      'transport' => l10n.category_transport_name,
+      'shopping' => l10n.category_shopping_name,
+      'culture' => l10n.category_culture_name,
+      'life' => l10n.category_life_name,
+      'etc' => l10n.category_etc_name,
+      _ => name,
+    };
+  }
+
+  /// 다국어 반영 카테고리 설명(서브타이틀)
+  String getLocalizedDescription(BuildContext context) {
+    if (!isDefault) return description;
+    final l10n = AppLocalizations.of(context)!;
+    return switch (id) {
+      'food' => l10n.category_food_desc,
+      'cafe' => l10n.category_cafe_desc,
+      'transport' => l10n.category_transport_desc,
+      'shopping' => l10n.category_shopping_desc,
+      'culture' => l10n.category_culture_desc,
+      'life' => l10n.category_life_desc,
+      'etc' => l10n.category_etc_desc,
+      _ => description,
+    };
+  }
 }

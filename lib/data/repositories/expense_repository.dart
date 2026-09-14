@@ -95,6 +95,10 @@ class ExpenseRepository {
       currentInstallmentIndex: index,
       installmentGroupId: groupId,
       cardId: base.cardId,
+      originalCurrency: base.originalCurrency,
+      exchangeRate: base.exchangeRate,
+      originalAmount:
+          base.exchangeRate != null ? amount / base.exchangeRate! : null,
     );
     return _box.put(expense.id, expense);
   }

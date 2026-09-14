@@ -3,15 +3,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/category_assets.dart';
 import '../../../data/models/category.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../../providers/category_provider.dart';
+import '../../../providers/juice_theme_provider.dart';
 
 /// 새 커스텀 카테고리를 생성하는 바텀시트. 성공 시 새로 생성된 카테고리의 id를 반환, 취소 시 null.
-Future<String?> showAddCategorySheet(BuildContext context, WidgetRef ref) {
+/// [type]에 따라 지출/수입 카테고리 중 어느 쪽으로 생성할지, 아이콘 추천 세트도 달라진다.
+Future<String?> showAddCategorySheet(BuildContext context, WidgetRef ref,
+    {CategoryType type = CategoryType.expense}) {
   return showModalBottomSheet<String>(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
-    builder: (_) => const _CategoryEditSheet(),
+    builder: (_) => _CategoryEditSheet(type: type),
   );
 }
 
@@ -27,9 +31,13 @@ Future<void> showEditCategorySheet(
 }
 
 class _CategoryEditSheet extends ConsumerStatefulWidget {
-  const _CategoryEditSheet({this.editing});
+  const _CategoryEditSheet({this.editing, this.type = CategoryType.expense});
 
   final Category? editing;
+
+  /// 새로 만들 카테고리의 종류. [editing]이 주어지면 무시되고 그 카테고리의 종류를 따른다
+  /// (수정 화면에서는 카테고리 종류 자체를 바꿀 수 없음).
+  final CategoryType type;
 
   @override
   ConsumerState<_CategoryEditSheet> createState() => _CategoryEditSheetState();
@@ -42,22 +50,40 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
   late IconData _selectedIcon;
 
   bool get _isEditing => widget.editing != null;
+  CategoryType get _type => widget.editing?.type ?? widget.type;
+  List<IconData> get _iconChoices => _type == CategoryType.income
+      ? CategoryAssets.incomeIcons
+      : CategoryAssets.icons;
+
+  bool _descriptionInitialized = false;
+
+  /// 커스텀 카테고리 기본 설명 문구. 현재 주스 테마의 대표 과일 이모지를 붙여 반환한다.
+  String _defaultDescription(AppLocalizations loc) =>
+      '${loc.categoryDefaultDescription} ${ref.read(resolvedJuiceThemeProvider).emoji}';
 
   @override
   void initState() {
     super.initState();
     final editing = widget.editing;
     _nameController = TextEditingController(text: editing?.name ?? '');
-    _descriptionController = TextEditingController(
-      text: editing?.description ?? CategoryAssets.defaultCustomDescription,
-    );
+    _descriptionController = TextEditingController(text: editing?.description);
     _selectedColor = editing != null
         ? Color(editing.colorValue)
         : CategoryAssets.palette.first;
     _selectedIcon = editing != null
         ? IconData(editing.iconCodePoint,
             fontFamily: editing.iconFontFamily ?? 'MaterialIcons')
-        : CategoryAssets.icons.first;
+        : _iconChoices.first;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_descriptionInitialized && widget.editing == null) {
+      _descriptionController.text =
+          _defaultDescription(AppLocalizations.of(context)!);
+    }
+    _descriptionInitialized = true;
   }
 
   @override
@@ -68,10 +94,11 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
   }
 
   Future<void> _save() async {
+    final loc = AppLocalizations.of(context)!;
     final name = _nameController.text.trim();
     if (name.isEmpty) return;
     final description = _descriptionController.text.trim().isEmpty
-        ? CategoryAssets.defaultCustomDescription
+        ? _defaultDescription(loc)
         : _descriptionController.text.trim();
 
     final notifier = ref.read(categoryProvider.notifier);
@@ -91,36 +118,45 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
         iconCodePoint: _selectedIcon.codePoint,
         iconFontFamily: _selectedIcon.fontFamily,
         description: description,
+        type: _type,
       );
       if (mounted) Navigator.of(context).pop(newId);
     }
   }
 
   Future<void> _delete() async {
+    final loc = AppLocalizations.of(context)!;
     final editing = widget.editing;
     if (editing == null || editing.isDefault) return;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('카테고리 삭제'),
-        content: Text('\'${editing.name}\' 카테고리를 삭제할까요?\n이미 기록된 지출 내역은 유지돼요.'),
+        title: Text(loc.categoryDeleteTitle),
+        content: Text(loc.categoryDeleteConfirm(editing.getLocalizedName(context))),
         actions: [
           TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(false),
-              child: const Text('취소')),
+              child: Text(loc.commonCancel)),
           FilledButton(
               onPressed: () => Navigator.of(dialogContext).pop(true),
-              child: const Text('삭제')),
+              child: Text(loc.commonDelete)),
         ],
       ),
     );
     if (confirmed != true) return;
-    await ref.read(categoryProvider.notifier).remove(editing.id);
-    if (mounted) Navigator.of(context).pop();
+    final result = await ref.read(categoryProvider.notifier).remove(editing.id);
+    if (!mounted) return;
+    if (result == CategoryRemoveResult.inUse) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(loc.categoryInUseMessage)));
+      return;
+    }
+    Navigator.of(context).pop();
   }
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -152,14 +188,16 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
                 children: [
                   Expanded(
                     child: Text(
-                      _isEditing ? '카테고리 수정' : '카테고리 추가',
+                      _isEditing
+                          ? loc.categoryEditTitle
+                          : loc.categoryAddTitle,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
                   if (_isEditing && !widget.editing!.isDefault)
                     IconButton(
                       icon: const Icon(Icons.delete_outline),
-                      tooltip: '삭제',
+                      tooltip: loc.commonDelete,
                       onPressed: _delete,
                     ),
                 ],
@@ -178,15 +216,16 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
               TextField(
                 controller: _nameController,
                 autofocus: !_isEditing,
-                decoration: const InputDecoration(labelText: '카테고리 이름'),
+                decoration: InputDecoration(labelText: loc.categoryNameLabel),
               ),
               const SizedBox(height: 12),
               TextField(
                 controller: _descriptionController,
-                decoration: const InputDecoration(labelText: '한 줄 설명'),
+                decoration:
+                    InputDecoration(labelText: loc.categoryDescriptionLabel),
               ),
               const SizedBox(height: 16),
-              Text('색상', style: Theme.of(context).textTheme.labelLarge),
+              Text(loc.colorLabel, style: Theme.of(context).textTheme.labelLarge),
               const SizedBox(height: 8),
               SizedBox(
                 height: 40,
@@ -218,16 +257,16 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
                 ),
               ),
               const SizedBox(height: 16),
-              Text('아이콘', style: Theme.of(context).textTheme.labelLarge),
+              Text(loc.iconLabel, style: Theme.of(context).textTheme.labelLarge),
               const SizedBox(height: 8),
               SizedBox(
                 height: 48,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
-                  itemCount: CategoryAssets.icons.length,
+                  itemCount: _iconChoices.length,
                   separatorBuilder: (_, __) => const SizedBox(width: 10),
                   itemBuilder: (context, index) {
-                    final icon = CategoryAssets.icons[index];
+                    final icon = _iconChoices[index];
                     final selected = icon.codePoint == _selectedIcon.codePoint;
                     return GestureDetector(
                       onTap: () => setState(() => _selectedIcon = icon),
@@ -252,7 +291,8 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
               SizedBox(
                 height: 52,
                 child: FilledButton(
-                    onPressed: _save, child: Text(_isEditing ? '저장' : '추가')),
+                    onPressed: _save,
+                    child: Text(_isEditing ? loc.commonSave : loc.commonAdd)),
               ),
             ],
           ),

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../core/utils/thousands_formatter.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../../providers/budget_settings_provider.dart';
 import '../../../providers/savings_planner_provider.dart';
 
@@ -175,6 +176,7 @@ class _SavingsPlanWizardScreenState
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
@@ -211,7 +213,7 @@ class _SavingsPlanWizardScreenState
                 child: SingleChildScrollView(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 28, vertical: 20),
-                  child: _buildStep(),
+                  child: _buildStep(loc),
                 ),
               ),
               Padding(
@@ -221,7 +223,9 @@ class _SavingsPlanWizardScreenState
                   child: FilledButton(
                     onPressed:
                         !_canProceed ? null : (_step == 3 ? _finish : _next),
-                    child: Text(_step == 3 ? '이 레시피로 주스 시작하기' : '다음'),
+                    child: Text(_step == 3
+                        ? loc.finishWizardButton
+                        : loc.commonNext),
                   ),
                 ),
               ),
@@ -232,7 +236,7 @@ class _SavingsPlanWizardScreenState
     );
   }
 
-  Widget _buildStep() {
+  Widget _buildStep(AppLocalizations loc) {
     return switch (_step) {
       0 => _IncomeStep(
           controller: _incomeController, onChanged: () => setState(() {})),
@@ -298,13 +302,14 @@ class _IncomeStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const _StepHeader(
+        _StepHeader(
           emoji: '💰',
-          question: '매달 들어오는 주스(월 수입)는\n얼마인가요?',
-          subtitle: '세후 실제 통장에 찍히는 금액을 적어주세요.',
+          question: loc.incomeStepQuestion,
+          subtitle: loc.incomeStepSubtitle,
         ),
         TextField(
           controller: controller,
@@ -313,8 +318,8 @@ class _IncomeStep extends StatelessWidget {
           keyboardType: TextInputType.number,
           inputFormatters: [ThousandsSeparatorInputFormatter()],
           style: Theme.of(context).textTheme.headlineMedium,
-          decoration: const InputDecoration(
-              hintText: '0', suffixText: ' 원', border: InputBorder.none),
+          decoration: InputDecoration(
+              hintText: '0', suffixText: loc.wonSuffixSpaced, border: InputBorder.none),
           onChanged: (_) => onChanged(),
         ),
       ],
@@ -345,27 +350,29 @@ class _GoalStep extends StatelessWidget {
   final VoidCallback onSelectCustom;
   final VoidCallback onChanged;
 
-  String _presetLabel(int months) =>
-      months < 12 ? '$months개월' : '${months ~/ 12}년';
+  String _presetLabel(AppLocalizations loc, int months) => months < 12
+      ? loc.monthsPresetLabel(months)
+      : loc.yearsPresetLabel(months ~/ 12);
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const _StepHeader(emoji: '🎯', question: '얼마 동안, 얼마를\n모으고 싶나요?'),
+        _StepHeader(emoji: '🎯', question: loc.goalStepQuestion),
         Wrap(
           spacing: 8,
           runSpacing: 8,
           children: [
             for (final months in presets)
               ChoiceChip(
-                label: Text(_presetLabel(months)),
+                label: Text(_presetLabel(loc, months)),
                 selected: !customDuration && selectedPreset == months,
                 onSelected: (_) => onSelectPreset(months),
               ),
             ChoiceChip(
-              label: const Text('직접 입력'),
+              label: Text(loc.customInputLabel),
               selected: customDuration,
               onSelected: (_) => onSelectCustom(),
             ),
@@ -381,7 +388,7 @@ class _GoalStep extends StatelessWidget {
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   textAlign: TextAlign.center,
-                  decoration: const InputDecoration(labelText: '년'),
+                  decoration: InputDecoration(labelText: loc.yearsFieldLabel),
                   onChanged: (_) => onChanged(),
                 ),
               ),
@@ -392,7 +399,7 @@ class _GoalStep extends StatelessWidget {
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   textAlign: TextAlign.center,
-                  decoration: const InputDecoration(labelText: '개월'),
+                  decoration: InputDecoration(labelText: loc.monthsFieldLabel),
                   onChanged: (_) => onChanged(),
                 ),
               ),
@@ -406,8 +413,8 @@ class _GoalStep extends StatelessWidget {
           keyboardType: TextInputType.number,
           inputFormatters: [ThousandsSeparatorInputFormatter()],
           style: Theme.of(context).textTheme.headlineSmall,
-          decoration:
-              const InputDecoration(labelText: '목표 모을 금액', suffixText: '원'),
+          decoration: InputDecoration(
+              labelText: loc.goalAmountFieldLabel, suffixText: loc.wonUnit),
           onChanged: (_) => onChanged(),
         ),
       ],
@@ -430,13 +437,14 @@ class _FixedExpenseStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const _StepHeader(
+        _StepHeader(
           emoji: '🏠',
-          question: '매달 고정으로\n빠져나가는 돈이 있나요?',
-          subtitle: '월세, 보험료, 통신비 등 주스 통에 담지 않을 비용이에요.',
+          question: loc.fixedExpenseStepQuestion,
+          subtitle: loc.fixedExpenseStepSubtitle,
         ),
         for (var i = 0; i < rows.length; i++)
           Padding(
@@ -447,7 +455,7 @@ class _FixedExpenseStep extends StatelessWidget {
                   flex: 2,
                   child: TextField(
                     controller: rows[i].nameController,
-                    decoration: const InputDecoration(hintText: '항목명'),
+                    decoration: InputDecoration(hintText: loc.itemNameHint),
                     onChanged: (_) => onChanged(),
                   ),
                 ),
@@ -459,7 +467,7 @@ class _FixedExpenseStep extends StatelessWidget {
                     keyboardType: TextInputType.number,
                     inputFormatters: [ThousandsSeparatorInputFormatter()],
                     decoration:
-                        const InputDecoration(hintText: '0', suffixText: '원'),
+                        InputDecoration(hintText: '0', suffixText: loc.wonUnit),
                     onChanged: (_) => onChanged(),
                   ),
                 ),
@@ -473,7 +481,7 @@ class _FixedExpenseStep extends StatelessWidget {
         TextButton.icon(
             onPressed: onAdd,
             icon: const Icon(Icons.add),
-            label: const Text('항목 추가')),
+            label: Text(loc.addItemButton)),
       ],
     );
   }
@@ -486,6 +494,7 @@ class _ResultStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     final formatter = NumberFormat('#,###');
     final monthly = plan.monthlyAvailable;
     final theme = Theme.of(context);
@@ -494,7 +503,7 @@ class _ResultStep extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const _StepHeader(emoji: '🍹', question: '나만의 주스 플랜이\n완성되었어요!'),
+        _StepHeader(emoji: '🍹', question: loc.resultStepQuestion),
         if (monthly == null || isNegative)
           Container(
             padding: const EdgeInsets.all(16),
@@ -503,7 +512,7 @@ class _ResultStep extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
             ),
             child: Text(
-              '고정지출과 저축액이 수입보다 많아요 😥 이전 단계로 돌아가 목표나 기간을 조정해보세요.',
+              loc.resultNegativeMessage,
               style: theme.textTheme.bodyMedium,
             ),
           )
@@ -520,7 +529,8 @@ class _ResultStep extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '월 수입 ${formatter.format(plan.monthlyIncome)}원 - 고정비 ${formatter.format(plan.fixedExpenseTotal)}원 - 월 저축액을 빼면,',
+                  loc.resultBreakdownLine(formatter.format(plan.monthlyIncome),
+                      formatter.format(plan.fixedExpenseTotal)),
                   style: theme.textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 12),
@@ -528,18 +538,19 @@ class _ResultStep extends StatelessWidget {
                   TextSpan(
                     style: theme.textTheme.titleLarge,
                     children: [
-                      const TextSpan(text: '이번 주 '),
+                      TextSpan(text: loc.resultWeeklyPrefix),
                       TextSpan(
                         text: '${formatter.format(plan.weeklyAvailable)} mL',
                         style: const TextStyle(fontWeight: FontWeight.w800),
                       ),
-                      const TextSpan(text: '의 주스를 마실 수 있어요! 🍊'),
+                      TextSpan(text: loc.resultWeeklySuffix),
                     ],
                   ),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  '하루 ${formatter.format(plan.dailyAvailable)} mL · 한 달 ${formatter.format(monthly)} mL',
+                  loc.resultDailyMonthlyLine(formatter.format(plan.dailyAvailable),
+                      formatter.format(monthly)),
                   style: theme.textTheme.bodyMedium,
                 ),
               ],

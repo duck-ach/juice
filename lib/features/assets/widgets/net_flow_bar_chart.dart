@@ -1,8 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../../providers/asset_provider.dart';
 
 /// 월별(올해)/연도별(최근 5년) 순증감(수입-지출) 막대 차트. 양수는 초록, 음수는 빨강.
@@ -11,8 +13,14 @@ class NetFlowBarChart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final loc = AppLocalizations.of(context)!;
+    final period = ref.watch(assetPeriodProvider);
     final trend = ref.watch(assetTrendProvider);
     if (trend.isEmpty) return const SizedBox.shrink();
+
+    String pointLabel(AssetPoint p) => period == AssetPeriod.monthly
+        ? DateFormat.MMM(loc.localeName).format(DateTime(2024, p.periodValue))
+        : '${p.periodValue}';
 
     final maxAbs =
         trend.map((t) => t.net.abs()).fold(0.0, (a, b) => a > b ? a : b);
@@ -44,7 +52,7 @@ class NetFlowBarChart extends ConsumerWidget {
                     return const SizedBox.shrink();
                   return Padding(
                     padding: const EdgeInsets.only(top: 6),
-                    child: Text(trend[index].label, style: labelStyle),
+                    child: Text(pointLabel(trend[index]), style: labelStyle),
                   );
                 },
               ),

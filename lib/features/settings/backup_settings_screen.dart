@@ -10,6 +10,7 @@ import 'package:share_plus/share_plus.dart';
 
 import '../../core/utils/csv_export.dart';
 import '../../data/local/backup_service.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/budget_settings_provider.dart';
 import '../../providers/category_provider.dart';
 import '../../providers/expense_provider.dart';
@@ -38,13 +39,16 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
       final categories = ref.read(categoryProvider);
       final categoryMap = {for (final c in categories) c.id: c};
       final file = await buildExpenseCsvFile(expenses, categoryMap);
-      await Share.shareXFiles([XFile(file.path)], text: '주스 지출 내역');
+      if (!mounted) return;
+      await Share.shareXFiles([XFile(file.path)],
+          text: AppLocalizations.of(context)!.csvShareText);
     } finally {
       if (mounted) setState(() => _exportingCsv = false);
     }
   }
 
   Future<void> _backupData() async {
+    final loc = AppLocalizations.of(context)!;
     setState(() => _backingUp = true);
     try {
       final json = BackupService.buildBackupJson();
@@ -54,11 +58,12 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
       final file = File('${dir.path}/$filename');
       await file
           .writeAsString(const JsonEncoder.withIndent('  ').convert(json));
-      await Share.shareXFiles([XFile(file.path)], text: '주스 데이터 백업');
+      if (!mounted) return;
+      await Share.shareXFiles([XFile(file.path)], text: loc.backupShareText);
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('백업에 실패했어요: $e')));
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(loc.backupFailedMessage(e.toString()))));
       }
     } finally {
       if (mounted) setState(() => _backingUp = false);
@@ -66,18 +71,19 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
   }
 
   Future<void> _restoreData() async {
+    final loc = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('데이터 복원'),
-        content: const Text('기존 데이터가 백업 파일 내용으로 대체됩니다. 계속할까요?'),
+        title: Text(loc.restoreDataTitle),
+        content: Text(loc.restoreDataConfirm),
         actions: [
           TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(false),
-              child: const Text('취소')),
+              child: Text(loc.commonCancel)),
           FilledButton(
               onPressed: () => Navigator.of(dialogContext).pop(true),
-              child: const Text('복원')),
+              child: Text(loc.restoreAction)),
         ],
       ),
     );
@@ -96,12 +102,12 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
       _refreshAllProviders();
       if (mounted) {
         ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text('복원이 완료됐어요')));
+            .showSnackBar(SnackBar(content: Text(loc.restoreSuccessMessage)));
       }
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('복원에 실패했어요. 올바른 주스 백업 파일인지 확인해주세요')),
+          SnackBar(content: Text(loc.restoreFailedMessage)),
         );
       }
     } finally {
@@ -122,15 +128,17 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: const Text('데이터 백업 및 복원')),
+      appBar: AppBar(title: Text(loc.backupSettingsTitle)),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 40),
         children: [
-          Text('지출 내역 내보내기', style: Theme.of(context).textTheme.titleLarge),
+          Text(loc.exportExpensesTitle,
+              style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 4),
           Text(
-            '날짜, 카테고리, 금액, 고정지출 여부, 메모가 담긴 CSV 파일을 공유해요.',
+            loc.exportExpensesDescription,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: 12),
@@ -139,14 +147,15 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
             child: OutlinedButton.icon(
               onPressed: _exportingCsv ? null : _exportCsv,
               icon: const Icon(Icons.table_chart_outlined),
-              label: Text(_exportingCsv ? '내보내는 중...' : 'CSV로 내보내기'),
+              label: Text(_exportingCsv ? loc.exportingCsv : loc.exportCsvButton),
             ),
           ),
           const SizedBox(height: 32),
-          Text('데이터 백업 · 복원', style: Theme.of(context).textTheme.titleLarge),
+          Text(loc.backupRestoreTitle,
+              style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 4),
           Text(
-            '지출/수입 내역, 카테고리, 예산 설정을 파일 하나로 백업하고 복원할 수 있어요.',
+            loc.backupRestoreDescription,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: 12),
@@ -154,8 +163,8 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
             margin: EdgeInsets.zero,
             child: ListTile(
               leading: const Icon(Icons.upload_file_outlined),
-              title: const Text('데이터 백업하기'),
-              subtitle: const Text('공유창을 통해 파일 앱, 이메일 등으로 저장해요.'),
+              title: Text(loc.backupDataTitle),
+              subtitle: Text(loc.backupDataDescription),
               trailing: _backingUp
                   ? const _SmallSpinner()
                   : const Icon(Icons.chevron_right),
@@ -167,8 +176,8 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
             margin: EdgeInsets.zero,
             child: ListTile(
               leading: const Icon(Icons.download_outlined),
-              title: const Text('데이터 복원하기'),
-              subtitle: const Text('백업 파일을 선택해 기존 데이터를 덮어써요.'),
+              title: Text(loc.restoreDataTileTitle),
+              subtitle: Text(loc.restoreDataTileDescription),
               trailing: _restoring
                   ? const _SmallSpinner()
                   : const Icon(Icons.chevron_right),

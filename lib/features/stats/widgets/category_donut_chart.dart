@@ -1,8 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 
+import '../../../data/models/category.dart';
+import '../../../l10n/app_localizations.dart';
+import '../../../providers/currency_provider.dart';
 import '../../../providers/stats_provider.dart';
 
 /// 선택된 기간의 카테고리별 소비 비중 도넛 차트 + 범례 리스트.
@@ -11,19 +13,20 @@ class CategoryDonutChart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final loc = AppLocalizations.of(context)!;
     final breakdown = ref.watch(categoryBreakdownProvider);
 
     if (breakdown.isEmpty) {
       return SizedBox(
         height: 160,
         child: Center(
-          child: Text('해당 기간에 지출 내역이 없어요',
+          child: Text(loc.noExpensesInPeriod,
               style: Theme.of(context).textTheme.bodyMedium),
         ),
       );
     }
 
-    final formatter = NumberFormat('#,###');
+    final currency = ref.watch(currencyProvider).currency;
 
     return Column(
       children: [
@@ -71,9 +74,11 @@ class CategoryDonutChart extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                Expanded(child: Text(item.category?.name ?? '알 수 없음')),
+                Expanded(
+                    child: Text(item.category?.getLocalizedName(context) ??
+                        loc.unknownCategoryName)),
                 Text(
-                  '${formatter.format(item.amount)}원  ${(item.percent * 100).round()}%',
+                  '${currency.format(item.amount)}  ${(item.percent * 100).round()}%',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],

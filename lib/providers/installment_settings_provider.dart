@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 
 import '../data/local/hive_service.dart';
+import '../l10n/app_localizations.dart';
 
 const _installmentBillingModeKey = 'installmentBillingMode';
 
@@ -15,16 +16,17 @@ enum InstallmentBillingMode {
 }
 
 extension InstallmentBillingModeLabel on InstallmentBillingMode {
-  String get label => switch (this) {
-        InstallmentBillingMode.monthlyLumpNextMonth => '익월 1일 일괄 청구',
-        InstallmentBillingMode.dailyEven => '매일 균등 분할 청구',
+  String label(AppLocalizations loc) => switch (this) {
+        InstallmentBillingMode.monthlyLumpNextMonth =>
+          loc.installmentModeMonthlyLabel,
+        InstallmentBillingMode.dailyEven => loc.installmentModeDailyLabel,
       };
 
-  String get description => switch (this) {
+  String description(AppLocalizations loc) => switch (this) {
         InstallmentBillingMode.monthlyLumpNextMonth =>
-          '실제 카드 대금처럼, 할부 회차 금액이 매월 1일에 한 번에 지출로 잡혀요.',
+          loc.installmentModeMonthlyDescription,
         InstallmentBillingMode.dailyEven =>
-          '그 달의 할부 회차 금액을 일수만큼 나눠 매일 조금씩 주스 게이지에서 빠져나가요.',
+          loc.installmentModeDailyDescription,
       };
 }
 

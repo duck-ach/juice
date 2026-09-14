@@ -27,13 +27,13 @@ class CategoryAdapter extends TypeAdapter<Category> {
           fields[6] == null ? '나만의 특별한 주스 레시피 🍊' : fields[6] as String,
       iconFontFamily:
           fields[7] == null ? 'MaterialIcons' : fields[7] as String?,
-    );
+    )..typeName = fields[8] == null ? 'expense' : fields[8] as String;
   }
 
   @override
   void write(BinaryWriter writer, Category obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -49,7 +49,9 @@ class CategoryAdapter extends TypeAdapter<Category> {
       ..writeByte(6)
       ..write(obj.description)
       ..writeByte(7)
-      ..write(obj.iconFontFamily);
+      ..write(obj.iconFontFamily)
+      ..writeByte(8)
+      ..write(obj.typeName);
   }
 
   @override

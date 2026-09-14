@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../providers/app_lock_provider.dart';
 import 'widgets/pin_dots.dart';
 import 'widgets/pin_keypad.dart';
@@ -42,13 +43,14 @@ class _PinFlowScreenState extends ConsumerState<PinFlowScreen> {
         : _Stage.enterNew;
   }
 
-  String get _prompt => switch (_stage) {
-        _Stage.verifyCurrent => '현재 비밀번호 4자리를 입력해주세요',
-        _Stage.enterNew => '새 비밀번호 4자리를 입력해주세요',
-        _Stage.confirmNew => '새 비밀번호를 한 번 더 입력해주세요',
+  String _prompt(AppLocalizations loc) => switch (_stage) {
+        _Stage.verifyCurrent => loc.enterCurrentPinPrompt,
+        _Stage.enterNew => loc.enterNewPinPrompt,
+        _Stage.confirmNew => loc.confirmNewPinPrompt,
       };
 
   Future<void> _onDigit(String digit) async {
+    final loc = AppLocalizations.of(context)!;
     if (_input.length >= 4) return;
     setState(() {
       _input += digit;
@@ -71,7 +73,7 @@ class _PinFlowScreenState extends ConsumerState<PinFlowScreen> {
           }
         } else {
           setState(() {
-            _error = '비밀번호가 일치하지 않아요';
+            _error = loc.pinMismatchError;
             _input = '';
           });
         }
@@ -86,7 +88,7 @@ class _PinFlowScreenState extends ConsumerState<PinFlowScreen> {
           Navigator.of(context).pop(_input);
         } else {
           setState(() {
-            _error = '입력한 비밀번호가 서로 달라요. 다시 입력해주세요';
+            _error = loc.pinConfirmMismatchError;
             _stage = _Stage.enterNew;
             _input = '';
             _firstNewPin = null;
@@ -102,18 +104,19 @@ class _PinFlowScreenState extends ConsumerState<PinFlowScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: const Color(0xFF121212),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
-        title: Text(widget.title ?? '비밀번호 확인'),
+        title: Text(widget.title ?? loc.pinConfirmTitle),
       ),
       body: SafeArea(
         child: Column(
           children: [
             const SizedBox(height: 24),
-            Text(_prompt, style: const TextStyle(color: Colors.white70)),
+            Text(_prompt(loc), style: const TextStyle(color: Colors.white70)),
             const SizedBox(height: 8),
             Text(
               _error ?? ' ',
