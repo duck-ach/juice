@@ -72,15 +72,24 @@ class CurrencySelectBottomSheet extends ConsumerWidget {
       ),
     );
 
-    final success = await CurrencyMigrationService.migrateBaseCurrency(
-      ref,
-      fromCode: from.code,
-      toCode: to.code,
-    );
-    await ref.read(currencyProvider.notifier).select(to);
+    bool success;
+    try {
+      success = await CurrencyMigrationService.migrateBaseCurrency(
+        ref,
+        fromCode: from.code,
+        toCode: to.code,
+      );
+    } catch (_) {
+      success = false;
+    }
 
     Navigator.of(rootContext, rootNavigator: true).pop();
-    if (!success) {
+
+    // 마이그레이션이 실패하면(오프라인 등) 기준 통화를 바꾸지 않는다 — 그렇지 않으면
+    // 금액은 그대로인데 통화 기호만 바뀌어 표시값이 왜곡된다.
+    if (success) {
+      await ref.read(currencyProvider.notifier).select(to);
+    } else {
       ScaffoldMessenger.of(rootContext).showSnackBar(
         SnackBar(content: Text(loc.currencyMigrationFailedMessage)),
       );
