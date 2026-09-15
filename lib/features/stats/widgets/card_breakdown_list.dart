@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 
 import '../../../l10n/app_localizations.dart';
+import '../../../providers/currency_provider.dart';
 import '../../../providers/stats_provider.dart';
 
 /// 선택된 기간의 카드별 실사용 총액과 점유율 바 그래프.
@@ -24,7 +24,7 @@ class CardBreakdownList extends ConsumerWidget {
       );
     }
 
-    final formatter = NumberFormat('#,###');
+    final currency = ref.watch(currencyProvider).currency;
 
     return Column(
       children: [
@@ -52,7 +52,7 @@ class CardBreakdownList extends ConsumerWidget {
                           style: Theme.of(context).textTheme.bodyMedium),
                     ),
                     Text(
-                      '${formatter.format(item.amount)} mL '
+                      '${currency.format(item.amount)} '
                       '(${(item.percent * 100).round()}%)',
                       style: Theme.of(context)
                           .textTheme

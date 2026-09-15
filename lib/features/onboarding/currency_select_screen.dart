@@ -22,8 +22,12 @@ class _CurrencySelectScreenState extends ConsumerState<CurrencySelectScreen> {
   @override
   void initState() {
     super.initState();
-    final languageCode = ref.read(localeProvider).locale.languageCode;
-    _selected = suggestedCurrencyForLanguage(languageCode);
+    if (hasChosenCurrencyBefore) {
+      _selected = ref.read(currencyProvider).currency;
+    } else {
+      final languageCode = ref.read(localeProvider).locale.languageCode;
+      _selected = suggestedCurrencyForLanguage(languageCode);
+    }
   }
 
   void _confirm() {

@@ -51,9 +51,11 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
 
   bool get _isEditing => widget.editing != null;
   CategoryType get _type => widget.editing?.type ?? widget.type;
-  List<IconData> get _iconChoices => _type == CategoryType.income
-      ? CategoryAssets.incomeIcons
-      : CategoryAssets.icons;
+  List<IconData> get _iconChoices => switch (_type) {
+        CategoryType.income => CategoryAssets.incomeIcons,
+        CategoryType.savings => CategoryAssets.savingsIcons,
+        CategoryType.expense => CategoryAssets.icons,
+      };
 
   bool _descriptionInitialized = false;
 

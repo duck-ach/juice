@@ -36,10 +36,12 @@ final calendarMonthItemsProvider = Provider<List<Expense>>((ref) {
   }).toList();
 });
 
-/// 이번 달 총 지출(필터 반영, 수입 제외).
+/// 이번 달 총 지출(필터 반영, 수입·저축 제외 — 저축은 소비가 아닌 자산 이동).
 final calendarMonthTotalProvider = Provider<double>((ref) {
   final items = ref.watch(calendarMonthItemsProvider);
-  return items.where((e) => !e.isIncome).fold(0.0, (sum, e) => sum + e.amount);
+  return items
+      .where((e) => !e.isIncome && !e.isSavings)
+      .fold(0.0, (sum, e) => sum + e.amount);
 });
 
 /// 이번 달 총 수입.
@@ -48,12 +50,18 @@ final calendarMonthIncomeTotalProvider = Provider<double>((ref) {
   return items.where((e) => e.isIncome).fold(0.0, (sum, e) => sum + e.amount);
 });
 
-/// 날짜(시각 제외)별 지출 합계 — 캘린더 셀에 표시(수입 제외).
+/// 이번 달 총 저축/투자.
+final calendarMonthSavingsTotalProvider = Provider<double>((ref) {
+  final items = ref.watch(calendarMonthItemsProvider);
+  return items.where((e) => e.isSavings).fold(0.0, (sum, e) => sum + e.amount);
+});
+
+/// 날짜(시각 제외)별 지출 합계 — 캘린더 셀에 표시(수입·저축 제외).
 final calendarDailyTotalsProvider = Provider<Map<DateTime, double>>((ref) {
   final items = ref.watch(calendarMonthItemsProvider);
   final totals = <DateTime, double>{};
   for (final e in items) {
-    if (e.isIncome) continue;
+    if (e.isIncome || e.isSavings) continue;
     final day = dateOnly(e.date);
     totals.update(day, (v) => v + e.amount, ifAbsent: () => e.amount);
   }
@@ -72,6 +80,18 @@ final calendarDailyIncomeTotalsProvider = Provider<Map<DateTime, double>>((ref) 
   return totals;
 });
 
+/// 날짜(시각 제외)별 저축/투자 합계 — 캘린더 셀에 표시(지출·수입과 완전히 분리 집계).
+final calendarDailySavingsTotalsProvider = Provider<Map<DateTime, double>>((ref) {
+  final items = ref.watch(calendarMonthItemsProvider);
+  final totals = <DateTime, double>{};
+  for (final e in items) {
+    if (!e.isSavings) continue;
+    final day = dateOnly(e.date);
+    totals.update(day, (v) => v + e.amount, ifAbsent: () => e.amount);
+  }
+  return totals;
+});
+
 /// '무지출 성공' 날짜 집합 — 오늘까지의 날짜 중 순수 변동 지출(할부·고정지출 제외)이
 /// 0원인 날. 수입만 있거나 기록이 아예 없는 날도 포함된다. 미래 날짜는 제외.
 final calendarNoSpendDaysProvider = Provider<Set<DateTime>>((ref) {
@@ -81,7 +101,8 @@ final calendarNoSpendDaysProvider = Provider<Set<DateTime>>((ref) {
 
   final spendDays = <DateTime>{
     for (final e in items)
-      if (!e.isIncome && !e.isFixed && !e.isInstallment) dateOnly(e.date),
+      if (!e.isIncome && !e.isSavings && !e.isFixed && !e.isInstallment)
+        dateOnly(e.date),
   };
 
   final daysInMonth = DateTime(month.year, month.month + 1, 0).day;
@@ -100,7 +121,7 @@ final calendarDailyInstallmentOnlyDaysProvider = Provider<Set<DateTime>>((ref) {
   final items = ref.watch(calendarMonthItemsProvider);
   final byDay = <DateTime, List<bool>>{};
   for (final e in items) {
-    if (e.isIncome) continue;
+    if (e.isIncome || e.isSavings) continue;
     final day = dateOnly(e.date);
     (byDay[day] ??= []).add(e.isInstallment);
   }

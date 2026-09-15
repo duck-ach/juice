@@ -14,17 +14,23 @@ import 'package:juice/data/models/expense.dart';
 import 'package:juice/data/models/juice_saving_history.dart';
 import 'package:juice/data/models/payment_method.dart';
 import 'package:juice/data/models/weekly_budget.dart';
+import 'package:juice/providers/saving_option_provider.dart';
 import 'package:juice/services/juice_saving_service.dart';
+
+void _registerAdaptersOnce() {
+  if (Hive.isAdapterRegistered(0)) return;
+  Hive.registerAdapter(CategoryAdapter());
+  Hive.registerAdapter(ExpenseAdapter());
+  Hive.registerAdapter(WeeklyBudgetAdapter());
+  Hive.registerAdapter(CardItemAdapter());
+  Hive.registerAdapter(JuiceSavingHistoryAdapter());
+}
 
 void main() {
   test('daily period closes correctly one day later, with live spend recalculated', () async {
     final tempDir = Directory.systemTemp.createTempSync('juice_saving_verify');
     Hive.init(tempDir.path);
-    Hive.registerAdapter(CategoryAdapter());
-    Hive.registerAdapter(ExpenseAdapter());
-    Hive.registerAdapter(WeeklyBudgetAdapter());
-    Hive.registerAdapter(CardItemAdapter());
-    Hive.registerAdapter(JuiceSavingHistoryAdapter());
+    _registerAdaptersOnce();
 
     await Hive.openBox<Category>(HiveBoxes.categories);
     final expenseBox = await Hive.openBox<Expense>(HiveBoxes.expenses);
@@ -133,6 +139,71 @@ void main() {
         'spent=$spentAfterLateEntry saved=$savedAfterLateEntry ---');
     expect(spentAfterLateEntry, 250000.0);
     expect(savedAfterLateEntry, 250000.0);
+
+    await Hive.close();
+    tempDir.deleteSync(recursive: true);
+  });
+
+  test('rollover option chains leftover budget into each following period', () async {
+    final tempDir = Directory.systemTemp.createTempSync('juice_saving_rollover');
+    Hive.init(tempDir.path);
+    _registerAdaptersOnce();
+
+    await Hive.openBox<Category>(HiveBoxes.categories);
+    final expenseBox = await Hive.openBox<Expense>(HiveBoxes.expenses);
+    await Hive.openBox<WeeklyBudget>(HiveBoxes.weeklyBudgets);
+    final settingsBox = await Hive.openBox(HiveBoxes.settings);
+    await Hive.openBox<CardItem>(HiveBoxes.cards);
+    await Hive.openBox<JuiceSavingHistory>(HiveBoxes.juiceSavingHistory);
+
+    await settingsBox.put('budgetPeriod', 'daily');
+    await settingsBox.put('targetAmountDaily', 500000.0);
+    await settingsBox.put('juiceThemeType', 'orange');
+    await settingsBox.put('savingOption', SavingOption.rollover.name);
+
+    final day1 = DateTime(2026, 9, 14);
+    final day2 = DateTime(2026, 9, 15);
+    final day3 = DateTime(2026, 9, 16);
+    // day1: 100,000 소비(목표 500,000 중 400,000 남음).
+    await expenseBox.put('d1',
+        Expense(id: 'd1', amount: 100000, categoryId: 'food', date: day1.add(const Duration(hours: 9))));
+    // day2: 200,000 소비.
+    await expenseBox.put('d2',
+        Expense(id: 'd2', amount: 200000, categoryId: 'food', date: day2.add(const Duration(hours: 9))));
+    // day3: 50,000 소비.
+    await expenseBox.put('d3',
+        Expense(id: 'd3', amount: 50000, categoryId: 'food', date: day3.add(const Duration(hours: 9))));
+
+    final container = ProviderContainer();
+    addTearDown(container.dispose);
+
+    // day1 이른 시각에 기준선을 세우고, day3가 다 지난 뒤(9/17) 한 번에 3일치를 마감한다
+    // — 여러 날을 건너뛰어도 오래된 순서로 이월이 순차적으로 이어지는지 확인.
+    await container.read(FutureProvider<void>((ref) =>
+        JuiceSavingService.checkAndClosePeriods(ref, now: day1.add(const Duration(hours: 8)))).future);
+    await container.read(FutureProvider<void>((ref) => JuiceSavingService
+        .checkAndClosePeriods(ref, now: DateTime(2026, 9, 17, 10))).future);
+
+    final history = JuiceSavingService.getAll()
+      ..sort((a, b) => a.startDate.compareTo(b.startDate));
+    final allExpenses = expenseBox.values.toList();
+
+    print('--- 이월 체인 검증 ---');
+    for (final h in history) {
+      print('start=${h.startDate} target=${h.targetAmount} '
+          'saved=${h.savedAmount(allExpenses)} savingOption=${h.savingOption}');
+    }
+
+    expect(history.length, 3);
+    expect(history[0].targetAmount, 500000.0, reason: '첫날은 이월할 이전 기록이 없음');
+    expect(history[0].savedAmount(allExpenses), 400000.0);
+    expect(history[0].savingOption, 'rollover');
+
+    expect(history[1].targetAmount, 900000.0, reason: '500,000 + day1 이월분 400,000');
+    expect(history[1].savedAmount(allExpenses), 700000.0);
+
+    expect(history[2].targetAmount, 1200000.0, reason: '500,000 + day2 이월분 700,000');
+    expect(history[2].savedAmount(allExpenses), 1150000.0);
 
     await Hive.close();
     tempDir.deleteSync(recursive: true);

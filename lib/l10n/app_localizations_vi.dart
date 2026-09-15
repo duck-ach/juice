@@ -334,7 +334,7 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get categoryInUseMessage => 'Có khoản thu nhập đang dùng danh mục này. Hãy chuyển chúng sang danh mục khác trước khi xóa.';
+  String get categoryInUseMessage => 'Có mục đang dùng danh mục này. Hãy chuyển chúng sang danh mục khác trước khi xóa.';
 
   @override
   String get categoryEditTitle => 'Sửa danh mục';
@@ -735,7 +735,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get cardStatsViewByCard => 'Theo thẻ';
 
   @override
-  String get noExpensesInPeriod => 'Không có chi tiêu trong khoảng thời gian này';
+  String get noExpensesInPeriod => 'Không có mục nào trong khoảng thời gian này';
 
   @override
   String get installmentIncludedSuffix => 'gồm cả trả góp';
@@ -894,7 +894,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get settingsLanguage => 'Ngôn ngữ';
 
   @override
-  String get settingsCurrency => 'Đơn vị tiền tệ';
+  String get settingsCurrency => 'Cài đặt đơn vị tiền tệ gốc';
 
   @override
   String get currencySelectTitle => 'Chọn đơn vị tiền tệ của bạn';
@@ -1023,4 +1023,241 @@ class AppLocalizationsVi extends AppLocalizations {
   String savingHistoryDetailLine(Object target, Object spent) {
     return 'Mục tiêu $target / Đã chi $spent';
   }
+
+  @override
+  String get savingOptionTitle => 'Cách xử lý juice còn dư';
+
+  @override
+  String get savingOptionDescription => 'Hãy chọn cách xử lý ngân sách chưa dùng hết khi chu kỳ kết thúc.';
+
+  @override
+  String get savingOptionRollover => 'Chuyển sang chu kỳ tiếp theo';
+
+  @override
+  String get savingOptionSavings => 'Tích lũy làm quỹ dự phòng';
+
+  @override
+  String get savedJuiceStoreTooltip => 'Kho Juice đã giữ';
+
+  @override
+  String savingHistoryTotalLabel(Object amount, Object currencyAmount) {
+    return 'Juice đã giữ được: $amount mL ($currencyAmount)';
+  }
+
+  @override
+  String rolloverBonusLabel(Object amount) {
+    return 'Bao gồm +$amount mL chuyển từ chu kỳ trước';
+  }
+
+  @override
+  String get savingsAssetCardTitle => 'Tài sản được bảo vệ nhờ tiết kiệm';
+
+  @override
+  String get savingsAssetCardDescription => 'Tổng lượng juice còn dư từ các chu kỳ đã đóng với tùy chọn tiết kiệm.';
+
+  @override
+  String get savingPraise_1 => 'Bạn đã tiết kiệm được ngần này rồi! Tuyệt vời quá!! Bạn đang tiến gần hơn đến mục tiêu 🍊';
+
+  @override
+  String get savingPraise_2 => 'Bạn đã giữ trọn vẹn ly nước quý giá! Thói quen tiết kiệm của bạn thật tuyệt vời ✨';
+
+  @override
+  String get savingPraise_3 => 'Từng giọt nước tích lũy đang trở thành tài sản vững chắc! Chúc bạn ngày mới tốt lành 🧃';
+
+  @override
+  String get savingPraise_4 => 'Tiết kiệm là một thói quen tuyệt vời! Càng nhiều nước ép dự trữ, tâm trí càng thảnh thơi 🍯';
+
+  @override
+  String get savingPraise_5 => 'Bạn thật tuyệt vời khi kiên định giữ vững mục tiêu! Hãy tiếp tục giữ ly nước sau thật tươi mới nhé 🍏';
+
+  @override
+  String get savingsLabel => 'Tiết kiệm';
+
+  @override
+  String get savingsCategoryTab => 'Danh mục tiết kiệm';
+
+  @override
+  String get category_savings_bank_name => 'Tiết kiệm';
+
+  @override
+  String get category_savings_bank_desc => 'Khoản tiền lớn dần từng chút một 🏦';
+
+  @override
+  String get category_savings_invest_name => 'Đầu tư/Cổ phiếu';
+
+  @override
+  String get category_savings_invest_desc => 'Gieo hạt trái cây cho ngày mai 📈';
+
+  @override
+  String get category_savings_housing_name => 'Tiết kiệm mua nhà';
+
+  @override
+  String get category_savings_housing_desc => 'Giấc mơ ngọt ngào về căn nhà của riêng mình 🏠';
+
+  @override
+  String get category_savings_isa_name => 'ISA/Tài khoản tiết kiệm thuế';
+
+  @override
+  String get category_savings_isa_desc => 'Chiếc túi tiết kiệm thuế đa năng đáng tin cậy 🛡️';
+
+  @override
+  String get category_savings_emergency_name => 'Quỹ khẩn cấp';
+
+  @override
+  String get category_savings_emergency_desc => 'Lớp đệm bạn có thể dựa vào bất cứ lúc nào 🧃';
+
+  @override
+  String savingsRecordedMessage(Object category, Object amount) {
+    return 'Đã ghi $amount mL tiết kiệm cho \'$category\'! 🌱';
+  }
+
+  @override
+  String get statsTotalIncomeTitle => 'Tổng thu nhập';
+
+  @override
+  String get statsTotalSavingsTitle => 'Tổng tiết kiệm';
+
+  @override
+  String get incomeCategoryTitleStats => 'Thu nhập theo danh mục';
+
+  @override
+  String get savingsCategoryTitleStats => 'Tiết kiệm theo danh mục';
+
+  @override
+  String get savingsOverviewSectionTitle => '🌱 Tiết kiệm & Đầu tư';
+
+  @override
+  String get savingsThisMonthTotalLabel => 'Tổng tiết kiệm & đầu tư tháng này';
+
+  @override
+  String get savingsOverviewEmptyMessage => 'Chưa có khoản tiết kiệm/đầu tư nào được ghi lại';
+
+  @override
+  String get scopeThisMonth => 'tháng này';
+
+  @override
+  String get calendarAmountModeCompact => 'Rút gọn';
+
+  @override
+  String get calendarAmountModeFull => 'Đầy đủ';
+
+  @override
+  String get savingsAllTimeTotalLabel => 'Tổng tiết kiệm & đầu tư (từ trước đến nay)';
+
+  @override
+  String get currencyWarningNotice => 'Số tiền được quy đổi theo tỷ giá thực tế nên có thể có chênh lệch nhỏ trong dữ liệu cũ. Vui lòng chỉ thay đổi khi thật sự cần thiết!';
+
+  @override
+  String get onboardingStep1Title => 'Cùng đặt ngân sách chi tiêu thoải mái nhé?';
+
+  @override
+  String get onboardingBudgetLabelDaily => 'Ngân sách mỗi ngày';
+
+  @override
+  String get onboardingBudgetLabelWeekly => 'Ngân sách tuần này';
+
+  @override
+  String get onboardingBudgetLabelMonthly => 'Ngân sách tháng này';
+
+  @override
+  String get onboardingStep1NextButton => 'Tiếp theo: Đặt mục tiêu dài hạn (1/2)';
+
+  @override
+  String get onboardingFooterHint => 'Bạn có thể thay đổi bất cứ lúc nào trong phần Cài đặt!';
+
+  @override
+  String get onboardingStep2Title => 'Bạn có mục tiêu tiết kiệm cho vài năm tới không?';
+
+  @override
+  String get onboardingStep2Subtitle => 'Đặt mục tiêu để chúng tôi tính toán thông minh số tiền cần tiết kiệm mỗi tháng và juice khả dụng.';
+
+  @override
+  String get onboardingDurationLabel => 'Thời hạn mục tiêu';
+
+  @override
+  String get onboardingGoalAmountLabel => 'Số tiền mục tiêu';
+
+  @override
+  String get onboardingCompleteButton => 'Đặt mục tiêu và bắt đầu';
+
+  @override
+  String get onboardingSkipButton => 'Bỏ qua lúc này';
+
+  @override
+  String get commonBack => 'Quay lại';
+
+  @override
+  String onboardingStep1Subtitle(Object symbol) {
+    return 'Juice (mL) chính là số tiền bạn có thể chi tiêu! (1$symbol = 1 mL)';
+  }
+
+  @override
+  String get customDuration => 'Tùy chỉnh';
+
+  @override
+  String get yearUnit => 'năm';
+
+  @override
+  String get monthUnit => 'tháng';
+
+  @override
+  String totalDurationLabel(Object months) {
+    return 'Tổng cộng $months tháng';
+  }
+
+  @override
+  String onboardingMonthlyEstimateMessage(Object months, Object amount) {
+    return 'Tiết kiệm khoảng $amount mỗi tháng trong $months tháng là bạn sẽ đạt được mục tiêu! 🌱';
+  }
+
+  @override
+  String get onboardingChooseGoalType => 'Bạn muốn bắt đầu với mục tiêu nào?';
+
+  @override
+  String get onboardingShortTermTitle => 'Ngân sách sinh hoạt ngắn hạn nhẹ nhàng';
+
+  @override
+  String get onboardingShortTermDesc => 'Đặt lượng juice bạn sẽ uống hôm nay, tuần này hoặc tháng này và quản lý chi tiêu một cách nhẹ nhàng.';
+
+  @override
+  String get onboardingLongTermTitle => 'Mục tiêu tiết kiệm trung, dài hạn vững chắc';
+
+  @override
+  String get onboardingLongTermDesc => 'Đặt mục tiêu số tiền lớn bạn muốn đạt được sau vài năm và tiết kiệm một cách thông minh.';
+
+  @override
+  String get startWithJuice => 'Đổ đầy juice và bắt đầu';
+
+  @override
+  String get startWithLongPlan => 'Lưu kế hoạch và bắt đầu';
+
+  @override
+  String get category_income_salary_name => 'Lương';
+
+  @override
+  String get category_income_salary_desc => 'Thành quả ngọt ngào của mồ hôi công sức 💼';
+
+  @override
+  String get category_income_side_name => 'Thu nhập phụ/Làm thêm';
+
+  @override
+  String get category_income_side_desc => 'Khoản thưởng nhỏ ngọt ngào 🍯';
+
+  @override
+  String get category_income_allowance_name => 'Tiền tiêu vặt';
+
+  @override
+  String get category_income_allowance_desc => 'Món quà bất ngờ đầy niềm vui 🎁';
+
+  @override
+  String get category_income_finance_name => 'Thu nhập tài chính (lãi/cổ tức)';
+
+  @override
+  String get category_income_finance_desc => 'Trái ngọt từ tiền sinh ra tiền 📈';
+
+  @override
+  String get category_income_etc_name => 'Thu nhập khác';
+
+  @override
+  String get category_income_etc_desc => 'Các khoản thu nhập đa dạng khác 💧';
 }

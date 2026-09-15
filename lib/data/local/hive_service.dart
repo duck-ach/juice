@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../core/constants/default_categories.dart';
 import '../../core/constants/default_cards.dart';
 import '../../core/constants/default_income_categories.dart';
+import '../../core/constants/default_savings_categories.dart';
 import '../models/card_item.dart';
 import '../models/category.dart';
 import '../models/expense.dart';
@@ -44,6 +45,7 @@ class HiveService {
 
     await _seedDefaultCategoriesIfNeeded();
     await _seedDefaultIncomeCategoriesIfNeeded();
+    await _seedDefaultSavingsCategoriesIfNeeded();
     await _seedDefaultCardsIfNeeded();
   }
 
@@ -64,6 +66,18 @@ class HiveService {
         box.values.any((c) => c.type == CategoryType.income);
     if (!hasIncomeCategory) {
       for (final category in DefaultIncomeCategories.seed) {
+        await box.put(category.id, category);
+      }
+    }
+  }
+
+  /// 기존 설치본에도 저축 카테고리가 없다면 한 번만 시딩한다(수입 카테고리와 동일한 패턴).
+  static Future<void> _seedDefaultSavingsCategoriesIfNeeded() async {
+    final box = Hive.box<Category>(HiveBoxes.categories);
+    final hasSavingsCategory =
+        box.values.any((c) => c.type == CategoryType.savings);
+    if (!hasSavingsCategory) {
+      for (final category in DefaultSavingsCategories.seed) {
         await box.put(category.id, category);
       }
     }

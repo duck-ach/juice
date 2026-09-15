@@ -68,4 +68,18 @@ class CategoryAssets {
     Icons.monetization_on,
     Icons.more_horiz,
   ];
+
+  /// 저축/투자 카테고리 추천 아이콘 목록.
+  static const List<IconData> savingsIcons = [
+    Icons.savings,
+    Icons.trending_up,
+    Icons.home_work,
+    Icons.shield_outlined,
+    Icons.medical_services_outlined,
+    Icons.account_balance,
+    Icons.pie_chart_outline,
+    Icons.currency_exchange,
+    Icons.real_estate_agent,
+    Icons.more_horiz,
+  ];
 }

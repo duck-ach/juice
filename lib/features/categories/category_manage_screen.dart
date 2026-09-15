@@ -22,10 +22,11 @@ class _CategoryManageScreenState extends ConsumerState<CategoryManageScreen> {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
-    final categories = ref.watch(
-        _type == CategoryType.expense
-            ? expenseCategoriesProvider
-            : incomeCategoriesProvider);
+    final categories = ref.watch(switch (_type) {
+      CategoryType.expense => expenseCategoriesProvider,
+      CategoryType.income => incomeCategoriesProvider,
+      CategoryType.savings => savingsCategoriesProvider,
+    });
 
     return Scaffold(
       appBar: AppBar(title: Text(loc.categoryManageTitle)),
@@ -34,7 +35,11 @@ class _CategoryManageScreenState extends ConsumerState<CategoryManageScreen> {
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
             child: JuiceSegmentedTab(
-              items: [loc.expenseCategoryTab, loc.incomeCategoryTab],
+              items: [
+                loc.expenseCategoryTab,
+                loc.incomeCategoryTab,
+                loc.savingsCategoryTab,
+              ],
               selectedIndex: CategoryType.values.indexOf(_type),
               onTabChanged: (index) =>
                   setState(() => _type = CategoryType.values[index]),

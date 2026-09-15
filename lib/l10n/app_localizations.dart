@@ -722,7 +722,7 @@ abstract class AppLocalizations {
   /// No description provided for @categoryInUseMessage.
   ///
   /// In ko, this message translates to:
-  /// **'이 카테고리를 사용 중인 수입 내역이 있어요. 먼저 다른 카테고리로 옮긴 뒤 삭제해주세요'**
+  /// **'이 카테고리를 사용 중인 내역이 있어요. 먼저 다른 카테고리로 옮긴 뒤 삭제해주세요'**
   String get categoryInUseMessage;
 
   /// No description provided for @categoryEditTitle.
@@ -1004,7 +1004,7 @@ abstract class AppLocalizations {
   /// No description provided for @navStats.
   ///
   /// In ko, this message translates to:
-  /// **'지출통계'**
+  /// **'통계'**
   String get navStats;
 
   /// No description provided for @navSettings.
@@ -1436,7 +1436,7 @@ abstract class AppLocalizations {
   /// No description provided for @noExpensesInPeriod.
   ///
   /// In ko, this message translates to:
-  /// **'해당 기간에 지출 내역이 없어요'**
+  /// **'해당 기간에 내역이 없어요'**
   String get noExpensesInPeriod;
 
   /// No description provided for @installmentIncludedSuffix.
@@ -1742,7 +1742,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsCurrency.
   ///
   /// In ko, this message translates to:
-  /// **'통화 단위 설정'**
+  /// **'기준 통화 단위 설정'**
   String get settingsCurrency;
 
   /// No description provided for @currencySelectTitle.
@@ -1972,6 +1972,456 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'목표 {target} / 소비 {spent}'**
   String savingHistoryDetailLine(Object target, Object spent);
+
+  /// No description provided for @savingOptionTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'남긴 주스 처리 방식'**
+  String get savingOptionTitle;
+
+  /// No description provided for @savingOptionDescription.
+  ///
+  /// In ko, this message translates to:
+  /// **'주기가 끝났을 때 남은 목표량을 어떻게 쓸지 골라주세요.'**
+  String get savingOptionDescription;
+
+  /// No description provided for @savingOptionRollover.
+  ///
+  /// In ko, this message translates to:
+  /// **'다음 주기로 이월'**
+  String get savingOptionRollover;
+
+  /// No description provided for @savingOptionSavings.
+  ///
+  /// In ko, this message translates to:
+  /// **'비상금/저축 자산으로 적립'**
+  String get savingOptionSavings;
+
+  /// No description provided for @savedJuiceStoreTooltip.
+  ///
+  /// In ko, this message translates to:
+  /// **'지켜낸 주스 보관함'**
+  String get savedJuiceStoreTooltip;
+
+  /// No description provided for @savingHistoryTotalLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'지켜낸 주스: {amount} mL ({currencyAmount})'**
+  String savingHistoryTotalLabel(Object amount, Object currencyAmount);
+
+  /// No description provided for @rolloverBonusLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'지난 주기 이월 +{amount} mL 포함'**
+  String rolloverBonusLabel(Object amount);
+
+  /// No description provided for @savingsAssetCardTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'절약으로 지켜낸 자산'**
+  String get savingsAssetCardTitle;
+
+  /// No description provided for @savingsAssetCardDescription.
+  ///
+  /// In ko, this message translates to:
+  /// **'저축 옵션으로 마감된 주기들의 남은 주스 누적 합계예요.'**
+  String get savingsAssetCardDescription;
+
+  /// No description provided for @savingPraise_1.
+  ///
+  /// In ko, this message translates to:
+  /// **'벌써 이만큼 더 저축했어요! 대단해요!! 목표에 한 걸음 더 가까워지고 있어요 🍊'**
+  String get savingPraise_1;
+
+  /// No description provided for @savingPraise_2.
+  ///
+  /// In ko, this message translates to:
+  /// **'소중한 주스를 신선하게 지켜냈어요! 당신의 절약 습관이 빛나고 있어요 ✨'**
+  String get savingPraise_2;
+
+  /// No description provided for @savingPraise_3.
+  ///
+  /// In ko, this message translates to:
+  /// **'차곡차곡 모인 주스가 든든한 자산이 되고 있어요! 오늘 하루도 파이팅 🧃'**
+  String get savingPraise_3;
+
+  /// No description provided for @savingPraise_4.
+  ///
+  /// In ko, this message translates to:
+  /// **'절약도 하나의 멋진 습관! 주스 잔고가 차오를수록 여유도 함께 차올라요 달콤한 성과네요 🍯'**
+  String get savingPraise_4;
+
+  /// No description provided for @savingPraise_5.
+  ///
+  /// In ko, this message translates to:
+  /// **'흔들리지 않고 목표를 방어해 낸 멋진 당신! 다음 주스도 상쾌하게 지켜봐요 🍏'**
+  String get savingPraise_5;
+
+  /// No description provided for @savingsLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'저축'**
+  String get savingsLabel;
+
+  /// No description provided for @savingsCategoryTab.
+  ///
+  /// In ko, this message translates to:
+  /// **'저축 카테고리'**
+  String get savingsCategoryTab;
+
+  /// No description provided for @category_savings_bank_name.
+  ///
+  /// In ko, this message translates to:
+  /// **'저축'**
+  String get category_savings_bank_name;
+
+  /// No description provided for @category_savings_bank_desc.
+  ///
+  /// In ko, this message translates to:
+  /// **'차곡차곡 쌓이는 목돈 🏦'**
+  String get category_savings_bank_desc;
+
+  /// No description provided for @category_savings_invest_name.
+  ///
+  /// In ko, this message translates to:
+  /// **'투자/주식'**
+  String get category_savings_invest_name;
+
+  /// No description provided for @category_savings_invest_desc.
+  ///
+  /// In ko, this message translates to:
+  /// **'내일을 위해 심는 과일 씨앗 📈'**
+  String get category_savings_invest_desc;
+
+  /// No description provided for @category_savings_housing_name.
+  ///
+  /// In ko, this message translates to:
+  /// **'주택청약저축'**
+  String get category_savings_housing_name;
+
+  /// No description provided for @category_savings_housing_desc.
+  ///
+  /// In ko, this message translates to:
+  /// **'달콤한 내 집 마련의 꿈 🏠'**
+  String get category_savings_housing_desc;
+
+  /// No description provided for @category_savings_isa_name.
+  ///
+  /// In ko, this message translates to:
+  /// **'ISA/절세계좌'**
+  String get category_savings_isa_name;
+
+  /// No description provided for @category_savings_isa_desc.
+  ///
+  /// In ko, this message translates to:
+  /// **'든든한 만능 절세 주머니 🛡️'**
+  String get category_savings_isa_desc;
+
+  /// No description provided for @category_savings_emergency_name.
+  ///
+  /// In ko, this message translates to:
+  /// **'비상금'**
+  String get category_savings_emergency_name;
+
+  /// No description provided for @category_savings_emergency_desc.
+  ///
+  /// In ko, this message translates to:
+  /// **'언제든 기댈 수 있는 완충재 🧃'**
+  String get category_savings_emergency_desc;
+
+  /// No description provided for @savingsRecordedMessage.
+  ///
+  /// In ko, this message translates to:
+  /// **'\'{category}\' 저축 {amount} mL를 기록했어요! 🌱'**
+  String savingsRecordedMessage(Object category, Object amount);
+
+  /// No description provided for @statsTotalIncomeTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'총 수입'**
+  String get statsTotalIncomeTitle;
+
+  /// No description provided for @statsTotalSavingsTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'총 저축'**
+  String get statsTotalSavingsTitle;
+
+  /// No description provided for @incomeCategoryTitleStats.
+  ///
+  /// In ko, this message translates to:
+  /// **'카테고리별 수입'**
+  String get incomeCategoryTitleStats;
+
+  /// No description provided for @savingsCategoryTitleStats.
+  ///
+  /// In ko, this message translates to:
+  /// **'카테고리별 저축'**
+  String get savingsCategoryTitleStats;
+
+  /// No description provided for @savingsOverviewSectionTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'🌱 저축 · 투자 현황'**
+  String get savingsOverviewSectionTitle;
+
+  /// No description provided for @savingsThisMonthTotalLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'이번 달 총 저축 · 투자'**
+  String get savingsThisMonthTotalLabel;
+
+  /// No description provided for @savingsOverviewEmptyMessage.
+  ///
+  /// In ko, this message translates to:
+  /// **'아직 기록된 저축/투자 내역이 없어요'**
+  String get savingsOverviewEmptyMessage;
+
+  /// No description provided for @scopeThisMonth.
+  ///
+  /// In ko, this message translates to:
+  /// **'이번 달'**
+  String get scopeThisMonth;
+
+  /// No description provided for @calendarAmountModeCompact.
+  ///
+  /// In ko, this message translates to:
+  /// **'축약형'**
+  String get calendarAmountModeCompact;
+
+  /// No description provided for @calendarAmountModeFull.
+  ///
+  /// In ko, this message translates to:
+  /// **'확장형'**
+  String get calendarAmountModeFull;
+
+  /// No description provided for @savingsAllTimeTotalLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'전체 누적 저축 · 투자'**
+  String get savingsAllTimeTotalLabel;
+
+  /// No description provided for @currencyWarningNotice.
+  ///
+  /// In ko, this message translates to:
+  /// **'실시간 환율을 반영하여 계산되므로 기존 데이터의 금액에 미세한 차이가 생길 수 있어요. 꼭 필요한 경우에만 변경해 주세요!'**
+  String get currencyWarningNotice;
+
+  /// No description provided for @onboardingStep1Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'마음 편히 마실 생활비 예산을 정해볼까요?'**
+  String get onboardingStep1Title;
+
+  /// No description provided for @onboardingBudgetLabelDaily.
+  ///
+  /// In ko, this message translates to:
+  /// **'하루 예산'**
+  String get onboardingBudgetLabelDaily;
+
+  /// No description provided for @onboardingBudgetLabelWeekly.
+  ///
+  /// In ko, this message translates to:
+  /// **'이번 주 예산'**
+  String get onboardingBudgetLabelWeekly;
+
+  /// No description provided for @onboardingBudgetLabelMonthly.
+  ///
+  /// In ko, this message translates to:
+  /// **'한 달 예산'**
+  String get onboardingBudgetLabelMonthly;
+
+  /// No description provided for @onboardingStep1NextButton.
+  ///
+  /// In ko, this message translates to:
+  /// **'다음: 장기 목표 정하기 (1/2)'**
+  String get onboardingStep1NextButton;
+
+  /// No description provided for @onboardingFooterHint.
+  ///
+  /// In ko, this message translates to:
+  /// **'설정에서 언제든지 자유롭게 변경할 수 있어요!'**
+  String get onboardingFooterHint;
+
+  /// No description provided for @onboardingStep2Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'n년 후를 위한 나만의 저축 목표가 있나요?'**
+  String get onboardingStep2Title;
+
+  /// No description provided for @onboardingStep2Subtitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'목표를 정하면 매달 모아야 할 저축액과 가용 주스를 똑똑하게 계산해 드려요.'**
+  String get onboardingStep2Subtitle;
+
+  /// No description provided for @onboardingDurationLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'목표 기간'**
+  String get onboardingDurationLabel;
+
+  /// No description provided for @onboardingGoalAmountLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'목표 금액'**
+  String get onboardingGoalAmountLabel;
+
+  /// No description provided for @onboardingCompleteButton.
+  ///
+  /// In ko, this message translates to:
+  /// **'목표 설정 완료하고 시작하기'**
+  String get onboardingCompleteButton;
+
+  /// No description provided for @onboardingSkipButton.
+  ///
+  /// In ko, this message translates to:
+  /// **'지금은 건너뛸래요'**
+  String get onboardingSkipButton;
+
+  /// No description provided for @commonBack.
+  ///
+  /// In ko, this message translates to:
+  /// **'뒤로'**
+  String get commonBack;
+
+  /// No description provided for @onboardingStep1Subtitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'주스(mL)는 내가 쓸 수 있는 돈이에요! (1{symbol} = 1 mL)'**
+  String onboardingStep1Subtitle(Object symbol);
+
+  /// No description provided for @customDuration.
+  ///
+  /// In ko, this message translates to:
+  /// **'직접 설정'**
+  String get customDuration;
+
+  /// No description provided for @yearUnit.
+  ///
+  /// In ko, this message translates to:
+  /// **'년'**
+  String get yearUnit;
+
+  /// No description provided for @monthUnit.
+  ///
+  /// In ko, this message translates to:
+  /// **'개월'**
+  String get monthUnit;
+
+  /// No description provided for @totalDurationLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'총 {months}개월 동안'**
+  String totalDurationLabel(Object months);
+
+  /// No description provided for @onboardingMonthlyEstimateMessage.
+  ///
+  /// In ko, this message translates to:
+  /// **'{months}개월 동안 매달 약 {amount}씩 모으면 달성할 수 있어요! 🌱'**
+  String onboardingMonthlyEstimateMessage(Object months, Object amount);
+
+  /// No description provided for @onboardingChooseGoalType.
+  ///
+  /// In ko, this message translates to:
+  /// **'어떤 목표부터 시작해 볼까요?'**
+  String get onboardingChooseGoalType;
+
+  /// No description provided for @onboardingShortTermTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'가벼운 단기 생활비 예산'**
+  String get onboardingShortTermTitle;
+
+  /// No description provided for @onboardingShortTermDesc.
+  ///
+  /// In ko, this message translates to:
+  /// **'오늘, 이번 주, 이번 달 동안 마실 주스 용량을 정하고 가볍게 지출을 관리해요.'**
+  String get onboardingShortTermDesc;
+
+  /// No description provided for @onboardingLongTermTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'든든한 중·장기 저축 목표'**
+  String get onboardingLongTermTitle;
+
+  /// No description provided for @onboardingLongTermDesc.
+  ///
+  /// In ko, this message translates to:
+  /// **'N년 후 이루고 싶은 목돈 목표를 정하고 스마트하게 모아가요.'**
+  String get onboardingLongTermDesc;
+
+  /// No description provided for @startWithJuice.
+  ///
+  /// In ko, this message translates to:
+  /// **'주스 채우고 시작하기'**
+  String get startWithJuice;
+
+  /// No description provided for @startWithLongPlan.
+  ///
+  /// In ko, this message translates to:
+  /// **'플랜 저장하고 시작하기'**
+  String get startWithLongPlan;
+
+  /// No description provided for @category_income_salary_name.
+  ///
+  /// In ko, this message translates to:
+  /// **'월급'**
+  String get category_income_salary_name;
+
+  /// No description provided for @category_income_salary_desc.
+  ///
+  /// In ko, this message translates to:
+  /// **'달콤한 피와 땀의 결실 💼'**
+  String get category_income_salary_desc;
+
+  /// No description provided for @category_income_side_name.
+  ///
+  /// In ko, this message translates to:
+  /// **'부수입/알바'**
+  String get category_income_side_name;
+
+  /// No description provided for @category_income_side_desc.
+  ///
+  /// In ko, this message translates to:
+  /// **'쏠쏠하게 차오르는 보너스 꿀 🍯'**
+  String get category_income_side_desc;
+
+  /// No description provided for @category_income_allowance_name.
+  ///
+  /// In ko, this message translates to:
+  /// **'용돈'**
+  String get category_income_allowance_name;
+
+  /// No description provided for @category_income_allowance_desc.
+  ///
+  /// In ko, this message translates to:
+  /// **'기분 좋은 서프라이즈 선물 🎁'**
+  String get category_income_allowance_desc;
+
+  /// No description provided for @category_income_finance_name.
+  ///
+  /// In ko, this message translates to:
+  /// **'금융소득(이자/배당)'**
+  String get category_income_finance_name;
+
+  /// No description provided for @category_income_finance_desc.
+  ///
+  /// In ko, this message translates to:
+  /// **'돈이 돈을 벌어온 열매 📈'**
+  String get category_income_finance_desc;
+
+  /// No description provided for @category_income_etc_name.
+  ///
+  /// In ko, this message translates to:
+  /// **'기타 수입'**
+  String get category_income_etc_name;
+
+  /// No description provided for @category_income_etc_desc.
+  ///
+  /// In ko, this message translates to:
+  /// **'기타 다채로운 수입 💧'**
+  String get category_income_etc_desc;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

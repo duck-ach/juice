@@ -28,7 +28,13 @@ extension StatsPeriodLabel on StatsPeriod {
 final statsPeriodProvider =
     StateProvider<StatsPeriod>((ref) => StatsPeriod.thisWeek);
 
-/// 통계 화면 전용 지출 필터: 변동지출만 vs 고정비 포함.
+/// 통계 화면 대분류: 지출/수입/저축 중 어느 흐름을 보고 있는지.
+enum StatsCategory { expense, income, savings }
+
+final statsCategoryProvider =
+    StateProvider<StatsCategory>((ref) => StatsCategory.expense);
+
+/// 통계 화면 전용 지출 필터: 변동지출만 vs 고정비 포함. [StatsCategory.expense]에서만 쓰인다.
 final statsExpenseFilterProvider =
     StateProvider<ExpenseFilter>((ref) => ExpenseFilter.variableOnly);
 
@@ -46,16 +52,22 @@ final statsDateRangeProvider = Provider<DateRange>((ref) {
   };
 });
 
-/// 지출 통계는 수입 기록을 집계하지 않는다.
+/// 선택된 [statsCategoryProvider](지출/수입/저축)에 맞는 기록만 남긴다. 지출 탭은 기존처럼
+/// 변동지출만/고정비 포함 필터도 함께 적용.
 final statsFilteredExpensesProvider = Provider<List<Expense>>((ref) {
   final all = ref.watch(expenseProvider);
   final range = ref.watch(statsDateRangeProvider);
+  final category = ref.watch(statsCategoryProvider);
   final filter = ref.watch(statsExpenseFilterProvider);
   return all.where((e) {
-    if (e.isIncome) return false;
     if (!range.contains(e.date)) return false;
-    if (filter == ExpenseFilter.variableOnly && e.isFixed) return false;
-    return true;
+    return switch (category) {
+      StatsCategory.expense =>
+        !e.isIncome && !e.isSavings &&
+            !(filter == ExpenseFilter.variableOnly && e.isFixed),
+      StatsCategory.income => e.isIncome,
+      StatsCategory.savings => e.isSavings,
+    };
   }).toList();
 });
 
@@ -176,13 +188,19 @@ class TrendPoint {
   final double amount;
 }
 
-/// 월별(올해 1~12월) / 연도별(최근 5년) 지출 추이. 다른 기간에서는 빈 리스트.
+/// 월별(올해 1~12월) / 연도별(최근 5년) 지출·수입·저축 추이. 다른 기간에서는 빈 리스트.
 final trendProvider = Provider<List<TrendPoint>>((ref) {
   final period = ref.watch(statsPeriodProvider);
   final all = ref.watch(expenseProvider);
+  final category = ref.watch(statsCategoryProvider);
   final filter = ref.watch(statsExpenseFilterProvider);
-  final filtered = all
-      .where((e) => !e.isIncome && (filter == ExpenseFilter.all || !e.isFixed));
+  final filtered = all.where((e) => switch (category) {
+        StatsCategory.expense =>
+          !e.isIncome && !e.isSavings &&
+              (filter == ExpenseFilter.all || !e.isFixed),
+        StatsCategory.income => e.isIncome,
+        StatsCategory.savings => e.isSavings,
+      });
 
   if (period == StatsPeriod.monthly) {
     final year = DateTime.now().year;

@@ -334,7 +334,7 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get categoryInUseMessage => 'このカテゴリを使用中の収入履歴があります。先に別のカテゴリに移してから削除してください';
+  String get categoryInUseMessage => 'このカテゴリを使用中の記録があります。先に別のカテゴリに移してから削除してください';
 
   @override
   String get categoryEditTitle => 'カテゴリ編集';
@@ -477,7 +477,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get navAssets => '資産';
 
   @override
-  String get navStats => '支出統計';
+  String get navStats => '統計';
 
   @override
   String get navSettings => '設定';
@@ -735,7 +735,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get cardStatsViewByCard => 'カード別詳細';
 
   @override
-  String get noExpensesInPeriod => 'この期間に支出履歴がありません';
+  String get noExpensesInPeriod => 'この期間に記録がありません';
 
   @override
   String get installmentIncludedSuffix => '分割払い含む';
@@ -894,7 +894,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get settingsLanguage => '言語設定';
 
   @override
-  String get settingsCurrency => '通貨設定';
+  String get settingsCurrency => '基準通貨の設定';
 
   @override
   String get currencySelectTitle => '通貨単位を選んでください';
@@ -1023,4 +1023,241 @@ class AppLocalizationsJa extends AppLocalizations {
   String savingHistoryDetailLine(Object target, Object spent) {
     return '目標$target / 消費$spent';
   }
+
+  @override
+  String get savingOptionTitle => '余ったジュースの処理方法';
+
+  @override
+  String get savingOptionDescription => '周期が終わったとき、余った目標量をどう使うか選んでください。';
+
+  @override
+  String get savingOptionRollover => '次の周期へ繰り越す';
+
+  @override
+  String get savingOptionSavings => '非常用資金として積み立てる';
+
+  @override
+  String get savedJuiceStoreTooltip => '守ったジュース倉庫';
+
+  @override
+  String savingHistoryTotalLabel(Object amount, Object currencyAmount) {
+    return '守ったジュース: $amount mL ($currencyAmount)';
+  }
+
+  @override
+  String rolloverBonusLabel(Object amount) {
+    return '前周期からの繰り越し+$amount mL含む';
+  }
+
+  @override
+  String get savingsAssetCardTitle => '節約で守った資産';
+
+  @override
+  String get savingsAssetCardDescription => '貯蓄オプションで締め切られた周期の余ったジュースの累計です。';
+
+  @override
+  String get savingPraise_1 => 'もうこんなに貯蓄できました！素晴らしい！目標に一歩近づいています 🍊';
+
+  @override
+  String get savingPraise_2 => '大切なジュースを新鮮に守り抜きました！あなたの節約習慣が輝いています ✨';
+
+  @override
+  String get savingPraise_3 => '少しずつ集まったジュースが心強い資産になっています！今日もファイト 🧃';
+
+  @override
+  String get savingPraise_4 => '節約も素敵な習慣！ジュースの残高が増えるほど心にも余裕が生まれます 🍯';
+
+  @override
+  String get savingPraise_5 => 'ぶれずに目標を守り抜いたあなた！次のジュースも爽快に守りましょう 🍏';
+
+  @override
+  String get savingsLabel => '貯蓄';
+
+  @override
+  String get savingsCategoryTab => '貯蓄カテゴリ';
+
+  @override
+  String get category_savings_bank_name => '貯蓄';
+
+  @override
+  String get category_savings_bank_desc => 'コツコツ積み上がるまとまったお金 🏦';
+
+  @override
+  String get category_savings_invest_name => '投資/株式';
+
+  @override
+  String get category_savings_invest_desc => '明日のために植える果実の種 📈';
+
+  @override
+  String get category_savings_housing_name => '住宅請約貯蓄';
+
+  @override
+  String get category_savings_housing_desc => '甘いマイホームの夢 🏠';
+
+  @override
+  String get category_savings_isa_name => 'ISA/節税口座';
+
+  @override
+  String get category_savings_isa_desc => '頼もしい万能節税ポケット 🛡️';
+
+  @override
+  String get category_savings_emergency_name => '非常金';
+
+  @override
+  String get category_savings_emergency_desc => 'いつでも頼れるクッション 🧃';
+
+  @override
+  String savingsRecordedMessage(Object category, Object amount) {
+    return '\'$category\' 貯蓄 $amount mLを記録しました！🌱';
+  }
+
+  @override
+  String get statsTotalIncomeTitle => '総収入';
+
+  @override
+  String get statsTotalSavingsTitle => '総貯蓄';
+
+  @override
+  String get incomeCategoryTitleStats => 'カテゴリ別収入';
+
+  @override
+  String get savingsCategoryTitleStats => 'カテゴリ別貯蓄';
+
+  @override
+  String get savingsOverviewSectionTitle => '🌱 貯蓄・投資の状況';
+
+  @override
+  String get savingsThisMonthTotalLabel => '今月の総貯蓄・投資額';
+
+  @override
+  String get savingsOverviewEmptyMessage => 'まだ記録された貯蓄・投資がありません';
+
+  @override
+  String get scopeThisMonth => '今月';
+
+  @override
+  String get calendarAmountModeCompact => '省略形';
+
+  @override
+  String get calendarAmountModeFull => '全額表示';
+
+  @override
+  String get savingsAllTimeTotalLabel => '累計 貯蓄・投資額';
+
+  @override
+  String get currencyWarningNotice => 'リアルタイムの為替レートで再計算されるため、過去のデータにわずかな差異が生じる場合があります。必要な場合のみ変更してください。';
+
+  @override
+  String get onboardingStep1Title => '無理なく使える生活費予算を決めましょう';
+
+  @override
+  String get onboardingBudgetLabelDaily => '1日の予算';
+
+  @override
+  String get onboardingBudgetLabelWeekly => '今週の予算';
+
+  @override
+  String get onboardingBudgetLabelMonthly => '今月の予算';
+
+  @override
+  String get onboardingStep1NextButton => '次へ: 長期目標を決める (1/2)';
+
+  @override
+  String get onboardingFooterHint => '設定からいつでも自由に変更できます!';
+
+  @override
+  String get onboardingStep2Title => '数年後のための貯蓄目標はありますか?';
+
+  @override
+  String get onboardingStep2Subtitle => '目標を決めると、毎月貯めるべき金額と使えるジュースを賢く計算します。';
+
+  @override
+  String get onboardingDurationLabel => '目標期間';
+
+  @override
+  String get onboardingGoalAmountLabel => '目標金額';
+
+  @override
+  String get onboardingCompleteButton => '目標を設定して始める';
+
+  @override
+  String get onboardingSkipButton => '今はスキップする';
+
+  @override
+  String get commonBack => '戻る';
+
+  @override
+  String onboardingStep1Subtitle(Object symbol) {
+    return 'ジュース(mL)はあなたが使えるお金です!(1$symbol = 1 mL)';
+  }
+
+  @override
+  String get customDuration => '直接設定';
+
+  @override
+  String get yearUnit => '年';
+
+  @override
+  String get monthUnit => 'ヶ月';
+
+  @override
+  String totalDurationLabel(Object months) {
+    return '計 $monthsヶ月間';
+  }
+
+  @override
+  String onboardingMonthlyEstimateMessage(Object months, Object amount) {
+    return '$monthsヶ月間、毎月約$amountずつ貯めれば達成できます! 🌱';
+  }
+
+  @override
+  String get onboardingChooseGoalType => 'どちらの目標から始めますか?';
+
+  @override
+  String get onboardingShortTermTitle => '気軽な短期生活費予算';
+
+  @override
+  String get onboardingShortTermDesc => '今日、今週、今月に飲むジュースの量を決めて気軽に支出を管理します。';
+
+  @override
+  String get onboardingLongTermTitle => '頼もしい中長期貯蓄目標';
+
+  @override
+  String get onboardingLongTermDesc => '数年後に達成したいまとまった目標金額を決めて賢く貯めていきます。';
+
+  @override
+  String get startWithJuice => 'ジュースを満たして始める';
+
+  @override
+  String get startWithLongPlan => 'プランを保存して始める';
+
+  @override
+  String get category_income_salary_name => '給料';
+
+  @override
+  String get category_income_salary_desc => '汗と涙の甘い結晶 💼';
+
+  @override
+  String get category_income_side_name => '副収入/アルバイト';
+
+  @override
+  String get category_income_side_desc => 'じんわり貯まるボーナス蜜 🍯';
+
+  @override
+  String get category_income_allowance_name => 'お小遣い';
+
+  @override
+  String get category_income_allowance_desc => 'うれしいサプライズギフト 🎁';
+
+  @override
+  String get category_income_finance_name => '金融所得(利子/配当)';
+
+  @override
+  String get category_income_finance_desc => 'お金がお金を稼いできた果実 📈';
+
+  @override
+  String get category_income_etc_name => 'その他収入';
+
+  @override
+  String get category_income_etc_desc => 'その他の彩り豊かな収入 💧';
 }

@@ -102,6 +102,30 @@ class CurrencySelectBottomSheet extends ConsumerWidget {
             Text(loc.settingsCurrency,
                 style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: const Color(0xFFFF9500).withValues(alpha: 0.12),
+                border: Border.all(
+                    color: const Color(0xFFFF9500).withValues(alpha: 0.3)),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(Icons.info_outline,
+                      color: Color(0xFFFF9500), size: 18),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      loc.currencyWarningNotice,
+                      style: const TextStyle(fontSize: 12.5, height: 1.3),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 12),
             for (final option in currencyPresets)
               RadioListTile<String>(
                 value: option.code,

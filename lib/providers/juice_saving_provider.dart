@@ -56,3 +56,13 @@ final totalSavedJuiceProvider = Provider<double>((ref) {
       .where((r) => r.isSuccess)
       .fold(0.0, (sum, r) => sum + r.saved);
 });
+
+/// 마감 당시 처리 방식이 '저축(savings)'이었던 성공 주기들의 savedAmount 총합 —
+/// 이월(rollover)로 다음 주기 예산에 흡수된 금액은 제외하고, 실제로 "적립"된 만큼만
+/// 센다. 자산 탭의 '절약으로 지켜낸 자산' 카드에서 사용.
+final totalAccumulatedSavingsProvider = Provider<double>((ref) {
+  final records = ref.watch(juiceSavingRecordsProvider);
+  return records
+      .where((r) => r.isSuccess && r.history.savingOption == 'savings')
+      .fold(0.0, (sum, r) => sum + r.saved);
+});

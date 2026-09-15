@@ -18,6 +18,7 @@ class JuiceSavingHistory extends HiveObject {
     required this.endDate,
     required this.targetAmount,
     required this.themeEmoji,
+    this.savingOption = 'savings',
   });
 
   /// 고유 식별자(예: 'weekly_20260907'). periodType+startDate로 결정되어 같은 주기가
@@ -43,6 +44,11 @@ class JuiceSavingHistory extends HiveObject {
   @HiveField(5)
   String themeEmoji;
 
+  /// 마감 당시 선택돼 있던 [SavingOption.name]('rollover' 또는 'savings') 스냅샷.
+  /// 이후 사용자가 옵션을 바꿔도 이미 마감된 기록의 처리 방식은 그대로 유지된다.
+  @HiveField(6, defaultValue: 'savings')
+  String savingOption;
+
   BudgetPeriod get periodTypeEnum => BudgetPeriod.values.firstWhere(
         (p) => p.name == periodType,
         orElse: () => BudgetPeriod.weekly,
@@ -52,10 +58,11 @@ class JuiceSavingHistory extends HiveObject {
 /// [JuiceSavingHistory]의 실시간 소비/절약 계산. [allExpenses]를 매번 전달받아 계산하므로
 /// 호출 시점의 최신 지출 목록을 반영한다(재계산 로직 별도 동기화 불필요).
 extension JuiceSavingHistoryCalc on JuiceSavingHistory {
-  /// 주기 범위 내 변동지출 합계(고정지출·수입 제외) — 홈 화면 주스 게이지와 동일한 기준.
+  /// 주기 범위 내 변동지출 합계(고정지출·수입·저축 제외) — 홈 화면 주스 게이지와 동일한 기준.
   double spentAmount(List<Expense> allExpenses) => allExpenses
       .where((e) =>
           !e.isIncome &&
+          !e.isSavings &&
           !e.isFixed &&
           !e.date.isBefore(startDate) &&
           !e.date.isAfter(endDate))

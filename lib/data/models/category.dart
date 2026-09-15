@@ -6,7 +6,7 @@ import '../../l10n/app_localizations.dart';
 part 'category.g.dart';
 
 /// 카테고리 분류. Hive에는 [Category.typeName]으로 이름(name) 문자열이 저장된다.
-enum CategoryType { expense, income }
+enum CategoryType { expense, income, savings }
 
 @HiveType(typeId: 0)
 class Category extends HiveObject {
@@ -82,6 +82,16 @@ extension CategoryL10nExtension on Category {
       'culture' => l10n.category_culture_name,
       'life' => l10n.category_life_name,
       'etc' => l10n.category_etc_name,
+      'savings_bank' => l10n.category_savings_bank_name,
+      'savings_invest' => l10n.category_savings_invest_name,
+      'savings_housing' => l10n.category_savings_housing_name,
+      'savings_isa' => l10n.category_savings_isa_name,
+      'savings_emergency' => l10n.category_savings_emergency_name,
+      'income_salary' => l10n.category_income_salary_name,
+      'income_side' => l10n.category_income_side_name,
+      'income_allowance' => l10n.category_income_allowance_name,
+      'income_finance' => l10n.category_income_finance_name,
+      'income_etc' => l10n.category_income_etc_name,
       _ => name,
     };
   }
@@ -98,6 +108,16 @@ extension CategoryL10nExtension on Category {
       'culture' => l10n.category_culture_desc,
       'life' => l10n.category_life_desc,
       'etc' => l10n.category_etc_desc,
+      'savings_bank' => l10n.category_savings_bank_desc,
+      'savings_invest' => l10n.category_savings_invest_desc,
+      'savings_housing' => l10n.category_savings_housing_desc,
+      'savings_isa' => l10n.category_savings_isa_desc,
+      'savings_emergency' => l10n.category_savings_emergency_desc,
+      'income_salary' => l10n.category_income_salary_desc,
+      'income_side' => l10n.category_income_side_desc,
+      'income_allowance' => l10n.category_income_allowance_desc,
+      'income_finance' => l10n.category_income_finance_desc,
+      'income_etc' => l10n.category_income_etc_desc,
       _ => description,
     };
   }

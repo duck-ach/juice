@@ -334,7 +334,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get categoryInUseMessage => 'Some income records use this category. Move them to another category before deleting.';
+  String get categoryInUseMessage => 'Some records use this category. Move them to another category before deleting.';
 
   @override
   String get categoryEditTitle => 'Edit Category';
@@ -735,7 +735,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cardStatsViewByCard => 'By Card';
 
   @override
-  String get noExpensesInPeriod => 'No expenses in this period';
+  String get noExpensesInPeriod => 'No records in this period';
 
   @override
   String get installmentIncludedSuffix => 'incl. installments';
@@ -894,7 +894,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsLanguage => 'Language';
 
   @override
-  String get settingsCurrency => 'Currency';
+  String get settingsCurrency => 'Base Currency Setting';
 
   @override
   String get currencySelectTitle => 'Select your currency';
@@ -1023,4 +1023,241 @@ class AppLocalizationsEn extends AppLocalizations {
   String savingHistoryDetailLine(Object target, Object spent) {
     return 'Target $target / Spent $spent';
   }
+
+  @override
+  String get savingOptionTitle => 'How to handle leftover juice';
+
+  @override
+  String get savingOptionDescription => 'Choose what happens to your unused budget when a period ends.';
+
+  @override
+  String get savingOptionRollover => 'Roll over to next period';
+
+  @override
+  String get savingOptionSavings => 'Save as emergency fund';
+
+  @override
+  String get savedJuiceStoreTooltip => 'Juice Vault';
+
+  @override
+  String savingHistoryTotalLabel(Object amount, Object currencyAmount) {
+    return 'Juice saved: $amount mL ($currencyAmount)';
+  }
+
+  @override
+  String rolloverBonusLabel(Object amount) {
+    return 'Includes +$amount mL rolled over from last period';
+  }
+
+  @override
+  String get savingsAssetCardTitle => 'Assets protected by saving';
+
+  @override
+  String get savingsAssetCardDescription => 'Total leftover juice from periods closed with the savings option.';
+
+  @override
+  String get savingPraise_1 => 'You\'ve saved this much already! Amazing!! You\'re getting closer to your goal 🍊';
+
+  @override
+  String get savingPraise_2 => 'You\'ve kept your precious juice fresh! Your saving habits are shining ✨';
+
+  @override
+  String get savingPraise_3 => 'The saved juice is turning into solid wealth! Keep up the great work today 🧃';
+
+  @override
+  String get savingPraise_4 => 'Saving is a wonderful habit! As your juice grows, so does your peace of mind 🍯';
+
+  @override
+  String get savingPraise_5 => 'Awesome job defending your goal without wavering! Let\'s keep the next juice fresh too 🍏';
+
+  @override
+  String get savingsLabel => 'Savings';
+
+  @override
+  String get savingsCategoryTab => 'Savings categories';
+
+  @override
+  String get category_savings_bank_name => 'Savings';
+
+  @override
+  String get category_savings_bank_desc => 'Building up a nest egg, bit by bit 🏦';
+
+  @override
+  String get category_savings_invest_name => 'Investing/Stocks';
+
+  @override
+  String get category_savings_invest_desc => 'Planting fruit seeds for tomorrow 📈';
+
+  @override
+  String get category_savings_housing_name => 'Housing subscription savings';
+
+  @override
+  String get category_savings_housing_desc => 'The sweet dream of owning a home 🏠';
+
+  @override
+  String get category_savings_isa_name => 'ISA/Tax-saving account';
+
+  @override
+  String get category_savings_isa_desc => 'A reliable all-purpose tax-saving pouch 🛡️';
+
+  @override
+  String get category_savings_emergency_name => 'Emergency fund';
+
+  @override
+  String get category_savings_emergency_desc => 'A cushion you can lean on anytime 🧃';
+
+  @override
+  String savingsRecordedMessage(Object category, Object amount) {
+    return 'Recorded $amount mL in savings for \'$category\'! 🌱';
+  }
+
+  @override
+  String get statsTotalIncomeTitle => 'Total income';
+
+  @override
+  String get statsTotalSavingsTitle => 'Total savings';
+
+  @override
+  String get incomeCategoryTitleStats => 'Income by category';
+
+  @override
+  String get savingsCategoryTitleStats => 'Savings by category';
+
+  @override
+  String get savingsOverviewSectionTitle => '🌱 Savings & Investments';
+
+  @override
+  String get savingsThisMonthTotalLabel => 'Total saved & invested this month';
+
+  @override
+  String get savingsOverviewEmptyMessage => 'No savings or investments recorded yet';
+
+  @override
+  String get scopeThisMonth => 'this month';
+
+  @override
+  String get calendarAmountModeCompact => 'Compact';
+
+  @override
+  String get calendarAmountModeFull => 'Full amount';
+
+  @override
+  String get savingsAllTimeTotalLabel => 'Total saved & invested (all time)';
+
+  @override
+  String get currencyWarningNotice => 'Amounts are recalculated using real-time rates, which may cause minor discrepancies in past data. Please change only when necessary!';
+
+  @override
+  String get onboardingStep1Title => 'Let\'s set a comfortable spending budget';
+
+  @override
+  String get onboardingBudgetLabelDaily => 'Daily budget';
+
+  @override
+  String get onboardingBudgetLabelWeekly => 'This week\'s budget';
+
+  @override
+  String get onboardingBudgetLabelMonthly => 'This month\'s budget';
+
+  @override
+  String get onboardingStep1NextButton => 'Next: Set a long-term goal (1/2)';
+
+  @override
+  String get onboardingFooterHint => 'You can always change this later in Settings!';
+
+  @override
+  String get onboardingStep2Title => 'Do you have a savings goal for a few years from now?';
+
+  @override
+  String get onboardingStep2Subtitle => 'Set a goal and we\'ll smartly calculate your monthly savings and available juice.';
+
+  @override
+  String get onboardingDurationLabel => 'Goal duration';
+
+  @override
+  String get onboardingGoalAmountLabel => 'Goal amount';
+
+  @override
+  String get onboardingCompleteButton => 'Set goal and get started';
+
+  @override
+  String get onboardingSkipButton => 'Skip for now';
+
+  @override
+  String get commonBack => 'Back';
+
+  @override
+  String onboardingStep1Subtitle(Object symbol) {
+    return 'Juice (mL) is money you can spend! (1$symbol = 1 mL)';
+  }
+
+  @override
+  String get customDuration => 'Custom';
+
+  @override
+  String get yearUnit => 'yr';
+
+  @override
+  String get monthUnit => 'mo';
+
+  @override
+  String totalDurationLabel(Object months) {
+    return 'Total $months months';
+  }
+
+  @override
+  String onboardingMonthlyEstimateMessage(Object months, Object amount) {
+    return 'Save about $amount a month for $months months and you\'ll reach your goal! 🌱';
+  }
+
+  @override
+  String get onboardingChooseGoalType => 'Which goal would you like to start with?';
+
+  @override
+  String get onboardingShortTermTitle => 'A light short-term budget';
+
+  @override
+  String get onboardingShortTermDesc => 'Set how much juice you\'ll sip today, this week, or this month and manage spending lightly.';
+
+  @override
+  String get onboardingLongTermTitle => 'A solid mid- to long-term savings goal';
+
+  @override
+  String get onboardingLongTermDesc => 'Set the lump-sum goal you want to reach years from now and save toward it smartly.';
+
+  @override
+  String get startWithJuice => 'Fill up the juice and start';
+
+  @override
+  String get startWithLongPlan => 'Save the plan and start';
+
+  @override
+  String get category_income_salary_name => 'Salary';
+
+  @override
+  String get category_income_salary_desc => 'The sweet fruit of your hard work 💼';
+
+  @override
+  String get category_income_side_name => 'Side Income';
+
+  @override
+  String get category_income_side_desc => 'A little bonus honey trickling in 🍯';
+
+  @override
+  String get category_income_allowance_name => 'Allowance';
+
+  @override
+  String get category_income_allowance_desc => 'A delightful surprise gift 🎁';
+
+  @override
+  String get category_income_finance_name => 'Investment Income';
+
+  @override
+  String get category_income_finance_desc => 'Money that grew more money 📈';
+
+  @override
+  String get category_income_etc_name => 'Other Income';
+
+  @override
+  String get category_income_etc_desc => 'Other colorful income 💧';
 }

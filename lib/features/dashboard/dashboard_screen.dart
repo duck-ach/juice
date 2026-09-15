@@ -18,7 +18,7 @@ import 'widgets/expense_actions.dart';
 import 'widgets/expense_tile.dart';
 import 'widgets/juice_gauge.dart';
 import 'widgets/juice_tip_card.dart';
-import 'widgets/saved_juice_badge.dart';
+import 'widgets/saving_history_bottom_sheet.dart';
 
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
@@ -26,7 +26,7 @@ class DashboardScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final loc = AppLocalizations.of(context)!;
-    final targetAmount = ref.watch(targetAmountProvider);
+    final targetAmount = ref.watch(effectiveTargetAmountProvider);
     final period = ref.watch(budgetPeriodProvider);
     if (targetAmount == null) return _NoGoalForPeriod(period: period);
 
@@ -43,11 +43,17 @@ class DashboardScreen extends ConsumerWidget {
     final categories = ref.watch(categoryProvider);
     final categoryMap = {for (final c in categories) c.id: c};
     final todayInstallment = ref.watch(todayInstallmentPortionProvider);
+    final rolloverBonus = ref.watch(rolloverBonusProvider);
     final formatter = NumberFormat('#,###');
 
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
+        leading: IconButton(
+          icon: const Icon(Icons.savings_outlined),
+          tooltip: loc.savedJuiceStoreTooltip,
+          onPressed: () => SavingHistoryBottomSheet.show(context),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.sell_outlined),
@@ -72,6 +78,27 @@ class DashboardScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 4),
+          if (rolloverBonus > 0)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: juiceTheme.highColor.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    loc.rolloverBonusLabel(formatter.format(rolloverBonus)),
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: juiceTheme.highColor,
+                        fontWeight: FontWeight.w700),
+                  ),
+                ),
+              ),
+            ),
           if (todayInstallment > 0)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -96,10 +123,6 @@ class DashboardScreen extends ConsumerWidget {
                 ),
               ),
             ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(24, 12, 24, 0),
-            child: SavedJuiceBadge(),
-          ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             child: JuiceTipCard(),

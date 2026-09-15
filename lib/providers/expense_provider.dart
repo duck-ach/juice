@@ -51,7 +51,7 @@ final currentWeekExpensesProvider = Provider<List<Expense>>((ref) {
   final weekStartDay = ref.watch(weekStartDayProvider);
   final range = currentWeekRange(null, weekStartDay);
   final weekExpenses = all
-      .where((e) => !e.isIncome && range.contains(e.date))
+      .where((e) => !e.isIncome && !e.isSavings && range.contains(e.date))
       .toList()
     ..sort((a, b) => b.date.compareTo(a.date));
   return weekExpenses;

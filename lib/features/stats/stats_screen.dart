@@ -19,6 +19,7 @@ class StatsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final loc = AppLocalizations.of(context)!;
     final period = ref.watch(statsPeriodProvider);
+    final category = ref.watch(statsCategoryProvider);
     final filter = ref.watch(statsExpenseFilterProvider);
     final cardView = ref.watch(cardStatsViewProvider);
     final expenses = ref.watch(statsFilteredExpensesProvider);
@@ -28,6 +29,16 @@ class StatsScreen extends ConsumerWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final unselectedChipColor =
         Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6);
+    final totalTitle = switch (category) {
+      StatsCategory.expense => loc.totalExpenseTitle,
+      StatsCategory.income => loc.statsTotalIncomeTitle,
+      StatsCategory.savings => loc.statsTotalSavingsTitle,
+    };
+    final categoryBreakdownTitle = switch (category) {
+      StatsCategory.expense => loc.categorySpendingTitle,
+      StatsCategory.income => loc.incomeCategoryTitleStats,
+      StatsCategory.savings => loc.savingsCategoryTitleStats,
+    };
 
     return Scaffold(
       appBar: AppBar(title: Text(loc.statsTitle)),
@@ -61,14 +72,24 @@ class StatsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 12),
           JuiceSegmentedTab(
-            items: [loc.filterVariableOnlyShort, loc.filterFixedIncluded],
-            selectedIndex: ExpenseFilter.values.indexOf(filter),
+            items: [loc.expenseLabel, loc.incomeLabel, loc.savingsLabel],
+            selectedIndex: StatsCategory.values.indexOf(category),
             onTabChanged: (index) => ref
-                .read(statsExpenseFilterProvider.notifier)
-                .state = ExpenseFilter.values[index],
+                .read(statsCategoryProvider.notifier)
+                .state = StatsCategory.values[index],
           ),
+          if (category == StatsCategory.expense) ...[
+            const SizedBox(height: 12),
+            JuiceSegmentedTab(
+              items: [loc.filterVariableOnlyShort, loc.filterFixedIncluded],
+              selectedIndex: ExpenseFilter.values.indexOf(filter),
+              onTabChanged: (index) => ref
+                  .read(statsExpenseFilterProvider.notifier)
+                  .state = ExpenseFilter.values[index],
+            ),
+          ],
           const SizedBox(height: 20),
-          Text(loc.totalExpenseTitle, style: Theme.of(context).textTheme.bodyMedium),
+          Text(totalTitle, style: Theme.of(context).textTheme.bodyMedium),
           Text(currency.format(total),
               style: Theme.of(context).textTheme.headlineMedium),
           const SizedBox(height: 20),
@@ -76,26 +97,28 @@ class StatsScreen extends ConsumerWidget {
             const SpendBarChart(),
             const SizedBox(height: 24),
           ],
-          Text(loc.categorySpendingTitle,
+          Text(categoryBreakdownTitle,
               style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 12),
           const CategoryDonutChart(),
-          const SizedBox(height: 24),
-          Text(loc.paymentMethodSpendingTitle,
-              style: Theme.of(context).textTheme.titleLarge),
-          const SizedBox(height: 12),
-          JuiceSegmentedTab(
-            items: CardStatsView.values.map((v) => v.label(loc)).toList(),
-            selectedIndex: CardStatsView.values.indexOf(cardView),
-            onTabChanged: (index) => ref
-                .read(cardStatsViewProvider.notifier)
-                .state = CardStatsView.values[index],
-          ),
-          const SizedBox(height: 12),
-          if (cardView == CardStatsView.summary)
-            const PaymentMethodChart()
-          else
-            const CardBreakdownList(),
+          if (category == StatsCategory.expense) ...[
+            const SizedBox(height: 24),
+            Text(loc.paymentMethodSpendingTitle,
+                style: Theme.of(context).textTheme.titleLarge),
+            const SizedBox(height: 12),
+            JuiceSegmentedTab(
+              items: CardStatsView.values.map((v) => v.label(loc)).toList(),
+              selectedIndex: CardStatsView.values.indexOf(cardView),
+              onTabChanged: (index) => ref
+                  .read(cardStatsViewProvider.notifier)
+                  .state = CardStatsView.values[index],
+            ),
+            const SizedBox(height: 12),
+            if (cardView == CardStatsView.summary)
+              const PaymentMethodChart()
+            else
+              const CardBreakdownList(),
+          ],
         ],
       ),
     );

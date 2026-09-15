@@ -7,7 +7,9 @@ import '../data/local/hive_service.dart';
 import '../data/models/budget_period.dart';
 import '../data/models/juice_saving_history.dart';
 import '../providers/budget_settings_provider.dart';
+import '../providers/expense_provider.dart';
 import '../providers/juice_theme_provider.dart';
+import '../providers/saving_option_provider.dart';
 
 /// 목표 주기(일/주/월) 마감을 감지해 [JuiceSavingHistory] 레코드를 만든다.
 /// spentAmount/savedAmount는 저장하지 않고(항상 최신 지출로 동적 계산) 주기 경계와
@@ -33,13 +35,18 @@ class JuiceSavingService {
   /// 소급 생성). 목표 금액이 설정되어 있지 않으면(null) 정산할 대상이 없으므로 아무 것도
   /// 하지 않는다. 이 주기 유형을 처음 확인하는 것이라면(워터마크 없음) 지금 이 순간을
   /// 기준선으로만 삼고 과거를 소급 생성하지 않는다.
+  ///
+  /// [SavingOption.rollover]가 선택돼 있으면, 마감되는 각 주기의 목표량은 설정된 기본
+  /// 목표량에 "바로 직전 같은 유형 주기"의 남은 주스(양수일 때만)를 더한 값으로 스냅샷된다.
+  /// 여러 주기를 한 번에 마감할 때는 오래된 순서로 처리해 이월이 순차적으로 이어지게 한다.
   static Future<void> checkAndClosePeriods(Ref ref, {DateTime? now}) async {
     final period = ref.read(budgetPeriodProvider);
     final weekStartDay = ref.read(weekStartDayProvider);
-    final target = ref.read(periodTargetAmountsProvider).forPeriod(period);
-    if (target == null) return;
+    final baseTarget = ref.read(periodTargetAmountsProvider).forPeriod(period);
+    if (baseTarget == null) return;
 
     final theme = ref.read(resolvedJuiceThemeProvider);
+    final savingOption = ref.read(savingOptionProvider);
     now ??= DateTime.now();
     final range = rangeForPeriod(period, now, weekStartDay);
 
@@ -54,26 +61,43 @@ class JuiceSavingService {
       return;
     }
 
-    // storedStart(그때의 "현재 주기" 시작)부터 지금 이전까지, 완전히 지나간 주기를 최근
-    // 것부터 거슬러 올라가며 모두 마감 처리한다.
+    // storedStart(그때의 "현재 주기" 시작)부터 지금 이전까지 지나간 주기들을 모으고,
+    // 이월 계산이 순서대로 이어지도록 오래된 것부터 처리한다.
+    final toClose = <DateRange>[];
     var cursor = previousPeriodRange(period, range, weekStartDay);
     while (!cursor.start.isBefore(storedStart)) {
-      final id = _idFor(period, cursor.start);
-      if (!_box.containsKey(id)) {
-        await _box.put(
-          id,
-          JuiceSavingHistory(
-            id: id,
-            periodType: period.name,
-            startDate: cursor.start,
-            endDate: cursor.end,
-            targetAmount: target,
-            themeEmoji: theme.emoji,
-          ),
-        );
-      }
+      toClose.add(cursor);
       if (!cursor.start.isAfter(storedStart)) break;
       cursor = previousPeriodRange(period, cursor, weekStartDay);
+    }
+
+    final allExpenses = ref.read(expenseProvider);
+    for (final r in toClose.reversed) {
+      final id = _idFor(period, r.start);
+      if (_box.containsKey(id)) continue;
+
+      var targetForPeriod = baseTarget;
+      if (savingOption == SavingOption.rollover) {
+        final prevRange = previousPeriodRange(period, r, weekStartDay);
+        final prevRecord = _box.get(_idFor(period, prevRange.start));
+        if (prevRecord != null) {
+          final prevSaved = prevRecord.savedAmount(allExpenses);
+          if (prevSaved > 0) targetForPeriod += prevSaved;
+        }
+      }
+
+      await _box.put(
+        id,
+        JuiceSavingHistory(
+          id: id,
+          periodType: period.name,
+          startDate: r.start,
+          endDate: r.end,
+          targetAmount: targetForPeriod,
+          themeEmoji: theme.emoji,
+          savingOption: savingOption.name,
+        ),
+      );
     }
     await settingsBox.put(watermarkKey, range.start);
   }

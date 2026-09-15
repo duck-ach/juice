@@ -23,13 +23,14 @@ class JuiceSavingHistoryAdapter extends TypeAdapter<JuiceSavingHistory> {
       endDate: fields[3] as DateTime,
       targetAmount: fields[4] as double,
       themeEmoji: fields[5] as String,
+      savingOption: fields[6] == null ? 'savings' : fields[6] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, JuiceSavingHistory obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class JuiceSavingHistoryAdapter extends TypeAdapter<JuiceSavingHistory> {
       ..writeByte(4)
       ..write(obj.targetAmount)
       ..writeByte(5)
-      ..write(obj.themeEmoji);
+      ..write(obj.themeEmoji)
+      ..writeByte(6)
+      ..write(obj.savingOption);
   }
 
   @override

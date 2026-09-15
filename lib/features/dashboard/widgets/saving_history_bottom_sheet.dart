@@ -1,15 +1,19 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../data/models/budget_period.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../../providers/currency_provider.dart';
 import '../../../providers/juice_saving_provider.dart';
+import '../../../providers/juice_theme_provider.dart';
 
 /// 마감된 목표 주기(일/주/월)별 절약 정산 내역을 최신순으로 보여주는 바텀시트.
 /// [juiceSavingRecordsProvider]가 지출 목록을 직접 watch하므로, 과거 지출을 추가/수정/
 /// 삭제하면 이 목록의 소비/절약 수치와 성공 여부가 즉시 갱신된다.
-class SavingHistoryBottomSheet extends ConsumerWidget {
+class SavingHistoryBottomSheet extends ConsumerStatefulWidget {
   const SavingHistoryBottomSheet({super.key});
 
   static Future<void> show(BuildContext context) {
@@ -24,9 +28,31 @@ class SavingHistoryBottomSheet extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SavingHistoryBottomSheet> createState() =>
+      _SavingHistoryBottomSheetState();
+}
+
+class _SavingHistoryBottomSheetState
+    extends ConsumerState<SavingHistoryBottomSheet> {
+  // 시트가 열려있는 동안은 고정되도록 한 번만 뽑는다(리빌드마다 문구가 바뀌지 않게).
+  late final int _praiseIndex = Random().nextInt(5);
+
+  String _praiseMessage(AppLocalizations loc) => switch (_praiseIndex) {
+        0 => loc.savingPraise_1,
+        1 => loc.savingPraise_2,
+        2 => loc.savingPraise_3,
+        3 => loc.savingPraise_4,
+        _ => loc.savingPraise_5,
+      };
+
+  @override
+  Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     final records = ref.watch(juiceSavingRecordsProvider);
+    final total = ref.watch(totalSavedJuiceProvider);
+    final currency = ref.watch(currencyProvider).currency;
+    final themeColor = ref.watch(resolvedJuiceThemeProvider).highColor;
+    final formatter = NumberFormat('#,###');
 
     return DraggableScrollableSheet(
       initialChildSize: 0.7,
@@ -51,6 +77,32 @@ class SavingHistoryBottomSheet extends ConsumerWidget {
             const SizedBox(height: 12),
             Text(loc.savingHistoryTitle,
                 style: Theme.of(context).textTheme.titleLarge),
+            const SizedBox(height: 12),
+            if (total > 0)
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: themeColor.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(_praiseMessage(loc),
+                        style: Theme.of(context).textTheme.bodyMedium),
+                    const SizedBox(height: 8),
+                    Text(
+                      loc.savingHistoryTotalLabel(
+                          formatter.format(total), currency.format(total)),
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge
+                          ?.copyWith(fontWeight: FontWeight.w800, color: themeColor),
+                    ),
+                  ],
+                ),
+              ),
             const SizedBox(height: 12),
             Expanded(
               child: records.isEmpty

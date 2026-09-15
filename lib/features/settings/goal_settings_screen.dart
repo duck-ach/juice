@@ -9,6 +9,7 @@ import '../../data/models/week_start_day.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/budget_settings_provider.dart';
 import '../../providers/installment_settings_provider.dart';
+import '../../providers/saving_option_provider.dart';
 import '../../providers/savings_planner_provider.dart';
 import 'widgets/savings_plan_wizard.dart';
 
@@ -125,6 +126,7 @@ class GoalSettingsScreen extends ConsumerWidget {
     final periodTargets = ref.watch(periodTargetAmountsProvider);
     final plan = ref.watch(savingsPlanProvider);
     final installmentMode = ref.watch(installmentBillingModeProvider);
+    final savingOption = ref.watch(savingOptionProvider);
     final formatter = NumberFormat('#,###');
 
     return Scaffold(
@@ -197,6 +199,21 @@ class GoalSettingsScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 8),
           ],
+          const SizedBox(height: 20),
+          Text(loc.savingOptionTitle,
+              style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(height: 4),
+          Text(loc.savingOptionDescription,
+              style: Theme.of(context).textTheme.bodyMedium),
+          const SizedBox(height: 12),
+          JuiceSegmentedTab(
+            items: [loc.savingOptionRollover, loc.savingOptionSavings],
+            selectedIndex: savingOption == SavingOption.rollover ? 0 : 1,
+            onTabChanged: (index) => ref
+                .read(savingOptionProvider.notifier)
+                .setOption(
+                    index == 0 ? SavingOption.rollover : SavingOption.savings),
+          ),
           const SizedBox(height: 20),
           Text(loc.installmentSectionTitle,
               style: Theme.of(context).textTheme.titleLarge),

@@ -122,7 +122,19 @@ class CurrencyNotifier extends Notifier<CurrencyState> {
     await PrefsService.prefs.setString(_currencyCodeKey, currency.code);
     state = CurrencyState(currency: currency, isSelected: true);
   }
+
+  /// 온보딩에서 뒤로가기로 통화 선택 화면에 되돌아갈 때 호출. 이미 저장된 통화
+  /// 값(prefs)은 그대로 두고 isSelected만 꺼서 AppRoot가 CurrencySelectScreen을
+  /// 다시 보여주게 한다.
+  void goBackToSelection() {
+    state = CurrencyState(currency: state.currency, isSelected: false);
+  }
 }
+
+/// prefs에 통화 코드가 저장된 적이 있는지. isSelected는 온보딩 뒤로가기로 다시
+/// false가 될 수 있어, "이전에 한 번이라도 확정한 적 있는지"는 이 값으로 판단한다.
+bool get hasChosenCurrencyBefore =>
+    PrefsService.prefs.getString(_currencyCodeKey) != null;
 
 final currencyProvider =
     NotifierProvider<CurrencyNotifier, CurrencyState>(CurrencyNotifier.new);

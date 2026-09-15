@@ -334,7 +334,7 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
-  String get categoryInUseMessage => '이 카테고리를 사용 중인 수입 내역이 있어요. 먼저 다른 카테고리로 옮긴 뒤 삭제해주세요';
+  String get categoryInUseMessage => '이 카테고리를 사용 중인 내역이 있어요. 먼저 다른 카테고리로 옮긴 뒤 삭제해주세요';
 
   @override
   String get categoryEditTitle => '카테고리 수정';
@@ -477,7 +477,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get navAssets => '자산';
 
   @override
-  String get navStats => '지출통계';
+  String get navStats => '통계';
 
   @override
   String get navSettings => '설정';
@@ -735,7 +735,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get cardStatsViewByCard => '카드별 상세';
 
   @override
-  String get noExpensesInPeriod => '해당 기간에 지출 내역이 없어요';
+  String get noExpensesInPeriod => '해당 기간에 내역이 없어요';
 
   @override
   String get installmentIncludedSuffix => '할부 포함';
@@ -894,7 +894,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get settingsLanguage => '언어 설정';
 
   @override
-  String get settingsCurrency => '통화 단위 설정';
+  String get settingsCurrency => '기준 통화 단위 설정';
 
   @override
   String get currencySelectTitle => '통화 단위를 선택해주세요';
@@ -1023,4 +1023,241 @@ class AppLocalizationsKo extends AppLocalizations {
   String savingHistoryDetailLine(Object target, Object spent) {
     return '목표 $target / 소비 $spent';
   }
+
+  @override
+  String get savingOptionTitle => '남긴 주스 처리 방식';
+
+  @override
+  String get savingOptionDescription => '주기가 끝났을 때 남은 목표량을 어떻게 쓸지 골라주세요.';
+
+  @override
+  String get savingOptionRollover => '다음 주기로 이월';
+
+  @override
+  String get savingOptionSavings => '비상금/저축 자산으로 적립';
+
+  @override
+  String get savedJuiceStoreTooltip => '지켜낸 주스 보관함';
+
+  @override
+  String savingHistoryTotalLabel(Object amount, Object currencyAmount) {
+    return '지켜낸 주스: $amount mL ($currencyAmount)';
+  }
+
+  @override
+  String rolloverBonusLabel(Object amount) {
+    return '지난 주기 이월 +$amount mL 포함';
+  }
+
+  @override
+  String get savingsAssetCardTitle => '절약으로 지켜낸 자산';
+
+  @override
+  String get savingsAssetCardDescription => '저축 옵션으로 마감된 주기들의 남은 주스 누적 합계예요.';
+
+  @override
+  String get savingPraise_1 => '벌써 이만큼 더 저축했어요! 대단해요!! 목표에 한 걸음 더 가까워지고 있어요 🍊';
+
+  @override
+  String get savingPraise_2 => '소중한 주스를 신선하게 지켜냈어요! 당신의 절약 습관이 빛나고 있어요 ✨';
+
+  @override
+  String get savingPraise_3 => '차곡차곡 모인 주스가 든든한 자산이 되고 있어요! 오늘 하루도 파이팅 🧃';
+
+  @override
+  String get savingPraise_4 => '절약도 하나의 멋진 습관! 주스 잔고가 차오를수록 여유도 함께 차올라요 달콤한 성과네요 🍯';
+
+  @override
+  String get savingPraise_5 => '흔들리지 않고 목표를 방어해 낸 멋진 당신! 다음 주스도 상쾌하게 지켜봐요 🍏';
+
+  @override
+  String get savingsLabel => '저축';
+
+  @override
+  String get savingsCategoryTab => '저축 카테고리';
+
+  @override
+  String get category_savings_bank_name => '저축';
+
+  @override
+  String get category_savings_bank_desc => '차곡차곡 쌓이는 목돈 🏦';
+
+  @override
+  String get category_savings_invest_name => '투자/주식';
+
+  @override
+  String get category_savings_invest_desc => '내일을 위해 심는 과일 씨앗 📈';
+
+  @override
+  String get category_savings_housing_name => '주택청약저축';
+
+  @override
+  String get category_savings_housing_desc => '달콤한 내 집 마련의 꿈 🏠';
+
+  @override
+  String get category_savings_isa_name => 'ISA/절세계좌';
+
+  @override
+  String get category_savings_isa_desc => '든든한 만능 절세 주머니 🛡️';
+
+  @override
+  String get category_savings_emergency_name => '비상금';
+
+  @override
+  String get category_savings_emergency_desc => '언제든 기댈 수 있는 완충재 🧃';
+
+  @override
+  String savingsRecordedMessage(Object category, Object amount) {
+    return '\'$category\' 저축 $amount mL를 기록했어요! 🌱';
+  }
+
+  @override
+  String get statsTotalIncomeTitle => '총 수입';
+
+  @override
+  String get statsTotalSavingsTitle => '총 저축';
+
+  @override
+  String get incomeCategoryTitleStats => '카테고리별 수입';
+
+  @override
+  String get savingsCategoryTitleStats => '카테고리별 저축';
+
+  @override
+  String get savingsOverviewSectionTitle => '🌱 저축 · 투자 현황';
+
+  @override
+  String get savingsThisMonthTotalLabel => '이번 달 총 저축 · 투자';
+
+  @override
+  String get savingsOverviewEmptyMessage => '아직 기록된 저축/투자 내역이 없어요';
+
+  @override
+  String get scopeThisMonth => '이번 달';
+
+  @override
+  String get calendarAmountModeCompact => '축약형';
+
+  @override
+  String get calendarAmountModeFull => '확장형';
+
+  @override
+  String get savingsAllTimeTotalLabel => '전체 누적 저축 · 투자';
+
+  @override
+  String get currencyWarningNotice => '실시간 환율을 반영하여 계산되므로 기존 데이터의 금액에 미세한 차이가 생길 수 있어요. 꼭 필요한 경우에만 변경해 주세요!';
+
+  @override
+  String get onboardingStep1Title => '마음 편히 마실 생활비 예산을 정해볼까요?';
+
+  @override
+  String get onboardingBudgetLabelDaily => '하루 예산';
+
+  @override
+  String get onboardingBudgetLabelWeekly => '이번 주 예산';
+
+  @override
+  String get onboardingBudgetLabelMonthly => '한 달 예산';
+
+  @override
+  String get onboardingStep1NextButton => '다음: 장기 목표 정하기 (1/2)';
+
+  @override
+  String get onboardingFooterHint => '설정에서 언제든지 자유롭게 변경할 수 있어요!';
+
+  @override
+  String get onboardingStep2Title => 'n년 후를 위한 나만의 저축 목표가 있나요?';
+
+  @override
+  String get onboardingStep2Subtitle => '목표를 정하면 매달 모아야 할 저축액과 가용 주스를 똑똑하게 계산해 드려요.';
+
+  @override
+  String get onboardingDurationLabel => '목표 기간';
+
+  @override
+  String get onboardingGoalAmountLabel => '목표 금액';
+
+  @override
+  String get onboardingCompleteButton => '목표 설정 완료하고 시작하기';
+
+  @override
+  String get onboardingSkipButton => '지금은 건너뛸래요';
+
+  @override
+  String get commonBack => '뒤로';
+
+  @override
+  String onboardingStep1Subtitle(Object symbol) {
+    return '주스(mL)는 내가 쓸 수 있는 돈이에요! (1$symbol = 1 mL)';
+  }
+
+  @override
+  String get customDuration => '직접 설정';
+
+  @override
+  String get yearUnit => '년';
+
+  @override
+  String get monthUnit => '개월';
+
+  @override
+  String totalDurationLabel(Object months) {
+    return '총 $months개월 동안';
+  }
+
+  @override
+  String onboardingMonthlyEstimateMessage(Object months, Object amount) {
+    return '$months개월 동안 매달 약 $amount씩 모으면 달성할 수 있어요! 🌱';
+  }
+
+  @override
+  String get onboardingChooseGoalType => '어떤 목표부터 시작해 볼까요?';
+
+  @override
+  String get onboardingShortTermTitle => '가벼운 단기 생활비 예산';
+
+  @override
+  String get onboardingShortTermDesc => '오늘, 이번 주, 이번 달 동안 마실 주스 용량을 정하고 가볍게 지출을 관리해요.';
+
+  @override
+  String get onboardingLongTermTitle => '든든한 중·장기 저축 목표';
+
+  @override
+  String get onboardingLongTermDesc => 'N년 후 이루고 싶은 목돈 목표를 정하고 스마트하게 모아가요.';
+
+  @override
+  String get startWithJuice => '주스 채우고 시작하기';
+
+  @override
+  String get startWithLongPlan => '플랜 저장하고 시작하기';
+
+  @override
+  String get category_income_salary_name => '월급';
+
+  @override
+  String get category_income_salary_desc => '달콤한 피와 땀의 결실 💼';
+
+  @override
+  String get category_income_side_name => '부수입/알바';
+
+  @override
+  String get category_income_side_desc => '쏠쏠하게 차오르는 보너스 꿀 🍯';
+
+  @override
+  String get category_income_allowance_name => '용돈';
+
+  @override
+  String get category_income_allowance_desc => '기분 좋은 서프라이즈 선물 🎁';
+
+  @override
+  String get category_income_finance_name => '금융소득(이자/배당)';
+
+  @override
+  String get category_income_finance_desc => '돈이 돈을 벌어온 열매 📈';
+
+  @override
+  String get category_income_etc_name => '기타 수입';
+
+  @override
+  String get category_income_etc_desc => '기타 다채로운 수입 💧';
 }

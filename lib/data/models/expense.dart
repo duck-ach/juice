@@ -23,6 +23,7 @@ class Expense extends HiveObject {
     this.originalAmount,
     this.originalCurrency,
     this.exchangeRate,
+    this.isSavings = false,
   })  : createdAt = createdAt ?? DateTime.now(),
         paymentMethodName = paymentMethod.name;
 
@@ -85,6 +86,12 @@ class Expense extends HiveObject {
   /// 이미 이 환율로 환산되어 기준 통화로 저장된 값이므로, 예산/합계 계산은 항상 [amount]만 쓰면 된다.
   @HiveField(15)
   double? exchangeRate;
+
+  /// true면 지출/수입이 아닌 저축·투자(통장 이동/자산 적립) 기록. 캘린더·통계·자산
+  /// 화면에는 정상 표시되지만, 홈 화면 주스 게이지(생활비 예산) 소진량 계산에서는
+  /// 고정지출처럼 항상 제외된다. [isIncome]과 동시에 true가 되지 않는다.
+  @HiveField(16, defaultValue: false)
+  bool isSavings;
 
   /// 외화로 입력된 지출인지.
   bool get isForeignCurrency => originalCurrency != null;

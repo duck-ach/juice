@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 
 import '../../core/widgets/juice_segmented_tab.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/asset_provider.dart';
+import '../../providers/currency_provider.dart';
+import '../../providers/juice_saving_provider.dart';
+import '../../providers/juice_theme_provider.dart';
 import 'widgets/net_flow_bar_chart.dart';
+import 'widgets/savings_overview_section.dart';
 
 /// 수입-지출을 누적 계산한 순자산/현금 흐름 추이 화면.
 class AssetsScreen extends ConsumerWidget {
@@ -16,13 +19,15 @@ class AssetsScreen extends ConsumerWidget {
     final loc = AppLocalizations.of(context)!;
     final period = ref.watch(assetPeriodProvider);
     final netWorth = ref.watch(cumulativeNetWorthProvider);
-    final trend = ref.watch(assetTrendProvider);
-    final periodIncome = trend.fold(0.0, (sum, p) => sum + p.income);
-    final periodExpense = trend.fold(0.0, (sum, p) => sum + p.expense);
-    final formatter = NumberFormat('#,###');
+    final periodSummary = ref.watch(assetPeriodSummaryProvider);
+    final periodIncome = periodSummary.income;
+    final periodExpense = periodSummary.expense;
     final isPositive = netWorth >= 0;
     final periodScopeLabel =
-        period == AssetPeriod.monthly ? loc.scopeThisYear : loc.scopeLast5Years;
+        period == AssetPeriod.monthly ? loc.scopeThisMonth : loc.scopeThisYear;
+    final accumulatedSavings = ref.watch(totalAccumulatedSavingsProvider);
+    final currency = ref.watch(currencyProvider).currency;
+    final themeColor = ref.watch(resolvedJuiceThemeProvider).highColor;
 
     return Scaffold(
       appBar: AppBar(title: Text(loc.assetsTitle)),
@@ -40,7 +45,7 @@ class AssetsScreen extends ConsumerWidget {
                       style: Theme.of(context).textTheme.bodyMedium),
                   const SizedBox(height: 4),
                   Text(
-                    '${isPositive ? '' : '-'}${formatter.format(netWorth.abs())} mL',
+                    '${isPositive ? '' : '-'}${currency.format(netWorth.abs())}',
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.w800,
                           color: isPositive
@@ -56,6 +61,32 @@ class AssetsScreen extends ConsumerWidget {
               ),
             ),
           ),
+          if (accumulatedSavings > 0) ...[
+            const SizedBox(height: 12),
+            Card(
+              margin: EdgeInsets.zero,
+              color: themeColor.withValues(alpha: 0.1),
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(loc.savingsAssetCardTitle,
+                        style: Theme.of(context).textTheme.bodyMedium),
+                    const SizedBox(height: 4),
+                    Text(
+                      currency.format(accumulatedSavings),
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.w800, color: themeColor),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(loc.savingsAssetCardDescription,
+                        style: Theme.of(context).textTheme.bodySmall),
+                  ],
+                ),
+              ),
+            ),
+          ],
           const SizedBox(height: 20),
           JuiceSegmentedTab(
             items: AssetPeriod.values.map((p) => p.label(loc)).toList(),
@@ -71,6 +102,7 @@ class AssetsScreen extends ConsumerWidget {
                   label: loc.totalIncomeLabel(periodScopeLabel),
                   amount: periodIncome,
                   color: Colors.green.shade600,
+                  currency: currency,
                 ),
               ),
               const SizedBox(width: 12),
@@ -79,6 +111,7 @@ class AssetsScreen extends ConsumerWidget {
                   label: loc.totalExpenseLabel(periodScopeLabel),
                   amount: periodExpense,
                   color: Theme.of(context).colorScheme.error,
+                  currency: currency,
                 ),
               ),
             ],
@@ -93,6 +126,8 @@ class AssetsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 12),
           const NetFlowBarChart(),
+          const SizedBox(height: 28),
+          const SavingsOverviewSection(),
         ],
       ),
     );
@@ -100,16 +135,20 @@ class AssetsScreen extends ConsumerWidget {
 }
 
 class _SummaryTile extends StatelessWidget {
-  const _SummaryTile(
-      {required this.label, required this.amount, required this.color});
+  const _SummaryTile({
+    required this.label,
+    required this.amount,
+    required this.color,
+    required this.currency,
+  });
 
   final String label;
   final double amount;
   final Color color;
+  final CurrencyItem currency;
 
   @override
   Widget build(BuildContext context) {
-    final formatter = NumberFormat('#,###');
     return Card(
       margin: EdgeInsets.zero,
       child: Padding(
@@ -120,7 +159,7 @@ class _SummaryTile extends StatelessWidget {
             Text(label, style: Theme.of(context).textTheme.bodySmall),
             const SizedBox(height: 4),
             Text(
-              '${formatter.format(amount)} mL',
+              currency.format(amount),
               style: Theme.of(context)
                   .textTheme
                   .titleMedium

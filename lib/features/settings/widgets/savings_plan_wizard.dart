@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../core/utils/thousands_formatter.dart';
+import '../../../core/widgets/juice_choice_chip.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/budget_settings_provider.dart';
 import '../../../providers/savings_planner_provider.dart';
@@ -224,7 +225,7 @@ class _SavingsPlanWizardScreenState
                     onPressed:
                         !_canProceed ? null : (_step == 3 ? _finish : _next),
                     child: Text(_step == 3
-                        ? loc.finishWizardButton
+                        ? loc.startWithLongPlan
                         : loc.commonNext),
                   ),
                 ),
@@ -366,15 +367,15 @@ class _GoalStep extends StatelessWidget {
           runSpacing: 8,
           children: [
             for (final months in presets)
-              ChoiceChip(
-                label: Text(_presetLabel(loc, months)),
+              JuiceChoiceChip(
+                label: _presetLabel(loc, months),
                 selected: !customDuration && selectedPreset == months,
-                onSelected: (_) => onSelectPreset(months),
+                onTap: () => onSelectPreset(months),
               ),
-            ChoiceChip(
-              label: Text(loc.customInputLabel),
+            JuiceChoiceChip(
+              label: loc.customInputLabel,
               selected: customDuration,
-              onSelected: (_) => onSelectCustom(),
+              onTap: onSelectCustom,
             ),
           ],
         ),

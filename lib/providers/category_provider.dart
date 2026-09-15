@@ -17,7 +17,7 @@ enum CategoryRemoveResult {
   /// 기본 제공 카테고리라 삭제할 수 없음.
   isDefault,
 
-  /// 이 카테고리를 사용 중인 수입 내역이 있어 삭제를 막음(수입 카테고리 한정).
+  /// 이 카테고리를 사용 중인 내역이 있어 삭제를 막음(수입/저축 카테고리 한정).
   inUse,
 }
 
@@ -60,7 +60,7 @@ class CategoryNotifier extends Notifier<List<Category>> {
     state = repo.getAll();
   }
 
-  /// 기본 제공 카테고리는 삭제할 수 없고, 수입 카테고리는 이미 사용 중인 수입 내역이
+  /// 기본 제공 카테고리는 삭제할 수 없고, 수입/저축 카테고리는 이미 사용 중인 내역이
   /// 있으면 삭제를 막는다(지출 카테고리는 기존과 동일하게 기록은 유지한 채 삭제 허용).
   Future<CategoryRemoveResult> remove(String id) async {
     final repo = ref.read(categoryRepositoryProvider);
@@ -69,10 +69,10 @@ class CategoryNotifier extends Notifier<List<Category>> {
     final category = matches.first;
     if (category.isDefault) return CategoryRemoveResult.isDefault;
 
-    if (category.type == CategoryType.income) {
-      final inUse = ref
-          .read(expenseProvider)
-          .any((e) => e.isIncome && e.categoryId == id);
+    if (category.type == CategoryType.income || category.type == CategoryType.savings) {
+      final inUse = ref.read(expenseProvider).any((e) =>
+          e.categoryId == id &&
+          (category.type == CategoryType.income ? e.isIncome : e.isSavings));
       if (inUse) return CategoryRemoveResult.inUse;
     }
 
@@ -107,4 +107,10 @@ final expenseCategoriesProvider = Provider<List<Category>>((ref) => ref
 final incomeCategoriesProvider = Provider<List<Category>>((ref) => ref
     .watch(categoryProvider)
     .where((c) => c.type == CategoryType.income)
+    .toList());
+
+/// 저축/투자 카테고리 목록(표시 순서대로).
+final savingsCategoriesProvider = Provider<List<Category>>((ref) => ref
+    .watch(categoryProvider)
+    .where((c) => c.type == CategoryType.savings)
     .toList());

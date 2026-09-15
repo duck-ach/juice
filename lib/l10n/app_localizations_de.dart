@@ -7,7 +7,7 @@ class AppLocalizationsDe extends AppLocalizations {
   AppLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
-  String get appTitle => 'Juice Budget';
+  String get appTitle => 'Juice Haushaltsbuch';
 
   @override
   String get selectLanguage => 'Sprache auswählen';
@@ -334,7 +334,7 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get categoryInUseMessage => 'Einige Einnahmen verwenden diese Kategorie. Verschiebe sie zuerst, bevor du löschst.';
+  String get categoryInUseMessage => 'Einige Einträge verwenden diese Kategorie. Verschiebe sie zuerst, bevor du löschst.';
 
   @override
   String get categoryEditTitle => 'Kategorie bearbeiten';
@@ -735,7 +735,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get cardStatsViewByCard => 'Nach Karte';
 
   @override
-  String get noExpensesInPeriod => 'Keine Ausgaben in diesem Zeitraum';
+  String get noExpensesInPeriod => 'Keine Einträge in diesem Zeitraum';
 
   @override
   String get installmentIncludedSuffix => 'inkl. Raten';
@@ -891,10 +891,10 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get settingsLanguage => 'Sprache';
+  String get settingsLanguage => 'Spracheinstellungen';
 
   @override
-  String get settingsCurrency => 'Währung';
+  String get settingsCurrency => 'Basiswährung festlegen';
 
   @override
   String get currencySelectTitle => 'Wähle deine Währung';
@@ -957,46 +957,46 @@ class AppLocalizationsDe extends AppLocalizations {
   String get currencyMigrationFailedMessage => 'Wechselkurs konnte nicht abgerufen werden, bestehende Beträge bleiben unverändert';
 
   @override
-  String get category_food_name => 'Essen & Trinken';
+  String get category_food_name => 'Lebensmittel';
 
   @override
-  String get category_food_desc => 'Leckere Energie für heute 🍱';
+  String get category_food_desc => 'Köstliche Energie für den Tag 🍱';
 
   @override
   String get category_cafe_name => 'Café & Snacks';
 
   @override
-  String get category_cafe_desc => 'Ein süßer Löffel Freude ☕️';
+  String get category_cafe_desc => 'Eine süße Pause für die Seele ☕️';
 
   @override
   String get category_transport_name => 'Transport';
 
   @override
-  String get category_transport_desc => 'Sanfte Fahrt zum Ziel 🚌';
+  String get category_transport_desc => 'Bequem ans Ziel kommen 🚌';
 
   @override
-  String get category_shopping_name => 'Einkaufen';
+  String get category_shopping_name => 'Shopping';
 
   @override
-  String get category_shopping_desc => 'Freude am Sich-selbst-Verwöhnen 🛍️';
+  String get category_shopping_desc => 'Kleine Freuden des Alltags 🛍️';
 
   @override
-  String get category_culture_name => 'Kultur & Freizeit';
+  String get category_culture_name => 'Freizeit & Kultur';
 
   @override
-  String get category_culture_desc => 'Süße Erholung für die Seele 🎬';
+  String get category_culture_desc => 'Süße Erholung für den Geist 🎬';
 
   @override
-  String get category_life_name => 'Wohnen & Alltag';
+  String get category_life_name => 'Wohnen & Haushalt';
 
   @override
-  String get category_life_desc => 'Frische für den Alltagskomfort 🧼';
+  String get category_life_desc => 'Für ein gemütliches Zuhause 🧼';
 
   @override
   String get category_etc_name => 'Sonstiges';
 
   @override
-  String get category_etc_desc => 'Bunte Alltagsausgaben 💬';
+  String get category_etc_desc => 'Bunte Ausgaben des Lebens 💬';
 
   @override
   String savedJuiceBadgeLabel(Object amount) {
@@ -1023,4 +1023,241 @@ class AppLocalizationsDe extends AppLocalizations {
   String savingHistoryDetailLine(Object target, Object spent) {
     return 'Ziel $target / Ausgegeben $spent';
   }
+
+  @override
+  String get savingOptionTitle => 'Umgang mit übrig gebliebenem Juice';
+
+  @override
+  String get savingOptionDescription => 'Wähle, was mit deinem ungenutzten Budget am Ende eines Zeitraums passiert.';
+
+  @override
+  String get savingOptionRollover => 'Auf nächsten Zeitraum übertragen';
+
+  @override
+  String get savingOptionSavings => 'Als Notgroschen ansparen';
+
+  @override
+  String get savedJuiceStoreTooltip => 'Juice-Tresor';
+
+  @override
+  String savingHistoryTotalLabel(Object amount, Object currencyAmount) {
+    return 'Geretteter Juice: $amount mL ($currencyAmount)';
+  }
+
+  @override
+  String rolloverBonusLabel(Object amount) {
+    return 'Enthält +$amount mL aus dem letzten Zeitraum übertragen';
+  }
+
+  @override
+  String get savingsAssetCardTitle => 'Durch Sparen geschützte Vermögenswerte';
+
+  @override
+  String get savingsAssetCardDescription => 'Gesamter übriger Juice aus mit der Sparoption abgeschlossenen Zeiträumen.';
+
+  @override
+  String get savingPraise_1 => 'Du hast schon so viel gespart! Großartig!! Du kommst deinem Ziel immer näher 🍊';
+
+  @override
+  String get savingPraise_2 => 'Du hast deinen Saft frisch gehalten! Deine Spargewohnheiten glänzen ✨';
+
+  @override
+  String get savingPraise_3 => 'Dein gesparter Saft wird zu echtem Vermögen! Weiter so 🧃';
+
+  @override
+  String get savingPraise_4 => 'Sparen ist eine tolle Gewohnheit! Je voller dein Saftglas, desto entspannter dein Tag 🍯';
+
+  @override
+  String get savingPraise_5 => 'Klasse Leistung! Du hast dein Ziel verteidigt. Lass uns auch das nächste Glas frisch halten 🍏';
+
+  @override
+  String get savingsLabel => 'Sparen';
+
+  @override
+  String get savingsCategoryTab => 'Sparkategorien';
+
+  @override
+  String get category_savings_bank_name => 'Sparen';
+
+  @override
+  String get category_savings_bank_desc => 'Ein Notgroschen, der stetig wächst 🏦';
+
+  @override
+  String get category_savings_invest_name => 'Investition';
+
+  @override
+  String get category_savings_invest_desc => 'Fruchtsamen, gepflanzt für morgen 📈';
+
+  @override
+  String get category_savings_housing_name => 'Bausparvertrag';
+
+  @override
+  String get category_savings_housing_desc => 'Der süße Traum vom eigenen Zuhause 🏠';
+
+  @override
+  String get category_savings_isa_name => 'Altersvorsorge/Depot';
+
+  @override
+  String get category_savings_isa_desc => 'Eine verlässliche Allzweck-Steuersparhülle 🛡️';
+
+  @override
+  String get category_savings_emergency_name => 'Notgroschen';
+
+  @override
+  String get category_savings_emergency_desc => 'Ein Puffer, auf den du dich jederzeit verlassen kannst 🧃';
+
+  @override
+  String savingsRecordedMessage(Object category, Object amount) {
+    return '\'$category\' Ersparnis von $amount mL erfasst! 🌱';
+  }
+
+  @override
+  String get statsTotalIncomeTitle => 'Gesamteinnahmen';
+
+  @override
+  String get statsTotalSavingsTitle => 'Gesamtersparnisse';
+
+  @override
+  String get incomeCategoryTitleStats => 'Einnahmen nach Kategorie';
+
+  @override
+  String get savingsCategoryTitleStats => 'Ersparnisse nach Kategorie';
+
+  @override
+  String get savingsOverviewSectionTitle => '🌱 Sparen & Investieren';
+
+  @override
+  String get savingsThisMonthTotalLabel => 'Insgesamt gespart & investiert diesen Monat';
+
+  @override
+  String get savingsOverviewEmptyMessage => 'Noch keine Ersparnisse oder Investitionen erfasst';
+
+  @override
+  String get scopeThisMonth => 'diesen Monat';
+
+  @override
+  String get calendarAmountModeCompact => 'Kompakt';
+
+  @override
+  String get calendarAmountModeFull => 'Vollständig';
+
+  @override
+  String get savingsAllTimeTotalLabel => 'Insgesamt gespart & investiert (gesamt)';
+
+  @override
+  String get currencyWarningNotice => 'Beträge werden nach Echtzeitkursen umgerechnet. Dadurch können minimale Rundungsdifferenzen entstehen. Bitte nur bei Bedarf ändern!';
+
+  @override
+  String get onboardingStep1Title => 'Leg dein Budget für den Alltag fest';
+
+  @override
+  String get onboardingBudgetLabelDaily => 'Tagesbudget';
+
+  @override
+  String get onboardingBudgetLabelWeekly => 'Budget dieser Woche';
+
+  @override
+  String get onboardingBudgetLabelMonthly => 'Budget dieses Monats';
+
+  @override
+  String get onboardingStep1NextButton => 'Weiter: Langfristiges Ziel festlegen (1/2)';
+
+  @override
+  String get onboardingFooterHint => 'Du kannst das jederzeit in den Einstellungen ändern!';
+
+  @override
+  String get onboardingStep2Title => 'Hast du ein Sparziel für die nächsten Jahre?';
+
+  @override
+  String get onboardingStep2Subtitle => 'Leg ein Ziel fest und wir berechnen smart deine monatliche Sparrate und verfügbare Juice-Menge.';
+
+  @override
+  String get onboardingDurationLabel => 'Zielzeitraum';
+
+  @override
+  String get onboardingGoalAmountLabel => 'Zielbetrag';
+
+  @override
+  String get onboardingCompleteButton => 'Ziel festlegen und starten';
+
+  @override
+  String get onboardingSkipButton => 'Jetzt überspringen';
+
+  @override
+  String get commonBack => 'Zurück';
+
+  @override
+  String onboardingStep1Subtitle(Object symbol) {
+    return 'Juice (mL) ist Geld, das du ausgeben kannst! (1$symbol = 1 mL)';
+  }
+
+  @override
+  String get customDuration => 'Benutzerdefiniert';
+
+  @override
+  String get yearUnit => 'Jahr(e)';
+
+  @override
+  String get monthUnit => 'Monat(e)';
+
+  @override
+  String totalDurationLabel(Object months) {
+    return 'Insgesamt $months Monate';
+  }
+
+  @override
+  String onboardingMonthlyEstimateMessage(Object months, Object amount) {
+    return 'Spare $months Monate lang monatlich etwa $amount und du erreichst dein Ziel! 🌱';
+  }
+
+  @override
+  String get onboardingChooseGoalType => 'Mit welchem Ziel möchtest du starten?';
+
+  @override
+  String get onboardingShortTermTitle => 'Flexibles Kurzzeit-Budget';
+
+  @override
+  String get onboardingShortTermDesc => 'Lege fest, wie viel Saft du heute, diese Woche oder diesen Monat trinken möchtest.';
+
+  @override
+  String get onboardingLongTermTitle => 'Solides Sparziel';
+
+  @override
+  String get onboardingLongTermDesc => 'Setze dir ein langfristiges Sparziel und baue dein Vermögen planvoll auf.';
+
+  @override
+  String get startWithJuice => 'Mit Saft starten';
+
+  @override
+  String get startWithLongPlan => 'Plan speichern und starten';
+
+  @override
+  String get category_income_salary_name => 'Gehalt';
+
+  @override
+  String get category_income_salary_desc => 'Die süße Frucht harter Arbeit 💼';
+
+  @override
+  String get category_income_side_name => 'Bonus';
+
+  @override
+  String get category_income_side_desc => 'Ein süßer Bonus obendrauf 🍯';
+
+  @override
+  String get category_income_allowance_name => 'Taschengeld';
+
+  @override
+  String get category_income_allowance_desc => 'Ein schönes Überraschungsgeschenk 🎁';
+
+  @override
+  String get category_income_finance_name => 'Investitionen';
+
+  @override
+  String get category_income_finance_desc => 'Früchte, die dein Geld für dich trägt 📈';
+
+  @override
+  String get category_income_etc_name => 'Sonstige Einnahmen';
+
+  @override
+  String get category_income_etc_desc => 'Weitere bunte Einnahmen 💧';
 }

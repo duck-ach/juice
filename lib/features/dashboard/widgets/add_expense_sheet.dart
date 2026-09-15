@@ -56,6 +56,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
   String? _selectedCategoryId;
   bool _isFixed = false;
   bool _isIncome = false;
+  bool _isSavings = false;
   late DateTime _selectedDate;
   PaymentMethod _paymentMethod = PaymentMethod.checkCard;
   String? _selectedCardId;
@@ -74,9 +75,9 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
 
   bool get _isEditing => widget.editingExpense != null;
 
-  /// 외화 결제 선택이 허용되는 경우인지. 수입과 더치페이(자동 계산 필드)는 제외.
+  /// 외화 결제 선택이 허용되는 경우인지. 수입·저축과 더치페이(자동 계산 필드)는 제외.
   bool get _allowForeignCurrency =>
-      !_isIncome && _paymentMethod != PaymentMethod.splitBill;
+      !_isIncome && !_isSavings && _paymentMethod != PaymentMethod.splitBill;
 
   /// 선택된 결제 통화가 소수점 단위(달러/유로 등)를 쓰는 외화일 때만 금액 입력에
   /// 소수점을 허용한다(기준 통화·엔·동 등은 정수 단위 그대로 천 단위 콤마 입력).
@@ -98,6 +99,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
     _selectedCategoryId = editing?.categoryId;
     _isFixed = editing?.isFixed ?? false;
     _isIncome = editing?.isIncome ?? false;
+    _isSavings = editing?.isSavings ?? false;
     _selectedDate = editing?.date ?? widget.initialDate ?? DateTime.now();
     _paymentMethod = editing?.paymentMethod ?? PaymentMethod.checkCard;
     _selectedCardId = editing?.cardId;
@@ -116,10 +118,14 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
             : '');
   }
 
-  void _setIncome(bool isIncome) {
-    if (isIncome == _isIncome) return;
+  /// 지출/수입/저축 세그먼트 탭 전환(index 0/1/2).
+  void _setEntryType(int index) {
+    final isIncome = index == 1;
+    final isSavings = index == 2;
+    if (isIncome == _isIncome && isSavings == _isSavings) return;
     setState(() {
       _isIncome = isIncome;
+      _isSavings = isSavings;
       _selectedCategoryId = null;
     });
   }
@@ -285,9 +291,11 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
     final originalCurrency = isForeign ? _selectedCurrency.code : null;
     final exchangeRate = isForeign ? _exchangeRate : null;
 
-    final categoryName = (_isIncome
-            ? ref.read(incomeCategoriesProvider)
-            : ref.read(expenseCategoriesProvider))
+    final categoryName = (_isSavings
+            ? ref.read(savingsCategoriesProvider)
+            : _isIncome
+                ? ref.read(incomeCategoriesProvider)
+                : ref.read(expenseCategoriesProvider))
         .firstWhere((c) => c.id == _selectedCategoryId)
         .getLocalizedName(context);
     final memo = _memoController.text.trim().isEmpty
@@ -295,6 +303,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
         : _memoController.text.trim();
     final isNewInstallment = !_isEditing &&
         !_isIncome &&
+        !_isSavings &&
         _paymentMethod == PaymentMethod.creditCard &&
         _installmentMonths > 1;
 
@@ -315,24 +324,27 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
           .read(expenseProvider.notifier)
           .upsertInstallment(base, _installmentMonths);
     } else {
+      final excludeCardFields = _isIncome || _isSavings;
       final expense = Expense(
         id: widget.editingExpense?.id ?? const Uuid().v4(),
         amount: amount,
         categoryId: _selectedCategoryId!,
         date: _selectedDate,
         memo: memo,
-        isFixed: _isIncome ? false : _isFixed,
+        isFixed: excludeCardFields ? false : _isFixed,
         isIncome: _isIncome,
+        isSavings: _isSavings,
         createdAt: widget.editingExpense?.createdAt,
-        paymentMethod: _isIncome ? PaymentMethod.checkCard : _paymentMethod,
+        paymentMethod:
+            excludeCardFields ? PaymentMethod.checkCard : _paymentMethod,
         installmentMonths: widget.editingExpense?.installmentMonths ?? 1,
         currentInstallmentIndex:
             widget.editingExpense?.currentInstallmentIndex ?? 1,
         installmentGroupId: widget.editingExpense?.installmentGroupId,
-        cardId: _isIncome ? null : _selectedCardId,
-        originalAmount: _isIncome ? null : originalAmount,
-        originalCurrency: _isIncome ? null : originalCurrency,
-        exchangeRate: _isIncome ? null : exchangeRate,
+        cardId: excludeCardFields ? null : _selectedCardId,
+        originalAmount: excludeCardFields ? null : originalAmount,
+        originalCurrency: excludeCardFields ? null : originalCurrency,
+        exchangeRate: excludeCardFields ? null : exchangeRate,
       );
       await ref.read(expenseProvider.notifier).upsert(expense);
     }
@@ -340,9 +352,11 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
     if (!mounted) return;
     if (!_isEditing) {
       final formatter = NumberFormat('#,###');
-      final message = _isIncome
-          ? loc.incomeRecordedMessage(categoryName, formatter.format(amount))
-          : loc.expenseRecordedMessage(categoryName, formatter.format(amount));
+      final message = _isSavings
+          ? loc.savingsRecordedMessage(categoryName, formatter.format(amount))
+          : _isIncome
+              ? loc.incomeRecordedMessage(categoryName, formatter.format(amount))
+              : loc.expenseRecordedMessage(categoryName, formatter.format(amount));
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message)));
     }
@@ -353,7 +367,11 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
     final loc = AppLocalizations.of(context)!;
     final editing = widget.editingExpense;
     if (editing == null) return;
-    final label = editing.isIncome ? loc.incomeLabel : loc.expenseLabel;
+    final label = editing.isSavings
+        ? loc.savingsLabel
+        : editing.isIncome
+            ? loc.incomeLabel
+            : loc.expenseLabel;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
@@ -375,7 +393,13 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
   }
 
   Future<void> _openAddCategoryDialog() async {
-    final newCategoryId = await showAddCategorySheet(context, ref);
+    final type = _isSavings
+        ? CategoryType.savings
+        : _isIncome
+            ? CategoryType.income
+            : CategoryType.expense;
+    final newCategoryId =
+        await showAddCategorySheet(context, ref, type: type);
     if (newCategoryId != null) {
       setState(() => _selectedCategoryId = newCategoryId);
     }
@@ -387,14 +411,22 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
     final baseCurrency = ref.watch(currencyProvider).currency;
     final categories = ref.watch(expenseCategoriesProvider);
     final incomeCategories = ref.watch(incomeCategoriesProvider);
-    if (_isIncome) {
+    final savingsCategories = ref.watch(savingsCategoriesProvider);
+    if (_isSavings) {
+      _selectedCategoryId ??=
+          savingsCategories.isNotEmpty ? savingsCategories.first.id : null;
+    } else if (_isIncome) {
       _selectedCategoryId ??=
           incomeCategories.isNotEmpty ? incomeCategories.first.id : null;
     } else {
       _selectedCategoryId ??=
           categories.isNotEmpty ? categories.first.id : null;
     }
-    final typeLabel = _isIncome ? loc.incomeLabel : loc.expenseLabel;
+    final typeLabel = _isSavings
+        ? loc.savingsLabel
+        : _isIncome
+            ? loc.incomeLabel
+            : loc.expenseLabel;
 
     final matchingCards = switch (_paymentMethod) {
       PaymentMethod.checkCard => ref.watch(checkCardsProvider),
@@ -462,9 +494,9 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                       children: [
                         const SizedBox(height: 8),
                         JuiceSegmentedTab(
-                          items: [loc.expenseLabel, loc.incomeLabel],
-                          selectedIndex: _isIncome ? 1 : 0,
-                          onTabChanged: (index) => _setIncome(index == 1),
+                          items: [loc.expenseLabel, loc.incomeLabel, loc.savingsLabel],
+                          selectedIndex: _isSavings ? 2 : (_isIncome ? 1 : 0),
+                          onTabChanged: _setEntryType,
                         ),
                         const SizedBox(height: 8),
                         TextField(
@@ -524,14 +556,19 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                         const SizedBox(height: 12),
                         SizedBox(
                           height: 86,
-                          child: _isIncome
+                          child: _isSavings || _isIncome
                               ? ListView.separated(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: incomeCategories.length,
+                                  itemCount: (_isSavings
+                                          ? savingsCategories
+                                          : incomeCategories)
+                                      .length,
                                   separatorBuilder: (_, __) =>
                                       const SizedBox(width: 8),
                                   itemBuilder: (context, index) {
-                                    final category = incomeCategories[index];
+                                    final category = (_isSavings
+                                        ? savingsCategories
+                                        : incomeCategories)[index];
                                     return _CategoryChip(
                                       category: category,
                                       selected:
@@ -587,7 +624,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                             ),
                           ),
                         ),
-                        if (!_isIncome) ...[
+                        if (!_isIncome && !_isSavings) ...[
                           const SizedBox(height: 8),
                           JuiceSegmentedTab(
                             items: PaymentMethod.values
@@ -763,7 +800,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                           decoration:
                               InputDecoration(hintText: loc.memoHint),
                         ),
-                        if (!_isIncome)
+                        if (!_isIncome && !_isSavings)
                           CheckboxListTile(
                             contentPadding: EdgeInsets.zero,
                             controlAffinity: ListTileControlAffinity.leading,
