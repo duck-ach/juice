@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../core/utils/thousands_formatter.dart';
+import '../../../core/widgets/juice_choice_chip.dart';
 import '../../../core/widgets/juice_segmented_tab.dart';
 import '../../../data/models/card_item.dart';
 import '../../../data/models/category.dart';
@@ -674,21 +675,21 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                               runSpacing: 8,
                               children: [
                                 for (final m in _installmentPresets)
-                                  ChoiceChip(
-                                    label: Text(m == 1
+                                  JuiceChoiceChip(
+                                    label: m == 1
                                         ? loc.lumpSumLabel
-                                        : loc.monthsPresetLabel(m)),
+                                        : loc.monthsPresetLabel(m),
                                     selected: !_customInstallment &&
                                         _installmentMonths == m,
-                                    onSelected: (_) => setState(() {
+                                    onTap: () => setState(() {
                                       _customInstallment = false;
                                       _installmentMonths = m;
                                     }),
                                   ),
-                                ChoiceChip(
-                                  label: Text(loc.customInputLabel),
+                                JuiceChoiceChip(
+                                  label: loc.customInputLabel,
                                   selected: _customInstallment,
-                                  onSelected: (_) => setState(() {
+                                  onTap: () => setState(() {
                                     _customInstallment = true;
                                     _installmentMonths = int.tryParse(
                                             _customInstallmentController
