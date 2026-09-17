@@ -30,8 +30,9 @@ final calendarMonthItemsProvider = Provider<List<Expense>>((ref) {
   final filter = ref.watch(calendarExpenseFilterProvider);
   return all.where((e) {
     if (!range.contains(e.date)) return false;
-    if (!e.isIncome && filter == ExpenseFilter.variableOnly && e.isFixed)
+    if (!e.isIncome && filter == ExpenseFilter.variableOnly && e.isFixed) {
       return false;
+    }
     return true;
   }).toList();
 });

@@ -47,8 +47,9 @@ class SpendBarChart extends ConsumerWidget {
                 showTitles: true,
                 getTitlesWidget: (value, meta) {
                   final index = value.toInt();
-                  if (index < 0 || index >= trend.length)
+                  if (index < 0 || index >= trend.length) {
                     return const SizedBox.shrink();
+                  }
                   return Padding(
                     padding: const EdgeInsets.only(top: 6),
                     child: Text(pointLabel(trend[index]), style: labelStyle),

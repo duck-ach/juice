@@ -96,17 +96,6 @@ void main() {
     final history = JuiceSavingService.getAll();
     final allExpenses = expenseBox.values.toList();
 
-    print('--- 마감된 히스토리 레코드 수: ${history.length} ---');
-    for (final h in history) {
-      final spent = h.spentAmount(allExpenses);
-      final saved = h.savedAmount(allExpenses);
-      final success = h.isSuccess(allExpenses);
-      print('id=${h.id} periodType=${h.periodType} '
-          'start=${h.startDate} end=${h.endDate} '
-          'target=${h.targetAmount} themeEmoji=${h.themeEmoji} '
-          '=> spent=$spent saved=$saved isSuccess=$success');
-    }
-
     expect(history.length, 1, reason: '9/14 하루치 daily 주기 1건만 마감되어야 함');
     final closed = history.single;
     expect(closed.periodType, 'daily');
@@ -135,8 +124,6 @@ void main() {
     final updatedExpenses = expenseBox.values.toList();
     final spentAfterLateEntry = closed.spentAmount(updatedExpenses);
     final savedAfterLateEntry = closed.savedAmount(updatedExpenses);
-    print('--- 지연 입력(100,000 추가) 후 재계산: '
-        'spent=$spentAfterLateEntry saved=$savedAfterLateEntry ---');
     expect(spentAfterLateEntry, 250000.0);
     expect(savedAfterLateEntry, 250000.0);
 
@@ -187,12 +174,6 @@ void main() {
     final history = JuiceSavingService.getAll()
       ..sort((a, b) => a.startDate.compareTo(b.startDate));
     final allExpenses = expenseBox.values.toList();
-
-    print('--- 이월 체인 검증 ---');
-    for (final h in history) {
-      print('start=${h.startDate} target=${h.targetAmount} '
-          'saved=${h.savedAmount(allExpenses)} savingOption=${h.savingOption}');
-    }
 
     expect(history.length, 3);
     expect(history[0].targetAmount, 500000.0, reason: '첫날은 이월할 이전 기록이 없음');

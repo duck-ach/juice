@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/category_assets.dart';
+import '../../../core/utils/color_argb.dart';
 import '../../../core/widgets/juice_segmented_tab.dart';
 import '../../../data/models/card_item.dart';
 import '../../../l10n/app_localizations.dart';
@@ -68,7 +69,7 @@ class _CardEditSheetState extends ConsumerState<_CardEditSheet> {
     if (_isEditing) {
       final editing = widget.editing!;
       editing.name = name;
-      editing.colorValue = _selectedColor.value;
+      editing.colorValue = _selectedColor.toArgbInt();
       editing.type = _selectedType;
       editing.excludeFromJuice = _selectedType == CardType.corporate;
       await notifier.update(editing);
@@ -77,7 +78,7 @@ class _CardEditSheetState extends ConsumerState<_CardEditSheet> {
       final newId = await notifier.addCustom(
         name: name,
         type: _selectedType,
-        colorValue: _selectedColor.value,
+        colorValue: _selectedColor.toArgbInt(),
       );
       if (mounted) Navigator.of(context).pop(newId);
     }
@@ -191,7 +192,7 @@ class _CardEditSheetState extends ConsumerState<_CardEditSheet> {
                   separatorBuilder: (_, __) => const SizedBox(width: 10),
                   itemBuilder: (context, index) {
                     final c = CategoryAssets.palette[index];
-                    final selected = c.value == _selectedColor.value;
+                    final selected = c == _selectedColor;
                     return GestureDetector(
                       onTap: () => setState(() => _selectedColor = c),
                       child: Container(

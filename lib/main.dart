@@ -30,8 +30,7 @@ Future<void> main() async {
   await NotificationService.init();
   await _refreshNotificationSchedule();
   // 포그라운드로 돌아올 때도 재방문 유도 알림의 "마지막 방문" 기준 시각을 갱신한다.
-  _notificationLifecycleListener =
-      AppLifecycleListener(onResume: () {
+  _notificationLifecycleListener = AppLifecycleListener(onResume: () {
     unawaited(_refreshNotificationSchedule());
   });
   runApp(const ProviderScope(child: JuiceApp()));

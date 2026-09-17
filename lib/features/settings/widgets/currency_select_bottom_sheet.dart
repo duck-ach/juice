@@ -83,6 +83,7 @@ class CurrencySelectBottomSheet extends ConsumerWidget {
       success = false;
     }
 
+    if (!rootContext.mounted) return;
     Navigator.of(rootContext, rootNavigator: true).pop();
 
     // 마이그레이션이 실패하면(오프라인 등) 기준 통화를 바꾸지 않는다 — 그렇지 않으면

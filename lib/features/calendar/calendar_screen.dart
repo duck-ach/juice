@@ -48,7 +48,6 @@ class CalendarScreen extends ConsumerWidget {
     final currency = ref.watch(currencyProvider).currency;
     final amountDisplayMode = ref.watch(calendarAmountDisplayModeProvider);
     final calendarFormat = ref.watch(calendarFormatProvider);
-    final amountsCollapsed = calendarFormat == CalendarFormat.week;
 
     void goToMonth(DateTime month) {
       final normalized = DateTime(month.year, month.month, 1);
@@ -144,7 +143,7 @@ class CalendarScreen extends ConsumerWidget {
                 ? StartingDayOfWeek.sunday
                 : StartingDayOfWeek.monday,
             headerVisible: false,
-            rowHeight: _DayCell.rowHeightFor(amountsCollapsed),
+            rowHeight: _DayCell.rowHeight,
             // 가로 스와이프(월/주 이동)에 더해, 세로 스와이프로도 월간⇄주간 뷰를 직접
             // 접었다 펼 수 있게 한다(아래 상세 내역 영역의 드래그와 동일한 동작).
             availableGestures: AvailableGestures.all,
@@ -177,7 +176,6 @@ class CalendarScreen extends ConsumerWidget {
                 savingsTotal: dailySavingsTotals[dateOnly(day)],
                 currencyCode: currency.code,
                 displayMode: amountDisplayMode,
-                amountsCollapsed: amountsCollapsed,
                 isInstallmentOnly: installmentOnlyDays.contains(dateOnly(day)),
                 isNoSpendDay: noSpendDays.contains(dateOnly(day)),
                 fruitEmoji: fruitEmoji,
@@ -189,7 +187,6 @@ class CalendarScreen extends ConsumerWidget {
                 savingsTotal: dailySavingsTotals[dateOnly(day)],
                 currencyCode: currency.code,
                 displayMode: amountDisplayMode,
-                amountsCollapsed: amountsCollapsed,
                 isInstallmentOnly: installmentOnlyDays.contains(dateOnly(day)),
                 isNoSpendDay: noSpendDays.contains(dateOnly(day)),
                 fruitEmoji: fruitEmoji,
@@ -202,7 +199,6 @@ class CalendarScreen extends ConsumerWidget {
                 savingsTotal: dailySavingsTotals[dateOnly(day)],
                 currencyCode: currency.code,
                 displayMode: amountDisplayMode,
-                amountsCollapsed: amountsCollapsed,
                 isInstallmentOnly: installmentOnlyDays.contains(dateOnly(day)),
                 isNoSpendDay: noSpendDays.contains(dateOnly(day)),
                 fruitEmoji: fruitEmoji,
@@ -216,7 +212,6 @@ class CalendarScreen extends ConsumerWidget {
                 savingsTotal: dailySavingsTotals[dateOnly(day)],
                 currencyCode: currency.code,
                 displayMode: amountDisplayMode,
-                amountsCollapsed: amountsCollapsed,
                 isInstallmentOnly: installmentOnlyDays.contains(dateOnly(day)),
                 isNoSpendDay: noSpendDays.contains(dateOnly(day)),
                 fruitEmoji: fruitEmoji,
@@ -302,7 +297,6 @@ class _DayCell extends StatelessWidget {
     this.savingsTotal,
     required this.currencyCode,
     required this.displayMode,
-    this.amountsCollapsed = false,
     this.isInstallmentOnly = false,
     this.isNoSpendDay = false,
     this.fruitEmoji = '🍊',
@@ -321,9 +315,6 @@ class _DayCell extends StatelessWidget {
 
   /// 금액 표시 방식(축약형/확장형).
   final CalendarAmountDisplayMode displayMode;
-
-  /// true면 주간(축소) 뷰 — 금액 텍스트를 숨기고 날짜 숫자/무지출 스탬프만 남긴다.
-  final bool amountsCollapsed;
   final bool isInstallmentOnly;
 
   /// 순수 변동 지출이 0원인 '무지출 성공' 날인지. true면 날짜 숫자 옆에 [fruitEmoji]를 찍는다.
@@ -335,18 +326,24 @@ class _DayCell extends StatelessWidget {
   final bool isToday;
   final bool isOutside;
 
-  /// 지출/수입 유무와 무관하게 모든 셀이 동일한 크기를 갖도록 고정하는 값.
-  /// TableCalendar의 rowHeight = cellHeight + cellMargin*2로 맞춰준다.
-  static const double cellHeight = 54;
-
-  /// 주간(축소) 뷰에서 쓰는 낮은 셀 높이 — 금액 텍스트가 없으므로 훨씬 얕아도 된다.
-  static const double collapsedCellHeight = 30;
+  /// 지출/수입 유무와 무관하게, 그리고 월간/주간(접힘) 뷰와 무관하게 모든 셀이 항상
+  /// 동일한 크기·폰트를 갖도록 고정하는 값들. 주간 뷰는 TableCalendar가 다른 주(row)를
+  /// 숨기는 것뿐, 남은 한 줄의 셀 내용 자체는 월간 뷰와 완전히 동일하게 렌더링한다.
+  static const double cellHeight = 62;
   static const double cellMargin = 3;
-  static const double _amountRowHeight = 20;
+
+  /// 수입/지출/저축 각 줄이 차지하는 고정 슬롯 높이. 몇 줄이 실제로 채워지든 이 값은
+  /// 변하지 않아 폰트가 임의로 축소되지 않는다(FittedBox scaleDown 금지).
+  static const double _amountLineHeight = 13;
+  static const double _amountAreaHeight = _amountLineHeight * 3;
+  static const _amountTextStyleBase = TextStyle(
+      fontSize: 8.5,
+      height: 1.1,
+      letterSpacing: -0.4,
+      fontWeight: FontWeight.w700);
 
   /// [TableCalendar.rowHeight]에 그대로 대입할 셀 높이(마진 포함).
-  static double rowHeightFor(bool collapsed) =>
-      (collapsed ? collapsedCellHeight : cellHeight) + cellMargin * 2;
+  static const double rowHeight = cellHeight + cellMargin * 2;
 
   @override
   Widget build(BuildContext context) {
@@ -361,12 +358,29 @@ class _DayCell extends StatelessWidget {
     final hasSavings = savingsTotal != null && savingsTotal! > 0;
     final expenseColor = isSelected
         ? Colors.white
-        : AppColors.warningCherry.withValues(alpha: isInstallmentOnly ? 0.45 : 1);
+        : AppColors.warningCherry
+            .withValues(alpha: isInstallmentOnly ? 0.45 : 1);
     final incomeColor = isSelected ? Colors.white : AppColors.safeGreen;
     final savingsColor = isSelected ? Colors.white : AppColors.softPink;
 
+    // 컴팩트 축약(+335만 등)이 기본이라 평소엔 꽉 차지 않지만, 확장형(콤마 풀 표기)처럼
+    // 슬롯 폭을 넘는 긴 숫자가 들어와도 말줄임 대신 그 줄만 살짝 축소해 한 줄에 담는다.
+    Widget amountSlot(bool has, String text, Color color) => SizedBox(
+          height: _amountLineHeight,
+          child: has
+              ? FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.center,
+                  child: Text(text,
+                      maxLines: 1,
+                      style: _amountTextStyleBase.copyWith(color: color)),
+                )
+              : null,
+        );
+
     return Container(
-      height: amountsCollapsed ? collapsedCellHeight : cellHeight,
+      height: cellHeight,
+      width: double.infinity,
       margin: const EdgeInsets.all(cellMargin),
       decoration: BoxDecoration(
         color: isSelected
@@ -385,7 +399,7 @@ class _DayCell extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               if (isNoSpendDay) ...[
-                Text(fruitEmoji, style: const TextStyle(fontSize: 11)),
+                Text(fruitEmoji, style: const TextStyle(fontSize: 10.5)),
                 const SizedBox(width: 2),
               ],
               Text(
@@ -393,80 +407,51 @@ class _DayCell extends StatelessWidget {
                 style: TextStyle(
                     color: numberColor,
                     fontWeight: isToday ? FontWeight.w700 : FontWeight.w500,
-                    fontSize: 13),
+                    fontSize: 10.5),
               ),
             ],
           ),
-          if (!amountsCollapsed) ...[
-            const SizedBox(height: 2),
-            // 금액 유무와 무관하게 항상 같은 높이를 차지하는 플레이스홀더 영역.
-            SizedBox(
-              height: _amountRowHeight,
-              child: Center(
-                child: !hasIncome && !hasExpense && !hasSavings
-                    ? Container(
-                        width: 4,
-                        height: 4,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: (isSelected
-                                  ? Colors.white
-                                  : AppColors.citrusYellow)
-                              .withValues(alpha: isOutside ? 0.15 : 0.5),
-                        ),
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 2),
-                        child: FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              if (hasIncome)
-                                Text(
-                                  '+ ${formatCalendarAmount(incomeTotal!, currencyCode, displayMode)}',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      color: incomeColor,
-                                      fontSize: 9.5,
-                                      height: 1.1,
-                                      letterSpacing: -0.3,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                              if (hasExpense)
-                                Text(
-                                  '- ${formatCalendarAmount(expenseTotal!, currencyCode, displayMode)}',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      color: expenseColor,
-                                      fontSize: 9.5,
-                                      height: 1.1,
-                                      letterSpacing: -0.3,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                              if (hasSavings)
-                                Text(
-                                  formatCalendarAmount(
-                                      savingsTotal!, currencyCode, displayMode),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      color: savingsColor,
-                                      fontSize: 8.5,
-                                      height: 1.05,
-                                      letterSpacing: -0.3,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                            ],
-                          ),
-                        ),
+          const SizedBox(height: 2),
+          SizedBox(
+            height: _amountAreaHeight,
+            child: !hasIncome && !hasExpense && !hasSavings
+                ? Center(
+                    child: Container(
+                      width: 4,
+                      height: 4,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color:
+                            (isSelected ? Colors.white : AppColors.citrusYellow)
+                                .withValues(alpha: isOutside ? 0.15 : 0.5),
                       ),
-              ),
-            ),
-          ],
+                    ),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 1),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        amountSlot(
+                            hasIncome,
+                            '+${hasIncome ? formatCalendarAmount(incomeTotal!, currencyCode, displayMode) : ''}',
+                            incomeColor),
+                        amountSlot(
+                            hasExpense,
+                            '-${hasExpense ? formatCalendarAmount(expenseTotal!, currencyCode, displayMode) : ''}',
+                            expenseColor),
+                        amountSlot(
+                            hasSavings,
+                            hasSavings
+                                ? formatCalendarAmount(
+                                    savingsTotal!, currencyCode, displayMode)
+                                : '',
+                            savingsColor),
+                      ],
+                    ),
+                  ),
+          ),
         ],
       ),
     );

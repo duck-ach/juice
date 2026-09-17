@@ -55,8 +55,9 @@ class SavingsPlan {
   /// 월 가용 생활비(= 스마트 주스 용량) = 월 수입 - 고정지출 합계 - (목표 금액 / 총 개월 수).
   /// 입력이 아직 부족하면 null.
   double? get monthlyAvailable {
-    if (monthlyIncome == null || goalAmount == null || totalMonths <= 0)
+    if (monthlyIncome == null || goalAmount == null || totalMonths <= 0) {
       return null;
+    }
     final monthlySavingNeeded = goalAmount! / totalMonths;
     return monthlyIncome! - fixedExpenseTotal - monthlySavingNeeded;
   }
@@ -98,8 +99,9 @@ class SavingsPlanNotifier extends Notifier<SavingsPlan> {
   @override
   SavingsPlan build() {
     final raw = Hive.box(HiveBoxes.settings).get(_savingsPlanKey) as String?;
-    if (raw == null)
+    if (raw == null) {
       return SavingsPlan(fixedExpenses: SavingsPlan.defaultFixedExpenses);
+    }
     try {
       return SavingsPlan.fromJson(jsonDecode(raw) as Map<String, dynamic>);
     } catch (_) {

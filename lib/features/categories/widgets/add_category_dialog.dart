@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/category_assets.dart';
+import '../../../core/utils/color_argb.dart';
 import '../../../data/models/category.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/category_provider.dart';
@@ -108,7 +109,7 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
       final editing = widget.editing!;
       editing.name = name;
       editing.description = description;
-      editing.colorValue = _selectedColor.value;
+      editing.colorValue = _selectedColor.toArgbInt();
       editing.iconCodePoint = _selectedIcon.codePoint;
       editing.iconFontFamily = _selectedIcon.fontFamily;
       await notifier.update(editing);
@@ -116,7 +117,7 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
     } else {
       final newId = await notifier.addCustom(
         name: name,
-        colorValue: _selectedColor.value,
+        colorValue: _selectedColor.toArgbInt(),
         iconCodePoint: _selectedIcon.codePoint,
         iconFontFamily: _selectedIcon.fontFamily,
         description: description,
@@ -237,7 +238,7 @@ class _CategoryEditSheetState extends ConsumerState<_CategoryEditSheet> {
                   separatorBuilder: (_, __) => const SizedBox(width: 10),
                   itemBuilder: (context, index) {
                     final c = CategoryAssets.palette[index];
-                    final selected = c.value == _selectedColor.value;
+                    final selected = c == _selectedColor;
                     return GestureDetector(
                       onTap: () => setState(() => _selectedColor = c),
                       child: Container(
