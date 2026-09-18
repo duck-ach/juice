@@ -19,7 +19,6 @@
   "paymentCheckCard": "Thẻ ghi nợ",
   "paymentCreditCard": "Thẻ tín dụng",
   "paymentCash": "Tiền mặt · Chuyển khoản",
-  "paymentSplitBill": "Chia hóa đơn",
   "commonCancel": "Hủy",
   "commonSave": "Lưu",
   "commonDelete": "Xóa",
@@ -296,7 +295,6 @@
       "type": {}
     }
   },
-  "splitBillAutoFillHelper": "Nhập tổng số tiền và số người bên dưới để tự động điền",
   "cardSelectLabel": "Chọn thẻ",
   "installmentEditNotice": "Trả góp {index}/{months} — các kỳ trả góp khác sẽ không thay đổi theo",
   "@installmentEditNotice": {
@@ -319,29 +317,6 @@
     "placeholders": {
       "amount": {},
       "months": {}
-    }
-  },
-  "totalPaymentAmountLabel": "Tổng số tiền thanh toán",
-  "splitPeopleCountLabel": "Số người",
-  "peopleCountSuffix": "{count} người",
-  "@peopleCountSuffix": {
-    "placeholders": {
-      "count": {}
-    }
-  },
-  "splitBillHint": "Phần của tôi: {amount} mL (tổng {total} mL ÷ {count} người)",
-  "@splitBillHint": {
-    "placeholders": {
-      "amount": {},
-      "total": {},
-      "count": {}
-    }
-  },
-  "splitBillMemoTag": "(Tổng {total}mL / chia {count} người)",
-  "@splitBillMemoTag": {
-    "placeholders": {
-      "total": {},
-      "count": {}
     }
   },
   "memoHint": "Ghi chú (tùy chọn)",
@@ -404,6 +379,10 @@
   "cardStatsViewSummary": "Tóm tắt",
   "cardStatsViewByCard": "Theo thẻ",
   "noExpensesInPeriod": "Không có mục nào trong khoảng thời gian này",
+  "categoryDetailThisMonthTotal": "Tổng tháng này",
+  "categoryDetailMonthlyTrendTitle": "Xu hướng theo tháng",
+  "categoryDetailExpenseListTitle": "Chi tiết giao dịch",
+  "categoryDetailEmptyMessage": "Chưa có mục nào được ghi lại",
   "installmentIncludedSuffix": "gồm cả trả góp",
   "cardUnassigned": "Chưa gán thẻ",
   "fillJuiceButton": "Đổ đầy Juice",

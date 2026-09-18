@@ -28,9 +28,6 @@ class AppLocalizationsKo extends AppLocalizations {
   String get paymentCash => '현금·이체';
 
   @override
-  String get paymentSplitBill => '더치페이';
-
-  @override
   String get commonCancel => '취소';
 
   @override
@@ -581,9 +578,6 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
-  String get splitBillAutoFillHelper => '아래에서 총 금액과 인원 수를 입력하면 자동으로 채워져요';
-
-  @override
   String get cardSelectLabel => '카드 선택';
 
   @override
@@ -608,27 +602,6 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String installmentMonthlyHint(Object amount, Object months) {
     return '매달 $amount mL씩 $months회 분할 반영돼요';
-  }
-
-  @override
-  String get totalPaymentAmountLabel => '총 결제 금액';
-
-  @override
-  String get splitPeopleCountLabel => '함께한 인원 수';
-
-  @override
-  String peopleCountSuffix(Object count) {
-    return '$count명';
-  }
-
-  @override
-  String splitBillHint(Object amount, Object total, Object count) {
-    return '내가 낼 주스: $amount mL (총 $total mL ÷ $count명)';
-  }
-
-  @override
-  String splitBillMemoTag(Object total, Object count) {
-    return '(총 ${total}mL / $count명 더치페이)';
   }
 
   @override
@@ -736,6 +709,18 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get noExpensesInPeriod => '해당 기간에 내역이 없어요';
+
+  @override
+  String get categoryDetailThisMonthTotal => '이번 달 합계';
+
+  @override
+  String get categoryDetailMonthlyTrendTitle => '월별 추이';
+
+  @override
+  String get categoryDetailExpenseListTitle => '상세 내역';
+
+  @override
+  String get categoryDetailEmptyMessage => '아직 기록된 내역이 없어요';
 
   @override
   String get installmentIncludedSuffix => '할부 포함';

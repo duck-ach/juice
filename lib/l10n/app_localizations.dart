@@ -143,12 +143,6 @@ abstract class AppLocalizations {
   /// **'현금·이체'**
   String get paymentCash;
 
-  /// No description provided for @paymentSplitBill.
-  ///
-  /// In ko, this message translates to:
-  /// **'더치페이'**
-  String get paymentSplitBill;
-
   /// No description provided for @commonCancel.
   ///
   /// In ko, this message translates to:
@@ -1169,12 +1163,6 @@ abstract class AppLocalizations {
   /// **'이 {type} 내역을 삭제할까요?'**
   String deleteTypeConfirm(Object type);
 
-  /// No description provided for @splitBillAutoFillHelper.
-  ///
-  /// In ko, this message translates to:
-  /// **'아래에서 총 금액과 인원 수를 입력하면 자동으로 채워져요'**
-  String get splitBillAutoFillHelper;
-
   /// No description provided for @cardSelectLabel.
   ///
   /// In ko, this message translates to:
@@ -1216,36 +1204,6 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'매달 {amount} mL씩 {months}회 분할 반영돼요'**
   String installmentMonthlyHint(Object amount, Object months);
-
-  /// No description provided for @totalPaymentAmountLabel.
-  ///
-  /// In ko, this message translates to:
-  /// **'총 결제 금액'**
-  String get totalPaymentAmountLabel;
-
-  /// No description provided for @splitPeopleCountLabel.
-  ///
-  /// In ko, this message translates to:
-  /// **'함께한 인원 수'**
-  String get splitPeopleCountLabel;
-
-  /// No description provided for @peopleCountSuffix.
-  ///
-  /// In ko, this message translates to:
-  /// **'{count}명'**
-  String peopleCountSuffix(Object count);
-
-  /// No description provided for @splitBillHint.
-  ///
-  /// In ko, this message translates to:
-  /// **'내가 낼 주스: {amount} mL (총 {total} mL ÷ {count}명)'**
-  String splitBillHint(Object amount, Object total, Object count);
-
-  /// No description provided for @splitBillMemoTag.
-  ///
-  /// In ko, this message translates to:
-  /// **'(총 {total}mL / {count}명 더치페이)'**
-  String splitBillMemoTag(Object total, Object count);
 
   /// No description provided for @memoHint.
   ///
@@ -1438,6 +1396,30 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'해당 기간에 내역이 없어요'**
   String get noExpensesInPeriod;
+
+  /// No description provided for @categoryDetailThisMonthTotal.
+  ///
+  /// In ko, this message translates to:
+  /// **'이번 달 합계'**
+  String get categoryDetailThisMonthTotal;
+
+  /// No description provided for @categoryDetailMonthlyTrendTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'월별 추이'**
+  String get categoryDetailMonthlyTrendTitle;
+
+  /// No description provided for @categoryDetailExpenseListTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'상세 내역'**
+  String get categoryDetailExpenseListTitle;
+
+  /// No description provided for @categoryDetailEmptyMessage.
+  ///
+  /// In ko, this message translates to:
+  /// **'아직 기록된 내역이 없어요'**
+  String get categoryDetailEmptyMessage;
 
   /// No description provided for @installmentIncludedSuffix.
   ///

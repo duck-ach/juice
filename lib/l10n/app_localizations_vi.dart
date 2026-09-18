@@ -28,9 +28,6 @@ class AppLocalizationsVi extends AppLocalizations {
   String get paymentCash => 'Tiền mặt · Chuyển khoản';
 
   @override
-  String get paymentSplitBill => 'Chia hóa đơn';
-
-  @override
   String get commonCancel => 'Hủy';
 
   @override
@@ -581,9 +578,6 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get splitBillAutoFillHelper => 'Nhập tổng số tiền và số người bên dưới để tự động điền';
-
-  @override
   String get cardSelectLabel => 'Chọn thẻ';
 
   @override
@@ -608,27 +602,6 @@ class AppLocalizationsVi extends AppLocalizations {
   @override
   String installmentMonthlyHint(Object amount, Object months) {
     return 'Phản ánh $amount mL mỗi tháng trong $months kỳ trả góp';
-  }
-
-  @override
-  String get totalPaymentAmountLabel => 'Tổng số tiền thanh toán';
-
-  @override
-  String get splitPeopleCountLabel => 'Số người';
-
-  @override
-  String peopleCountSuffix(Object count) {
-    return '$count người';
-  }
-
-  @override
-  String splitBillHint(Object amount, Object total, Object count) {
-    return 'Phần của tôi: $amount mL (tổng $total mL ÷ $count người)';
-  }
-
-  @override
-  String splitBillMemoTag(Object total, Object count) {
-    return '(Tổng ${total}mL / chia $count người)';
   }
 
   @override
@@ -736,6 +709,18 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get noExpensesInPeriod => 'Không có mục nào trong khoảng thời gian này';
+
+  @override
+  String get categoryDetailThisMonthTotal => 'Tổng tháng này';
+
+  @override
+  String get categoryDetailMonthlyTrendTitle => 'Xu hướng theo tháng';
+
+  @override
+  String get categoryDetailExpenseListTitle => 'Chi tiết giao dịch';
+
+  @override
+  String get categoryDetailEmptyMessage => 'Chưa có mục nào được ghi lại';
 
   @override
   String get installmentIncludedSuffix => 'gồm cả trả góp';

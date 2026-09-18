@@ -6,12 +6,12 @@ import '../../../data/models/payment_method.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/currency_provider.dart';
 import '../../../providers/stats_provider.dart';
+import '../payment_method_detail_screen.dart';
 
-const _paymentMethodColors = {
+const paymentMethodColors = {
   PaymentMethod.checkCard: Colors.blueAccent,
   PaymentMethod.creditCard: Colors.deepOrangeAccent,
   PaymentMethod.cash: Colors.green,
-  PaymentMethod.splitBill: Colors.purpleAccent,
 };
 
 /// 선택된 기간의 결제 수단별(체크카드/신용카드/현금) 소비 비중 도넛 차트 + 요약 카드.
@@ -35,6 +35,13 @@ class PaymentMethodChart extends ConsumerWidget {
     }
 
     final currency = ref.watch(currencyProvider).currency;
+    final sections = breakdown.where((b) => b.amount > 0).toList();
+
+    void openDetail(PaymentMethodAmount b) {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (_) => PaymentMethodDetailScreen(method: b.method),
+      ));
+    }
 
     return Column(
       children: [
@@ -44,11 +51,22 @@ class PaymentMethodChart extends ConsumerWidget {
             PieChartData(
               sectionsSpace: 2,
               centerSpaceRadius: 50,
-              sections: breakdown
-                  .where((b) => b.amount > 0)
+              pieTouchData: PieTouchData(
+                touchCallback: (event, response) {
+                  final index = response?.touchedSection?.touchedSectionIndex;
+                  if (event is! FlTapUpEvent ||
+                      index == null ||
+                      index < 0 ||
+                      index >= sections.length) {
+                    return;
+                  }
+                  openDetail(sections[index]);
+                },
+              ),
+              sections: sections
                   .map((b) => PieChartSectionData(
                         value: b.amount,
-                        color: _paymentMethodColors[b.method],
+                        color: paymentMethodColors[b.method],
                         radius: 40,
                         title: b.percent >= 0.08
                             ? '${(b.percent * 100).round()}%'
@@ -65,31 +83,44 @@ class PaymentMethodChart extends ConsumerWidget {
         ),
         const SizedBox(height: 16),
         for (final b in breakdown)
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4),
-            child: Row(
-              children: [
-                Container(
-                  width: 10,
-                  height: 10,
-                  decoration: BoxDecoration(
-                    color: _paymentMethodColors[b.method],
-                    shape: BoxShape.circle,
+          InkWell(
+            onTap: () => openDetail(b),
+            borderRadius: BorderRadius.circular(8),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+              child: Row(
+                children: [
+                  Container(
+                    width: 10,
+                    height: 10,
+                    decoration: BoxDecoration(
+                      color: paymentMethodColors[b.method],
+                      shape: BoxShape.circle,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 8),
-                Text(b.method.emoji),
-                const SizedBox(width: 4),
-                Expanded(
-                  child: Text(b.method == PaymentMethod.creditCard
-                      ? '${b.method.label(loc)} (${loc.installmentIncludedSuffix})'
-                      : b.method.label(loc)),
-                ),
-                Text(
-                  '${currency.format(b.amount)}  ${(b.percent * 100).round()}%',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              ],
+                  const SizedBox(width: 8),
+                  Text(b.method.emoji),
+                  const SizedBox(width: 4),
+                  Expanded(
+                    child: Text(b.method == PaymentMethod.creditCard
+                        ? '${b.method.label(loc)} (${loc.installmentIncludedSuffix})'
+                        : b.method.label(loc)),
+                  ),
+                  Text(
+                    '${currency.format(b.amount)}  ${(b.percent * 100).round()}%',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  const SizedBox(width: 2),
+                  Icon(Icons.chevron_right,
+                      size: 18,
+                      color: Theme.of(context)
+                          .textTheme
+                          .bodyMedium
+                          ?.color
+                          ?.withValues(alpha: 0.4)),
+                ],
+              ),
             ),
           ),
       ],

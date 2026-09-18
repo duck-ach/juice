@@ -73,8 +73,12 @@ final statsFilteredExpensesProvider = Provider<List<Expense>>((ref) {
 
 class CategoryAmount {
   const CategoryAmount(
-      {required this.category, required this.amount, required this.percent});
+      {required this.categoryId,
+      required this.category,
+      required this.amount,
+      required this.percent});
 
+  final String categoryId;
   final Category? category;
   final double amount;
   final double percent;
@@ -94,6 +98,7 @@ final categoryBreakdownProvider = Provider<List<CategoryAmount>>((ref) {
 
   final result = totals.entries
       .map((entry) => CategoryAmount(
+            categoryId: entry.key,
             category: categoryMap[entry.key],
             amount: entry.value,
             percent: total <= 0 ? 0 : entry.value / total,

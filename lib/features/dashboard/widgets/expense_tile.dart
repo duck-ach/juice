@@ -95,15 +95,6 @@ class ExpenseTile extends ConsumerWidget {
                     .bodyMedium
                     ?.copyWith(fontSize: 11),
               ),
-            if (!expense.isIncome &&
-                expense.paymentMethod == PaymentMethod.splitBill)
-              Text(
-                loc.paymentSplitBill,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(fontSize: 11),
-              ),
           ],
         ),
       ),

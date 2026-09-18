@@ -53,7 +53,6 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
   late final TextEditingController _amountController;
   late final TextEditingController _memoController;
   late final TextEditingController _customInstallmentController;
-  late final TextEditingController _splitTotalController;
   String? _selectedCategoryId;
   bool _isFixed = false;
   bool _isIncome = false;
@@ -63,8 +62,6 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
   String? _selectedCardId;
   int _installmentMonths = 1;
   bool _customInstallment = false;
-  int _splitPeopleCount = 2;
-  String? _autoSplitMemoTag;
 
   /// 이번 지출의 결제 통화. 기본값은 기준 통화(설정 > 통화 단위 설정)이며, 다른 통화를
   /// 고르면 결제일 기준 환율을 조회해 기준 통화로 환산한 뒤 저장한다.
@@ -76,9 +73,8 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
 
   bool get _isEditing => widget.editingExpense != null;
 
-  /// 외화 결제 선택이 허용되는 경우인지. 수입·저축과 더치페이(자동 계산 필드)는 제외.
-  bool get _allowForeignCurrency =>
-      !_isIncome && !_isSavings && _paymentMethod != PaymentMethod.splitBill;
+  /// 외화 결제 선택이 허용되는 경우인지. 수입·저축은 제외.
+  bool get _allowForeignCurrency => !_isIncome && !_isSavings;
 
   /// 선택된 결제 통화가 소수점 단위(달러/유로 등)를 쓰는 외화일 때만 금액 입력에
   /// 소수점을 허용한다(기준 통화·엔·동 등은 정수 단위 그대로 천 단위 콤마 입력).
@@ -108,7 +104,6 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
     _customInstallment = !_installmentPresets.contains(_installmentMonths);
     _customInstallmentController = TextEditingController(
         text: _customInstallment ? '$_installmentMonths' : '');
-    _splitTotalController = TextEditingController();
     _selectedCurrency = editing?.originalCurrency != null
         ? currencyByCode(editing!.originalCurrency!)
         : ref.read(currencyProvider).currency;
@@ -136,39 +131,8 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
     _amountController.dispose();
     _memoController.dispose();
     _customInstallmentController.dispose();
-    _splitTotalController.dispose();
     _manualRateController.dispose();
     super.dispose();
-  }
-
-  /// 더치페이 총액/인원 수가 바뀔 때마다 "내가 낼 주스" 금액을 메인 인풋에 자동 반영하고,
-  /// 메모가 비어있거나 이전 자동 태그 그대로면 새 태그로 갱신한다.
-  void _onSplitBillInputsChanged(AppLocalizations loc) {
-    final total =
-        double.tryParse(_splitTotalController.text.replaceAll(',', ''));
-    if (total == null || total <= 0 || _splitPeopleCount < 2) return;
-    final formatter = NumberFormat('#,###');
-    final perPerson = (total / _splitPeopleCount).round();
-    final formattedAmount = formatter.format(perPerson);
-    if (_amountController.text != formattedAmount) {
-      _amountController.text = formattedAmount;
-    }
-    final tag = loc.splitBillMemoTag(formatter.format(total), _splitPeopleCount);
-    final currentMemo = _memoController.text.trim();
-    if (currentMemo.isEmpty || currentMemo == _autoSplitMemoTag) {
-      _memoController.text = tag;
-    }
-    _autoSplitMemoTag = tag;
-  }
-
-  String _splitBillHint(AppLocalizations loc) {
-    final total =
-        double.tryParse(_splitTotalController.text.replaceAll(',', ''));
-    if (total == null || total <= 0) return '';
-    final formatter = NumberFormat('#,###');
-    final perPerson = (total / _splitPeopleCount).round();
-    return loc.splitBillHint(formatter.format(perPerson),
-        formatter.format(total), _splitPeopleCount);
   }
 
   String _installmentHint(AppLocalizations loc) {
@@ -503,8 +467,6 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                         TextField(
                           controller: _amountController,
                           autofocus: false,
-                          readOnly: !_isEditing &&
-                              _paymentMethod == PaymentMethod.splitBill,
                           keyboardType: _allowDecimalAmount
                               ? const TextInputType.numberWithOptions(
                                   decimal: true)
@@ -527,10 +489,6 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                                   )
                                 : null,
                             border: InputBorder.none,
-                            helperText: !_isEditing &&
-                                    _paymentMethod == PaymentMethod.splitBill
-                                ? loc.splitBillAutoFillHelper
-                                : null,
                           ),
                         ),
                         if (_allowForeignCurrency &&
@@ -720,70 +678,6 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                               const SizedBox(height: 4),
                               Text(
                                 _installmentHint(loc),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary),
-                              ),
-                            ],
-                          ],
-                          if (_paymentMethod == PaymentMethod.splitBill &&
-                              !_isEditing) ...[
-                            const SizedBox(height: 8),
-                            TextField(
-                              controller: _splitTotalController,
-                              keyboardType: TextInputType.number,
-                              inputFormatters: [
-                                ThousandsSeparatorInputFormatter()
-                              ],
-                              textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                  labelText: loc.totalPaymentAmountLabel,
-                                  suffixText: ' mL'),
-                              onChanged: (_) =>
-                                  setState(() => _onSplitBillInputsChanged(loc)),
-                            ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Text(loc.splitPeopleCountLabel,
-                                    style:
-                                        Theme.of(context).textTheme.bodyMedium),
-                                const Spacer(),
-                                IconButton(
-                                  icon: const Icon(Icons.remove_circle_outline),
-                                  onPressed: _splitPeopleCount > 2
-                                      ? () => setState(() {
-                                            _splitPeopleCount--;
-                                            _onSplitBillInputsChanged(loc);
-                                          })
-                                      : null,
-                                ),
-                                SizedBox(
-                                  width: 48,
-                                  child: Text(
-                                      loc.peopleCountSuffix(_splitPeopleCount),
-                                      textAlign: TextAlign.center,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleMedium),
-                                ),
-                                IconButton(
-                                  icon: const Icon(Icons.add_circle_outline),
-                                  onPressed: () => setState(() {
-                                    _splitPeopleCount++;
-                                    _onSplitBillInputsChanged(loc);
-                                  }),
-                                ),
-                              ],
-                            ),
-                            if (_splitBillHint(loc).isNotEmpty) ...[
-                              const SizedBox(height: 4),
-                              Text(
-                                _splitBillHint(loc),
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodySmall

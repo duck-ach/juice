@@ -28,9 +28,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get paymentCash => 'Bar · Überweisung';
 
   @override
-  String get paymentSplitBill => 'Rechnung teilen';
-
-  @override
   String get commonCancel => 'Abbrechen';
 
   @override
@@ -581,9 +578,6 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get splitBillAutoFillHelper => 'Gib unten Gesamtbetrag und Personenzahl ein, um automatisch auszufüllen';
-
-  @override
   String get cardSelectLabel => 'Karte auswählen';
 
   @override
@@ -608,27 +602,6 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String installmentMonthlyHint(Object amount, Object months) {
     return 'Wird monatlich mit $amount mL über $months Raten berücksichtigt';
-  }
-
-  @override
-  String get totalPaymentAmountLabel => 'Gesamtzahlungsbetrag';
-
-  @override
-  String get splitPeopleCountLabel => 'Anzahl Personen';
-
-  @override
-  String peopleCountSuffix(Object count) {
-    return '$count Personen';
-  }
-
-  @override
-  String splitBillHint(Object amount, Object total, Object count) {
-    return 'Mein Anteil: $amount mL (gesamt $total mL ÷ $count Personen)';
-  }
-
-  @override
-  String splitBillMemoTag(Object total, Object count) {
-    return '(Gesamt ${total}mL / geteilt durch $count)';
   }
 
   @override
@@ -736,6 +709,18 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get noExpensesInPeriod => 'Keine Einträge in diesem Zeitraum';
+
+  @override
+  String get categoryDetailThisMonthTotal => 'Gesamt diesen Monat';
+
+  @override
+  String get categoryDetailMonthlyTrendTitle => 'Monatlicher Verlauf';
+
+  @override
+  String get categoryDetailExpenseListTitle => 'Detailübersicht';
+
+  @override
+  String get categoryDetailEmptyMessage => 'Noch keine Einträge';
 
   @override
   String get installmentIncludedSuffix => 'inkl. Raten';

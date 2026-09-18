@@ -28,9 +28,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get paymentCash => '現金・振込';
 
   @override
-  String get paymentSplitBill => '割り勘';
-
-  @override
   String get commonCancel => 'キャンセル';
 
   @override
@@ -581,9 +578,6 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get splitBillAutoFillHelper => '下で総額と人数を入力すると自動的に入力されます';
-
-  @override
   String get cardSelectLabel => 'カード選択';
 
   @override
@@ -608,27 +602,6 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String installmentMonthlyHint(Object amount, Object months) {
     return '毎月${amount}mLずつ$months回に分けて反映されます';
-  }
-
-  @override
-  String get totalPaymentAmountLabel => '総決済金額';
-
-  @override
-  String get splitPeopleCountLabel => '一緒にいた人数';
-
-  @override
-  String peopleCountSuffix(Object count) {
-    return '$count人';
-  }
-
-  @override
-  String splitBillHint(Object amount, Object total, Object count) {
-    return '私が払うジュース: ${amount}mL (総${total}mL ÷ $count人)';
-  }
-
-  @override
-  String splitBillMemoTag(Object total, Object count) {
-    return '(総${total}mL / $count人で割り勘)';
   }
 
   @override
@@ -736,6 +709,18 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get noExpensesInPeriod => 'この期間に記録がありません';
+
+  @override
+  String get categoryDetailThisMonthTotal => '今月の合計';
+
+  @override
+  String get categoryDetailMonthlyTrendTitle => '月別推移';
+
+  @override
+  String get categoryDetailExpenseListTitle => '詳細内訳';
+
+  @override
+  String get categoryDetailEmptyMessage => 'まだ記録がありません';
 
   @override
   String get installmentIncludedSuffix => '分割払い含む';
