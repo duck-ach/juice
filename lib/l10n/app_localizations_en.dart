@@ -396,6 +396,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cardTypeCorporateExcluded => 'Corporate (expense) · Excluded from juice';
 
   @override
+  String get corporateExpenseNotice => '🏢 Corporate/business expenses skip category selection and are automatically excluded from your personal spending.';
+
+  @override
+  String get corporateBadgeLabel => '🏢 Corporate/Business · Excluded from personal';
+
+  @override
+  String get corporateCardLabel => 'Corporate/Business Card';
+
+  @override
+  String get corporateMemoRequired => 'Please enter a memo (purpose) for corporate/business expenses';
+
+  @override
   String get juiceThemeLabel => 'Juice Theme';
 
   @override

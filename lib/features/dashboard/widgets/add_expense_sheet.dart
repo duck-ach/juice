@@ -227,8 +227,19 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
     }
   }
 
+  /// 현재 선택된 카드가 법인/업무용 카드인지(신용카드 결제 + 지출 모드에서만 의미 있음).
+  bool _resolveIsCorporate() {
+    if (_isIncome || _isSavings || _paymentMethod != PaymentMethod.creditCard) {
+      return false;
+    }
+    return ref
+        .read(creditCardsProvider)
+        .any((c) => c.id == _selectedCardId && c.type == CardType.corporate);
+  }
+
   Future<void> _submit() async {
     final loc = AppLocalizations.of(context)!;
+    final isCorporate = _resolveIsCorporate();
     final enteredAmount =
         double.tryParse(_amountController.text.replaceAll(',', ''));
     if (enteredAmount == null ||
@@ -236,6 +247,12 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
         _selectedCategoryId == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(loc.amountAndCategoryRequired)),
+      );
+      return;
+    }
+    if (isCorporate && _memoController.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(loc.corporateMemoRequired)),
       );
       return;
     }
@@ -269,6 +286,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
     final isNewInstallment = !_isEditing &&
         !_isIncome &&
         !_isSavings &&
+        !isCorporate &&
         _paymentMethod == PaymentMethod.creditCard &&
         _installmentMonths > 1;
 
@@ -299,6 +317,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
         isFixed: excludeCardFields ? false : _isFixed,
         isIncome: _isIncome,
         isSavings: _isSavings,
+        isCorporate: isCorporate,
         createdAt: widget.editingExpense?.createdAt,
         paymentMethod:
             excludeCardFields ? PaymentMethod.checkCard : _paymentMethod,
@@ -404,6 +423,18 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
       _selectedCardId = matchingCards
           .firstWhere((c) => c.isDefault, orElse: () => matchingCards.first)
           .id;
+    }
+
+    // 법인/업무용 카드가 선택되면 카테고리 선택 없이 [금액]+[메모]만으로 등록되도록
+    // 카테고리를 'etc'로 고정하고 할부도 강제 초기화한다(개인 지출과 완전히 분리).
+    final isCorporate = !_isIncome &&
+        !_isSavings &&
+        matchingCards.any(
+            (c) => c.id == _selectedCardId && c.type == CardType.corporate);
+    if (isCorporate) {
+      _selectedCategoryId = 'etc';
+      _installmentMonths = 1;
+      _customInstallment = false;
     }
 
     return GestureDetector(
@@ -513,7 +544,18 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                           ),
                         ],
                         const SizedBox(height: 12),
-                        SizedBox(
+                        if (isCorporate)
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: Colors.blueGrey.withValues(alpha: 0.12),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(loc.corporateExpenseNotice,
+                                style: Theme.of(context).textTheme.bodySmall),
+                          )
+                        else
+                          SizedBox(
                           height: 86,
                           child: _isSavings || _isIncome
                               ? ListView.separated(
@@ -626,6 +668,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                             ),
                           ],
                           if (_paymentMethod == PaymentMethod.creditCard &&
+                              !isCorporate &&
                               !_isEditing) ...[
                             const SizedBox(height: 8),
                             Wrap(
@@ -695,7 +738,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                           decoration:
                               InputDecoration(hintText: loc.memoHint),
                         ),
-                        if (!_isIncome && !_isSavings)
+                        if (!_isIncome && !_isSavings && !isCorporate)
                           CheckboxListTile(
                             contentPadding: EdgeInsets.zero,
                             controlAffinity: ListTileControlAffinity.leading,

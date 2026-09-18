@@ -396,6 +396,18 @@ class AppLocalizationsVi extends AppLocalizations {
   String get cardTypeCorporateExcluded => 'Công ty (chi phí) · Loại khỏi juice';
 
   @override
+  String get corporateExpenseNotice => '🏢 Chi tiêu công ty/công việc được ghi lại không cần chọn danh mục và tự động loại trừ khỏi chi tiêu cá nhân của bạn.';
+
+  @override
+  String get corporateBadgeLabel => '🏢 Công ty/Công việc · Loại trừ khỏi cá nhân';
+
+  @override
+  String get corporateCardLabel => 'Thẻ công ty/công việc';
+
+  @override
+  String get corporateMemoRequired => 'Vui lòng nhập ghi chú (mục đích) cho chi tiêu công ty/công việc';
+
+  @override
   String get juiceThemeLabel => 'Chủ đề Juice';
 
   @override

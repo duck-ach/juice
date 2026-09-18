@@ -33,6 +33,7 @@ class ExpenseAdapter extends TypeAdapter<Expense> {
       originalCurrency: fields[14] as String?,
       exchangeRate: fields[15] as double?,
       isSavings: fields[16] == null ? false : fields[16] as bool,
+      isCorporate: fields[17] == null ? false : fields[17] as bool,
     )..paymentMethodName =
         fields[8] == null ? 'checkCard' : fields[8] as String;
   }
@@ -40,7 +41,7 @@ class ExpenseAdapter extends TypeAdapter<Expense> {
   @override
   void write(BinaryWriter writer, Expense obj) {
     writer
-      ..writeByte(17)
+      ..writeByte(18)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -74,7 +75,9 @@ class ExpenseAdapter extends TypeAdapter<Expense> {
       ..writeByte(15)
       ..write(obj.exchangeRate)
       ..writeByte(16)
-      ..write(obj.isSavings);
+      ..write(obj.isSavings)
+      ..writeByte(17)
+      ..write(obj.isCorporate);
   }
 
   @override

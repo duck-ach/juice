@@ -84,9 +84,11 @@ class CategoryAmount {
   final double percent;
 }
 
-/// 선택된 기간 + 필터 기준 카테고리별 합계(내림차순).
+/// 선택된 기간 + 필터 기준 카테고리별 합계(내림차순). 법인/업무용 카드 지출은 개인
+/// 소비 통계와 완전히 분리되므로 제외(별도 법인카드 상세 화면에서만 보여준다).
 final categoryBreakdownProvider = Provider<List<CategoryAmount>>((ref) {
-  final expenses = ref.watch(statsFilteredExpensesProvider);
+  final expenses =
+      ref.watch(statsFilteredExpensesProvider).where((e) => !e.isCorporate);
   final categories = ref.watch(categoryProvider);
   final categoryMap = {for (final c in categories) c.id: c};
 
@@ -117,12 +119,15 @@ class PaymentMethodAmount {
   final double percent;
 }
 
-/// 선택된 기간 + 필터 기준 결제 수단별 합계(체크카드/신용카드/현금 고정 순서).
+/// 선택된 기간 + 필터 기준 결제 수단별 합계(체크카드/신용카드/현금 고정 순서). 법인/업무용
+/// 카드 지출은 개인 지출과 완전히 분리되어야 하므로 도넛/비율 계산에서 항상 제외한다
+/// (별도 [corporateCardTotalProvider]로 순수 사용액만 따로 보여준다).
 /// 신용카드 할부로 분할된 레코드는 각자의 날짜에 이미 신용카드로 집계되므로
 /// 청구월의 할부금이 자동으로 포함된다.
 final paymentMethodBreakdownProvider =
     Provider<List<PaymentMethodAmount>>((ref) {
-  final expenses = ref.watch(statsFilteredExpensesProvider);
+  final expenses =
+      ref.watch(statsFilteredExpensesProvider).where((e) => !e.isCorporate);
   final totals = {for (final m in PaymentMethod.values) m: 0.0};
   for (final e in expenses) {
     totals[e.paymentMethod] = (totals[e.paymentMethod] ?? 0) + e.amount;
@@ -135,6 +140,16 @@ final paymentMethodBreakdownProvider =
             percent: total <= 0 ? 0 : (totals[m] ?? 0) / total,
           ))
       .toList();
+});
+
+/// 선택된 기간의 법인/업무용 카드 사용액 합계 — '결제 수단별 소비' 도넛과는 완전히
+/// 분리된, 3대 결제수단 목록 아래에 별도로 보여주는 순수 금액(비중 %는 표기하지 않음).
+final corporateCardTotalProvider = Provider<double>((ref) {
+  final all = ref.watch(expenseProvider);
+  final range = ref.watch(statsDateRangeProvider);
+  return all
+      .where((e) => e.isCorporate && range.contains(e.date))
+      .fold(0.0, (sum, e) => sum + e.amount);
 });
 
 /// '결제 수단별 소비' 섹션의 표시 방식: 대분류(체크/신용/현금) 요약 vs 카드별 상세.

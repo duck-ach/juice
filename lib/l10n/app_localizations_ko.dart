@@ -396,6 +396,18 @@ class AppLocalizationsKo extends AppLocalizations {
   String get cardTypeCorporateExcluded => '법인(경비) · 주스 제외';
 
   @override
+  String get corporateExpenseNotice => '🏢 법인/업무용 지출은 카테고리 선택 없이 개인 지출에서 자동 제외돼요.';
+
+  @override
+  String get corporateBadgeLabel => '🏢 법인/업무용 · 개인 지출 제외';
+
+  @override
+  String get corporateCardLabel => '법인/업무용 카드';
+
+  @override
+  String get corporateMemoRequired => '법인/업무용 지출은 메모(용도)를 입력해야 해요';
+
+  @override
   String get juiceThemeLabel => '주스 테마';
 
   @override

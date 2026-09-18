@@ -74,27 +74,37 @@ class ExpenseTile extends ConsumerWidget {
                   ? TextStyle(color: color, fontWeight: FontWeight.w700)
                   : null,
             ),
-            if (expense.isFixed)
+            if (expense.isCorporate)
               Text(
-                loc.fixedExpenseLabel,
+                loc.corporateBadgeLabel,
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium
-                    ?.copyWith(fontSize: 11),
-              ),
-            if (!expense.isIncome &&
-                expense.paymentMethod == PaymentMethod.creditCard)
-              Text(
-                expense.isInstallment
-                    ? loc.installmentProgressLabel(
-                        expense.currentInstallmentIndex,
-                        expense.installmentMonths)
-                    : loc.paymentCreditCard,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(fontSize: 11),
-              ),
+                    ?.copyWith(fontSize: 11, color: Colors.grey),
+              )
+            else ...[
+              if (expense.isFixed)
+                Text(
+                  loc.fixedExpenseLabel,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontSize: 11),
+                ),
+              if (!expense.isIncome &&
+                  expense.paymentMethod == PaymentMethod.creditCard)
+                Text(
+                  expense.isInstallment
+                      ? loc.installmentProgressLabel(
+                          expense.currentInstallmentIndex,
+                          expense.installmentMonths)
+                      : loc.paymentCreditCard,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontSize: 11),
+                ),
+            ],
           ],
         ),
       ),

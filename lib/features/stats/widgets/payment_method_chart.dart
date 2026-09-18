@@ -6,6 +6,7 @@ import '../../../data/models/payment_method.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/currency_provider.dart';
 import '../../../providers/stats_provider.dart';
+import '../corporate_card_detail_screen.dart';
 import '../payment_method_detail_screen.dart';
 
 const paymentMethodColors = {
@@ -23,8 +24,9 @@ class PaymentMethodChart extends ConsumerWidget {
     final loc = AppLocalizations.of(context)!;
     final breakdown = ref.watch(paymentMethodBreakdownProvider);
     final total = breakdown.fold(0.0, (sum, b) => sum + b.amount);
+    final corporateTotal = ref.watch(corporateCardTotalProvider);
 
-    if (total <= 0) {
+    if (total <= 0 && corporateTotal <= 0) {
       return SizedBox(
         height: 120,
         child: Center(
@@ -45,6 +47,15 @@ class PaymentMethodChart extends ConsumerWidget {
 
     return Column(
       children: [
+        if (total <= 0)
+          SizedBox(
+            height: 60,
+            child: Center(
+              child: Text(loc.noExpensesInPeriod,
+                  style: Theme.of(context).textTheme.bodyMedium),
+            ),
+          )
+        else ...[
         SizedBox(
           height: 180,
           child: PieChart(
@@ -123,6 +134,41 @@ class PaymentMethodChart extends ConsumerWidget {
               ),
             ),
           ),
+        ],
+        if (corporateTotal > 0) ...[
+          const SizedBox(height: 12),
+          const Divider(height: 1),
+          const SizedBox(height: 8),
+          InkWell(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => const CorporateCardDetailScreen(),
+            )),
+            borderRadius: BorderRadius.circular(8),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+              child: Row(
+                children: [
+                  const Text('🏢'),
+                  const SizedBox(width: 8),
+                  Expanded(child: Text(loc.corporateCardLabel)),
+                  Text(
+                    currency.format(corporateTotal),
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  const SizedBox(width: 2),
+                  Icon(Icons.chevron_right,
+                      size: 18,
+                      color: Theme.of(context)
+                          .textTheme
+                          .bodyMedium
+                          ?.color
+                          ?.withValues(alpha: 0.4)),
+                ],
+              ),
+            ),
+          ),
+        ],
       ],
     );
   }

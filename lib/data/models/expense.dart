@@ -24,6 +24,7 @@ class Expense extends HiveObject {
     this.originalCurrency,
     this.exchangeRate,
     this.isSavings = false,
+    this.isCorporate = false,
   })  : createdAt = createdAt ?? DateTime.now(),
         paymentMethodName = paymentMethod.name;
 
@@ -92,6 +93,12 @@ class Expense extends HiveObject {
   /// 고정지출처럼 항상 제외된다. [isIncome]과 동시에 true가 되지 않는다.
   @HiveField(16, defaultValue: false)
   bool isSavings;
+
+  /// true면 법인/업무용 카드 결제 — 카테고리 선택 없이 등록되고, 캘린더 합계·주스 게이지·
+  /// 통계(카테고리별/결제수단별 도넛)에서 항상 제외되어 개인 지출과 완전히 분리된다.
+  /// 하단 상세 내역 리스트에는 표시되지만 별도 회색 뱃지로 구분한다.
+  @HiveField(17, defaultValue: false)
+  bool isCorporate;
 
   /// 외화로 입력된 지출인지.
   bool get isForeignCurrency => originalCurrency != null;

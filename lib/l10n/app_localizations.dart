@@ -839,6 +839,30 @@ abstract class AppLocalizations {
   /// **'법인(경비) · 주스 제외'**
   String get cardTypeCorporateExcluded;
 
+  /// No description provided for @corporateExpenseNotice.
+  ///
+  /// In ko, this message translates to:
+  /// **'🏢 법인/업무용 지출은 카테고리 선택 없이 개인 지출에서 자동 제외돼요.'**
+  String get corporateExpenseNotice;
+
+  /// No description provided for @corporateBadgeLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'🏢 법인/업무용 · 개인 지출 제외'**
+  String get corporateBadgeLabel;
+
+  /// No description provided for @corporateCardLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'법인/업무용 카드'**
+  String get corporateCardLabel;
+
+  /// No description provided for @corporateMemoRequired.
+  ///
+  /// In ko, this message translates to:
+  /// **'법인/업무용 지출은 메모(용도)를 입력해야 해요'**
+  String get corporateMemoRequired;
+
   /// No description provided for @juiceThemeLabel.
   ///
   /// In ko, this message translates to:

@@ -30,18 +30,24 @@ final calendarMonthItemsProvider = Provider<List<Expense>>((ref) {
   final filter = ref.watch(calendarExpenseFilterProvider);
   return all.where((e) {
     if (!range.contains(e.date)) return false;
-    if (!e.isIncome && filter == ExpenseFilter.variableOnly && e.isFixed) {
+    // 법인/업무용 카드 지출은 고정비 취급(isFixed=true)이지만 "변동지출만" 토글과는
+    // 무관하게 항상 상세 내역에 보여야 하므로(개인 지출 금액에서만 제외) 이 필터에서 예외.
+    if (!e.isIncome &&
+        !e.isCorporate &&
+        filter == ExpenseFilter.variableOnly &&
+        e.isFixed) {
       return false;
     }
     return true;
   }).toList();
 });
 
-/// 이번 달 총 지출(필터 반영, 수입·저축 제외 — 저축은 소비가 아닌 자산 이동).
+/// 이번 달 총 지출(필터 반영, 수입·저축·법인/업무용 카드 제외 — 저축은 소비가 아닌 자산
+/// 이동, 법인카드는 개인 지출과 완전히 분리되는 별도 금액).
 final calendarMonthTotalProvider = Provider<double>((ref) {
   final items = ref.watch(calendarMonthItemsProvider);
   return items
-      .where((e) => !e.isIncome && !e.isSavings)
+      .where((e) => !e.isIncome && !e.isSavings && !e.isCorporate)
       .fold(0.0, (sum, e) => sum + e.amount);
 });
 
@@ -57,16 +63,25 @@ final calendarMonthSavingsTotalProvider = Provider<double>((ref) {
   return items.where((e) => e.isSavings).fold(0.0, (sum, e) => sum + e.amount);
 });
 
-/// 날짜(시각 제외)별 지출 합계 — 캘린더 셀에 표시(수입·저축 제외).
+/// 날짜(시각 제외)별 지출 합계 — 캘린더 셀에 표시(수입·저축·법인/업무용 카드 제외).
 final calendarDailyTotalsProvider = Provider<Map<DateTime, double>>((ref) {
   final items = ref.watch(calendarMonthItemsProvider);
   final totals = <DateTime, double>{};
   for (final e in items) {
-    if (e.isIncome || e.isSavings) continue;
+    if (e.isIncome || e.isSavings || e.isCorporate) continue;
     final day = dateOnly(e.date);
     totals.update(day, (v) => v + e.amount, ifAbsent: () => e.amount);
   }
   return totals;
+});
+
+/// 법인/업무용 카드 결제가 있는 날짜 집합 — 캘린더 셀에 전용 스탬프(🏢)를 찍는 데 사용.
+final calendarDailyCorporateDaysProvider = Provider<Set<DateTime>>((ref) {
+  final items = ref.watch(calendarMonthItemsProvider);
+  return {
+    for (final e in items)
+      if (e.isCorporate) dateOnly(e.date),
+  };
 });
 
 /// 날짜(시각 제외)별 수입 합계 — 캘린더 셀에 표시(지출 제외).
@@ -102,7 +117,11 @@ final calendarNoSpendDaysProvider = Provider<Set<DateTime>>((ref) {
 
   final spendDays = <DateTime>{
     for (final e in items)
-      if (!e.isIncome && !e.isSavings && !e.isFixed && !e.isInstallment)
+      if (!e.isIncome &&
+          !e.isSavings &&
+          !e.isFixed &&
+          !e.isInstallment &&
+          !e.isCorporate)
         dateOnly(e.date),
   };
 

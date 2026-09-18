@@ -40,6 +40,7 @@ class CalendarScreen extends ConsumerWidget {
     final installmentOnlyDays =
         ref.watch(calendarDailyInstallmentOnlyDaysProvider);
     final noSpendDays = ref.watch(calendarNoSpendDaysProvider);
+    final corporateDays = ref.watch(calendarDailyCorporateDaysProvider);
     final fruitEmoji = ref.watch(resolvedJuiceThemeProvider).emoji;
     final dayItems = ref.watch(calendarSelectedDayItemsProvider);
     final weekStartDay = ref.watch(weekStartDayProvider);
@@ -178,6 +179,7 @@ class CalendarScreen extends ConsumerWidget {
                 displayMode: amountDisplayMode,
                 isInstallmentOnly: installmentOnlyDays.contains(dateOnly(day)),
                 isNoSpendDay: noSpendDays.contains(dateOnly(day)),
+                isCorporateDay: corporateDays.contains(dateOnly(day)),
                 fruitEmoji: fruitEmoji,
               ),
               outsideBuilder: (context, day, _) => _DayCell(
@@ -189,6 +191,7 @@ class CalendarScreen extends ConsumerWidget {
                 displayMode: amountDisplayMode,
                 isInstallmentOnly: installmentOnlyDays.contains(dateOnly(day)),
                 isNoSpendDay: noSpendDays.contains(dateOnly(day)),
+                isCorporateDay: corporateDays.contains(dateOnly(day)),
                 fruitEmoji: fruitEmoji,
                 isOutside: true,
               ),
@@ -201,6 +204,7 @@ class CalendarScreen extends ConsumerWidget {
                 displayMode: amountDisplayMode,
                 isInstallmentOnly: installmentOnlyDays.contains(dateOnly(day)),
                 isNoSpendDay: noSpendDays.contains(dateOnly(day)),
+                isCorporateDay: corporateDays.contains(dateOnly(day)),
                 fruitEmoji: fruitEmoji,
                 isToday: true,
                 isSelected: isSameDay(day, selectedDay),
@@ -214,6 +218,7 @@ class CalendarScreen extends ConsumerWidget {
                 displayMode: amountDisplayMode,
                 isInstallmentOnly: installmentOnlyDays.contains(dateOnly(day)),
                 isNoSpendDay: noSpendDays.contains(dateOnly(day)),
+                isCorporateDay: corporateDays.contains(dateOnly(day)),
                 fruitEmoji: fruitEmoji,
                 isSelected: true,
                 isToday: isSameDay(day, DateTime.now()),
@@ -299,6 +304,7 @@ class _DayCell extends StatelessWidget {
     required this.displayMode,
     this.isInstallmentOnly = false,
     this.isNoSpendDay = false,
+    this.isCorporateDay = false,
     this.fruitEmoji = '🍊',
     this.isSelected = false,
     this.isToday = false,
@@ -318,7 +324,11 @@ class _DayCell extends StatelessWidget {
   final bool isInstallmentOnly;
 
   /// 순수 변동 지출이 0원인 '무지출 성공' 날인지. true면 날짜 숫자 옆에 [fruitEmoji]를 찍는다.
+  /// [isCorporateDay]가 true면 우선순위가 밀려 표시되지 않는다(좁은 셀 폭 보호).
   final bool isNoSpendDay;
+
+  /// 법인/업무용 카드 결제가 있는 날인지. true면 날짜 숫자 옆에 🏢 스탬프를 찍는다.
+  final bool isCorporateDay;
 
   /// 현재 주스 테마의 시그니처 과일 이모지(무지출 성공 스탬프용).
   final String fruitEmoji;
@@ -398,7 +408,10 @@ class _DayCell extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              if (isNoSpendDay) ...[
+              if (isCorporateDay) ...[
+                const Text('🏢', style: TextStyle(fontSize: 10.5)),
+                const SizedBox(width: 2),
+              ] else if (isNoSpendDay) ...[
                 Text(fruitEmoji, style: const TextStyle(fontSize: 10.5)),
                 const SizedBox(width: 2),
               ],

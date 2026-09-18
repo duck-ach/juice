@@ -396,6 +396,18 @@ class AppLocalizationsJa extends AppLocalizations {
   String get cardTypeCorporateExcluded => '法人(経費)・ジュース除外';
 
   @override
+  String get corporateExpenseNotice => '🏢 法人/業務用の支出はカテゴリ選択なしで、個人の支出から自動的に除外されます。';
+
+  @override
+  String get corporateBadgeLabel => '🏢 法人/業務用 · 個人支出から除外';
+
+  @override
+  String get corporateCardLabel => '法人/業務用カード';
+
+  @override
+  String get corporateMemoRequired => '法人/業務用の支出はメモ(用途)の入力が必要です';
+
+  @override
   String get juiceThemeLabel => 'ジューステーマ';
 
   @override
