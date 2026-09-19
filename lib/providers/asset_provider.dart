@@ -33,11 +33,12 @@ class AssetPoint {
 }
 
 /// 지금까지 기록된 모든 수입-지출 누적 합 — '순자산' 요약 카드에 사용. 저축/투자는 소비가
-/// 아닌 자산 내 이동(통장→저축)이므로 순자산 증감에 영향을 주지 않는다(0으로 처리).
+/// 아닌 자산 내 이동(통장→저축)이므로, 법인/업무용 카드 지출은 개인 지출과 완전히 분리되는
+/// 별도 금액이므로 순자산 증감에 영향을 주지 않는다(0으로 처리).
 final cumulativeNetWorthProvider = Provider<double>((ref) {
   final all = ref.watch(expenseProvider);
   return all.fold(0.0, (sum, e) {
-    if (e.isSavings) return sum;
+    if (e.isSavings || e.isCorporate) return sum;
     return sum + (e.isIncome ? e.amount : -e.amount);
   });
 });
@@ -50,8 +51,10 @@ final assetTrendProvider = Provider<List<AssetPoint>>((ref) {
   AssetPoint pointFor(int periodValue, Iterable<Expense> items) {
     final income =
         items.where((e) => e.isIncome).fold(0.0, (s, e) => s + e.amount);
+    // 법인/업무용 카드 지출은 개인 지출과 완전히 분리되어야 하므로(캘린더 탭과 동일 기준)
+    // 자산 탭의 월별/연도별 총 지출 집계에서도 제외한다.
     final expense = items
-        .where((e) => !e.isIncome && !e.isSavings)
+        .where((e) => !e.isIncome && !e.isSavings && !e.isCorporate)
         .fold(0.0, (s, e) => s + e.amount);
     return AssetPoint(periodValue: periodValue, income: income, expense: expense);
   }
