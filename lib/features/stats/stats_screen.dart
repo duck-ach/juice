@@ -23,7 +23,11 @@ class StatsScreen extends ConsumerWidget {
     final filter = ref.watch(statsExpenseFilterProvider);
     final cardView = ref.watch(cardStatsViewProvider);
     final expenses = ref.watch(statsFilteredExpensesProvider);
-    final total = expenses.fold(0.0, (sum, e) => sum + e.amount);
+    // 법인/업무용 카드 지출은 개인 소비 통계와 완전히 분리되므로 상단 총액에서도 제외
+    // (카테고리별/카드별/결제수단별 소비 합계와 항상 일치해야 한다).
+    final total = expenses
+        .where((e) => !e.isCorporate)
+        .fold(0.0, (sum, e) => sum + e.amount);
     final currency = ref.watch(currencyProvider).currency;
     final themeColor = ref.watch(resolvedJuiceThemeProvider).highColor;
     final isDark = Theme.of(context).brightness == Brightness.dark;

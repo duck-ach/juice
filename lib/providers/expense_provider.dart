@@ -57,11 +57,11 @@ final currentWeekExpensesProvider = Provider<List<Expense>>((ref) {
   return weekExpenses;
 });
 
-/// 이번 주 변동지출 합계 (고정지출 제외) — 주스 게이지가 참조하는 값.
+/// 이번 주 변동지출 합계 (고정지출·법인/업무용 카드 지출 제외) — 주스 게이지가 참조하는 값.
 final weeklySpentProvider = Provider<double>((ref) {
   final weekExpenses = ref.watch(currentWeekExpensesProvider);
   return weekExpenses
-      .where((e) => !e.isFixed)
+      .where((e) => !e.isFixed && !e.isCorporate)
       .fold(0.0, (sum, e) => sum + e.amount);
 });
 

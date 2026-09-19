@@ -175,9 +175,12 @@ class CardAmount {
   final double percent;
 }
 
-/// 선택된 기간 + 필터 기준 카드별 실사용 합계(내림차순).
+/// 선택된 기간 + 필터 기준 카드별 실사용 합계(내림차순). 법인/업무용 카드 지출은 개인
+/// 소비 통계와 완전히 분리되므로 제외(카테고리별/결제수단별 소비와 동일 기준 —
+/// 별도 법인카드 상세 화면에서만 보여준다).
 final cardBreakdownProvider = Provider<List<CardAmount>>((ref) {
-  final expenses = ref.watch(statsFilteredExpensesProvider);
+  final expenses =
+      ref.watch(statsFilteredExpensesProvider).where((e) => !e.isCorporate);
   final cards = ref.watch(cardProvider);
   final cardMap = {for (final c in cards) c.id: c};
 
@@ -209,6 +212,7 @@ class TrendPoint {
 }
 
 /// 월별(올해 1~12월) / 연도별(최근 5년) 지출·수입·저축 추이. 다른 기간에서는 빈 리스트.
+/// 법인/업무용 카드 지출은 개인 소비 통계와 완전히 분리되므로 지출 추이에서도 제외한다.
 final trendProvider = Provider<List<TrendPoint>>((ref) {
   final period = ref.watch(statsPeriodProvider);
   final all = ref.watch(expenseProvider);
@@ -216,7 +220,7 @@ final trendProvider = Provider<List<TrendPoint>>((ref) {
   final filter = ref.watch(statsExpenseFilterProvider);
   final filtered = all.where((e) => switch (category) {
         StatsCategory.expense =>
-          !e.isIncome && !e.isSavings &&
+          !e.isIncome && !e.isSavings && !e.isCorporate &&
               (filter == ExpenseFilter.all || !e.isFixed),
         StatsCategory.income => e.isIncome,
         StatsCategory.savings => e.isSavings,

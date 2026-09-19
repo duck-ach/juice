@@ -59,11 +59,11 @@ final filteredPeriodExpensesProvider = Provider<List<Expense>>((ref) {
   return expenses.where((e) => !e.isFixed).toList();
 });
 
-/// 현재 주기 내 변동지출 합계(고정지출 제외) — 주스 게이지가 참조하는 값.
+/// 현재 주기 내 변동지출 합계(고정지출·법인/업무용 카드 지출 제외) — 주스 게이지가 참조하는 값.
 final periodSpentProvider = Provider<double>((ref) {
   final expenses = ref.watch(periodExpensesProvider);
   return expenses
-      .where((e) => !e.isFixed)
+      .where((e) => !e.isFixed && !e.isCorporate)
       .fold(0.0, (sum, e) => sum + e.amount);
 });
 
