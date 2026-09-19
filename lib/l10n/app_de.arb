@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "appTitle": "Juice Haushaltsbuch",
+  "appTitle": "Juice Budget",
   "selectLanguage": "Sprache auswählen",
   "setBudgetTitle": "Dein Juice-Budget festlegen",
   "weeklyBudget": "Verbleibender Juice diese Woche",
@@ -289,6 +289,9 @@
   "currencyNameJpy": "Japanischer Yen (¥)",
   "currencyNameEur": "Euro (€)",
   "currencyNameVnd": "Vietnamesischer Dong (₫)",
+  "currencyNameTwd": "Neuer Taiwan-Dollar (NT$)",
+  "currencyNameCny": "Chinesischer Yuan (¥)",
+  "currencyNameBrl": "Brasilianischer Real (R$)",
   "foreignCurrencyPickerTitle": "Zahlungswährung wählen",
   "exchangeRateHint": "≈ {converted} (Tageskurs: {rate})",
   "exchangeRateLoadingMessage": "Wechselkurs wird abgerufen…",

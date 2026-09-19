@@ -25,8 +25,8 @@ class _CurrencySelectScreenState extends ConsumerState<CurrencySelectScreen> {
     if (hasChosenCurrencyBefore) {
       _selected = ref.read(currencyProvider).currency;
     } else {
-      final languageCode = ref.read(localeProvider).locale.languageCode;
-      _selected = suggestedCurrencyForLanguage(languageCode);
+      final locale = ref.read(localeProvider).locale;
+      _selected = suggestedCurrencyForLocale(locale);
     }
   }
 

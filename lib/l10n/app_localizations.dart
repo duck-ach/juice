@@ -7,9 +7,12 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
+import 'app_localizations_fr.dart';
 import 'app_localizations_ja.dart';
 import 'app_localizations_ko.dart';
+import 'app_localizations_pt.dart';
 import 'app_localizations_vi.dart';
+import 'app_localizations_zh.dart';
 
 // ignore_for_file: type=lint
 
@@ -96,15 +99,20 @@ abstract class AppLocalizations {
   static const List<Locale> supportedLocales = <Locale>[
     Locale('de'),
     Locale('en'),
+    Locale('fr'),
     Locale('ja'),
     Locale('ko'),
-    Locale('vi')
+    Locale('pt'),
+    Locale('vi'),
+    Locale('zh'),
+    Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
+    Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant')
   ];
 
   /// 앱 이름
   ///
   /// In ko, this message translates to:
-  /// **'주스 가계부'**
+  /// **'주스 버젯'**
   String get appTitle;
 
   /// 언어 선택 온보딩 화면 제목
@@ -1805,6 +1813,24 @@ abstract class AppLocalizations {
   /// **'베트남 동 (₫)'**
   String get currencyNameVnd;
 
+  /// No description provided for @currencyNameTwd.
+  ///
+  /// In ko, this message translates to:
+  /// **'신대만 달러 (NT\$)'**
+  String get currencyNameTwd;
+
+  /// No description provided for @currencyNameCny.
+  ///
+  /// In ko, this message translates to:
+  /// **'중국 위안 (¥)'**
+  String get currencyNameCny;
+
+  /// No description provided for @currencyNameBrl.
+  ///
+  /// In ko, this message translates to:
+  /// **'브라질 헤알 (R\$)'**
+  String get currencyNameBrl;
+
   /// No description provided for @foreignCurrencyPickerTitle.
   ///
   /// In ko, this message translates to:
@@ -2451,7 +2477,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['de', 'en', 'ja', 'ko', 'vi'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['de', 'en', 'fr', 'ja', 'ko', 'pt', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -2459,14 +2485,27 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
 
+  // Lookup logic when language+script codes are specified.
+  switch (locale.languageCode) {
+    case 'zh': {
+  switch (locale.scriptCode) {
+    case 'Hans': return AppLocalizationsZhHans();
+case 'Hant': return AppLocalizationsZhHant();
+   }
+  break;
+   }
+  }
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'de': return AppLocalizationsDe();
     case 'en': return AppLocalizationsEn();
+    case 'fr': return AppLocalizationsFr();
     case 'ja': return AppLocalizationsJa();
     case 'ko': return AppLocalizationsKo();
+    case 'pt': return AppLocalizationsPt();
     case 'vi': return AppLocalizationsVi();
+    case 'zh': return AppLocalizationsZh();
   }
 
   throw FlutterError(

@@ -1,5 +1,6 @@
+import 'dart:ui';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 
 import '../data/local/prefs_service.dart';
 import '../l10n/app_localizations.dart';
@@ -14,6 +15,7 @@ class CurrencyItem {
     required this.decimalDigits,
     required this.symbolBefore,
     this.groupingSeparator = ',',
+    this.decimalSeparator = '.',
     this.symbolSpacing = false,
   });
 
@@ -26,8 +28,11 @@ class CurrencyItem {
   /// true면 기호가 금액 앞(`$12.50`), false면 금액 뒤(`15,000₩`)에 붙는다.
   final bool symbolBefore;
 
-  /// 천 단위 구분 기호. VND는 관례상 '.'을 쓴다(예: 250.000).
+  /// 천 단위 구분 기호. VND/BRL은 관례상 '.'을 쓴다(예: 250.000).
   final String groupingSeparator;
+
+  /// 소수점 구분 기호. BRL은 관례상 ','을 쓴다(예: 1.234,56).
+  final String decimalSeparator;
 
   /// true면 기호와 금액 사이에 공백을 넣는다(예: `250.000 ₫`).
   final bool symbolSpacing;
@@ -39,19 +44,34 @@ class CurrencyItem {
         'JPY' => loc.currencyNameJpy,
         'EUR' => loc.currencyNameEur,
         'VND' => loc.currencyNameVnd,
+        'TWD' => loc.currencyNameTwd,
+        'CNY' => loc.currencyNameCny,
+        'BRL' => loc.currencyNameBrl,
         _ => code,
       };
 
   /// 금액을 이 통화의 기호/소수점/구분 기호 규칙에 맞춰 포맷한다.
   /// (환율 변환은 하지 않음 — 표시 형식만 적용. 실제 환산은 ExchangeRateService가 담당)
+  /// intl의 로케일 기본 구분 기호에 의존하지 않고 직접 그룹핑해, 그룹/소수 구분
+  /// 기호가 둘 다 기본값과 다른 통화(BRL 등)도 정확히 표시한다.
   String format(num amount) {
-    final pattern = decimalDigits > 0
-        ? '#,##0.${'0' * decimalDigits}'
-        : '#,###';
-    var formatted = NumberFormat(pattern).format(amount);
-    if (groupingSeparator != ',') {
-      formatted = formatted.replaceAll(',', groupingSeparator);
+    final isNegative = amount < 0;
+    final fixed = amount.abs().toStringAsFixed(decimalDigits);
+    final digits = decimalDigits > 0
+        ? fixed.substring(0, fixed.length - decimalDigits - 1)
+        : fixed;
+    final buffer = StringBuffer();
+    for (var i = 0; i < digits.length; i++) {
+      if (i > 0 && (digits.length - i) % 3 == 0) {
+        buffer.write(groupingSeparator);
+      }
+      buffer.write(digits[i]);
     }
+    var formatted = buffer.toString();
+    if (decimalDigits > 0) {
+      formatted += decimalSeparator + fixed.substring(fixed.length - decimalDigits);
+    }
+    if (isNegative) formatted = '-$formatted';
     final spacer = symbolSpacing ? ' ' : '';
     return symbolBefore
         ? '$symbol$spacer$formatted'
@@ -71,6 +91,17 @@ const currencyPresets = <CurrencyItem>[
       symbolBefore: false,
       groupingSeparator: '.',
       symbolSpacing: true),
+  CurrencyItem(
+      code: 'TWD', symbol: 'NT\$', decimalDigits: 0, symbolBefore: true),
+  CurrencyItem(code: 'CNY', symbol: '¥', decimalDigits: 2, symbolBefore: true),
+  CurrencyItem(
+      code: 'BRL',
+      symbol: 'R\$',
+      decimalDigits: 2,
+      symbolBefore: true,
+      groupingSeparator: '.',
+      decimalSeparator: ',',
+      symbolSpacing: true),
 ];
 
 CurrencyItem currencyByCode(String code) => currencyPresets.firstWhere(
@@ -86,10 +117,19 @@ const _suggestedCurrencyForLanguage = {
   'ja': 'JPY',
   'de': 'EUR',
   'vi': 'VND',
+  'fr': 'EUR',
+  'pt': 'BRL',
 };
 
-CurrencyItem suggestedCurrencyForLanguage(String languageCode) =>
-    currencyByCode(_suggestedCurrencyForLanguage[languageCode] ?? 'KRW');
+/// 중국어는 스크립트(번체/간체)에 따라 추천 통화가 다르므로 [Locale] 기준으로 판단한다
+/// (번체=대만 TWD, 간체=중국 CNY).
+CurrencyItem suggestedCurrencyForLocale(Locale locale) {
+  if (locale.languageCode == 'zh') {
+    return currencyByCode(locale.scriptCode == 'Hant' ? 'TWD' : 'CNY');
+  }
+  return currencyByCode(
+      _suggestedCurrencyForLanguage[locale.languageCode] ?? 'KRW');
+}
 
 class CurrencyState {
   const CurrencyState({required this.currency, required this.isSelected});

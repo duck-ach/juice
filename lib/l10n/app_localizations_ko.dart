@@ -7,7 +7,7 @@ class AppLocalizationsKo extends AppLocalizations {
   AppLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
-  String get appTitle => '주스 가계부';
+  String get appTitle => '주스 버젯';
 
   @override
   String get selectLanguage => '언어를 선택해 주세요';
@@ -921,6 +921,15 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get currencyNameVnd => '베트남 동 (₫)';
+
+  @override
+  String get currencyNameTwd => '신대만 달러 (NT\$)';
+
+  @override
+  String get currencyNameCny => '중국 위안 (¥)';
+
+  @override
+  String get currencyNameBrl => '브라질 헤알 (R\$)';
 
   @override
   String get foreignCurrencyPickerTitle => '결제 통화 선택';

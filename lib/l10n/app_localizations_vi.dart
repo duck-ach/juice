@@ -7,7 +7,7 @@ class AppLocalizationsVi extends AppLocalizations {
   AppLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
-  String get appTitle => 'Ngân Sách Juice';
+  String get appTitle => 'Juice Budget';
 
   @override
   String get selectLanguage => 'Chọn ngôn ngữ';
@@ -921,6 +921,15 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get currencyNameVnd => 'Việt Nam Đồng (₫)';
+
+  @override
+  String get currencyNameTwd => 'Đô la Đài Loan mới (NT\$)';
+
+  @override
+  String get currencyNameCny => 'Nhân dân tệ (¥)';
+
+  @override
+  String get currencyNameBrl => 'Real Brazil (R\$)';
 
   @override
   String get foreignCurrencyPickerTitle => 'Chọn đơn vị tiền thanh toán';

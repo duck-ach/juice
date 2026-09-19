@@ -7,7 +7,7 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get appTitle => 'Juice家計簿';
+  String get appTitle => 'Juice Budget';
 
   @override
   String get selectLanguage => '言語を選択してください';
@@ -921,6 +921,15 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get currencyNameVnd => 'ベトナムドン (₫)';
+
+  @override
+  String get currencyNameTwd => '台湾ドル (NT\$)';
+
+  @override
+  String get currencyNameCny => '中国元 (¥)';
+
+  @override
+  String get currencyNameBrl => 'ブラジルレアル (R\$)';
 
   @override
   String get foreignCurrencyPickerTitle => '決済通貨を選択';

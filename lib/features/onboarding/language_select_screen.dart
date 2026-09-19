@@ -22,8 +22,9 @@ class _LanguageSelectScreenState extends ConsumerState<LanguageSelectScreen> {
   void initState() {
     super.initState();
     final current = ref.read(localeProvider).locale;
-    final matched = supportedLanguageOptions
-        .where((o) => o.locale.languageCode == current.languageCode);
+    final currentTag = localeTag(current);
+    final matched =
+        supportedLanguageOptions.where((o) => o.tag == currentTag);
     _selected = matched.isNotEmpty
         ? matched.first.locale
         : supportedLanguageOptions.first.locale;

@@ -37,8 +37,8 @@ class LanguageSelectBottomSheet extends ConsumerWidget {
             const SizedBox(height: 12),
             for (final option in supportedLanguageOptions)
               RadioListTile<String>(
-                value: option.locale.languageCode,
-                groupValue: current.languageCode,
+                value: option.tag,
+                groupValue: localeTag(current),
                 title: Text('${option.flag}  ${option.nativeName} '
                     '(${option.subLabel})'),
                 onChanged: (_) {

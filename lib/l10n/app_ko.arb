@@ -1,6 +1,6 @@
 {
   "@@locale": "ko",
-  "appTitle": "주스 가계부",
+  "appTitle": "주스 버젯",
   "@appTitle": {
     "description": "앱 이름"
   },
@@ -469,6 +469,9 @@
   "currencyNameJpy": "일본 엔 (¥)",
   "currencyNameEur": "유로 (€)",
   "currencyNameVnd": "베트남 동 (₫)",
+  "currencyNameTwd": "신대만 달러 (NT$)",
+  "currencyNameCny": "중국 위안 (¥)",
+  "currencyNameBrl": "브라질 헤알 (R$)",
   "foreignCurrencyPickerTitle": "결제 통화 선택",
   "exchangeRateHint": "≈ {converted} (당일 환율: {rate})",
   "@exchangeRateHint": {

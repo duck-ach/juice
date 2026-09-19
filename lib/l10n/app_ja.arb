@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "appTitle": "Juice家計簿",
+  "appTitle": "Juice Budget",
   "selectLanguage": "言語を選択してください",
   "setBudgetTitle": "目標のジュースを満たしましょうか?",
   "weeklyBudget": "今週残っているジュース",
@@ -289,6 +289,9 @@
   "currencyNameJpy": "日本円 (¥)",
   "currencyNameEur": "ユーロ (€)",
   "currencyNameVnd": "ベトナムドン (₫)",
+  "currencyNameTwd": "台湾ドル (NT$)",
+  "currencyNameCny": "中国元 (¥)",
+  "currencyNameBrl": "ブラジルレアル (R$)",
   "foreignCurrencyPickerTitle": "決済通貨を選択",
   "exchangeRateHint": "≈ {converted}(本日のレート: {rate})",
   "exchangeRateLoadingMessage": "レート取得中...",

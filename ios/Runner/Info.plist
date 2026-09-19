@@ -5,15 +5,27 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>주스 가계부</string>
+	<string>Juice Budget</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>ko</string>
+		<string>en</string>
+		<string>ja</string>
+		<string>de</string>
+		<string>vi</string>
+		<string>zh-Hant</string>
+		<string>zh-Hans</string>
+		<string>fr</string>
+		<string>pt</string>
+	</array>
 	<key>CFBundleName</key>
-	<string>주스 가계부</string>
+	<string>Juice Budget</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -46,6 +58,6 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSFaceIDUsageDescription</key>
-	<string>주스 앱 잠금 해제를 위해 Face ID를 사용해요.</string>
+	<string>주스 버젯 앱 잠금 해제를 위해 Face ID를 사용해요.</string>
 </dict>
 </plist>

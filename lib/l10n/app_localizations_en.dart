@@ -923,6 +923,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get currencyNameVnd => 'Vietnamese Dong (₫)';
 
   @override
+  String get currencyNameTwd => 'New Taiwan Dollar (NT\$)';
+
+  @override
+  String get currencyNameCny => 'Chinese Yuan (¥)';
+
+  @override
+  String get currencyNameBrl => 'Brazilian Real (R\$)';
+
+  @override
   String get foreignCurrencyPickerTitle => 'Select payment currency';
 
   @override

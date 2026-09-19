@@ -1,6 +1,6 @@
 {
   "@@locale": "vi",
-  "appTitle": "Ngân Sách Juice",
+  "appTitle": "Juice Budget",
   "@appTitle": {
     "description": "앱 이름"
   },
@@ -469,6 +469,9 @@
   "currencyNameJpy": "Yên Nhật (¥)",
   "currencyNameEur": "Euro (€)",
   "currencyNameVnd": "Việt Nam Đồng (₫)",
+  "currencyNameTwd": "Đô la Đài Loan mới (NT$)",
+  "currencyNameCny": "Nhân dân tệ (¥)",
+  "currencyNameBrl": "Real Brazil (R$)",
   "foreignCurrencyPickerTitle": "Chọn đơn vị tiền thanh toán",
   "exchangeRateHint": "≈ {converted} (tỷ giá hôm nay: {rate})",
   "@exchangeRateHint": {
