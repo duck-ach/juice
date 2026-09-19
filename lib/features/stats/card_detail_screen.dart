@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import '../../core/widgets/edit_delete_slidable.dart';
 import '../../data/models/card_item.dart';
@@ -13,19 +14,57 @@ import '../dashboard/widgets/expense_tile.dart';
 import 'widgets/trend_bar_chart.dart';
 
 /// 통계 화면의 '카드별 상세' 리스트에서 카드를 탭하면 열리는 상세 화면.
-/// 구성은 [CategoryDetailScreen]/[PaymentMethodDetailScreen]과 동일 — 이번 달 합계,
-/// 최근 6개월 추이, 전체 내역.
-class CardDetailScreen extends ConsumerWidget {
+/// 구성은 [CategoryDetailScreen]/[PaymentMethodDetailScreen]과 동일 — 월별 추이
+/// 막대를 탭해 선택한 달의 합계/내역을 볼 수 있다(기본값: 이번 달).
+class CardDetailScreen extends ConsumerStatefulWidget {
   const CardDetailScreen({super.key, required this.card});
 
   final CardItem card;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<CardDetailScreen> createState() => _CardDetailScreenState();
+}
+
+class _CardDetailScreenState extends ConsumerState<CardDetailScreen> {
+  late DateTime _selectedMonth;
+
+  @override
+  void initState() {
+    super.initState();
+    final now = DateTime.now();
+    _selectedMonth = DateTime(now.year, now.month, 1);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
+    final card = widget.card;
     final currency = ref.watch(currencyProvider).currency;
-    final expenses = ref.watch(cardDetailExpensesProvider(card.id));
-    final thisMonthTotal = ref.watch(cardDetailThisMonthTotalProvider(card.id));
+    final allExpenses = ref.watch(cardDetailExpensesProvider(card.id));
+    final trend = ref.watch(cardDetailMonthlyTrendProvider(card.id));
+    final now = DateTime.now();
+    final isCurrentMonth =
+        _selectedMonth.year == now.year && _selectedMonth.month == now.month;
+    final selectedIndex = trend.length -
+        1 -
+        ((now.year - _selectedMonth.year) * 12 +
+            (now.month - _selectedMonth.month));
+    final expenses = allExpenses
+        .where((e) =>
+            e.date.year == _selectedMonth.year &&
+            e.date.month == _selectedMonth.month)
+        .toList();
+    final selectedTotal = expenses.fold(0.0, (sum, e) => sum + e.amount);
+    final monthLabel = isCurrentMonth
+        ? loc.categoryDetailThisMonthTotal
+        : loc.monthlyTotalLabel(
+            DateFormat.MMM(loc.localeName).format(_selectedMonth));
+
+    void selectMonth(int index) {
+      final monthDate = DateTime(now.year, now.month - 5 + index, 1);
+      setState(() => _selectedMonth = monthDate);
+    }
+
     final categories = ref.watch(categoryProvider);
     final categoryMap = {for (final c in categories) c.id: c};
 
@@ -54,7 +93,7 @@ class CardDetailScreen extends ConsumerWidget {
                   children: [
                     Row(
                       children: [
-                        Text(loc.categoryDetailThisMonthTotal,
+                        Text(monthLabel,
                             style: Theme.of(context).textTheme.bodyMedium),
                         const SizedBox(width: 6),
                         Container(
@@ -74,7 +113,7 @@ class CardDetailScreen extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    Text(currency.format(thisMonthTotal),
+                    Text(currency.format(selectedTotal),
                         style: Theme.of(context).textTheme.headlineSmall),
                   ],
                 ),
@@ -94,8 +133,10 @@ class CardDetailScreen extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: TrendBarChart(
-                trend: ref.watch(cardDetailMonthlyTrendProvider(card.id)),
-                color: color),
+                trend: trend,
+                color: color,
+                selectedIndex: selectedIndex,
+                onSelect: selectMonth),
           ),
           const SizedBox(height: 12),
           const Divider(height: 1),
@@ -110,7 +151,10 @@ class CardDetailScreen extends ConsumerWidget {
           Expanded(
             child: expenses.isEmpty
                 ? Center(
-                    child: Text(loc.categoryDetailEmptyMessage,
+                    child: Text(
+                        allExpenses.isEmpty
+                            ? loc.categoryDetailEmptyMessage
+                            : loc.categoryDetailEmptyMonthMessage,
                         style: Theme.of(context).textTheme.bodyMedium),
                   )
                 : ListView.separated(

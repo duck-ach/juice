@@ -224,6 +224,13 @@
   "categoryDetailMonthlyTrendTitle": "Monthly Trend",
   "categoryDetailExpenseListTitle": "Transaction Details",
   "categoryDetailEmptyMessage": "No records yet",
+  "monthlyTotalLabel": "{month} Total",
+  "@monthlyTotalLabel": {
+    "placeholders": {
+      "month": {}
+    }
+  },
+  "categoryDetailEmptyMonthMessage": "No expenses this month 🍊",
   "installmentIncludedSuffix": "incl. installments",
   "cardUnassigned": "No Card Assigned",
   "fillJuiceButton": "Fill Juice",

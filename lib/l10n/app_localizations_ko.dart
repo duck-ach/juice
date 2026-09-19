@@ -735,6 +735,14 @@ class AppLocalizationsKo extends AppLocalizations {
   String get categoryDetailEmptyMessage => '아직 기록된 내역이 없어요';
 
   @override
+  String monthlyTotalLabel(Object month) {
+    return '$month 합계';
+  }
+
+  @override
+  String get categoryDetailEmptyMonthMessage => '이 달에는 지출 내역이 없어요 🍊';
+
+  @override
   String get installmentIncludedSuffix => '할부 포함';
 
   @override

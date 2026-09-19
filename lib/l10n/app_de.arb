@@ -224,6 +224,13 @@
   "categoryDetailMonthlyTrendTitle": "Monatlicher Verlauf",
   "categoryDetailExpenseListTitle": "Detailübersicht",
   "categoryDetailEmptyMessage": "Noch keine Einträge",
+  "monthlyTotalLabel": "Gesamt {month}",
+  "@monthlyTotalLabel": {
+    "placeholders": {
+      "month": {}
+    }
+  },
+  "categoryDetailEmptyMonthMessage": "Keine Ausgaben in diesem Monat 🍊",
   "installmentIncludedSuffix": "inkl. Raten",
   "cardUnassigned": "Keine Karte zugewiesen",
   "fillJuiceButton": "Juice auffüllen",

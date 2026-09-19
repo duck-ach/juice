@@ -387,6 +387,13 @@
   "categoryDetailMonthlyTrendTitle": "월별 추이",
   "categoryDetailExpenseListTitle": "상세 내역",
   "categoryDetailEmptyMessage": "아직 기록된 내역이 없어요",
+  "monthlyTotalLabel": "{month} 합계",
+  "@monthlyTotalLabel": {
+    "placeholders": {
+      "month": {}
+    }
+  },
+  "categoryDetailEmptyMonthMessage": "이 달에는 지출 내역이 없어요 🍊",
   "installmentIncludedSuffix": "할부 포함",
   "cardUnassigned": "카드 미지정",
   "fillJuiceButton": "주스 채우기",

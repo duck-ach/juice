@@ -735,6 +735,14 @@ class AppLocalizationsVi extends AppLocalizations {
   String get categoryDetailEmptyMessage => 'Chưa có mục nào được ghi lại';
 
   @override
+  String monthlyTotalLabel(Object month) {
+    return 'Tổng $month';
+  }
+
+  @override
+  String get categoryDetailEmptyMonthMessage => 'Không có chi tiêu trong tháng này 🍊';
+
+  @override
   String get installmentIncludedSuffix => 'gồm cả trả góp';
 
   @override

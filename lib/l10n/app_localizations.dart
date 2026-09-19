@@ -1445,6 +1445,18 @@ abstract class AppLocalizations {
   /// **'아직 기록된 내역이 없어요'**
   String get categoryDetailEmptyMessage;
 
+  /// No description provided for @monthlyTotalLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'{month} 합계'**
+  String monthlyTotalLabel(Object month);
+
+  /// No description provided for @categoryDetailEmptyMonthMessage.
+  ///
+  /// In ko, this message translates to:
+  /// **'이 달에는 지출 내역이 없어요 🍊'**
+  String get categoryDetailEmptyMonthMessage;
+
   /// No description provided for @installmentIncludedSuffix.
   ///
   /// In ko, this message translates to:

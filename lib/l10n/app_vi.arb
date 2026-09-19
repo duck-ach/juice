@@ -387,6 +387,13 @@
   "categoryDetailMonthlyTrendTitle": "Xu hướng theo tháng",
   "categoryDetailExpenseListTitle": "Chi tiết giao dịch",
   "categoryDetailEmptyMessage": "Chưa có mục nào được ghi lại",
+  "monthlyTotalLabel": "Tổng {month}",
+  "@monthlyTotalLabel": {
+    "placeholders": {
+      "month": {}
+    }
+  },
+  "categoryDetailEmptyMonthMessage": "Không có chi tiêu trong tháng này 🍊",
   "installmentIncludedSuffix": "gồm cả trả góp",
   "cardUnassigned": "Chưa gán thẻ",
   "fillJuiceButton": "Đổ đầy Juice",

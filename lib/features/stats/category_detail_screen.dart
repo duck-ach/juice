@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import '../../core/widgets/edit_delete_slidable.dart';
 import '../../data/models/category.dart';
@@ -12,8 +13,8 @@ import '../dashboard/widgets/expense_tile.dart';
 import 'widgets/trend_bar_chart.dart';
 
 /// 통계 화면의 카테고리별 소비(도넛 차트/범례)에서 카테고리를 탭하면 열리는 상세 화면.
-/// 이번 달 합계, 최근 6개월 추이, 이 카테고리로 기록된 전체 내역을 보여준다.
-class CategoryDetailScreen extends ConsumerWidget {
+/// 월별 추이 막대를 탭해 선택한 달의 합계/내역을 볼 수 있다(기본값: 이번 달).
+class CategoryDetailScreen extends ConsumerStatefulWidget {
   const CategoryDetailScreen(
       {super.key, required this.categoryId, required this.category});
 
@@ -23,18 +24,57 @@ class CategoryDetailScreen extends ConsumerWidget {
   final Category? category;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<CategoryDetailScreen> createState() =>
+      _CategoryDetailScreenState();
+}
+
+class _CategoryDetailScreenState extends ConsumerState<CategoryDetailScreen> {
+  late DateTime _selectedMonth;
+
+  @override
+  void initState() {
+    super.initState();
+    final now = DateTime.now();
+    _selectedMonth = DateTime(now.year, now.month, 1);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
+    final category = widget.category;
     final currency = ref.watch(currencyProvider).currency;
-    final expenses = ref.watch(categoryDetailExpensesProvider(categoryId));
-    final thisMonthTotal =
-        ref.watch(categoryDetailThisMonthTotalProvider(categoryId));
+    final allExpenses =
+        ref.watch(categoryDetailExpensesProvider(widget.categoryId));
+    final trend =
+        ref.watch(categoryDetailMonthlyTrendProvider(widget.categoryId));
+    final now = DateTime.now();
+    final isCurrentMonth = _selectedMonth.year == now.year &&
+        _selectedMonth.month == now.month;
+    final selectedIndex = trend.length - 1 -
+        ((now.year - _selectedMonth.year) * 12 +
+            (now.month - _selectedMonth.month));
+    final expenses = allExpenses
+        .where((e) =>
+            e.date.year == _selectedMonth.year &&
+            e.date.month == _selectedMonth.month)
+        .toList();
+    final selectedTotal =
+        expenses.fold(0.0, (sum, e) => sum + e.amount);
+    final monthLabel = isCurrentMonth
+        ? loc.categoryDetailThisMonthTotal
+        : loc.monthlyTotalLabel(
+            DateFormat.MMM(loc.localeName).format(_selectedMonth));
+
+    void selectMonth(int index) {
+      final monthDate = DateTime(now.year, now.month - 5 + index, 1);
+      setState(() => _selectedMonth = monthDate);
+    }
 
     final color =
-        category != null ? Color(category!.colorValue) : Colors.grey;
+        category != null ? Color(category.colorValue) : Colors.grey;
     final icon = category != null
-        ? IconData(category!.iconCodePoint,
-            fontFamily: category!.iconFontFamily ?? 'MaterialIcons')
+        ? IconData(category.iconCodePoint,
+            fontFamily: category.iconFontFamily ?? 'MaterialIcons')
         : Icons.help_outline;
     final name = category?.getLocalizedName(context) ?? loc.unknownCategoryName;
 
@@ -55,9 +95,9 @@ class CategoryDetailScreen extends ConsumerWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(loc.categoryDetailThisMonthTotal,
+                    Text(monthLabel,
                         style: Theme.of(context).textTheme.bodyMedium),
-                    Text(currency.format(thisMonthTotal),
+                    Text(currency.format(selectedTotal),
                         style: Theme.of(context).textTheme.headlineSmall),
                   ],
                 ),
@@ -77,8 +117,10 @@ class CategoryDetailScreen extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: TrendBarChart(
-                trend: ref.watch(categoryDetailMonthlyTrendProvider(categoryId)),
-                color: color),
+                trend: trend,
+                color: color,
+                selectedIndex: selectedIndex,
+                onSelect: selectMonth),
           ),
           const SizedBox(height: 12),
           const Divider(height: 1),
@@ -93,7 +135,10 @@ class CategoryDetailScreen extends ConsumerWidget {
           Expanded(
             child: expenses.isEmpty
                 ? Center(
-                    child: Text(loc.categoryDetailEmptyMessage,
+                    child: Text(
+                        allExpenses.isEmpty
+                            ? loc.categoryDetailEmptyMessage
+                            : loc.categoryDetailEmptyMonthMessage,
                         style: Theme.of(context).textTheme.bodyMedium),
                   )
                 : ListView.separated(

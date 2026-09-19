@@ -735,6 +735,14 @@ class AppLocalizationsJa extends AppLocalizations {
   String get categoryDetailEmptyMessage => 'まだ記録がありません';
 
   @override
+  String monthlyTotalLabel(Object month) {
+    return '$monthの合計';
+  }
+
+  @override
+  String get categoryDetailEmptyMonthMessage => '今月は支出がありません 🍊';
+
+  @override
   String get installmentIncludedSuffix => '分割払い含む';
 
   @override

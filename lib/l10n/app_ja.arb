@@ -224,6 +224,13 @@
   "categoryDetailMonthlyTrendTitle": "月別推移",
   "categoryDetailExpenseListTitle": "詳細内訳",
   "categoryDetailEmptyMessage": "まだ記録がありません",
+  "monthlyTotalLabel": "{month}の合計",
+  "@monthlyTotalLabel": {
+    "placeholders": {
+      "month": {}
+    }
+  },
+  "categoryDetailEmptyMonthMessage": "今月は支出がありません 🍊",
   "installmentIncludedSuffix": "分割払い含む",
   "cardUnassigned": "カード未指定",
   "fillJuiceButton": "ジュースを満たす",
