@@ -114,7 +114,7 @@
   "feedbackSubmit": "Gửi",
   "feedbackDeviceInfoNotice": "Thông tin thiết bị/hệ điều hành sẽ được gửi kèm để chúng tôi xử lý nhanh hơn.",
   "feedbackContentRequired": "Vui lòng nhập nội dung",
-  "feedbackOpenMailApp": "Mở bằng ứng dụng Mail",
+  "feedbackMailUnavailable": "Không thể mở ứng dụng Mail, nội dung đã được sao chép.",
   "privacyPolicyTitle": "Chính sách bảo mật",
   "menuPrivacyPolicySubtitle": "Xem cách chúng tôi xử lý thông tin cá nhân của bạn",
   "privacyWelcomeTitle": "Chào mừng bạn đến với Juice Budget!",

@@ -517,11 +517,11 @@ abstract class AppLocalizations {
   /// **'문의 내용을 입력해 주세요'**
   String get feedbackContentRequired;
 
-  /// No description provided for @feedbackOpenMailApp.
+  /// No description provided for @feedbackMailUnavailable.
   ///
   /// In ko, this message translates to:
-  /// **'기본 메일 앱으로 열기'**
-  String get feedbackOpenMailApp;
+  /// **'메일 앱을 열 수 없어 문의 내용이 복사되었어요.'**
+  String get feedbackMailUnavailable;
 
   /// No description provided for @privacyPolicyTitle.
   ///

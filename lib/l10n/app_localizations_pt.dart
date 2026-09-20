@@ -223,7 +223,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get feedbackContentRequired => 'Digite sua mensagem';
 
   @override
-  String get feedbackOpenMailApp => 'Abrir no app de E-mail';
+  String get feedbackMailUnavailable => 'Não foi possível abrir o app de E-mail, o conteúdo foi copiado.';
 
   @override
   String get privacyPolicyTitle => 'Política de Privacidade';

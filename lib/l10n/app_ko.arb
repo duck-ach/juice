@@ -114,7 +114,7 @@
   "feedbackSubmit": "보내기",
   "feedbackDeviceInfoNotice": "원활한 문의 해결을 위해 기기/OS 정보가 함께 전송됩니다.",
   "feedbackContentRequired": "문의 내용을 입력해 주세요",
-  "feedbackOpenMailApp": "기본 메일 앱으로 열기",
+  "feedbackMailUnavailable": "메일 앱을 열 수 없어 문의 내용이 복사되었어요.",
   "privacyPolicyTitle": "개인정보 처리방침",
   "menuPrivacyPolicySubtitle": "개인정보를 어떻게 다루는지 확인해보세요",
   "privacyWelcomeTitle": "주스 버젯에 오신 것을 환영해요!",

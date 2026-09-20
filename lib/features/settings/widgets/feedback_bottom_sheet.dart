@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:share_plus/share_plus.dart';
 
 import '../../../core/constants/app_links.dart';
 import '../../../core/utils/device_info_text.dart';
-import '../../../core/utils/link_launcher.dart';
 import '../../../core/widgets/juice_choice_chip.dart';
 import '../../../l10n/app_localizations.dart';
 
@@ -21,9 +21,9 @@ extension on _FeedbackType {
 }
 
 /// 설정 > '문의 및 피드백 보내기'에서 여는 인앱 문의 작성 바텀시트.
-/// mailto: 링크가 기기에 메일 앱이 없어 실패하는 문제를 우회해, 작성한 내용을
-/// 시스템 공유 시트(Gmail/카카오톡/메모 등 사용자가 직접 선택)로 보내거나,
-/// 하단의 보조 버튼으로 기본 메일 앱을 직접 열어볼 수도 있다.
+/// [FlutterEmailSender]로 수신자/제목/본문/첨부파일이 채워진 OS 기본 메일
+/// 작성 화면을 바로 열고, 메일 앱이 없는 기기에서는 내용을 클립보드에
+/// 복사해 안내한다.
 class FeedbackBottomSheet extends StatefulWidget {
   const FeedbackBottomSheet({super.key});
 
@@ -67,11 +67,9 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
     final email = _emailController.text.trim();
     final content = _contentController.text.trim();
     final deviceInfo = await buildDeviceInfoLine();
-    return '[Juice Budget 피드백 - ${_type.label(loc)}]\n'
-        '회신 이메일: ${email.isEmpty ? '(미입력)' : email}\n'
+    return '회신 이메일: ${email.isEmpty ? '(미입력)' : email}\n'
         '내용:\n$content\n\n'
         '---\n'
-        '수신처: ${AppLinks.supportEmail}\n'
         '기기 정보: $deviceInfo';
   }
 
@@ -82,32 +80,32 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
           .showSnackBar(SnackBar(content: Text(loc.feedbackContentRequired)));
       return;
     }
+    final email = _emailController.text.trim();
     final message = await _composeMessage(loc);
     if (!mounted) return;
-    final subject = '[Juice Budget 피드백 - ${_type.label(loc)}]';
-    try {
-      if (_images.isNotEmpty) {
-        await Share.shareXFiles(_images, text: message, subject: subject);
-      } else {
-        await Share.share(message, subject: subject);
-      }
-    } catch (_) {
-      // 공유 시트 호출 자체가 실패해도 하단의 '기본 메일 앱으로 열기'로 계속
-      // 시도할 수 있으니 별도 에러 처리 없이 조용히 둔다.
-    }
-  }
-
-  Future<void> _openMailApp() async {
-    final loc = AppLocalizations.of(context)!;
-    final message = await _composeMessage(loc);
-    if (!mounted) return;
-    final uri = Uri(
-      scheme: 'mailto',
-      path: AppLinks.supportEmail,
-      query: 'subject=${Uri.encodeComponent('[Juice Budget 피드백 - ${_type.label(loc)}]')}'
-          '&body=${Uri.encodeComponent(message)}',
+    final typeLabel = _type.label(loc);
+    final subject =
+        '[Juice Budget] $typeLabel${email.isEmpty ? '' : ' - $email'}';
+    final mail = Email(
+      body: message,
+      subject: subject,
+      recipients: [AppLinks.supportEmail],
+      attachmentPaths: [for (final image in _images) image.path],
+      isHTML: false,
     );
-    await launchOrShowFallback(context, uri, AppLinks.supportEmail);
+    try {
+      await FlutterEmailSender.send(mail);
+      if (mounted) Navigator.of(context).pop();
+    } catch (_) {
+      await Clipboard.setData(ClipboardData(text: message));
+      if (!mounted) return;
+      // 바텀시트가 열린 채로는 SnackBar가 시트 뒤에 가려 보이지 않으므로,
+      // 시트를 먼저 닫고 부모 화면의 ScaffoldMessenger로 안내한다.
+      final messenger = ScaffoldMessenger.of(context);
+      Navigator.of(context).pop();
+      messenger.showSnackBar(
+          SnackBar(content: Text(loc.feedbackMailUnavailable)));
+    }
   }
 
   @override
@@ -200,13 +198,6 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                   child: FilledButton(
                     onPressed: _submit,
                     child: Text(loc.feedbackSubmit),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Center(
-                  child: TextButton(
-                    onPressed: _openMailApp,
-                    child: Text(loc.feedbackOpenMailApp),
                   ),
                 ),
               ],

@@ -223,7 +223,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get feedbackContentRequired => '请输入内容';
 
   @override
-  String get feedbackOpenMailApp => '用邮件应用打开';
+  String get feedbackMailUnavailable => '无法打开邮件应用，内容已复制。';
 
   @override
   String get privacyPolicyTitle => '隐私政策';
@@ -1562,7 +1562,7 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get feedbackContentRequired => '请输入内容';
 
   @override
-  String get feedbackOpenMailApp => '用邮件应用打开';
+  String get feedbackMailUnavailable => '无法打开邮件应用，内容已复制。';
 
   @override
   String get privacyPolicyTitle => '隐私政策';
@@ -2901,7 +2901,7 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get feedbackContentRequired => '請輸入內容';
 
   @override
-  String get feedbackOpenMailApp => '以郵件應用程式開啟';
+  String get feedbackMailUnavailable => '無法開啟郵件應用程式，內容已複製。';
 
   @override
   String get privacyPolicyTitle => '隱私權政策';

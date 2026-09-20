@@ -68,7 +68,7 @@
   "feedbackSubmit": "发送",
   "feedbackDeviceInfoNotice": "为了更快协助您,将一并发送设备/系统信息。",
   "feedbackContentRequired": "请输入内容",
-  "feedbackOpenMailApp": "用邮件应用打开",
+  "feedbackMailUnavailable": "无法打开邮件应用，内容已复制。",
   "privacyPolicyTitle": "隐私政策",
   "menuPrivacyPolicySubtitle": "了解我们如何处理您的个人信息",
   "privacyWelcomeTitle": "欢迎使用 Juice Budget!",

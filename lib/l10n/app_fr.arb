@@ -68,7 +68,7 @@
   "feedbackSubmit": "Envoyer",
   "feedbackDeviceInfoNotice": "Les infos appareil/OS sont incluses pour nous aider à résoudre votre demande plus vite.",
   "feedbackContentRequired": "Veuillez saisir votre message",
-  "feedbackOpenMailApp": "Ouvrir dans l'app Mail",
+  "feedbackMailUnavailable": "Impossible d'ouvrir l'appli Mail, le contenu a été copié.",
   "privacyPolicyTitle": "Politique de confidentialité",
   "menuPrivacyPolicySubtitle": "Découvrez comment vos données sont traitées",
   "privacyWelcomeTitle": "Bienvenue sur Juice Budget !",

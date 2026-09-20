@@ -223,7 +223,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get feedbackContentRequired => 'Vui lòng nhập nội dung';
 
   @override
-  String get feedbackOpenMailApp => 'Mở bằng ứng dụng Mail';
+  String get feedbackMailUnavailable => 'Không thể mở ứng dụng Mail, nội dung đã được sao chép.';
 
   @override
   String get privacyPolicyTitle => 'Chính sách bảo mật';

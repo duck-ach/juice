@@ -223,7 +223,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get feedbackContentRequired => 'Bitte gib deine Nachricht ein';
 
   @override
-  String get feedbackOpenMailApp => 'In Mail-App öffnen';
+  String get feedbackMailUnavailable => 'Die Mail-App konnte nicht geöffnet werden, daher wurde der Inhalt kopiert.';
 
   @override
   String get privacyPolicyTitle => 'Datenschutzerklärung';

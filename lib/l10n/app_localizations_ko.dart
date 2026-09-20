@@ -223,7 +223,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get feedbackContentRequired => '문의 내용을 입력해 주세요';
 
   @override
-  String get feedbackOpenMailApp => '기본 메일 앱으로 열기';
+  String get feedbackMailUnavailable => '메일 앱을 열 수 없어 문의 내용이 복사되었어요.';
 
   @override
   String get privacyPolicyTitle => '개인정보 처리방침';

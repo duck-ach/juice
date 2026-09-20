@@ -68,7 +68,7 @@
   "feedbackSubmit": "送信",
   "feedbackDeviceInfoNotice": "スムーズな対応のため、端末/OS情報が併せて送信されます。",
   "feedbackContentRequired": "お問い合わせ内容を入力してください",
-  "feedbackOpenMailApp": "メールアプリで開く",
+  "feedbackMailUnavailable": "メールアプリを開けなかったため、内容をコピーしました。",
   "privacyPolicyTitle": "プライバシーポリシー",
   "menuPrivacyPolicySubtitle": "個人情報の取り扱いをご確認ください",
   "privacyWelcomeTitle": "Juice Budgetへようこそ!",

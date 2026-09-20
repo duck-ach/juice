@@ -223,7 +223,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get feedbackContentRequired => 'お問い合わせ内容を入力してください';
 
   @override
-  String get feedbackOpenMailApp => 'メールアプリで開く';
+  String get feedbackMailUnavailable => 'メールアプリを開けなかったため、内容をコピーしました。';
 
   @override
   String get privacyPolicyTitle => 'プライバシーポリシー';
