@@ -193,6 +193,36 @@ class AppLocalizationsKo extends AppLocalizations {
   String get menuContactSupportSubtitle => '이메일로 의견을 보내주세요';
 
   @override
+  String get feedbackTitle => '문의 및 피드백 🍊';
+
+  @override
+  String get feedbackTypeBug => '버그 제보';
+
+  @override
+  String get feedbackTypeFeature => '기능 제안';
+
+  @override
+  String get feedbackTypeOther => '기타';
+
+  @override
+  String get feedbackEmailHint => '답변받으실 이메일 (선택)';
+
+  @override
+  String get feedbackContentHint => '소중한 의견을 남겨주세요.';
+
+  @override
+  String get feedbackSubmit => '보내기';
+
+  @override
+  String get feedbackDeviceInfoNotice => '원활한 문의 해결을 위해 기기/OS 정보가 함께 전송됩니다.';
+
+  @override
+  String get feedbackContentRequired => '문의 내용을 입력해 주세요';
+
+  @override
+  String get feedbackOpenMailApp => '기본 메일 앱으로 열기';
+
+  @override
   String get privacyPolicyTitle => '개인정보 처리방침';
 
   @override

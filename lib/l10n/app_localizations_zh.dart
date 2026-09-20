@@ -193,6 +193,36 @@ class AppLocalizationsZh extends AppLocalizations {
   String get menuContactSupportSubtitle => '通过邮件发送您的意见';
 
   @override
+  String get feedbackTitle => '联系与反馈 🍊';
+
+  @override
+  String get feedbackTypeBug => '报告问题';
+
+  @override
+  String get feedbackTypeFeature => '功能建议';
+
+  @override
+  String get feedbackTypeOther => '其他';
+
+  @override
+  String get feedbackEmailHint => '您的邮箱(选填,便于回复)';
+
+  @override
+  String get feedbackContentHint => '请与我们分享您的意见。';
+
+  @override
+  String get feedbackSubmit => '发送';
+
+  @override
+  String get feedbackDeviceInfoNotice => '为了更快协助您,将一并发送设备/系统信息。';
+
+  @override
+  String get feedbackContentRequired => '请输入内容';
+
+  @override
+  String get feedbackOpenMailApp => '用邮件应用打开';
+
+  @override
   String get privacyPolicyTitle => '隐私政策';
 
   @override
@@ -1499,6 +1529,36 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get menuContactSupportSubtitle => '通过邮件发送您的意见';
 
   @override
+  String get feedbackTitle => '联系与反馈 🍊';
+
+  @override
+  String get feedbackTypeBug => '报告问题';
+
+  @override
+  String get feedbackTypeFeature => '功能建议';
+
+  @override
+  String get feedbackTypeOther => '其他';
+
+  @override
+  String get feedbackEmailHint => '您的邮箱(选填,便于回复)';
+
+  @override
+  String get feedbackContentHint => '请与我们分享您的意见。';
+
+  @override
+  String get feedbackSubmit => '发送';
+
+  @override
+  String get feedbackDeviceInfoNotice => '为了更快协助您,将一并发送设备/系统信息。';
+
+  @override
+  String get feedbackContentRequired => '请输入内容';
+
+  @override
+  String get feedbackOpenMailApp => '用邮件应用打开';
+
+  @override
   String get privacyPolicyTitle => '隐私政策';
 
   @override
@@ -2803,6 +2863,36 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get menuContactSupportSubtitle => '透過電子郵件傳送您的意見';
+
+  @override
+  String get feedbackTitle => '聯絡與意見回饋 🍊';
+
+  @override
+  String get feedbackTypeBug => '回報錯誤';
+
+  @override
+  String get feedbackTypeFeature => '功能建議';
+
+  @override
+  String get feedbackTypeOther => '其他';
+
+  @override
+  String get feedbackEmailHint => '您的電子郵件(選填,供我們回覆)';
+
+  @override
+  String get feedbackContentHint => '請與我們分享您的意見。';
+
+  @override
+  String get feedbackSubmit => '送出';
+
+  @override
+  String get feedbackDeviceInfoNotice => '為了更快協助您,將一併傳送裝置/系統資訊。';
+
+  @override
+  String get feedbackContentRequired => '請輸入內容';
+
+  @override
+  String get feedbackOpenMailApp => '以郵件應用程式開啟';
 
   @override
   String get privacyPolicyTitle => '隱私權政策';

@@ -457,6 +457,66 @@ abstract class AppLocalizations {
   /// **'이메일로 의견을 보내주세요'**
   String get menuContactSupportSubtitle;
 
+  /// No description provided for @feedbackTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'문의 및 피드백 🍊'**
+  String get feedbackTitle;
+
+  /// No description provided for @feedbackTypeBug.
+  ///
+  /// In ko, this message translates to:
+  /// **'버그 제보'**
+  String get feedbackTypeBug;
+
+  /// No description provided for @feedbackTypeFeature.
+  ///
+  /// In ko, this message translates to:
+  /// **'기능 제안'**
+  String get feedbackTypeFeature;
+
+  /// No description provided for @feedbackTypeOther.
+  ///
+  /// In ko, this message translates to:
+  /// **'기타'**
+  String get feedbackTypeOther;
+
+  /// No description provided for @feedbackEmailHint.
+  ///
+  /// In ko, this message translates to:
+  /// **'답변받으실 이메일 (선택)'**
+  String get feedbackEmailHint;
+
+  /// No description provided for @feedbackContentHint.
+  ///
+  /// In ko, this message translates to:
+  /// **'소중한 의견을 남겨주세요.'**
+  String get feedbackContentHint;
+
+  /// No description provided for @feedbackSubmit.
+  ///
+  /// In ko, this message translates to:
+  /// **'보내기'**
+  String get feedbackSubmit;
+
+  /// No description provided for @feedbackDeviceInfoNotice.
+  ///
+  /// In ko, this message translates to:
+  /// **'원활한 문의 해결을 위해 기기/OS 정보가 함께 전송됩니다.'**
+  String get feedbackDeviceInfoNotice;
+
+  /// No description provided for @feedbackContentRequired.
+  ///
+  /// In ko, this message translates to:
+  /// **'문의 내용을 입력해 주세요'**
+  String get feedbackContentRequired;
+
+  /// No description provided for @feedbackOpenMailApp.
+  ///
+  /// In ko, this message translates to:
+  /// **'기본 메일 앱으로 열기'**
+  String get feedbackOpenMailApp;
+
   /// No description provided for @privacyPolicyTitle.
   ///
   /// In ko, this message translates to:

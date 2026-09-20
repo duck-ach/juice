@@ -193,6 +193,36 @@ class AppLocalizationsVi extends AppLocalizations {
   String get menuContactSupportSubtitle => 'Gửi ý kiến của bạn qua email';
 
   @override
+  String get feedbackTitle => 'Liên hệ & Phản hồi 🍊';
+
+  @override
+  String get feedbackTypeBug => 'Báo lỗi';
+
+  @override
+  String get feedbackTypeFeature => 'Đề xuất tính năng';
+
+  @override
+  String get feedbackTypeOther => 'Khác';
+
+  @override
+  String get feedbackEmailHint => 'Email của bạn (không bắt buộc, để nhận phản hồi)';
+
+  @override
+  String get feedbackContentHint => 'Hãy chia sẻ ý kiến của bạn.';
+
+  @override
+  String get feedbackSubmit => 'Gửi';
+
+  @override
+  String get feedbackDeviceInfoNotice => 'Thông tin thiết bị/hệ điều hành sẽ được gửi kèm để chúng tôi xử lý nhanh hơn.';
+
+  @override
+  String get feedbackContentRequired => 'Vui lòng nhập nội dung';
+
+  @override
+  String get feedbackOpenMailApp => 'Mở bằng ứng dụng Mail';
+
+  @override
   String get privacyPolicyTitle => 'Chính sách bảo mật';
 
   @override

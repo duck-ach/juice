@@ -193,6 +193,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get menuContactSupportSubtitle => 'Send us your thoughts by email';
 
   @override
+  String get feedbackTitle => 'Contact & Feedback 🍊';
+
+  @override
+  String get feedbackTypeBug => 'Bug Report';
+
+  @override
+  String get feedbackTypeFeature => 'Feature Request';
+
+  @override
+  String get feedbackTypeOther => 'Other';
+
+  @override
+  String get feedbackEmailHint => 'Your email (optional, for a reply)';
+
+  @override
+  String get feedbackContentHint => 'Share your thoughts with us.';
+
+  @override
+  String get feedbackSubmit => 'Send';
+
+  @override
+  String get feedbackDeviceInfoNotice => 'Device/OS info is included to help us resolve your inquiry faster.';
+
+  @override
+  String get feedbackContentRequired => 'Please enter your message';
+
+  @override
+  String get feedbackOpenMailApp => 'Open in Mail App';
+
+  @override
   String get privacyPolicyTitle => 'Privacy Policy';
 
   @override

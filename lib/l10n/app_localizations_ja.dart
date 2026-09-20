@@ -193,6 +193,36 @@ class AppLocalizationsJa extends AppLocalizations {
   String get menuContactSupportSubtitle => 'メールでご意見をお送りください';
 
   @override
+  String get feedbackTitle => 'お問い合わせ・フィードバック 🍊';
+
+  @override
+  String get feedbackTypeBug => '不具合報告';
+
+  @override
+  String get feedbackTypeFeature => '機能提案';
+
+  @override
+  String get feedbackTypeOther => 'その他';
+
+  @override
+  String get feedbackEmailHint => '返信用メールアドレス(任意)';
+
+  @override
+  String get feedbackContentHint => 'ご意見をお聞かせください。';
+
+  @override
+  String get feedbackSubmit => '送信';
+
+  @override
+  String get feedbackDeviceInfoNotice => 'スムーズな対応のため、端末/OS情報が併せて送信されます。';
+
+  @override
+  String get feedbackContentRequired => 'お問い合わせ内容を入力してください';
+
+  @override
+  String get feedbackOpenMailApp => 'メールアプリで開く';
+
+  @override
   String get privacyPolicyTitle => 'プライバシーポリシー';
 
   @override
