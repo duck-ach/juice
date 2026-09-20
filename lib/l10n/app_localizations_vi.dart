@@ -187,6 +187,30 @@ class AppLocalizationsVi extends AppLocalizations {
   String get menuSecuritySettingsSubtitle => 'Mã PIN, xác thực sinh trắc học';
 
   @override
+  String get menuContactSupportTitle => 'Liên hệ & Phản hồi';
+
+  @override
+  String get menuContactSupportSubtitle => 'Gửi ý kiến của bạn qua email';
+
+  @override
+  String get privacyPolicyTitle => 'Chính sách bảo mật';
+
+  @override
+  String get menuPrivacyPolicySubtitle => 'Xem cách chúng tôi xử lý thông tin cá nhân của bạn';
+
+  @override
+  String get privacyWelcomeTitle => 'Chào mừng bạn đến với Juice Budget!';
+
+  @override
+  String get privacyAgreeNotice => 'Juice Budget là sổ chi tiêu cục bộ 100% trên thiết bị — không có bất kỳ thông tin tài chính hay cá nhân nào của bạn được gửi đến máy chủ bên ngoài.';
+
+  @override
+  String get viewPrivacyPolicy => 'Xem toàn bộ Chính sách bảo mật';
+
+  @override
+  String get agreeAndStart => 'Đồng ý & Bắt đầu';
+
+  @override
   String get appNameShort => 'Juice';
 
   @override

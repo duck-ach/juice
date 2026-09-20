@@ -187,6 +187,30 @@ class AppLocalizationsKo extends AppLocalizations {
   String get menuSecuritySettingsSubtitle => 'PIN 번호, 생체인증';
 
   @override
+  String get menuContactSupportTitle => '문의 및 피드백 보내기';
+
+  @override
+  String get menuContactSupportSubtitle => '이메일로 의견을 보내주세요';
+
+  @override
+  String get privacyPolicyTitle => '개인정보 처리방침';
+
+  @override
+  String get menuPrivacyPolicySubtitle => '개인정보를 어떻게 다루는지 확인해보세요';
+
+  @override
+  String get privacyWelcomeTitle => '주스 버젯에 오신 것을 환영해요!';
+
+  @override
+  String get privacyAgreeNotice => '주스 버젯은 100% 온디바이스 로컬 가계부로, 회원의 어떠한 금융 정보나 개인정보도 외부 서버로 전송하지 않습니다.';
+
+  @override
+  String get viewPrivacyPolicy => '개인정보 처리방침 전문 보기';
+
+  @override
+  String get agreeAndStart => '동의하고 시작하기';
+
+  @override
   String get appNameShort => '주스';
 
   @override

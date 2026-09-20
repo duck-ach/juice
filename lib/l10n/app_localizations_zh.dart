@@ -187,6 +187,30 @@ class AppLocalizationsZh extends AppLocalizations {
   String get menuSecuritySettingsSubtitle => 'PIN 码、生物识别验证';
 
   @override
+  String get menuContactSupportTitle => '联系与反馈';
+
+  @override
+  String get menuContactSupportSubtitle => '通过邮件发送您的意见';
+
+  @override
+  String get privacyPolicyTitle => '隐私政策';
+
+  @override
+  String get menuPrivacyPolicySubtitle => '了解我们如何处理您的个人信息';
+
+  @override
+  String get privacyWelcomeTitle => '欢迎使用 Juice Budget!';
+
+  @override
+  String get privacyAgreeNotice => 'Juice Budget 是 100% 设备端本地记账应用,绝不会将您的任何财务或个人信息发送到外部服务器。';
+
+  @override
+  String get viewPrivacyPolicy => '查看完整隐私政策';
+
+  @override
+  String get agreeAndStart => '同意并开始使用';
+
+  @override
   String get appNameShort => 'Juice';
 
   @override
@@ -1461,6 +1485,30 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get menuSecuritySettingsSubtitle => 'PIN 码、生物识别验证';
 
   @override
+  String get menuContactSupportTitle => '联系与反馈';
+
+  @override
+  String get menuContactSupportSubtitle => '通过邮件发送您的意见';
+
+  @override
+  String get privacyPolicyTitle => '隐私政策';
+
+  @override
+  String get menuPrivacyPolicySubtitle => '了解我们如何处理您的个人信息';
+
+  @override
+  String get privacyWelcomeTitle => '欢迎使用 Juice Budget!';
+
+  @override
+  String get privacyAgreeNotice => 'Juice Budget 是 100% 设备端本地记账应用,绝不会将您的任何财务或个人信息发送到外部服务器。';
+
+  @override
+  String get viewPrivacyPolicy => '查看完整隐私政策';
+
+  @override
+  String get agreeAndStart => '同意并开始使用';
+
+  @override
   String get appNameShort => 'Juice';
 
   @override
@@ -2733,6 +2781,30 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get menuSecuritySettingsSubtitle => 'PIN 碼、生物辨識驗證';
+
+  @override
+  String get menuContactSupportTitle => '聯絡與意見回饋';
+
+  @override
+  String get menuContactSupportSubtitle => '透過電子郵件傳送您的意見';
+
+  @override
+  String get privacyPolicyTitle => '隱私權政策';
+
+  @override
+  String get menuPrivacyPolicySubtitle => '了解我們如何處理您的個人資料';
+
+  @override
+  String get privacyWelcomeTitle => '歡迎使用 Juice Budget!';
+
+  @override
+  String get privacyAgreeNotice => 'Juice Budget 是 100% 裝置端本地記帳應用程式,絕不會將您的任何財務或個人資料傳送到外部伺服器。';
+
+  @override
+  String get viewPrivacyPolicy => '查看完整隱私權政策';
+
+  @override
+  String get agreeAndStart => '同意並開始使用';
 
   @override
   String get appNameShort => 'Juice';

@@ -6,8 +6,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
 
+import '../../core/constants/app_links.dart';
 import '../../core/utils/week_utils.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/budget_settings_provider.dart';
@@ -185,6 +187,19 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => const SecuritySettingsScreen()),
             ),
+          ),
+          _SettingsMenuTile(
+            emoji: '✉️',
+            title: loc.menuContactSupportTitle,
+            subtitle: loc.menuContactSupportSubtitle,
+            onTap: () => launchUrl(AppLinks.supportEmailUri),
+          ),
+          _SettingsMenuTile(
+            emoji: '📄',
+            title: loc.privacyPolicyTitle,
+            subtitle: loc.menuPrivacyPolicySubtitle,
+            onTap: () => launchUrl(Uri.parse(AppLinks.privacyPolicyUrl),
+                mode: LaunchMode.externalApplication),
           ),
         ],
       ),

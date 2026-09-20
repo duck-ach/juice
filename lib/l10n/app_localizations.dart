@@ -445,6 +445,54 @@ abstract class AppLocalizations {
   /// **'PIN 번호, 생체인증'**
   String get menuSecuritySettingsSubtitle;
 
+  /// No description provided for @menuContactSupportTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'문의 및 피드백 보내기'**
+  String get menuContactSupportTitle;
+
+  /// No description provided for @menuContactSupportSubtitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'이메일로 의견을 보내주세요'**
+  String get menuContactSupportSubtitle;
+
+  /// No description provided for @privacyPolicyTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'개인정보 처리방침'**
+  String get privacyPolicyTitle;
+
+  /// No description provided for @menuPrivacyPolicySubtitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'개인정보를 어떻게 다루는지 확인해보세요'**
+  String get menuPrivacyPolicySubtitle;
+
+  /// No description provided for @privacyWelcomeTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'주스 버젯에 오신 것을 환영해요!'**
+  String get privacyWelcomeTitle;
+
+  /// No description provided for @privacyAgreeNotice.
+  ///
+  /// In ko, this message translates to:
+  /// **'주스 버젯은 100% 온디바이스 로컬 가계부로, 회원의 어떠한 금융 정보나 개인정보도 외부 서버로 전송하지 않습니다.'**
+  String get privacyAgreeNotice;
+
+  /// No description provided for @viewPrivacyPolicy.
+  ///
+  /// In ko, this message translates to:
+  /// **'개인정보 처리방침 전문 보기'**
+  String get viewPrivacyPolicy;
+
+  /// No description provided for @agreeAndStart.
+  ///
+  /// In ko, this message translates to:
+  /// **'동의하고 시작하기'**
+  String get agreeAndStart;
+
   /// No description provided for @appNameShort.
   ///
   /// In ko, this message translates to:

@@ -187,6 +187,30 @@ class AppLocalizationsJa extends AppLocalizations {
   String get menuSecuritySettingsSubtitle => 'PIN番号、生体認証';
 
   @override
+  String get menuContactSupportTitle => 'お問い合わせ・フィードバック';
+
+  @override
+  String get menuContactSupportSubtitle => 'メールでご意見をお送りください';
+
+  @override
+  String get privacyPolicyTitle => 'プライバシーポリシー';
+
+  @override
+  String get menuPrivacyPolicySubtitle => '個人情報の取り扱いをご確認ください';
+
+  @override
+  String get privacyWelcomeTitle => 'Juice Budgetへようこそ!';
+
+  @override
+  String get privacyAgreeNotice => 'Juice Budgetは100%オンデバイスのローカル家計簿アプリです。会員の金融情報や個人情報を外部サーバーへ送信することは一切ありません。';
+
+  @override
+  String get viewPrivacyPolicy => 'プライバシーポリシー全文を見る';
+
+  @override
+  String get agreeAndStart => '同意してはじめる';
+
+  @override
   String get appNameShort => 'ジュース';
 
   @override

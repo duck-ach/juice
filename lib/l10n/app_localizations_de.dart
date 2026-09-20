@@ -187,6 +187,30 @@ class AppLocalizationsDe extends AppLocalizations {
   String get menuSecuritySettingsSubtitle => 'PIN-Code, biometrische Authentifizierung';
 
   @override
+  String get menuContactSupportTitle => 'Kontakt & Feedback';
+
+  @override
+  String get menuContactSupportSubtitle => 'Schick uns deine Meinung per E-Mail';
+
+  @override
+  String get privacyPolicyTitle => 'Datenschutzerklärung';
+
+  @override
+  String get menuPrivacyPolicySubtitle => 'So gehen wir mit deinen Daten um';
+
+  @override
+  String get privacyWelcomeTitle => 'Willkommen bei Juice Budget!';
+
+  @override
+  String get privacyAgreeNotice => 'Juice Budget ist ein zu 100 % lokales Haushaltsbuch auf deinem Gerät — deine Finanz- oder persönlichen Daten werden niemals an einen externen Server gesendet.';
+
+  @override
+  String get viewPrivacyPolicy => 'Vollständige Datenschutzerklärung ansehen';
+
+  @override
+  String get agreeAndStart => 'Zustimmen & Loslegen';
+
+  @override
   String get appNameShort => 'Juice';
 
   @override
