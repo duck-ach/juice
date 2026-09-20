@@ -499,6 +499,13 @@
     }
   },
   "commonRetry": "다시 시도",
+  "commonCopy": "복사",
+  "linkOpenFailedMessage": "열어 줄 앱을 찾지 못했어요: {target}",
+  "@linkOpenFailedMessage": {
+    "placeholders": {
+      "target": {}
+    }
+  },
   "commonConfirm": "확인",
   "currencyMigrationConfirmMessage": "기준 통화를 {toCode}로 변경하시겠습니까? 기존에 기록된 모든 금액이 현재 환율 기준으로 자동 환산됩니다.",
   "@currencyMigrationConfirmMessage": {

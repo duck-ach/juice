@@ -307,6 +307,13 @@
   "manualRateEntryToggle": "Enter rate manually",
   "manualExchangeRateLabel": "1 {code} = ? {baseCode}",
   "commonRetry": "Retry",
+  "commonCopy": "Copy",
+  "linkOpenFailedMessage": "Couldn't find an app to open: {target}",
+  "@linkOpenFailedMessage": {
+    "placeholders": {
+      "target": {}
+    }
+  },
   "commonConfirm": "Confirm",
   "currencyMigrationConfirmMessage": "Change your base currency to {toCode}? All previously recorded amounts will be automatically converted using the current exchange rate.",
   "currencyMigrationLoadingMessage": "Converting your existing records to the new currency... 🍊",

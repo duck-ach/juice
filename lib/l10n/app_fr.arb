@@ -307,6 +307,13 @@
   "manualRateEntryToggle": "Saisir le taux manuellement",
   "manualExchangeRateLabel": "1 {code} = ? {baseCode}",
   "commonRetry": "Réessayer",
+  "commonCopy": "Copier",
+  "linkOpenFailedMessage": "Aucune application trouvée pour ouvrir : {target}",
+  "@linkOpenFailedMessage": {
+    "placeholders": {
+      "target": {}
+    }
+  },
   "commonConfirm": "Confirmer",
   "currencyMigrationConfirmMessage": "Changer votre devise de base pour {toCode} ? Tous les montants déjà enregistrés seront automatiquement convertis au taux de change actuel.",
   "currencyMigrationLoadingMessage": "Conversion de vos enregistrements existants vers la nouvelle devise... 🍊",

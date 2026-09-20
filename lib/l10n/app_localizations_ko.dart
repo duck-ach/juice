@@ -981,6 +981,14 @@ class AppLocalizationsKo extends AppLocalizations {
   String get commonRetry => '다시 시도';
 
   @override
+  String get commonCopy => '복사';
+
+  @override
+  String linkOpenFailedMessage(Object target) {
+    return '열어 줄 앱을 찾지 못했어요: $target';
+  }
+
+  @override
   String get commonConfirm => '확인';
 
   @override

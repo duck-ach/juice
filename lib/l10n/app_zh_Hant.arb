@@ -307,6 +307,13 @@
   "manualRateEntryToggle": "手動輸入匯率",
   "manualExchangeRateLabel": "1 {code} = ? {baseCode}",
   "commonRetry": "重試",
+  "commonCopy": "複製",
+  "linkOpenFailedMessage": "找不到可開啟的應用程式:{target}",
+  "@linkOpenFailedMessage": {
+    "placeholders": {
+      "target": {}
+    }
+  },
   "commonConfirm": "確認",
   "currencyMigrationConfirmMessage": "要將基準貨幣變更為 {toCode} 嗎?先前記錄的所有金額將依目前匯率自動換算。",
   "currencyMigrationLoadingMessage": "正在將現有紀錄換算為新貨幣... 🍊",

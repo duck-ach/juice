@@ -499,6 +499,13 @@
     }
   },
   "commonRetry": "Thử lại",
+  "commonCopy": "Sao chép",
+  "linkOpenFailedMessage": "Không tìm thấy ứng dụng để mở: {target}",
+  "@linkOpenFailedMessage": {
+    "placeholders": {
+      "target": {}
+    }
+  },
   "commonConfirm": "Xác nhận",
   "currencyMigrationConfirmMessage": "Đổi đơn vị tiền tệ cơ bản sang {toCode}? Tất cả số tiền đã ghi trước đó sẽ được tự động quy đổi theo tỷ giá hiện tại.",
   "currencyMigrationLoadingMessage": "Đang quy đổi dữ liệu sổ chi tiêu hiện có sang đơn vị tiền tệ mới... 🍊",

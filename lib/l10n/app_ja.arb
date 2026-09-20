@@ -307,6 +307,13 @@
   "manualRateEntryToggle": "レートを手動入力",
   "manualExchangeRateLabel": "1 {code} = ? {baseCode}",
   "commonRetry": "再試行",
+  "commonCopy": "コピー",
+  "linkOpenFailedMessage": "開けるアプリが見つかりませんでした: {target}",
+  "@linkOpenFailedMessage": {
+    "placeholders": {
+      "target": {}
+    }
+  },
   "commonConfirm": "確認",
   "currencyMigrationConfirmMessage": "基準通貨を{toCode}に変更しますか?これまで記録したすべての金額が現在のレートで自動的に換算されます。",
   "currencyMigrationLoadingMessage": "既存の家計簿データを新しい通貨に合わせて換算しています... 🍊",

@@ -307,6 +307,13 @@
   "manualRateEntryToggle": "Informar taxa manualmente",
   "manualExchangeRateLabel": "1 {code} = ? {baseCode}",
   "commonRetry": "Tentar novamente",
+  "commonCopy": "Copiar",
+  "linkOpenFailedMessage": "Não encontramos um app para abrir: {target}",
+  "@linkOpenFailedMessage": {
+    "placeholders": {
+      "target": {}
+    }
+  },
   "commonConfirm": "Confirmar",
   "currencyMigrationConfirmMessage": "Alterar sua moeda base para {toCode}? Todos os valores já registrados serão convertidos automaticamente pela taxa de câmbio atual.",
   "currencyMigrationLoadingMessage": "Convertendo seus registros existentes para a nova moeda... 🍊",

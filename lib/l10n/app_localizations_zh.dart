@@ -981,6 +981,14 @@ class AppLocalizationsZh extends AppLocalizations {
   String get commonRetry => '重试';
 
   @override
+  String get commonCopy => '复制';
+
+  @override
+  String linkOpenFailedMessage(Object target) {
+    return '找不到可打开的应用:$target';
+  }
+
+  @override
   String get commonConfirm => '确认';
 
   @override
@@ -2279,6 +2287,14 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get commonRetry => '重试';
 
   @override
+  String get commonCopy => '复制';
+
+  @override
+  String linkOpenFailedMessage(Object target) {
+    return '找不到可打开的应用:$target';
+  }
+
+  @override
   String get commonConfirm => '确认';
 
   @override
@@ -3575,6 +3591,14 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get commonRetry => '重試';
+
+  @override
+  String get commonCopy => '複製';
+
+  @override
+  String linkOpenFailedMessage(Object target) {
+    return '找不到可開啟的應用程式:$target';
+  }
 
   @override
   String get commonConfirm => '確認';

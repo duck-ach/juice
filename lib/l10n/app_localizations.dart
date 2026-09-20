@@ -1921,6 +1921,18 @@ abstract class AppLocalizations {
   /// **'다시 시도'**
   String get commonRetry;
 
+  /// No description provided for @commonCopy.
+  ///
+  /// In ko, this message translates to:
+  /// **'복사'**
+  String get commonCopy;
+
+  /// No description provided for @linkOpenFailedMessage.
+  ///
+  /// In ko, this message translates to:
+  /// **'열어 줄 앱을 찾지 못했어요: {target}'**
+  String linkOpenFailedMessage(Object target);
+
   /// No description provided for @commonConfirm.
   ///
   /// In ko, this message translates to:

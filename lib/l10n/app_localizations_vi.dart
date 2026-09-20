@@ -981,6 +981,14 @@ class AppLocalizationsVi extends AppLocalizations {
   String get commonRetry => 'Thử lại';
 
   @override
+  String get commonCopy => 'Sao chép';
+
+  @override
+  String linkOpenFailedMessage(Object target) {
+    return 'Không tìm thấy ứng dụng để mở: $target';
+  }
+
+  @override
   String get commonConfirm => 'Xác nhận';
 
   @override

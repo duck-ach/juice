@@ -5,7 +5,7 @@ class AppLinks {
   static const supportEmail = 'juicebudget@gmail.com';
 
   static const privacyPolicyUrl =
-      'https://cypress-pineapple-600.notion.site/Juice-3ac083f136a080adb088cd3607b329c8?pvs=73';
+      'https://cypress-pineapple-600.notion.site/Juice-Budget-3ac083f136a080adb088cd3607b329c8';
 
   static Uri get supportEmailUri => Uri(
         scheme: 'mailto',

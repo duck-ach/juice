@@ -307,6 +307,13 @@
   "manualRateEntryToggle": "Wechselkurs manuell eingeben",
   "manualExchangeRateLabel": "1 {code} = ? {baseCode}",
   "commonRetry": "Erneut versuchen",
+  "commonCopy": "Kopieren",
+  "linkOpenFailedMessage": "Keine App zum Öffnen gefunden: {target}",
+  "@linkOpenFailedMessage": {
+    "placeholders": {
+      "target": {}
+    }
+  },
   "commonConfirm": "Bestätigen",
   "currencyMigrationConfirmMessage": "Basiswährung zu {toCode} ändern? Alle bisher erfassten Beträge werden automatisch zum aktuellen Wechselkurs umgerechnet.",
   "currencyMigrationLoadingMessage": "Bestehende Daten werden auf die neue Währung umgerechnet … 🍊",

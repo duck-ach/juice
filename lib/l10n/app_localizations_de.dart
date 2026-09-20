@@ -981,6 +981,14 @@ class AppLocalizationsDe extends AppLocalizations {
   String get commonRetry => 'Erneut versuchen';
 
   @override
+  String get commonCopy => 'Kopieren';
+
+  @override
+  String linkOpenFailedMessage(Object target) {
+    return 'Keine App zum Öffnen gefunden: $target';
+  }
+
+  @override
   String get commonConfirm => 'Bestätigen';
 
   @override
