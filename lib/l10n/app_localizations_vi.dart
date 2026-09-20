@@ -211,6 +211,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get feedbackContentHint => 'Hãy chia sẻ ý kiến của bạn.';
 
   @override
+  String get feedbackAttachImage => 'Đính kèm ảnh chụp màn hình';
+
+  @override
   String get feedbackSubmit => 'Gửi';
 
   @override

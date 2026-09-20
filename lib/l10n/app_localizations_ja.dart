@@ -211,6 +211,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get feedbackContentHint => 'ご意見をお聞かせください。';
 
   @override
+  String get feedbackAttachImage => 'スクリーンショットを添付';
+
+  @override
   String get feedbackSubmit => '送信';
 
   @override

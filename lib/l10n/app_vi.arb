@@ -110,6 +110,7 @@
   "feedbackTypeOther": "Khác",
   "feedbackEmailHint": "Email của bạn (không bắt buộc, để nhận phản hồi)",
   "feedbackContentHint": "Hãy chia sẻ ý kiến của bạn.",
+  "feedbackAttachImage": "Đính kèm ảnh chụp màn hình",
   "feedbackSubmit": "Gửi",
   "feedbackDeviceInfoNotice": "Thông tin thiết bị/hệ điều hành sẽ được gửi kèm để chúng tôi xử lý nhanh hơn.",
   "feedbackContentRequired": "Vui lòng nhập nội dung",

@@ -493,6 +493,12 @@ abstract class AppLocalizations {
   /// **'소중한 의견을 남겨주세요.'**
   String get feedbackContentHint;
 
+  /// No description provided for @feedbackAttachImage.
+  ///
+  /// In ko, this message translates to:
+  /// **'스크린샷 첨부'**
+  String get feedbackAttachImage;
+
   /// No description provided for @feedbackSubmit.
   ///
   /// In ko, this message translates to:

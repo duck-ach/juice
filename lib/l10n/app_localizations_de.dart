@@ -211,6 +211,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get feedbackContentHint => 'Teile uns deine Gedanken mit.';
 
   @override
+  String get feedbackAttachImage => 'Screenshot anhängen';
+
+  @override
   String get feedbackSubmit => 'Senden';
 
   @override

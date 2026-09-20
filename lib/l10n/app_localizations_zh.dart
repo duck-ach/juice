@@ -211,6 +211,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get feedbackContentHint => '请与我们分享您的意见。';
 
   @override
+  String get feedbackAttachImage => '添加截图';
+
+  @override
   String get feedbackSubmit => '发送';
 
   @override
@@ -1547,6 +1550,9 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get feedbackContentHint => '请与我们分享您的意见。';
 
   @override
+  String get feedbackAttachImage => '添加截图';
+
+  @override
   String get feedbackSubmit => '发送';
 
   @override
@@ -2881,6 +2887,9 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get feedbackContentHint => '請與我們分享您的意見。';
+
+  @override
+  String get feedbackAttachImage => '附加截圖';
 
   @override
   String get feedbackSubmit => '送出';

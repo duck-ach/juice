@@ -64,6 +64,7 @@
   "feedbackTypeOther": "Outro",
   "feedbackEmailHint": "Seu e-mail (opcional, para resposta)",
   "feedbackContentHint": "Compartilhe sua opinião conosco.",
+  "feedbackAttachImage": "Anexar captura de tela",
   "feedbackSubmit": "Enviar",
   "feedbackDeviceInfoNotice": "Informações do dispositivo/SO são incluídas para agilizar o atendimento.",
   "feedbackContentRequired": "Digite sua mensagem",

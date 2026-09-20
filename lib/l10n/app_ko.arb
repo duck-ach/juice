@@ -110,6 +110,7 @@
   "feedbackTypeOther": "기타",
   "feedbackEmailHint": "답변받으실 이메일 (선택)",
   "feedbackContentHint": "소중한 의견을 남겨주세요.",
+  "feedbackAttachImage": "스크린샷 첨부",
   "feedbackSubmit": "보내기",
   "feedbackDeviceInfoNotice": "원활한 문의 해결을 위해 기기/OS 정보가 함께 전송됩니다.",
   "feedbackContentRequired": "문의 내용을 입력해 주세요",

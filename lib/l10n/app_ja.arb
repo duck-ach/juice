@@ -64,6 +64,7 @@
   "feedbackTypeOther": "その他",
   "feedbackEmailHint": "返信用メールアドレス(任意)",
   "feedbackContentHint": "ご意見をお聞かせください。",
+  "feedbackAttachImage": "スクリーンショットを添付",
   "feedbackSubmit": "送信",
   "feedbackDeviceInfoNotice": "スムーズな対応のため、端末/OS情報が併せて送信されます。",
   "feedbackContentRequired": "お問い合わせ内容を入力してください",

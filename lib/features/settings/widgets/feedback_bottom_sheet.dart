@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../core/constants/app_links.dart';
@@ -38,16 +41,26 @@ class FeedbackBottomSheet extends StatefulWidget {
   State<FeedbackBottomSheet> createState() => _FeedbackBottomSheetState();
 }
 
+const _maxImages = 2;
+
 class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
   _FeedbackType _type = _FeedbackType.bug;
   final _emailController = TextEditingController();
   final _contentController = TextEditingController();
+  final List<XFile> _images = [];
 
   @override
   void dispose() {
     _emailController.dispose();
     _contentController.dispose();
     super.dispose();
+  }
+
+  Future<void> _pickImage() async {
+    if (_images.length >= _maxImages) return;
+    final picked = await ImagePicker().pickImage(
+        source: ImageSource.gallery, imageQuality: 85);
+    if (picked != null && mounted) setState(() => _images.add(picked));
   }
 
   Future<String> _composeMessage(AppLocalizations loc) async {
@@ -71,9 +84,13 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
     }
     final message = await _composeMessage(loc);
     if (!mounted) return;
+    final subject = '[Juice Budget 피드백 - ${_type.label(loc)}]';
     try {
-      await Share.share(message,
-          subject: '[Juice Budget 피드백 - ${_type.label(loc)}]');
+      if (_images.isNotEmpty) {
+        await Share.shareXFiles(_images, text: message, subject: subject);
+      } else {
+        await Share.share(message, subject: subject);
+      }
     } catch (_) {
       // 공유 시트 호출 자체가 실패해도 하단의 '기본 메일 앱으로 열기'로 계속
       // 시도할 수 있으니 별도 에러 처리 없이 조용히 둔다.
@@ -152,6 +169,22 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                     alignLabelWithHint: true,
                   ),
                 ),
+                const SizedBox(height: 12),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: OutlinedButton.icon(
+                    onPressed: _images.length >= _maxImages ? null : _pickImage,
+                    icon: const Icon(Icons.add_photo_alternate_outlined, size: 18),
+                    label: Text(loc.feedbackAttachImage),
+                  ),
+                ),
+                if (_images.isNotEmpty) ...[
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    children: [for (final image in _images) _buildThumbnail(image)],
+                  ),
+                ],
                 const SizedBox(height: 8),
                 Text(
                   loc.feedbackDeviceInfoNotice,
@@ -181,6 +214,33 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildThumbnail(XFile image) {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Image.file(File(image.path),
+              width: 70, height: 70, fit: BoxFit.cover),
+        ),
+        Positioned(
+          top: -6,
+          right: -6,
+          child: GestureDetector(
+            onTap: () => setState(() => _images.remove(image)),
+            child: Container(
+              width: 20,
+              height: 20,
+              decoration: const BoxDecoration(
+                  color: Colors.black54, shape: BoxShape.circle),
+              child: const Icon(Icons.close, size: 14, color: Colors.white),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

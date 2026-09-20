@@ -64,6 +64,7 @@
   "feedbackTypeOther": "Sonstiges",
   "feedbackEmailHint": "Deine E-Mail (optional, für eine Antwort)",
   "feedbackContentHint": "Teile uns deine Gedanken mit.",
+  "feedbackAttachImage": "Screenshot anhängen",
   "feedbackSubmit": "Senden",
   "feedbackDeviceInfoNotice": "Geräte-/OS-Informationen werden mitgeschickt, damit wir schneller helfen können.",
   "feedbackContentRequired": "Bitte gib deine Nachricht ein",

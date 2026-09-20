@@ -211,6 +211,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get feedbackContentHint => 'Compartilhe sua opinião conosco.';
 
   @override
+  String get feedbackAttachImage => 'Anexar captura de tela';
+
+  @override
   String get feedbackSubmit => 'Enviar';
 
   @override

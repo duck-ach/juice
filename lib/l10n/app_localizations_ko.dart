@@ -211,6 +211,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get feedbackContentHint => '소중한 의견을 남겨주세요.';
 
   @override
+  String get feedbackAttachImage => '스크린샷 첨부';
+
+  @override
   String get feedbackSubmit => '보내기';
 
   @override

@@ -211,6 +211,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get feedbackContentHint => 'Partagez votre avis avec nous.';
 
   @override
+  String get feedbackAttachImage => 'Joindre une capture d\'écran';
+
+  @override
   String get feedbackSubmit => 'Envoyer';
 
   @override

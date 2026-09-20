@@ -64,6 +64,7 @@
   "feedbackTypeOther": "其他",
   "feedbackEmailHint": "您的電子郵件(選填,供我們回覆)",
   "feedbackContentHint": "請與我們分享您的意見。",
+  "feedbackAttachImage": "附加截圖",
   "feedbackSubmit": "送出",
   "feedbackDeviceInfoNotice": "為了更快協助您,將一併傳送裝置/系統資訊。",
   "feedbackContentRequired": "請輸入內容",
