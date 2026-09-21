@@ -10,6 +10,7 @@ class AppColors {
   static const Color warningCherry = Color(0xFFFF3B30);
   static const Color safeGreen = Color(0xFF34C759);
   static const Color softPink = Color(0xFFF06292);
+  static const Color saturdayBlue = Color(0xFF007AFF);
 
   // Light theme neutrals
   static const Color lightBackground = Color(0xFFFFFBF5);

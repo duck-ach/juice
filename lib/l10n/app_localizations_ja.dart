@@ -1316,10 +1316,31 @@ class AppLocalizationsJa extends AppLocalizations {
   String get scopeThisMonth => '今月';
 
   @override
-  String get calendarAmountModeCompact => '省略形';
+  String get calendarSettingsTitle => 'カレンダー設定';
 
   @override
-  String get calendarAmountModeFull => '全額表示';
+  String get calendarStartDayLabel => 'カレンダー開始曜日';
+
+  @override
+  String get calendarStartMon => '月曜日始まり';
+
+  @override
+  String get calendarStartSun => '日曜日始まり';
+
+  @override
+  String get calendarAmountMode => '金額表示方式';
+
+  @override
+  String get calendarCompactAmount => '省略形(例:5.6万)';
+
+  @override
+  String get calendarFullAmount => '全額表示(例:56,000)';
+
+  @override
+  String get calendarShowNoSpendStamp => '無支出スタンプを表示';
+
+  @override
+  String get calendarHighlightWeekend => '週末を色分け表示';
 
   @override
   String get savingsAllTimeTotalLabel => '累計 貯蓄・投資額';

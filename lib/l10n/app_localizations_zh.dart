@@ -1316,10 +1316,31 @@ class AppLocalizationsZh extends AppLocalizations {
   String get scopeThisMonth => '本月';
 
   @override
-  String get calendarAmountModeCompact => '精简';
+  String get calendarSettingsTitle => '日历设置';
 
   @override
-  String get calendarAmountModeFull => '完整金额';
+  String get calendarStartDayLabel => '日历起始日';
+
+  @override
+  String get calendarStartMon => '周一为起始';
+
+  @override
+  String get calendarStartSun => '周日为起始';
+
+  @override
+  String get calendarAmountMode => '金额显示方式';
+
+  @override
+  String get calendarCompactAmount => '精简(例如 5.6万)';
+
+  @override
+  String get calendarFullAmount => '完整金额(例如 56,000)';
+
+  @override
+  String get calendarShowNoSpendStamp => '显示零消费印章';
+
+  @override
+  String get calendarHighlightWeekend => '周末颜色强调';
 
   @override
   String get savingsAllTimeTotalLabel => '累计储蓄与投资总额';
@@ -2756,10 +2777,31 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get scopeThisMonth => '本月';
 
   @override
-  String get calendarAmountModeCompact => '精简';
+  String get calendarSettingsTitle => '日历设置';
 
   @override
-  String get calendarAmountModeFull => '完整金额';
+  String get calendarStartDayLabel => '日历起始日';
+
+  @override
+  String get calendarStartMon => '周一为起始';
+
+  @override
+  String get calendarStartSun => '周日为起始';
+
+  @override
+  String get calendarAmountMode => '金额显示方式';
+
+  @override
+  String get calendarCompactAmount => '精简(例如 5.6万)';
+
+  @override
+  String get calendarFullAmount => '完整金额(例如 56,000)';
+
+  @override
+  String get calendarShowNoSpendStamp => '显示零消费印章';
+
+  @override
+  String get calendarHighlightWeekend => '周末颜色强调';
 
   @override
   String get savingsAllTimeTotalLabel => '累计储蓄与投资总额';
@@ -4196,10 +4238,31 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get scopeThisMonth => '本月';
 
   @override
-  String get calendarAmountModeCompact => '精簡';
+  String get calendarSettingsTitle => '日曆設定';
 
   @override
-  String get calendarAmountModeFull => '完整金額';
+  String get calendarStartDayLabel => '日曆起始日';
+
+  @override
+  String get calendarStartMon => '週一為起始';
+
+  @override
+  String get calendarStartSun => '週日為起始';
+
+  @override
+  String get calendarAmountMode => '金額顯示方式';
+
+  @override
+  String get calendarCompactAmount => '精簡(例如 5.6萬)';
+
+  @override
+  String get calendarFullAmount => '完整金額(例如 56,000)';
+
+  @override
+  String get calendarShowNoSpendStamp => '顯示零消費印章';
+
+  @override
+  String get calendarHighlightWeekend => '週末顏色強調';
 
   @override
   String get savingsAllTimeTotalLabel => '累積儲蓄與投資總額';

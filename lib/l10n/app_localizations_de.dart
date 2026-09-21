@@ -1316,10 +1316,31 @@ class AppLocalizationsDe extends AppLocalizations {
   String get scopeThisMonth => 'diesen Monat';
 
   @override
-  String get calendarAmountModeCompact => 'Kompakt';
+  String get calendarSettingsTitle => 'Kalendereinstellungen';
 
   @override
-  String get calendarAmountModeFull => 'Vollständig';
+  String get calendarStartDayLabel => 'Kalenderstart-Tag';
+
+  @override
+  String get calendarStartMon => 'Beginn Montag';
+
+  @override
+  String get calendarStartSun => 'Beginn Sonntag';
+
+  @override
+  String get calendarAmountMode => 'Betragsanzeige';
+
+  @override
+  String get calendarCompactAmount => 'Kompakt (z. B. 56 Tsd.)';
+
+  @override
+  String get calendarFullAmount => 'Vollständiger Betrag (z. B. 56.000)';
+
+  @override
+  String get calendarShowNoSpendStamp => 'Kein-Ausgaben-Stempel anzeigen';
+
+  @override
+  String get calendarHighlightWeekend => 'Wochenende farblich hervorheben';
 
   @override
   String get savingsAllTimeTotalLabel => 'Insgesamt gespart & investiert (gesamt)';

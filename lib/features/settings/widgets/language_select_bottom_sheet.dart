@@ -39,8 +39,7 @@ class LanguageSelectBottomSheet extends ConsumerWidget {
               RadioListTile<String>(
                 value: option.tag,
                 groupValue: localeTag(current),
-                title: Text('${option.flag}  ${option.nativeName} '
-                    '(${option.subLabel})'),
+                title: Text('${option.flag}  ${option.nativeName}'),
                 onChanged: (_) {
                   ref.read(localeProvider.notifier).select(option.locale);
                   Navigator.of(context).pop();

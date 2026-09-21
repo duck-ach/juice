@@ -1316,10 +1316,31 @@ class AppLocalizationsVi extends AppLocalizations {
   String get scopeThisMonth => 'tháng này';
 
   @override
-  String get calendarAmountModeCompact => 'Rút gọn';
+  String get calendarSettingsTitle => 'Cài đặt lịch';
 
   @override
-  String get calendarAmountModeFull => 'Đầy đủ';
+  String get calendarStartDayLabel => 'Ngày bắt đầu lịch';
+
+  @override
+  String get calendarStartMon => 'Bắt đầu từ Thứ Hai';
+
+  @override
+  String get calendarStartSun => 'Bắt đầu từ Chủ Nhật';
+
+  @override
+  String get calendarAmountMode => 'Cách hiển thị số tiền';
+
+  @override
+  String get calendarCompactAmount => 'Rút gọn (VD: 56k)';
+
+  @override
+  String get calendarFullAmount => 'Đầy đủ (VD: 56.000)';
+
+  @override
+  String get calendarShowNoSpendStamp => 'Hiện dấu ngày không chi tiêu';
+
+  @override
+  String get calendarHighlightWeekend => 'Tô màu cuối tuần';
 
   @override
   String get savingsAllTimeTotalLabel => 'Tổng tiết kiệm & đầu tư (từ trước đến nay)';

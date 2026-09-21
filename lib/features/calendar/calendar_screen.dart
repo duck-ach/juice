@@ -11,7 +11,6 @@ import '../../core/widgets/edit_delete_slidable.dart';
 import '../../core/widgets/juice_segmented_tab.dart';
 import '../../data/models/week_start_day.dart';
 import '../../l10n/app_localizations.dart';
-import '../../providers/budget_settings_provider.dart';
 import '../../providers/calendar_display_provider.dart';
 import '../../providers/calendar_provider.dart';
 import '../../providers/category_provider.dart';
@@ -21,6 +20,7 @@ import '../../providers/juice_theme_provider.dart';
 import '../dashboard/widgets/add_expense_sheet.dart';
 import '../dashboard/widgets/expense_actions.dart';
 import '../dashboard/widgets/expense_tile.dart';
+import 'widgets/calendar_settings_bottom_sheet.dart';
 
 class CalendarScreen extends ConsumerWidget {
   const CalendarScreen({super.key});
@@ -43,12 +43,16 @@ class CalendarScreen extends ConsumerWidget {
     final corporateDays = ref.watch(calendarDailyCorporateDaysProvider);
     final fruitEmoji = ref.watch(resolvedJuiceThemeProvider).emoji;
     final dayItems = ref.watch(calendarSelectedDayItemsProvider);
-    final weekStartDay = ref.watch(weekStartDayProvider);
+    final calendarStartDay = ref.watch(calendarStartDayProvider);
     final categories = ref.watch(categoryProvider);
     final categoryMap = {for (final c in categories) c.id: c};
     final currency = ref.watch(currencyProvider).currency;
     final amountDisplayMode = ref.watch(calendarAmountDisplayModeProvider);
     final calendarFormat = ref.watch(calendarFormatProvider);
+    final showNoSpendStamp = ref.watch(calendarShowNoSpendStampProvider);
+    final highlightWeekend = ref.watch(calendarHighlightWeekendProvider);
+    final effectiveNoSpendDays =
+        showNoSpendStamp ? noSpendDays : const <DateTime>{};
 
     void goToMonth(DateTime month) {
       final normalized = DateTime(month.year, month.month, 1);
@@ -67,14 +71,9 @@ class CalendarScreen extends ConsumerWidget {
         title: Text(loc.calendarTitle),
         actions: [
           IconButton(
-            icon: Icon(amountDisplayMode == CalendarAmountDisplayMode.compact
-                ? Icons.compress
-                : Icons.expand),
-            tooltip: amountDisplayMode == CalendarAmountDisplayMode.compact
-                ? loc.calendarAmountModeCompact
-                : loc.calendarAmountModeFull,
-            onPressed: () =>
-                ref.read(calendarAmountDisplayModeProvider.notifier).toggle(),
+            icon: const Icon(Icons.settings_outlined),
+            tooltip: loc.calendarSettingsTitle,
+            onPressed: () => CalendarSettingsBottomSheet.show(context),
           ),
         ],
       ),
@@ -97,23 +96,28 @@ class CalendarScreen extends ConsumerWidget {
               ),
             ],
           ),
-          Text.rich(
-            TextSpan(
-              style: Theme.of(context).textTheme.bodyMedium,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 10,
+              runSpacing: 4,
               children: [
-                TextSpan(
-                    text: '${loc.expenseLabel} ${currency.format(monthTotal)}'),
-                const TextSpan(text: ' · '),
-                TextSpan(
-                  text:
-                      '${loc.incomeLabel} ${currency.format(monthIncomeTotal)}',
-                  style: const TextStyle(color: AppColors.safeGreen),
+                Text('${loc.expenseLabel} ${currency.format(monthTotal)}',
+                    style: Theme.of(context).textTheme.bodyMedium),
+                Text(
+                  '${loc.incomeLabel} ${currency.format(monthIncomeTotal)}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(color: AppColors.safeGreen),
                 ),
-                const TextSpan(text: ' · '),
-                TextSpan(
-                  text:
-                      '${loc.savingsLabel} ${currency.format(monthSavingsTotal)}',
-                  style: const TextStyle(color: AppColors.softPink),
+                Text(
+                  '${loc.savingsLabel} ${currency.format(monthSavingsTotal)}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(color: AppColors.softPink),
                 ),
               ],
             ),
@@ -140,7 +144,7 @@ class CalendarScreen extends ConsumerWidget {
               CalendarFormat.month: '',
               CalendarFormat.week: '',
             },
-            startingDayOfWeek: weekStartDay == WeekStartDay.sunday
+            startingDayOfWeek: calendarStartDay == WeekStartDay.sunday
                 ? StartingDayOfWeek.sunday
                 : StartingDayOfWeek.monday,
             headerVisible: false,
@@ -178,9 +182,10 @@ class CalendarScreen extends ConsumerWidget {
                 currencyCode: currency.code,
                 displayMode: amountDisplayMode,
                 isInstallmentOnly: installmentOnlyDays.contains(dateOnly(day)),
-                isNoSpendDay: noSpendDays.contains(dateOnly(day)),
+                isNoSpendDay: effectiveNoSpendDays.contains(dateOnly(day)),
                 isCorporateDay: corporateDays.contains(dateOnly(day)),
                 fruitEmoji: fruitEmoji,
+                highlightWeekend: highlightWeekend,
               ),
               outsideBuilder: (context, day, _) => _DayCell(
                 day: day,
@@ -190,9 +195,10 @@ class CalendarScreen extends ConsumerWidget {
                 currencyCode: currency.code,
                 displayMode: amountDisplayMode,
                 isInstallmentOnly: installmentOnlyDays.contains(dateOnly(day)),
-                isNoSpendDay: noSpendDays.contains(dateOnly(day)),
+                isNoSpendDay: effectiveNoSpendDays.contains(dateOnly(day)),
                 isCorporateDay: corporateDays.contains(dateOnly(day)),
                 fruitEmoji: fruitEmoji,
+                highlightWeekend: highlightWeekend,
                 isOutside: true,
               ),
               todayBuilder: (context, day, _) => _DayCell(
@@ -203,9 +209,10 @@ class CalendarScreen extends ConsumerWidget {
                 currencyCode: currency.code,
                 displayMode: amountDisplayMode,
                 isInstallmentOnly: installmentOnlyDays.contains(dateOnly(day)),
-                isNoSpendDay: noSpendDays.contains(dateOnly(day)),
+                isNoSpendDay: effectiveNoSpendDays.contains(dateOnly(day)),
                 isCorporateDay: corporateDays.contains(dateOnly(day)),
                 fruitEmoji: fruitEmoji,
+                highlightWeekend: highlightWeekend,
                 isToday: true,
                 isSelected: isSameDay(day, selectedDay),
               ),
@@ -217,9 +224,10 @@ class CalendarScreen extends ConsumerWidget {
                 currencyCode: currency.code,
                 displayMode: amountDisplayMode,
                 isInstallmentOnly: installmentOnlyDays.contains(dateOnly(day)),
-                isNoSpendDay: noSpendDays.contains(dateOnly(day)),
+                isNoSpendDay: effectiveNoSpendDays.contains(dateOnly(day)),
                 isCorporateDay: corporateDays.contains(dateOnly(day)),
                 fruitEmoji: fruitEmoji,
+                highlightWeekend: highlightWeekend,
                 isSelected: true,
                 isToday: isSameDay(day, DateTime.now()),
               ),
@@ -306,6 +314,7 @@ class _DayCell extends StatelessWidget {
     this.isNoSpendDay = false,
     this.isCorporateDay = false,
     this.fruitEmoji = '🍊',
+    this.highlightWeekend = false,
     this.isSelected = false,
     this.isToday = false,
     this.isOutside = false,
@@ -332,6 +341,10 @@ class _DayCell extends StatelessWidget {
 
   /// 현재 주스 테마의 시그니처 과일 이모지(무지출 성공 스탬프용).
   final String fruitEmoji;
+
+  /// 토요일은 파랑, 일요일은 빨강으로 날짜 숫자 색을 강조할지(선택된 셀은 항상 흰색
+  /// 유지 — 강조하지 않음).
+  final bool highlightWeekend;
   final bool isSelected;
   final bool isToday;
   final bool isOutside;
@@ -362,7 +375,14 @@ class _DayCell extends StatelessWidget {
     final baseColor = isOutside
         ? theme.textTheme.bodyMedium?.color?.withValues(alpha: 0.35)
         : theme.textTheme.bodyLarge?.color;
-    final numberColor = isSelected ? Colors.white : baseColor;
+    Color? weekendColor;
+    if (highlightWeekend && !isSelected) {
+      final weekendAccent = day.weekday == DateTime.saturday
+          ? AppColors.saturdayBlue
+          : (day.weekday == DateTime.sunday ? AppColors.warningCherry : null);
+      weekendColor = weekendAccent?.withValues(alpha: isOutside ? 0.4 : 1);
+    }
+    final numberColor = isSelected ? Colors.white : (weekendColor ?? baseColor);
     final hasExpense = expenseTotal != null && expenseTotal! > 0;
     final hasIncome = incomeTotal != null && incomeTotal! > 0;
     final hasSavings = savingsTotal != null && savingsTotal! > 0;

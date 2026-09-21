@@ -2527,17 +2527,59 @@ abstract class AppLocalizations {
   /// **'이번 달'**
   String get scopeThisMonth;
 
-  /// No description provided for @calendarAmountModeCompact.
+  /// No description provided for @calendarSettingsTitle.
   ///
   /// In ko, this message translates to:
-  /// **'축약형'**
-  String get calendarAmountModeCompact;
+  /// **'캘린더 설정'**
+  String get calendarSettingsTitle;
 
-  /// No description provided for @calendarAmountModeFull.
+  /// No description provided for @calendarStartDayLabel.
   ///
   /// In ko, this message translates to:
-  /// **'확장형'**
-  String get calendarAmountModeFull;
+  /// **'달력 시작 요일'**
+  String get calendarStartDayLabel;
+
+  /// No description provided for @calendarStartMon.
+  ///
+  /// In ko, this message translates to:
+  /// **'월요일 시작'**
+  String get calendarStartMon;
+
+  /// No description provided for @calendarStartSun.
+  ///
+  /// In ko, this message translates to:
+  /// **'일요일 시작'**
+  String get calendarStartSun;
+
+  /// No description provided for @calendarAmountMode.
+  ///
+  /// In ko, this message translates to:
+  /// **'금액 표시 방식'**
+  String get calendarAmountMode;
+
+  /// No description provided for @calendarCompactAmount.
+  ///
+  /// In ko, this message translates to:
+  /// **'축약형 (5.6만)'**
+  String get calendarCompactAmount;
+
+  /// No description provided for @calendarFullAmount.
+  ///
+  /// In ko, this message translates to:
+  /// **'전체 금액 (56,000)'**
+  String get calendarFullAmount;
+
+  /// No description provided for @calendarShowNoSpendStamp.
+  ///
+  /// In ko, this message translates to:
+  /// **'무지출 스탬프 표시'**
+  String get calendarShowNoSpendStamp;
+
+  /// No description provided for @calendarHighlightWeekend.
+  ///
+  /// In ko, this message translates to:
+  /// **'주말 색상 강조'**
+  String get calendarHighlightWeekend;
 
   /// No description provided for @savingsAllTimeTotalLabel.
   ///

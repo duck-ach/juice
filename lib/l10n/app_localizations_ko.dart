@@ -1316,10 +1316,31 @@ class AppLocalizationsKo extends AppLocalizations {
   String get scopeThisMonth => '이번 달';
 
   @override
-  String get calendarAmountModeCompact => '축약형';
+  String get calendarSettingsTitle => '캘린더 설정';
 
   @override
-  String get calendarAmountModeFull => '확장형';
+  String get calendarStartDayLabel => '달력 시작 요일';
+
+  @override
+  String get calendarStartMon => '월요일 시작';
+
+  @override
+  String get calendarStartSun => '일요일 시작';
+
+  @override
+  String get calendarAmountMode => '금액 표시 방식';
+
+  @override
+  String get calendarCompactAmount => '축약형 (5.6만)';
+
+  @override
+  String get calendarFullAmount => '전체 금액 (56,000)';
+
+  @override
+  String get calendarShowNoSpendStamp => '무지출 스탬프 표시';
+
+  @override
+  String get calendarHighlightWeekend => '주말 색상 강조';
 
   @override
   String get savingsAllTimeTotalLabel => '전체 누적 저축 · 투자';
