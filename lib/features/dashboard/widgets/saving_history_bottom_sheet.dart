@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../../core/utils/thousands_formatter.dart';
 import '../../../data/models/budget_period.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/currency_provider.dart';
 import '../../../providers/juice_saving_provider.dart';
 import '../../../providers/juice_theme_provider.dart';
+import '../../../services/juice_saving_service.dart';
 
 /// 마감된 목표 주기(일/주/월)별 절약 정산 내역을 최신순으로 보여주는 바텀시트.
 /// [juiceSavingRecordsProvider]가 지출 목록을 직접 watch하므로, 과거 지출을 추가/수정/
@@ -44,6 +46,48 @@ class _SavingHistoryBottomSheetState
         3 => loc.savingPraise_4,
         _ => loc.savingPraise_5,
       };
+
+  Future<void> _editTargetAmount(JuiceSavingRecord record) async {
+    final loc = AppLocalizations.of(context)!;
+    final periodLabel = switch (record.history.periodTypeEnum) {
+      BudgetPeriod.daily => loc.periodSettingDaily,
+      BudgetPeriod.weekly => loc.periodSettingWeekly,
+      BudgetPeriod.monthly => loc.periodSettingMonthly,
+    };
+    final controller = TextEditingController(
+        text: NumberFormat('#,###').format(record.history.targetAmount));
+    final result = await showDialog<double>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text('$periodLabel ${loc.periodTargetAmountSuffix}'),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          keyboardType: TextInputType.number,
+          inputFormatters: [ThousandsSeparatorInputFormatter()],
+          textAlign: TextAlign.center,
+          decoration: const InputDecoration(suffixText: 'mL'),
+        ),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(),
+              child: Text(loc.commonCancel)),
+          FilledButton(
+            onPressed: () {
+              final amount =
+                  double.tryParse(controller.text.replaceAll(',', ''));
+              Navigator.of(dialogContext).pop(amount);
+            },
+            child: Text(loc.commonSave),
+          ),
+        ],
+      ),
+    );
+    if (result != null && result > 0) {
+      await JuiceSavingService.updateTargetAmount(record.history, result);
+      ref.invalidate(juiceSavingHistoryProvider);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,8 +161,10 @@ class _SavingHistoryBottomSheetState
                       controller: scrollController,
                       itemCount: records.length,
                       separatorBuilder: (_, __) => const SizedBox(height: 10),
-                      itemBuilder: (context, index) =>
-                          _SavingHistoryTile(record: records[index]),
+                      itemBuilder: (context, index) => _SavingHistoryTile(
+                        record: records[index],
+                        onEditTarget: () => _editTargetAmount(records[index]),
+                      ),
                     ),
             ),
           ],
@@ -129,9 +175,10 @@ class _SavingHistoryBottomSheetState
 }
 
 class _SavingHistoryTile extends StatelessWidget {
-  const _SavingHistoryTile({required this.record});
+  const _SavingHistoryTile({required this.record, required this.onEditTarget});
 
   final JuiceSavingRecord record;
+  final VoidCallback onEditTarget;
 
   String _periodTag(AppLocalizations loc) =>
       switch (record.history.periodTypeEnum) {
@@ -216,6 +263,13 @@ class _SavingHistoryTile extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          IconButton(
+            icon: const Icon(Icons.edit_outlined, size: 18),
+            visualDensity: VisualDensity.compact,
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(),
+            onPressed: onEditTarget,
           ),
         ],
       ),

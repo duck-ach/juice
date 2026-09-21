@@ -23,6 +23,15 @@ class JuiceSavingService {
 
   static List<JuiceSavingHistory> getAll() => _box.values.toList();
 
+  /// 이미 마감된 주기의 목표량 스냅샷을 사후 수정한다. spentAmount/savedAmount는
+  /// 저장값이 아니라 [JuiceSavingHistoryCalc]가 매번 다시 계산하므로, 이 값만 바꿔도
+  /// 다음 조회부터 남은/초과 주스가 곧바로 새 기준으로 재계산된다.
+  static Future<void> updateTargetAmount(
+      JuiceSavingHistory history, double newTargetAmount) async {
+    history.targetAmount = newTargetAmount;
+    await history.save();
+  }
+
   static String _idFor(BudgetPeriod period, DateTime start) =>
       '${period.name}_${DateFormat('yyyyMMdd').format(start)}';
 

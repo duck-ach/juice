@@ -189,4 +189,71 @@ void main() {
     await Hive.close();
     tempDir.deleteSync(recursive: true);
   });
+
+  test('corporate card spend is excluded, and editing targetAmount after '
+      'closing immediately changes success/saved without touching spentAmount',
+      () async {
+    final tempDir = Directory.systemTemp.createTempSync('juice_saving_edit');
+    Hive.init(tempDir.path);
+    _registerAdaptersOnce();
+
+    await Hive.openBox<Category>(HiveBoxes.categories);
+    final expenseBox = await Hive.openBox<Expense>(HiveBoxes.expenses);
+    await Hive.openBox<WeeklyBudget>(HiveBoxes.weeklyBudgets);
+    final settingsBox = await Hive.openBox(HiveBoxes.settings);
+    await Hive.openBox<CardItem>(HiveBoxes.cards);
+    await Hive.openBox<JuiceSavingHistory>(HiveBoxes.juiceSavingHistory);
+
+    await settingsBox.put('budgetPeriod', 'daily');
+    await settingsBox.put('targetAmountDaily', 200000.0);
+    await settingsBox.put('juiceThemeType', 'orange');
+
+    final today = DateTime(2026, 9, 14);
+    await expenseBox.put(
+      'personal',
+      Expense(
+          id: 'personal',
+          amount: 100000,
+          categoryId: 'food',
+          date: today.add(const Duration(hours: 9)),
+          paymentMethod: PaymentMethod.checkCard),
+    );
+    // 법인/업무용 카드 지출은 주스 게이지와 마찬가지로 정산에서 제외되어야 함.
+    await expenseBox.put(
+      'corporate',
+      Expense(
+          id: 'corporate',
+          amount: 300000,
+          categoryId: 'work',
+          date: today.add(const Duration(hours: 10)),
+          isCorporate: true,
+          paymentMethod: PaymentMethod.checkCard),
+    );
+
+    final container = ProviderContainer();
+    addTearDown(container.dispose);
+    await container.read(FutureProvider<void>((ref) => JuiceSavingService
+        .checkAndClosePeriods(ref, now: today.add(const Duration(hours: 8)))).future);
+    await container.read(FutureProvider<void>((ref) =>
+        JuiceSavingService.checkAndClosePeriods(ref, now: DateTime(2026, 9, 15, 10))).future);
+
+    final closed = JuiceSavingService.getAll().single;
+    final allExpenses = expenseBox.values.toList();
+    expect(closed.spentAmount(allExpenses), 100000.0,
+        reason: '법인 카드 지출 300,000은 정산 합계에서 제외되어야 함');
+    expect(closed.savedAmount(allExpenses), 100000.0);
+    expect(closed.isSuccess(allExpenses), true);
+
+    // 마감 후 목표 금액을 낮춰 초과로 뒤집히는지 확인.
+    await JuiceSavingService.updateTargetAmount(closed, 50000.0);
+    expect(closed.targetAmount, 50000.0);
+    expect(closed.spentAmount(allExpenses), 100000.0,
+        reason: '목표 금액 수정은 소비 합계 자체에는 영향을 주지 않아야 함');
+    expect(closed.savedAmount(allExpenses), 0.0,
+        reason: '소비가 목표를 초과하면 savedAmount는 0으로 clamp');
+    expect(closed.isSuccess(allExpenses), false);
+
+    await Hive.close();
+    tempDir.deleteSync(recursive: true);
+  });
 }
