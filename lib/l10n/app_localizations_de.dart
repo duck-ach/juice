@@ -856,25 +856,67 @@ class AppLocalizationsDe extends AppLocalizations {
   String get finishWizardButton => 'Mit diesem Rezept starten';
 
   @override
-  String get incomeTypeFixedLabel => 'Festes Einkommen (Angestellte)';
+  String get incomeTypeFixed => 'Festes Einkommen';
 
   @override
-  String get incomeTypeIrregularLabel => 'Unregelmäßiges Einkommen (Freelancer/Selbstständig)';
+  String get incomeTypeVariable => 'Variables Einkommen';
 
   @override
-  String get incomeTypeAllowanceLabel => 'Taschengeld/Startkapital (Studierende)';
+  String get incomeTypeAllowance => 'Taschengeld / Startkapital';
 
   @override
-  String get incomeStepQuestion => 'Wie viel Juice (Einkommen)\nkommt monatlich rein?';
+  String get freqMonthly => 'Monatlich';
 
   @override
-  String get incomeStepSubtitle => 'Gib den tatsächlichen Betrag nach Steuern ein.';
+  String get freqBiweekly => 'Alle 2 Wochen';
 
   @override
-  String get incomeStepIrregularLabel => 'Gib das minimale, sichere\nMonatseinkommen ein.';
+  String get freqWeekly => 'Wöchentlich';
 
   @override
-  String get incomeStepIrregularCaption => 'Schätze konservativ, damit dein Juice auch in der Nebensaison nicht ausgeht 🍊';
+  String get questionIncomeFixed => 'Wie viel Juice (Einkommen) kommt monatlich rein? 💰';
+
+  @override
+  String get questionIncomeFixedSub => 'Gib den Betrag ein, der tatsächlich auf deinem Konto landet.';
+
+  @override
+  String get questionIncomeVariable => 'Wie hoch ist das minimale sichere Einkommen, auch in schwachen Monaten? 💼';
+
+  @override
+  String get questionIncomeVariableSub => 'Schätze konservativ, damit der Plan auch in einem schwachen Monat hält.';
+
+  @override
+  String get questionWeeklyExpenseVariable => 'Wie viel planst du pro Woche für Lebenshaltungskosten (variable Ausgaben) auszugeben?';
+
+  @override
+  String get questionIncomeAllowance => 'Wie viel Taschengeld bekommst du oder hast du schon gespart? 🌱';
+
+  @override
+  String get subAllowanceRegular => '🗓️ Regelmäßiges Taschengeld';
+
+  @override
+  String get subAllowanceIrregular => '🎲 Unregelmäßiges Taschengeld/Nebenjob';
+
+  @override
+  String get questionIrregularMinSave => 'Wie viel kannst du dir sicher sein, jeden Monat mindestens zu sparen? 🪙';
+
+  @override
+  String praiseVariablePlan(Object amount) {
+    return '🍊 Auf Basis deiner Nebensaison-Mindesteinnahmen kannst du sicher mindestens $amount Won pro Jahr zurücklegen!\nIn Monaten mit mehr Einkommen kannst du mit Bonus-Juice dein Sparen beschleunigen 🚀';
+  }
+
+  @override
+  String praiseAllowancePlan(Object amount) {
+    return 'Kleine Tropfen ergeben ein Meer! In einem Jahr hast du $amount Won wunderbaren Juice angespart ✨';
+  }
+
+  @override
+  String get guideExtendGoalPeriod => 'Sollen wir den Zielzeitraum etwas verlängern, damit du bequem innerhalb deines Taschengelds sparen kannst? 🍊';
+
+  @override
+  String freqConversionCaption(Object monthly, Object weekly) {
+    return '≈ $monthly Won/Monat · ca. $weekly Won/Woche verfügbar 🍊';
+  }
 
   @override
   String get wonSuffixSpaced => ' Won';

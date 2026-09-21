@@ -288,13 +288,41 @@
   "cardUnassigned": "カード未指定",
   "fillJuiceButton": "ジュースを満たす",
   "finishWizardButton": "このレシピでジュースを始める",
-  "incomeTypeFixedLabel": "固定収入(会社員)",
-  "incomeTypeIrregularLabel": "不規則な収入(フリーランス・自営業)",
-  "incomeTypeAllowanceLabel": "お小遣い・シード資金(学生)",
-  "incomeStepQuestion": "毎月入ってくるジュース(月収入)は\nいくらですか?",
-  "incomeStepSubtitle": "税引き後、実際に口座に入る金額を入力してください。",
-  "incomeStepIrregularLabel": "最低限入ってくる\n安全な月収を入力してください。",
-  "incomeStepIrregularCaption": "保守的に見積もると閑散期でもジュースが枯れません 🍊",
+  "incomeTypeFixed": "固定収入 (給与)",
+  "incomeTypeVariable": "変動収入 (フリーランス/事業)",
+  "incomeTypeAllowance": "お小遣い・シードマネー (学生)",
+  "freqMonthly": "毎月",
+  "freqBiweekly": "隔週",
+  "freqWeekly": "毎週",
+  "questionIncomeFixed": "毎月入ってくるジュース(収入)はいくらですか? 💰",
+  "questionIncomeFixedSub": "実際に口座に入る金額を入力してください。",
+  "questionIncomeVariable": "閑散期でも入ってくる最低限の安全な収入はいくらですか? 💼",
+  "questionIncomeVariableSub": "保守的に見積もると、仕事が少ない月でもプランを維持できます。",
+  "questionWeeklyExpenseVariable": "1週間の生活費(変動支出)はいくら使う予定ですか?",
+  "questionIncomeAllowance": "もらうお小遣いや貯めたお金はいくらですか? 🌱",
+  "subAllowanceRegular": "🗓️ 定期的なお小遣い",
+  "subAllowanceIrregular": "🎲 不定期なお小遣い・バイト",
+  "questionIrregularMinSave": "1か月に「これだけは必ず貯められる」という最低金額はいくらですか? 🪙",
+  "praiseVariablePlan": "🍊 閑散期基準で、年間最低{amount}ウォンはしっかり守れます!\n収入が多い月はボーナスジュースで貯蓄スピードを上げましょう 🚀",
+  "@praiseVariablePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "praiseAllowancePlan": "小さな水滴が集まって海になります!1年後には{amount}ウォンの素敵なジュースが完成します ✨",
+  "@praiseAllowancePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "guideExtendGoalPeriod": "お小遣いの範囲で無理なく貯められるよう、目標期間を少し延ばしてみましょうか? 🍊",
+  "freqConversionCaption": "≈ 月換算{monthly}ウォン / 週あたり約{weekly}ウォン利用可能 🍊",
+  "@freqConversionCaption": {
+    "placeholders": {
+      "monthly": {},
+      "weekly": {}
+    }
+  },
   "wonSuffixSpaced": " ウォン",
   "goalStepQuestion": "どのくらいの期間、いくら\n貯めたいですか?",
   "yearsFieldLabel": "年",

@@ -8,9 +8,34 @@ import 'juice_saving_provider.dart';
 
 const _savingsPlanKey = 'savingsPlan';
 
-/// 플래너 수입 입력 단계에서 고르는 소득 형태. 계산식에는 영향을 주지 않고,
-/// 불규칙 소득자에게는 "최소 안전 수입"을 적으라는 안내 문구를 다르게 보여주는 데만 쓰인다.
+/// 플래너 수입 입력 단계에서 고르는 소득 형태. 유형에 따라 위저드의 질문/스텝 구성 자체가
+/// 달라진다(고정 소득: 기존 플로우, 불규칙 소득: 최소 안전 수입 기반 역산, 용돈·시드머니:
+/// 하위 [AllowanceSubType]로 다시 분기).
 enum IncomeType { fixed, irregular, allowance }
+
+/// 용돈·시드머니(allowance) 선택 시 추가로 고르는 하위 유형.
+enum AllowanceSubType { regular, irregular }
+
+/// 금액 입력의 지급 주기 — 표준 월 환산([monthlyEquivalent])에만 쓰이고, 저장되는
+/// [SavingsPlan.monthlyIncome]은 항상 이미 월 환산된 값이다(위저드가 변환해 저장).
+enum IncomeFrequency { monthly, biweekly, weekly }
+
+extension IncomeFrequencyConvert on IncomeFrequency {
+  /// 표준 월 환산: 매월=그대로, 2주마다=×26/12, 매주=×52/12.
+  double monthlyEquivalent(double amount) => switch (this) {
+        IncomeFrequency.monthly => amount,
+        IncomeFrequency.biweekly => amount * 26 / 12,
+        IncomeFrequency.weekly => amount * 52 / 12,
+      };
+
+  /// [monthlyEquivalent]의 역변환 — 저장된 월 환산액에서 위저드가 원래 입력창에
+  /// 보여줄 "이 주기 기준" 원래 금액을 복원할 때 쓴다.
+  double rawFromMonthly(double monthlyAmount) => switch (this) {
+        IncomeFrequency.monthly => monthlyAmount,
+        IncomeFrequency.biweekly => monthlyAmount * 12 / 26,
+        IncomeFrequency.weekly => monthlyAmount * 12 / 52,
+      };
+}
 
 class FixedExpenseItem {
   const FixedExpenseItem({required this.name, required this.amount});
@@ -36,6 +61,9 @@ class SavingsPlan {
     this.enabled = false,
     this.monthlyIncome,
     this.incomeType = IncomeType.fixed,
+    this.incomeFrequency = IncomeFrequency.monthly,
+    this.allowanceSubType,
+    this.weeklyLivingExpense,
     this.goalYears = 0,
     this.goalMonths = 0,
     this.goalAmount,
@@ -44,8 +72,23 @@ class SavingsPlan {
   });
 
   final bool enabled;
+
+  /// 항상 월 환산된 값(표준 단위) — 위저드가 [incomeFrequency]로 입력받은 원 금액을
+  /// 저장 시점에 이미 월 환산해 넣으므로, 이 필드를 쓰는 모든 계산(monthlyAvailable,
+  /// 재조정, 자동 예산 적용 등)은 지급 주기를 몰라도 된다.
   final double? monthlyIncome;
   final IncomeType incomeType;
+
+  /// [monthlyIncome] 입력 당시 사용자가 실제로 선택했던 지급 주기 스냅샷(재편집 시
+  /// 위저드가 원래 선택을 복원하는 용도) — 계산에는 관여하지 않는다.
+  final IncomeFrequency incomeFrequency;
+
+  /// [IncomeType.allowance]일 때만 의미 있는 하위 유형.
+  final AllowanceSubType? allowanceSubType;
+
+  /// [IncomeType.irregular](불규칙 소득) 전용 — 주간 생활비(변동지출) 최소 예상액.
+  final double? weeklyLivingExpense;
+
   final int goalYears;
   final int goalMonths;
   final double? goalAmount;
@@ -60,6 +103,9 @@ class SavingsPlan {
     bool? enabled,
     double? monthlyIncome,
     IncomeType? incomeType,
+    IncomeFrequency? incomeFrequency,
+    AllowanceSubType? allowanceSubType,
+    double? weeklyLivingExpense,
     int? goalYears,
     int? goalMonths,
     double? goalAmount,
@@ -70,6 +116,9 @@ class SavingsPlan {
         enabled: enabled ?? this.enabled,
         monthlyIncome: monthlyIncome ?? this.monthlyIncome,
         incomeType: incomeType ?? this.incomeType,
+        incomeFrequency: incomeFrequency ?? this.incomeFrequency,
+        allowanceSubType: allowanceSubType ?? this.allowanceSubType,
+        weeklyLivingExpense: weeklyLivingExpense ?? this.weeklyLivingExpense,
         goalYears: goalYears ?? this.goalYears,
         goalMonths: goalMonths ?? this.goalMonths,
         goalAmount: goalAmount ?? this.goalAmount,
@@ -102,10 +151,22 @@ class SavingsPlan {
   double? get weeklyAvailable =>
       dailyAvailable == null ? null : dailyAvailable! * 7;
 
+  /// [IncomeType.irregular](불규칙 소득) 전용 — 비수기 기준(최소 안전 수입) 연간 최소
+  /// 저축 가능액 = (월 환산 최소 수입 − 고정비 − 주간 생활비×4.33) × 12. 음수면 0으로
+  /// clamp(고정비+생활비가 최소 수입을 이미 초과하는 경우).
+  double? get variableIncomeAnnualMinSavings {
+    if (monthlyIncome == null || weeklyLivingExpense == null) return null;
+    final monthly = monthlyIncome! - fixedExpenseTotal - weeklyLivingExpense! * 4.33;
+    return (monthly * 12).clamp(0, double.infinity).toDouble();
+  }
+
   Map<String, dynamic> toJson() => {
         'enabled': enabled,
         'monthlyIncome': monthlyIncome,
         'incomeType': incomeType.name,
+        'incomeFrequency': incomeFrequency.name,
+        'allowanceSubType': allowanceSubType?.name,
+        'weeklyLivingExpense': weeklyLivingExpense,
         'goalYears': goalYears,
         'goalMonths': goalMonths,
         'goalAmount': goalAmount,
@@ -119,6 +180,15 @@ class SavingsPlan {
         incomeType: IncomeType.values.firstWhere(
             (t) => t.name == json['incomeType'],
             orElse: () => IncomeType.fixed),
+        incomeFrequency: IncomeFrequency.values.firstWhere(
+            (f) => f.name == json['incomeFrequency'],
+            orElse: () => IncomeFrequency.monthly),
+        allowanceSubType: switch (json['allowanceSubType']) {
+          'regular' => AllowanceSubType.regular,
+          'irregular' => AllowanceSubType.irregular,
+          _ => null,
+        },
+        weeklyLivingExpense: (json['weeklyLivingExpense'] as num?)?.toDouble(),
         goalYears: json['goalYears'] as int? ?? 0,
         goalMonths: json['goalMonths'] as int? ?? 0,
         goalAmount: (json['goalAmount'] as num?)?.toDouble(),

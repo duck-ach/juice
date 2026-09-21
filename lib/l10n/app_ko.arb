@@ -451,13 +451,41 @@
   "cardUnassigned": "카드 미지정",
   "fillJuiceButton": "주스 채우기",
   "finishWizardButton": "이 레시피로 주스 시작하기",
-  "incomeTypeFixedLabel": "고정 소득 (직장인)",
-  "incomeTypeIrregularLabel": "불규칙 소득 (프리랜서·자영업)",
-  "incomeTypeAllowanceLabel": "용돈·시드머니 (학생)",
-  "incomeStepQuestion": "매달 들어오는 주스(월 수입)는\n얼마인가요?",
-  "incomeStepSubtitle": "세후 실제 통장에 찍히는 금액을 적어주세요.",
-  "incomeStepIrregularLabel": "최소한으로 들어오는\n안전 월수입을 적어주세요.",
-  "incomeStepIrregularCaption": "보수적으로 잡아야 비수기에도 주스가 마르지 않아요 🍊",
+  "incomeTypeFixed": "고정 소득 (직장인·알바)",
+  "incomeTypeVariable": "불규칙 소득 (프리랜서·자영업)",
+  "incomeTypeAllowance": "용돈·시드머니 (학생)",
+  "freqMonthly": "매월",
+  "freqBiweekly": "2주마다",
+  "freqWeekly": "매주",
+  "questionIncomeFixed": "매달 들어오는 주스(수입)는 얼마인가요? 💰",
+  "questionIncomeFixedSub": "실제 통장에 들어오는 금액을 적어주세요.",
+  "questionIncomeVariable": "비수기에도 들어오는 최소 안전 수입은 얼마인가요? 💼",
+  "questionIncomeVariableSub": "보수적으로 잡아야 일이 적은 달에도 플랜을 유지할 수 있어요.",
+  "questionWeeklyExpenseVariable": "일주일에 생활비(변동지출)로 얼마를 쓰실 예정인가요?",
+  "questionIncomeAllowance": "받는 용돈이나 모아둔 금액은 얼마인가요? 🌱",
+  "subAllowanceRegular": "🗓️ 정기적인 용돈",
+  "subAllowanceIrregular": "🎲 비정기 용돈/알바",
+  "questionIrregularMinSave": "한 달에 '이 정도는 꼭 저축할 수 있다' 하는 최소 금액은 얼마인가요? 🪙",
+  "praiseVariablePlan": "🍊 비수기 기준, 1년에 최소 {amount}원은 든든하게 지켜낼 수 있어요!\n수입이 더 많이 들어온 달에는 보너스 주스로 저축 속도를 확 당겨봐요 🚀",
+  "@praiseVariablePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "praiseAllowancePlan": "작은 물방울이 모여 바다가 돼요! 1년 뒤엔 {amount}원의 멋진 주스가 완성돼요 ✨",
+  "@praiseAllowancePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "guideExtendGoalPeriod": "용돈 안에서 편안하게 모을 수 있도록 목표 기간을 조금만 늘려볼까요? 🍊",
+  "freqConversionCaption": "≈ 월 환산 {monthly}원 / 주간 가용 약 {weekly}원 🍊",
+  "@freqConversionCaption": {
+    "placeholders": {
+      "monthly": {},
+      "weekly": {}
+    }
+  },
   "wonSuffixSpaced": " 원",
   "goalStepQuestion": "얼마 동안, 얼마를\n모으고 싶나요?",
   "yearsFieldLabel": "년",

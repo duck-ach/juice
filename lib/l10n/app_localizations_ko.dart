@@ -856,25 +856,67 @@ class AppLocalizationsKo extends AppLocalizations {
   String get finishWizardButton => '이 레시피로 주스 시작하기';
 
   @override
-  String get incomeTypeFixedLabel => '고정 소득 (직장인)';
+  String get incomeTypeFixed => '고정 소득 (직장인·알바)';
 
   @override
-  String get incomeTypeIrregularLabel => '불규칙 소득 (프리랜서·자영업)';
+  String get incomeTypeVariable => '불규칙 소득 (프리랜서·자영업)';
 
   @override
-  String get incomeTypeAllowanceLabel => '용돈·시드머니 (학생)';
+  String get incomeTypeAllowance => '용돈·시드머니 (학생)';
 
   @override
-  String get incomeStepQuestion => '매달 들어오는 주스(월 수입)는\n얼마인가요?';
+  String get freqMonthly => '매월';
 
   @override
-  String get incomeStepSubtitle => '세후 실제 통장에 찍히는 금액을 적어주세요.';
+  String get freqBiweekly => '2주마다';
 
   @override
-  String get incomeStepIrregularLabel => '최소한으로 들어오는\n안전 월수입을 적어주세요.';
+  String get freqWeekly => '매주';
 
   @override
-  String get incomeStepIrregularCaption => '보수적으로 잡아야 비수기에도 주스가 마르지 않아요 🍊';
+  String get questionIncomeFixed => '매달 들어오는 주스(수입)는 얼마인가요? 💰';
+
+  @override
+  String get questionIncomeFixedSub => '실제 통장에 들어오는 금액을 적어주세요.';
+
+  @override
+  String get questionIncomeVariable => '비수기에도 들어오는 최소 안전 수입은 얼마인가요? 💼';
+
+  @override
+  String get questionIncomeVariableSub => '보수적으로 잡아야 일이 적은 달에도 플랜을 유지할 수 있어요.';
+
+  @override
+  String get questionWeeklyExpenseVariable => '일주일에 생활비(변동지출)로 얼마를 쓰실 예정인가요?';
+
+  @override
+  String get questionIncomeAllowance => '받는 용돈이나 모아둔 금액은 얼마인가요? 🌱';
+
+  @override
+  String get subAllowanceRegular => '🗓️ 정기적인 용돈';
+
+  @override
+  String get subAllowanceIrregular => '🎲 비정기 용돈/알바';
+
+  @override
+  String get questionIrregularMinSave => '한 달에 \'이 정도는 꼭 저축할 수 있다\' 하는 최소 금액은 얼마인가요? 🪙';
+
+  @override
+  String praiseVariablePlan(Object amount) {
+    return '🍊 비수기 기준, 1년에 최소 $amount원은 든든하게 지켜낼 수 있어요!\n수입이 더 많이 들어온 달에는 보너스 주스로 저축 속도를 확 당겨봐요 🚀';
+  }
+
+  @override
+  String praiseAllowancePlan(Object amount) {
+    return '작은 물방울이 모여 바다가 돼요! 1년 뒤엔 $amount원의 멋진 주스가 완성돼요 ✨';
+  }
+
+  @override
+  String get guideExtendGoalPeriod => '용돈 안에서 편안하게 모을 수 있도록 목표 기간을 조금만 늘려볼까요? 🍊';
+
+  @override
+  String freqConversionCaption(Object monthly, Object weekly) {
+    return '≈ 월 환산 $monthly원 / 주간 가용 약 $weekly원 🍊';
+  }
 
   @override
   String get wonSuffixSpaced => ' 원';

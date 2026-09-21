@@ -288,13 +288,41 @@
   "cardUnassigned": "Keine Karte zugewiesen",
   "fillJuiceButton": "Juice auffüllen",
   "finishWizardButton": "Mit diesem Rezept starten",
-  "incomeTypeFixedLabel": "Festes Einkommen (Angestellte)",
-  "incomeTypeIrregularLabel": "Unregelmäßiges Einkommen (Freelancer/Selbstständig)",
-  "incomeTypeAllowanceLabel": "Taschengeld/Startkapital (Studierende)",
-  "incomeStepQuestion": "Wie viel Juice (Einkommen)\nkommt monatlich rein?",
-  "incomeStepSubtitle": "Gib den tatsächlichen Betrag nach Steuern ein.",
-  "incomeStepIrregularLabel": "Gib das minimale, sichere\nMonatseinkommen ein.",
-  "incomeStepIrregularCaption": "Schätze konservativ, damit dein Juice auch in der Nebensaison nicht ausgeht 🍊",
+  "incomeTypeFixed": "Festes Einkommen",
+  "incomeTypeVariable": "Variables Einkommen",
+  "incomeTypeAllowance": "Taschengeld / Startkapital",
+  "freqMonthly": "Monatlich",
+  "freqBiweekly": "Alle 2 Wochen",
+  "freqWeekly": "Wöchentlich",
+  "questionIncomeFixed": "Wie viel Juice (Einkommen) kommt monatlich rein? 💰",
+  "questionIncomeFixedSub": "Gib den Betrag ein, der tatsächlich auf deinem Konto landet.",
+  "questionIncomeVariable": "Wie hoch ist das minimale sichere Einkommen, auch in schwachen Monaten? 💼",
+  "questionIncomeVariableSub": "Schätze konservativ, damit der Plan auch in einem schwachen Monat hält.",
+  "questionWeeklyExpenseVariable": "Wie viel planst du pro Woche für Lebenshaltungskosten (variable Ausgaben) auszugeben?",
+  "questionIncomeAllowance": "Wie viel Taschengeld bekommst du oder hast du schon gespart? 🌱",
+  "subAllowanceRegular": "🗓️ Regelmäßiges Taschengeld",
+  "subAllowanceIrregular": "🎲 Unregelmäßiges Taschengeld/Nebenjob",
+  "questionIrregularMinSave": "Wie viel kannst du dir sicher sein, jeden Monat mindestens zu sparen? 🪙",
+  "praiseVariablePlan": "🍊 Auf Basis deiner Nebensaison-Mindesteinnahmen kannst du sicher mindestens {amount} Won pro Jahr zurücklegen!\nIn Monaten mit mehr Einkommen kannst du mit Bonus-Juice dein Sparen beschleunigen 🚀",
+  "@praiseVariablePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "praiseAllowancePlan": "Kleine Tropfen ergeben ein Meer! In einem Jahr hast du {amount} Won wunderbaren Juice angespart ✨",
+  "@praiseAllowancePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "guideExtendGoalPeriod": "Sollen wir den Zielzeitraum etwas verlängern, damit du bequem innerhalb deines Taschengelds sparen kannst? 🍊",
+  "freqConversionCaption": "≈ {monthly} Won/Monat · ca. {weekly} Won/Woche verfügbar 🍊",
+  "@freqConversionCaption": {
+    "placeholders": {
+      "monthly": {},
+      "weekly": {}
+    }
+  },
   "wonSuffixSpaced": " Won",
   "goalStepQuestion": "Wie lange und wie viel\nmöchtest du sparen?",
   "yearsFieldLabel": "Jahre",

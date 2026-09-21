@@ -288,13 +288,41 @@
   "cardUnassigned": "Sem cartão definido",
   "fillJuiceButton": "Encher o juice",
   "finishWizardButton": "Começar com esta receita",
-  "incomeTypeFixedLabel": "Renda fixa (CLT/empregado)",
-  "incomeTypeIrregularLabel": "Renda irregular (freelancer/autônomo)",
-  "incomeTypeAllowanceLabel": "Mesada/capital inicial (estudante)",
-  "incomeStepQuestion": "Quanto juice (receita)\nentra por mês?",
-  "incomeStepSubtitle": "Informe o valor líquido real que cai na sua conta.",
-  "incomeStepIrregularLabel": "Informe a renda mensal mínima\nsegura que você recebe.",
-  "incomeStepIrregularCaption": "Estime de forma conservadora para o juice não secar na baixa temporada 🍊",
+  "incomeTypeFixed": "Renda fixa",
+  "incomeTypeVariable": "Renda variável",
+  "incomeTypeAllowance": "Mesada / Capital inicial",
+  "freqMonthly": "Mensal",
+  "freqBiweekly": "A cada 2 semanas",
+  "freqWeekly": "Semanal",
+  "questionIncomeFixed": "Quanto juice (receita) entra por mês? 💰",
+  "questionIncomeFixedSub": "Informe o valor que realmente cai na sua conta.",
+  "questionIncomeVariable": "Qual é a receita mínima segura que você tem mesmo na baixa temporada? 💼",
+  "questionIncomeVariableSub": "Estime de forma conservadora para o plano se manter mesmo em um mês fraco.",
+  "questionWeeklyExpenseVariable": "Quanto você planeja gastar por semana com custo de vida (despesas variáveis)?",
+  "questionIncomeAllowance": "Quanto de mesada você recebe ou já guardou? 🌱",
+  "subAllowanceRegular": "🗓️ Mesada regular",
+  "subAllowanceIrregular": "🎲 Mesada/trabalho eventual irregular",
+  "questionIrregularMinSave": "Qual é o valor mínimo que você tem certeza de conseguir poupar todo mês? 🪙",
+  "praiseVariablePlan": "🍊 Com base no seu mínimo de baixa temporada, você pode guardar com segurança pelo menos {amount} por ano!\nNos meses em que ganhar mais, use o juice bônus para acelerar sua poupança 🚀",
+  "@praiseVariablePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "praiseAllowancePlan": "Pequenas gotas formam um oceano! Em um ano, você terá {amount} de um lindo juice guardado ✨",
+  "@praiseAllowancePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "guideExtendGoalPeriod": "Que tal esticar um pouco o prazo da meta para poupar com tranquilidade dentro da sua mesada? 🍊",
+  "freqConversionCaption": "≈ {monthly}/mês · cerca de {weekly}/semana disponível 🍊",
+  "@freqConversionCaption": {
+    "placeholders": {
+      "monthly": {},
+      "weekly": {}
+    }
+  },
   "wonSuffixSpaced": " won",
   "goalStepQuestion": "Por quanto tempo e quanto\nvocê quer economizar?",
   "yearsFieldLabel": "anos",

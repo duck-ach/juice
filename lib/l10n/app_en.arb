@@ -288,13 +288,41 @@
   "cardUnassigned": "No Card Assigned",
   "fillJuiceButton": "Fill Juice",
   "finishWizardButton": "Start Juice with This Recipe",
-  "incomeTypeFixedLabel": "Fixed Income (Employee)",
-  "incomeTypeIrregularLabel": "Irregular Income (Freelance/Self-employed)",
-  "incomeTypeAllowanceLabel": "Allowance/Seed Money (Student)",
-  "incomeStepQuestion": "How much juice (income)\ncomes in each month?",
-  "incomeStepSubtitle": "Enter the actual after-tax amount that hits your account.",
-  "incomeStepIrregularLabel": "Enter the minimum safe\nmonthly income you can count on.",
-  "incomeStepIrregularCaption": "Estimate conservatively so your juice doesn't run dry in the off-season 🍊",
+  "incomeTypeFixed": "Fixed Income (Salary)",
+  "incomeTypeVariable": "Variable Income (Freelance/Business)",
+  "incomeTypeAllowance": "Allowance / Seed (Student)",
+  "freqMonthly": "Monthly",
+  "freqBiweekly": "Bi-weekly",
+  "freqWeekly": "Weekly",
+  "questionIncomeFixed": "How much juice (income) comes in each month? 💰",
+  "questionIncomeFixedSub": "Enter the amount that actually lands in your account.",
+  "questionIncomeVariable": "What's the minimum safe income you can count on, even in slow months? 💼",
+  "questionIncomeVariableSub": "Estimate conservatively so your plan holds up even in a slow month.",
+  "questionWeeklyExpenseVariable": "How much do you plan to spend on living costs (variable expenses) per week?",
+  "questionIncomeAllowance": "How much allowance or savings do you have? 🌱",
+  "subAllowanceRegular": "🗓️ Regular allowance",
+  "subAllowanceIrregular": "🎲 Irregular allowance/part-time",
+  "questionIrregularMinSave": "What's the minimum amount you're sure you can save each month? 🪙",
+  "praiseVariablePlan": "🍊 Based on your slow-season minimum, you can safely save at least {amount} won a year!\nIn months you earn more, use the bonus juice to speed up your savings 🚀",
+  "@praiseVariablePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "praiseAllowancePlan": "Small drops make an ocean! In a year, you'll have {amount} won of wonderful juice saved up ✨",
+  "@praiseAllowancePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "guideExtendGoalPeriod": "Want to stretch the goal period a bit so you can save comfortably within your allowance? 🍊",
+  "freqConversionCaption": "≈ {monthly} won/month · about {weekly} won/week available 🍊",
+  "@freqConversionCaption": {
+    "placeholders": {
+      "monthly": {},
+      "weekly": {}
+    }
+  },
   "wonSuffixSpaced": " won",
   "goalStepQuestion": "How long, and how much\ndo you want to save?",
   "yearsFieldLabel": "years",

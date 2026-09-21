@@ -288,13 +288,41 @@
   "cardUnassigned": "Aucune carte assignée",
   "fillJuiceButton": "Remplir le juice",
   "finishWizardButton": "Démarrer avec cette recette",
-  "incomeTypeFixedLabel": "Revenu fixe (salarié)",
-  "incomeTypeIrregularLabel": "Revenu irrégulier (freelance/indépendant)",
-  "incomeTypeAllowanceLabel": "Argent de poche/capital de départ (étudiant)",
-  "incomeStepQuestion": "Combien de juice (revenu)\nrentre chaque mois ?",
-  "incomeStepSubtitle": "Indiquez le montant net réel qui arrive sur votre compte.",
-  "incomeStepIrregularLabel": "Indiquez le revenu mensuel minimum\nsur lequel vous pouvez compter.",
-  "incomeStepIrregularCaption": "Estimez prudemment pour que votre juice ne s'épuise pas en basse saison 🍊",
+  "incomeTypeFixed": "Revenu fixe",
+  "incomeTypeVariable": "Revenu variable",
+  "incomeTypeAllowance": "Argent de poche / Épargne",
+  "freqMonthly": "Mensuel",
+  "freqBiweekly": "Toutes les 2 semaines",
+  "freqWeekly": "Hebdomadaire",
+  "questionIncomeFixed": "Combien de juice (revenu) rentre chaque mois ? 💰",
+  "questionIncomeFixedSub": "Indiquez le montant qui arrive réellement sur votre compte.",
+  "questionIncomeVariable": "Quel est le revenu minimum sûr, même en basse saison ? 💼",
+  "questionIncomeVariableSub": "Estimez prudemment pour que le plan tienne même un mois creux.",
+  "questionWeeklyExpenseVariable": "Combien comptez-vous dépenser par semaine pour vos frais de vie (dépenses variables) ?",
+  "questionIncomeAllowance": "Combien d'argent de poche recevez-vous ou avez-vous économisé ? 🌱",
+  "subAllowanceRegular": "🗓️ Argent de poche régulier",
+  "subAllowanceIrregular": "🎲 Argent de poche/petit boulot irrégulier",
+  "questionIrregularMinSave": "Quel est le montant minimum que vous êtes sûr de pouvoir épargner chaque mois ? 🪙",
+  "praiseVariablePlan": "🍊 Sur la base de votre minimum en basse saison, vous pouvez épargner au moins {amount} won(s) par an en toute sécurité !\nLes mois où vous gagnez plus, utilisez le juice bonus pour accélérer votre épargne 🚀",
+  "@praiseVariablePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "praiseAllowancePlan": "De petites gouttes finissent par former un océan ! Dans un an, vous aurez {amount} won(s) d'un magnifique juice épargné ✨",
+  "@praiseAllowancePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "guideExtendGoalPeriod": "On allonge un peu la durée de l'objectif pour épargner confortablement avec votre argent de poche ? 🍊",
+  "freqConversionCaption": "≈ {monthly} won(s)/mois · environ {weekly} won(s)/semaine disponibles 🍊",
+  "@freqConversionCaption": {
+    "placeholders": {
+      "monthly": {},
+      "weekly": {}
+    }
+  },
   "wonSuffixSpaced": " won",
   "goalStepQuestion": "Pendant combien de temps,\net combien voulez-vous épargner ?",
   "yearsFieldLabel": "ans",

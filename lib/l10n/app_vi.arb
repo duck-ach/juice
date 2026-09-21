@@ -451,13 +451,41 @@
   "cardUnassigned": "Chưa gán thẻ",
   "fillJuiceButton": "Đổ đầy Juice",
   "finishWizardButton": "Bắt đầu Juice với công thức này",
-  "incomeTypeFixedLabel": "Thu nhập cố định (Nhân viên)",
-  "incomeTypeIrregularLabel": "Thu nhập không đều (Freelancer/Tự kinh doanh)",
-  "incomeTypeAllowanceLabel": "Trợ cấp/Vốn khởi đầu (Học sinh, sinh viên)",
-  "incomeStepQuestion": "Mỗi tháng bạn có bao nhiêu\njuice (thu nhập)?",
-  "incomeStepSubtitle": "Nhập số tiền thực nhận vào tài khoản sau thuế.",
-  "incomeStepIrregularLabel": "Hãy nhập mức thu nhập tháng\ntối thiểu an toàn bạn chắc chắn có.",
-  "incomeStepIrregularCaption": "Ước tính thận trọng để juice không cạn vào mùa thấp điểm 🍊",
+  "incomeTypeFixed": "Thu nhập cố định",
+  "incomeTypeVariable": "Thu nhập biến đổi",
+  "incomeTypeAllowance": "Tiền tiêu vặt / Quỹ vốn (Học sinh)",
+  "freqMonthly": "Hàng tháng",
+  "freqBiweekly": "Mỗi 2 tuần",
+  "freqWeekly": "Hàng tuần",
+  "questionIncomeFixed": "Mỗi tháng bạn có bao nhiêu juice (thu nhập)? 💰",
+  "questionIncomeFixedSub": "Nhập số tiền thực nhận vào tài khoản.",
+  "questionIncomeVariable": "Thu nhập an toàn tối thiểu bạn có được ngay cả mùa thấp điểm là bao nhiêu? 💼",
+  "questionIncomeVariableSub": "Hãy ước tính thận trọng để kế hoạch vẫn ổn định ngay cả tháng ít việc.",
+  "questionWeeklyExpenseVariable": "Mỗi tuần bạn dự định chi bao nhiêu cho sinh hoạt phí (chi tiêu biến đổi)?",
+  "questionIncomeAllowance": "Bạn nhận được bao nhiêu tiền tiêu vặt hoặc đã dành dụm được bao nhiêu? 🌱",
+  "subAllowanceRegular": "🗓️ Tiền tiêu vặt định kỳ",
+  "subAllowanceIrregular": "🎲 Tiền tiêu vặt/làm thêm không định kỳ",
+  "questionIrregularMinSave": "Mỗi tháng, số tiền tối thiểu bạn chắc chắn có thể tiết kiệm là bao nhiêu? 🪙",
+  "praiseVariablePlan": "🍊 Theo mức tối thiểu mùa thấp điểm, bạn có thể an tâm tiết kiệm ít nhất {amount} mỗi năm!\nVào những tháng thu nhập cao hơn, hãy dùng juice thưởng để tăng tốc tiết kiệm nhé 🚀",
+  "@praiseVariablePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "praiseAllowancePlan": "Những giọt nước nhỏ rồi sẽ thành biển cả! Sau 1 năm, bạn sẽ có {amount} juice tuyệt vời ✨",
+  "@praiseAllowancePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "guideExtendGoalPeriod": "Bạn có muốn kéo dài thời gian mục tiêu một chút để tiết kiệm thoải mái trong khoản tiêu vặt không? 🍊",
+  "freqConversionCaption": "≈ Quy đổi tháng {monthly} · khoảng {weekly} mỗi tuần 🍊",
+  "@freqConversionCaption": {
+    "placeholders": {
+      "monthly": {},
+      "weekly": {}
+    }
+  },
   "wonSuffixSpaced": " won",
   "goalStepQuestion": "Bạn muốn tiết kiệm\nbao lâu và bao nhiêu?",
   "yearsFieldLabel": "năm",

@@ -856,25 +856,67 @@ class AppLocalizationsZh extends AppLocalizations {
   String get finishWizardButton => '以此配方开始使用果汁';
 
   @override
-  String get incomeTypeFixedLabel => '固定收入(上班族)';
+  String get incomeTypeFixed => '固定收入 (工资)';
 
   @override
-  String get incomeTypeIrregularLabel => '不稳定收入(自由职业者・个体经营)';
+  String get incomeTypeVariable => '非固定收入 (自由职业/个体)';
 
   @override
-  String get incomeTypeAllowanceLabel => '零花钱・启动资金(学生)';
+  String get incomeTypeAllowance => '零花钱・启动资金 (学生)';
 
   @override
-  String get incomeStepQuestion => '每月会有多少果汁\n(收入)入账呢?';
+  String get freqMonthly => '每月';
 
   @override
-  String get incomeStepSubtitle => '请输入实际入账的税后金额。';
+  String get freqBiweekly => '双周';
 
   @override
-  String get incomeStepIrregularLabel => '请填写最低限度、\n稳定到账的安全月收入。';
+  String get freqWeekly => '每周';
 
   @override
-  String get incomeStepIrregularCaption => '保守估算,淡季时果汁才不会枯竭 🍊';
+  String get questionIncomeFixed => '每月会有多少果汁(收入)入账呢? 💰';
+
+  @override
+  String get questionIncomeFixedSub => '请输入实际入账的金额。';
+
+  @override
+  String get questionIncomeVariable => '即使在淡季,最低能保证的安全收入是多少? 💼';
+
+  @override
+  String get questionIncomeVariableSub => '保守估算,工作量少的月份也能维持计划。';
+
+  @override
+  String get questionWeeklyExpenseVariable => '每周您预计花多少生活费(变动支出)?';
+
+  @override
+  String get questionIncomeAllowance => '您领到的零花钱或已存下的金额是多少? 🌱';
+
+  @override
+  String get subAllowanceRegular => '🗓️ 定期零花钱';
+
+  @override
+  String get subAllowanceIrregular => '🎲 不定期零花钱・打工';
+
+  @override
+  String get questionIrregularMinSave => '每个月「一定能存下」的最低金额是多少呢? 🪙';
+
+  @override
+  String praiseVariablePlan(Object amount) {
+    return '🍊 以淡季为基准,一年至少能稳稳守住 $amount 元!\n收入较多的月份,就用奖励果汁加快储蓄速度吧 🚀';
+  }
+
+  @override
+  String praiseAllowancePlan(Object amount) {
+    return '小水滴汇聚成海洋!一年后就能完成 $amount 元的美好果汁 ✨';
+  }
+
+  @override
+  String get guideExtendGoalPeriod => '要不要稍微拉长目标期限,让您能在零花钱范围内轻松存钱呢? 🍊';
+
+  @override
+  String freqConversionCaption(Object monthly, Object weekly) {
+    return '≈ 月换算 $monthly 元 / 每周约可用 $weekly 元 🍊';
+  }
 
   @override
   String get wonSuffixSpaced => ' 元';
@@ -2254,25 +2296,67 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get finishWizardButton => '以此配方开始使用果汁';
 
   @override
-  String get incomeTypeFixedLabel => '固定收入(上班族)';
+  String get incomeTypeFixed => '固定收入 (工资)';
 
   @override
-  String get incomeTypeIrregularLabel => '不稳定收入(自由职业者・个体经营)';
+  String get incomeTypeVariable => '非固定收入 (自由职业/个体)';
 
   @override
-  String get incomeTypeAllowanceLabel => '零花钱・启动资金(学生)';
+  String get incomeTypeAllowance => '零花钱・启动资金 (学生)';
 
   @override
-  String get incomeStepQuestion => '每月会有多少果汁\n(收入)入账呢?';
+  String get freqMonthly => '每月';
 
   @override
-  String get incomeStepSubtitle => '请输入实际入账的税后金额。';
+  String get freqBiweekly => '双周';
 
   @override
-  String get incomeStepIrregularLabel => '请填写最低限度、\n稳定到账的安全月收入。';
+  String get freqWeekly => '每周';
 
   @override
-  String get incomeStepIrregularCaption => '保守估算,淡季时果汁才不会枯竭 🍊';
+  String get questionIncomeFixed => '每月会有多少果汁(收入)入账呢? 💰';
+
+  @override
+  String get questionIncomeFixedSub => '请输入实际入账的金额。';
+
+  @override
+  String get questionIncomeVariable => '即使在淡季,最低能保证的安全收入是多少? 💼';
+
+  @override
+  String get questionIncomeVariableSub => '保守估算,工作量少的月份也能维持计划。';
+
+  @override
+  String get questionWeeklyExpenseVariable => '每周您预计花多少生活费(变动支出)?';
+
+  @override
+  String get questionIncomeAllowance => '您领到的零花钱或已存下的金额是多少? 🌱';
+
+  @override
+  String get subAllowanceRegular => '🗓️ 定期零花钱';
+
+  @override
+  String get subAllowanceIrregular => '🎲 不定期零花钱・打工';
+
+  @override
+  String get questionIrregularMinSave => '每个月「一定能存下」的最低金额是多少呢? 🪙';
+
+  @override
+  String praiseVariablePlan(Object amount) {
+    return '🍊 以淡季为基准,一年至少能稳稳守住 $amount 元!\n收入较多的月份,就用奖励果汁加快储蓄速度吧 🚀';
+  }
+
+  @override
+  String praiseAllowancePlan(Object amount) {
+    return '小水滴汇聚成海洋!一年后就能完成 $amount 元的美好果汁 ✨';
+  }
+
+  @override
+  String get guideExtendGoalPeriod => '要不要稍微拉长目标期限,让您能在零花钱范围内轻松存钱呢? 🍊';
+
+  @override
+  String freqConversionCaption(Object monthly, Object weekly) {
+    return '≈ 月换算 $monthly 元 / 每周约可用 $weekly 元 🍊';
+  }
 
   @override
   String get wonSuffixSpaced => ' 元';
@@ -3652,25 +3736,67 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get finishWizardButton => '以此配方開始使用果汁';
 
   @override
-  String get incomeTypeFixedLabel => '固定收入(上班族)';
+  String get incomeTypeFixed => '固定收入 (薪資)';
 
   @override
-  String get incomeTypeIrregularLabel => '不穩定收入(自由工作者・自營業)';
+  String get incomeTypeVariable => '非固定收入 (自由業/商戶)';
 
   @override
-  String get incomeTypeAllowanceLabel => '零用錢・種子資金(學生)';
+  String get incomeTypeAllowance => '零用錢・種子基金 (學生)';
 
   @override
-  String get incomeStepQuestion => '每月會有多少果汁\n(收入)進帳呢?';
+  String get freqMonthly => '每月';
 
   @override
-  String get incomeStepSubtitle => '請輸入實際入帳的稅後金額。';
+  String get freqBiweekly => '雙週';
 
   @override
-  String get incomeStepIrregularLabel => '請填寫最低限度、\n穩定入帳的安全月收入。';
+  String get freqWeekly => '每週';
 
   @override
-  String get incomeStepIrregularCaption => '保守估算,淡季時果汁才不會乾涸 🍊';
+  String get questionIncomeFixed => '每月會有多少果汁(收入)進帳呢? 💰';
+
+  @override
+  String get questionIncomeFixedSub => '請輸入實際入帳的金額。';
+
+  @override
+  String get questionIncomeVariable => '即使在淡季,最低能保證的安全收入是多少? 💼';
+
+  @override
+  String get questionIncomeVariableSub => '保守估算,工作量少的月份也能維持計畫。';
+
+  @override
+  String get questionWeeklyExpenseVariable => '每週您預計花多少生活費(變動支出)?';
+
+  @override
+  String get questionIncomeAllowance => '您領到的零用錢或已存下的金額是多少? 🌱';
+
+  @override
+  String get subAllowanceRegular => '🗓️ 定期零用錢';
+
+  @override
+  String get subAllowanceIrregular => '🎲 不定期零用錢・打工';
+
+  @override
+  String get questionIrregularMinSave => '每個月「一定能存下」的最低金額是多少呢? 🪙';
+
+  @override
+  String praiseVariablePlan(Object amount) {
+    return '🍊 以淡季為基準,一年至少能穩穩守住 $amount 元!\n收入較多的月份,就用獎勵果汁加快儲蓄速度吧 🚀';
+  }
+
+  @override
+  String praiseAllowancePlan(Object amount) {
+    return '小水滴匯聚成海洋!一年後就能完成 $amount 元的美好果汁 ✨';
+  }
+
+  @override
+  String get guideExtendGoalPeriod => '要不要稍微拉長目標期間,讓您能在零用錢範圍內輕鬆存錢呢? 🍊';
+
+  @override
+  String freqConversionCaption(Object monthly, Object weekly) {
+    return '≈ 月換算 $monthly 元 / 每週約可用 $weekly 元 🍊';
+  }
 
   @override
   String get wonSuffixSpaced => ' 元';

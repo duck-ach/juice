@@ -98,6 +98,52 @@ void main() {
     });
   });
 
+  group('IncomeFrequency 월 환산', () {
+    test('매월은 그대로, 2주마다는 ×26/12, 매주는 ×52/12로 월 환산된다', () {
+      expect(IncomeFrequency.monthly.monthlyEquivalent(3000000), 3000000);
+      expect(IncomeFrequency.biweekly.monthlyEquivalent(1500000),
+          closeTo(3250000, 0.01));
+      expect(IncomeFrequency.weekly.monthlyEquivalent(750000),
+          closeTo(3250000, 0.01));
+    });
+
+    test('rawFromMonthly는 monthlyEquivalent의 역변환이다', () {
+      const freq = IncomeFrequency.biweekly;
+      const raw = 1500000.0;
+      final monthly = freq.monthlyEquivalent(raw);
+      expect(freq.rawFromMonthly(monthly), closeTo(raw, 0.01));
+    });
+  });
+
+  group('불규칙 소득(Type B) 연간 최소 저축 가능액', () {
+    test('(월 환산 최소 수입 − 고정비 − 주간 생활비×4.33) × 12', () {
+      // 최소 수입 300만, 고정비 50만, 주간 생활비 10만
+      // => (300만 - 50만 - 10만*4.33) * 12 = (300만-50만-43.3만)*12 = 206.7만*12 = 2480.4만
+      final plan = SavingsPlan(
+        monthlyIncome: 3000000,
+        incomeType: IncomeType.irregular,
+        weeklyLivingExpense: 100000,
+        fixedExpenses: const [FixedExpenseItem(name: '월세', amount: 500000)],
+      );
+      expect(plan.variableIncomeAnnualMinSavings, closeTo(24804000, 1));
+    });
+
+    test('고정비+생활비가 최소 수입을 초과하면 0으로 clamp', () {
+      final plan = SavingsPlan(
+        monthlyIncome: 1000000,
+        incomeType: IncomeType.irregular,
+        weeklyLivingExpense: 300000,
+        fixedExpenses: const [FixedExpenseItem(name: '월세', amount: 500000)],
+      );
+      expect(plan.variableIncomeAnnualMinSavings, 0);
+    });
+
+    test('weeklyLivingExpense가 없으면 계산할 수 없어 null', () {
+      final plan = SavingsPlan(monthlyIncome: 3000000, incomeType: IncomeType.irregular);
+      expect(plan.variableIncomeAnnualMinSavings, isNull);
+    });
+  });
+
   group('JSON 직렬화', () {
     test('incomeType/createdAt을 포함해 왕복 직렬화된다', () {
       final plan = SavingsPlan(
@@ -115,6 +161,23 @@ void main() {
       expect(restored.createdAt, DateTime(2026, 3, 14, 9, 30));
       expect(restored.monthlyIncome, 3000000);
       expect(restored.fixedExpenses.single.name, '월세');
+    });
+
+    test('incomeFrequency/allowanceSubType/weeklyLivingExpense도 왕복 직렬화된다', () {
+      final plan = SavingsPlan(
+        enabled: true,
+        monthlyIncome: 500000,
+        incomeType: IncomeType.allowance,
+        incomeFrequency: IncomeFrequency.weekly,
+        allowanceSubType: AllowanceSubType.irregular,
+        weeklyLivingExpense: 80000,
+        goalYears: 1,
+        goalAmount: 6000000,
+      );
+      final restored = SavingsPlan.fromJson(plan.toJson());
+      expect(restored.incomeFrequency, IncomeFrequency.weekly);
+      expect(restored.allowanceSubType, AllowanceSubType.irregular);
+      expect(restored.weeklyLivingExpense, 80000);
     });
 
     test('구버전 데이터(incomeType/createdAt 키 없음)를 불러오면 안전한 기본값으로 대체', () {

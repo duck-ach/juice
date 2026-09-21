@@ -1675,47 +1675,119 @@ abstract class AppLocalizations {
   /// **'이 레시피로 주스 시작하기'**
   String get finishWizardButton;
 
-  /// No description provided for @incomeTypeFixedLabel.
+  /// No description provided for @incomeTypeFixed.
   ///
   /// In ko, this message translates to:
-  /// **'고정 소득 (직장인)'**
-  String get incomeTypeFixedLabel;
+  /// **'고정 소득 (직장인·알바)'**
+  String get incomeTypeFixed;
 
-  /// No description provided for @incomeTypeIrregularLabel.
+  /// No description provided for @incomeTypeVariable.
   ///
   /// In ko, this message translates to:
   /// **'불규칙 소득 (프리랜서·자영업)'**
-  String get incomeTypeIrregularLabel;
+  String get incomeTypeVariable;
 
-  /// No description provided for @incomeTypeAllowanceLabel.
+  /// No description provided for @incomeTypeAllowance.
   ///
   /// In ko, this message translates to:
   /// **'용돈·시드머니 (학생)'**
-  String get incomeTypeAllowanceLabel;
+  String get incomeTypeAllowance;
 
-  /// No description provided for @incomeStepQuestion.
+  /// No description provided for @freqMonthly.
   ///
   /// In ko, this message translates to:
-  /// **'매달 들어오는 주스(월 수입)는\n얼마인가요?'**
-  String get incomeStepQuestion;
+  /// **'매월'**
+  String get freqMonthly;
 
-  /// No description provided for @incomeStepSubtitle.
+  /// No description provided for @freqBiweekly.
   ///
   /// In ko, this message translates to:
-  /// **'세후 실제 통장에 찍히는 금액을 적어주세요.'**
-  String get incomeStepSubtitle;
+  /// **'2주마다'**
+  String get freqBiweekly;
 
-  /// No description provided for @incomeStepIrregularLabel.
+  /// No description provided for @freqWeekly.
   ///
   /// In ko, this message translates to:
-  /// **'최소한으로 들어오는\n안전 월수입을 적어주세요.'**
-  String get incomeStepIrregularLabel;
+  /// **'매주'**
+  String get freqWeekly;
 
-  /// No description provided for @incomeStepIrregularCaption.
+  /// No description provided for @questionIncomeFixed.
   ///
   /// In ko, this message translates to:
-  /// **'보수적으로 잡아야 비수기에도 주스가 마르지 않아요 🍊'**
-  String get incomeStepIrregularCaption;
+  /// **'매달 들어오는 주스(수입)는 얼마인가요? 💰'**
+  String get questionIncomeFixed;
+
+  /// No description provided for @questionIncomeFixedSub.
+  ///
+  /// In ko, this message translates to:
+  /// **'실제 통장에 들어오는 금액을 적어주세요.'**
+  String get questionIncomeFixedSub;
+
+  /// No description provided for @questionIncomeVariable.
+  ///
+  /// In ko, this message translates to:
+  /// **'비수기에도 들어오는 최소 안전 수입은 얼마인가요? 💼'**
+  String get questionIncomeVariable;
+
+  /// No description provided for @questionIncomeVariableSub.
+  ///
+  /// In ko, this message translates to:
+  /// **'보수적으로 잡아야 일이 적은 달에도 플랜을 유지할 수 있어요.'**
+  String get questionIncomeVariableSub;
+
+  /// No description provided for @questionWeeklyExpenseVariable.
+  ///
+  /// In ko, this message translates to:
+  /// **'일주일에 생활비(변동지출)로 얼마를 쓰실 예정인가요?'**
+  String get questionWeeklyExpenseVariable;
+
+  /// No description provided for @questionIncomeAllowance.
+  ///
+  /// In ko, this message translates to:
+  /// **'받는 용돈이나 모아둔 금액은 얼마인가요? 🌱'**
+  String get questionIncomeAllowance;
+
+  /// No description provided for @subAllowanceRegular.
+  ///
+  /// In ko, this message translates to:
+  /// **'🗓️ 정기적인 용돈'**
+  String get subAllowanceRegular;
+
+  /// No description provided for @subAllowanceIrregular.
+  ///
+  /// In ko, this message translates to:
+  /// **'🎲 비정기 용돈/알바'**
+  String get subAllowanceIrregular;
+
+  /// No description provided for @questionIrregularMinSave.
+  ///
+  /// In ko, this message translates to:
+  /// **'한 달에 \'이 정도는 꼭 저축할 수 있다\' 하는 최소 금액은 얼마인가요? 🪙'**
+  String get questionIrregularMinSave;
+
+  /// No description provided for @praiseVariablePlan.
+  ///
+  /// In ko, this message translates to:
+  /// **'🍊 비수기 기준, 1년에 최소 {amount}원은 든든하게 지켜낼 수 있어요!\n수입이 더 많이 들어온 달에는 보너스 주스로 저축 속도를 확 당겨봐요 🚀'**
+  String praiseVariablePlan(Object amount);
+
+  /// No description provided for @praiseAllowancePlan.
+  ///
+  /// In ko, this message translates to:
+  /// **'작은 물방울이 모여 바다가 돼요! 1년 뒤엔 {amount}원의 멋진 주스가 완성돼요 ✨'**
+  String praiseAllowancePlan(Object amount);
+
+  /// No description provided for @guideExtendGoalPeriod.
+  ///
+  /// In ko, this message translates to:
+  /// **'용돈 안에서 편안하게 모을 수 있도록 목표 기간을 조금만 늘려볼까요? 🍊'**
+  String get guideExtendGoalPeriod;
+
+  /// No description provided for @freqConversionCaption.
+  ///
+  /// In ko, this message translates to:
+  /// **'≈ 월 환산 {monthly}원 / 주간 가용 약 {weekly}원 🍊'**
+  String freqConversionCaption(Object monthly, Object weekly);
 
   /// No description provided for @wonSuffixSpaced.
   ///

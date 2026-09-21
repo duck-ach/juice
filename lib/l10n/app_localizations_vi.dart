@@ -856,25 +856,67 @@ class AppLocalizationsVi extends AppLocalizations {
   String get finishWizardButton => 'Bắt đầu Juice với công thức này';
 
   @override
-  String get incomeTypeFixedLabel => 'Thu nhập cố định (Nhân viên)';
+  String get incomeTypeFixed => 'Thu nhập cố định';
 
   @override
-  String get incomeTypeIrregularLabel => 'Thu nhập không đều (Freelancer/Tự kinh doanh)';
+  String get incomeTypeVariable => 'Thu nhập biến đổi';
 
   @override
-  String get incomeTypeAllowanceLabel => 'Trợ cấp/Vốn khởi đầu (Học sinh, sinh viên)';
+  String get incomeTypeAllowance => 'Tiền tiêu vặt / Quỹ vốn (Học sinh)';
 
   @override
-  String get incomeStepQuestion => 'Mỗi tháng bạn có bao nhiêu\njuice (thu nhập)?';
+  String get freqMonthly => 'Hàng tháng';
 
   @override
-  String get incomeStepSubtitle => 'Nhập số tiền thực nhận vào tài khoản sau thuế.';
+  String get freqBiweekly => 'Mỗi 2 tuần';
 
   @override
-  String get incomeStepIrregularLabel => 'Hãy nhập mức thu nhập tháng\ntối thiểu an toàn bạn chắc chắn có.';
+  String get freqWeekly => 'Hàng tuần';
 
   @override
-  String get incomeStepIrregularCaption => 'Ước tính thận trọng để juice không cạn vào mùa thấp điểm 🍊';
+  String get questionIncomeFixed => 'Mỗi tháng bạn có bao nhiêu juice (thu nhập)? 💰';
+
+  @override
+  String get questionIncomeFixedSub => 'Nhập số tiền thực nhận vào tài khoản.';
+
+  @override
+  String get questionIncomeVariable => 'Thu nhập an toàn tối thiểu bạn có được ngay cả mùa thấp điểm là bao nhiêu? 💼';
+
+  @override
+  String get questionIncomeVariableSub => 'Hãy ước tính thận trọng để kế hoạch vẫn ổn định ngay cả tháng ít việc.';
+
+  @override
+  String get questionWeeklyExpenseVariable => 'Mỗi tuần bạn dự định chi bao nhiêu cho sinh hoạt phí (chi tiêu biến đổi)?';
+
+  @override
+  String get questionIncomeAllowance => 'Bạn nhận được bao nhiêu tiền tiêu vặt hoặc đã dành dụm được bao nhiêu? 🌱';
+
+  @override
+  String get subAllowanceRegular => '🗓️ Tiền tiêu vặt định kỳ';
+
+  @override
+  String get subAllowanceIrregular => '🎲 Tiền tiêu vặt/làm thêm không định kỳ';
+
+  @override
+  String get questionIrregularMinSave => 'Mỗi tháng, số tiền tối thiểu bạn chắc chắn có thể tiết kiệm là bao nhiêu? 🪙';
+
+  @override
+  String praiseVariablePlan(Object amount) {
+    return '🍊 Theo mức tối thiểu mùa thấp điểm, bạn có thể an tâm tiết kiệm ít nhất $amount mỗi năm!\nVào những tháng thu nhập cao hơn, hãy dùng juice thưởng để tăng tốc tiết kiệm nhé 🚀';
+  }
+
+  @override
+  String praiseAllowancePlan(Object amount) {
+    return 'Những giọt nước nhỏ rồi sẽ thành biển cả! Sau 1 năm, bạn sẽ có $amount juice tuyệt vời ✨';
+  }
+
+  @override
+  String get guideExtendGoalPeriod => 'Bạn có muốn kéo dài thời gian mục tiêu một chút để tiết kiệm thoải mái trong khoản tiêu vặt không? 🍊';
+
+  @override
+  String freqConversionCaption(Object monthly, Object weekly) {
+    return '≈ Quy đổi tháng $monthly · khoảng $weekly mỗi tuần 🍊';
+  }
 
   @override
   String get wonSuffixSpaced => ' won';

@@ -856,25 +856,67 @@ class AppLocalizationsJa extends AppLocalizations {
   String get finishWizardButton => 'このレシピでジュースを始める';
 
   @override
-  String get incomeTypeFixedLabel => '固定収入(会社員)';
+  String get incomeTypeFixed => '固定収入 (給与)';
 
   @override
-  String get incomeTypeIrregularLabel => '不規則な収入(フリーランス・自営業)';
+  String get incomeTypeVariable => '変動収入 (フリーランス/事業)';
 
   @override
-  String get incomeTypeAllowanceLabel => 'お小遣い・シード資金(学生)';
+  String get incomeTypeAllowance => 'お小遣い・シードマネー (学生)';
 
   @override
-  String get incomeStepQuestion => '毎月入ってくるジュース(月収入)は\nいくらですか?';
+  String get freqMonthly => '毎月';
 
   @override
-  String get incomeStepSubtitle => '税引き後、実際に口座に入る金額を入力してください。';
+  String get freqBiweekly => '隔週';
 
   @override
-  String get incomeStepIrregularLabel => '最低限入ってくる\n安全な月収を入力してください。';
+  String get freqWeekly => '毎週';
 
   @override
-  String get incomeStepIrregularCaption => '保守的に見積もると閑散期でもジュースが枯れません 🍊';
+  String get questionIncomeFixed => '毎月入ってくるジュース(収入)はいくらですか? 💰';
+
+  @override
+  String get questionIncomeFixedSub => '実際に口座に入る金額を入力してください。';
+
+  @override
+  String get questionIncomeVariable => '閑散期でも入ってくる最低限の安全な収入はいくらですか? 💼';
+
+  @override
+  String get questionIncomeVariableSub => '保守的に見積もると、仕事が少ない月でもプランを維持できます。';
+
+  @override
+  String get questionWeeklyExpenseVariable => '1週間の生活費(変動支出)はいくら使う予定ですか?';
+
+  @override
+  String get questionIncomeAllowance => 'もらうお小遣いや貯めたお金はいくらですか? 🌱';
+
+  @override
+  String get subAllowanceRegular => '🗓️ 定期的なお小遣い';
+
+  @override
+  String get subAllowanceIrregular => '🎲 不定期なお小遣い・バイト';
+
+  @override
+  String get questionIrregularMinSave => '1か月に「これだけは必ず貯められる」という最低金額はいくらですか? 🪙';
+
+  @override
+  String praiseVariablePlan(Object amount) {
+    return '🍊 閑散期基準で、年間最低$amountウォンはしっかり守れます!\n収入が多い月はボーナスジュースで貯蓄スピードを上げましょう 🚀';
+  }
+
+  @override
+  String praiseAllowancePlan(Object amount) {
+    return '小さな水滴が集まって海になります!1年後には$amountウォンの素敵なジュースが完成します ✨';
+  }
+
+  @override
+  String get guideExtendGoalPeriod => 'お小遣いの範囲で無理なく貯められるよう、目標期間を少し延ばしてみましょうか? 🍊';
+
+  @override
+  String freqConversionCaption(Object monthly, Object weekly) {
+    return '≈ 月換算$monthlyウォン / 週あたり約$weeklyウォン利用可能 🍊';
+  }
 
   @override
   String get wonSuffixSpaced => ' ウォン';

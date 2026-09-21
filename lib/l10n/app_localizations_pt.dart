@@ -856,25 +856,67 @@ class AppLocalizationsPt extends AppLocalizations {
   String get finishWizardButton => 'Começar com esta receita';
 
   @override
-  String get incomeTypeFixedLabel => 'Renda fixa (CLT/empregado)';
+  String get incomeTypeFixed => 'Renda fixa';
 
   @override
-  String get incomeTypeIrregularLabel => 'Renda irregular (freelancer/autônomo)';
+  String get incomeTypeVariable => 'Renda variável';
 
   @override
-  String get incomeTypeAllowanceLabel => 'Mesada/capital inicial (estudante)';
+  String get incomeTypeAllowance => 'Mesada / Capital inicial';
 
   @override
-  String get incomeStepQuestion => 'Quanto juice (receita)\nentra por mês?';
+  String get freqMonthly => 'Mensal';
 
   @override
-  String get incomeStepSubtitle => 'Informe o valor líquido real que cai na sua conta.';
+  String get freqBiweekly => 'A cada 2 semanas';
 
   @override
-  String get incomeStepIrregularLabel => 'Informe a renda mensal mínima\nsegura que você recebe.';
+  String get freqWeekly => 'Semanal';
 
   @override
-  String get incomeStepIrregularCaption => 'Estime de forma conservadora para o juice não secar na baixa temporada 🍊';
+  String get questionIncomeFixed => 'Quanto juice (receita) entra por mês? 💰';
+
+  @override
+  String get questionIncomeFixedSub => 'Informe o valor que realmente cai na sua conta.';
+
+  @override
+  String get questionIncomeVariable => 'Qual é a receita mínima segura que você tem mesmo na baixa temporada? 💼';
+
+  @override
+  String get questionIncomeVariableSub => 'Estime de forma conservadora para o plano se manter mesmo em um mês fraco.';
+
+  @override
+  String get questionWeeklyExpenseVariable => 'Quanto você planeja gastar por semana com custo de vida (despesas variáveis)?';
+
+  @override
+  String get questionIncomeAllowance => 'Quanto de mesada você recebe ou já guardou? 🌱';
+
+  @override
+  String get subAllowanceRegular => '🗓️ Mesada regular';
+
+  @override
+  String get subAllowanceIrregular => '🎲 Mesada/trabalho eventual irregular';
+
+  @override
+  String get questionIrregularMinSave => 'Qual é o valor mínimo que você tem certeza de conseguir poupar todo mês? 🪙';
+
+  @override
+  String praiseVariablePlan(Object amount) {
+    return '🍊 Com base no seu mínimo de baixa temporada, você pode guardar com segurança pelo menos $amount por ano!\nNos meses em que ganhar mais, use o juice bônus para acelerar sua poupança 🚀';
+  }
+
+  @override
+  String praiseAllowancePlan(Object amount) {
+    return 'Pequenas gotas formam um oceano! Em um ano, você terá $amount de um lindo juice guardado ✨';
+  }
+
+  @override
+  String get guideExtendGoalPeriod => 'Que tal esticar um pouco o prazo da meta para poupar com tranquilidade dentro da sua mesada? 🍊';
+
+  @override
+  String freqConversionCaption(Object monthly, Object weekly) {
+    return '≈ $monthly/mês · cerca de $weekly/semana disponível 🍊';
+  }
 
   @override
   String get wonSuffixSpaced => ' won';

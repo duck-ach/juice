@@ -856,25 +856,67 @@ class AppLocalizationsFr extends AppLocalizations {
   String get finishWizardButton => 'Démarrer avec cette recette';
 
   @override
-  String get incomeTypeFixedLabel => 'Revenu fixe (salarié)';
+  String get incomeTypeFixed => 'Revenu fixe';
 
   @override
-  String get incomeTypeIrregularLabel => 'Revenu irrégulier (freelance/indépendant)';
+  String get incomeTypeVariable => 'Revenu variable';
 
   @override
-  String get incomeTypeAllowanceLabel => 'Argent de poche/capital de départ (étudiant)';
+  String get incomeTypeAllowance => 'Argent de poche / Épargne';
 
   @override
-  String get incomeStepQuestion => 'Combien de juice (revenu)\nrentre chaque mois ?';
+  String get freqMonthly => 'Mensuel';
 
   @override
-  String get incomeStepSubtitle => 'Indiquez le montant net réel qui arrive sur votre compte.';
+  String get freqBiweekly => 'Toutes les 2 semaines';
 
   @override
-  String get incomeStepIrregularLabel => 'Indiquez le revenu mensuel minimum\nsur lequel vous pouvez compter.';
+  String get freqWeekly => 'Hebdomadaire';
 
   @override
-  String get incomeStepIrregularCaption => 'Estimez prudemment pour que votre juice ne s\'épuise pas en basse saison 🍊';
+  String get questionIncomeFixed => 'Combien de juice (revenu) rentre chaque mois ? 💰';
+
+  @override
+  String get questionIncomeFixedSub => 'Indiquez le montant qui arrive réellement sur votre compte.';
+
+  @override
+  String get questionIncomeVariable => 'Quel est le revenu minimum sûr, même en basse saison ? 💼';
+
+  @override
+  String get questionIncomeVariableSub => 'Estimez prudemment pour que le plan tienne même un mois creux.';
+
+  @override
+  String get questionWeeklyExpenseVariable => 'Combien comptez-vous dépenser par semaine pour vos frais de vie (dépenses variables) ?';
+
+  @override
+  String get questionIncomeAllowance => 'Combien d\'argent de poche recevez-vous ou avez-vous économisé ? 🌱';
+
+  @override
+  String get subAllowanceRegular => '🗓️ Argent de poche régulier';
+
+  @override
+  String get subAllowanceIrregular => '🎲 Argent de poche/petit boulot irrégulier';
+
+  @override
+  String get questionIrregularMinSave => 'Quel est le montant minimum que vous êtes sûr de pouvoir épargner chaque mois ? 🪙';
+
+  @override
+  String praiseVariablePlan(Object amount) {
+    return '🍊 Sur la base de votre minimum en basse saison, vous pouvez épargner au moins $amount won(s) par an en toute sécurité !\nLes mois où vous gagnez plus, utilisez le juice bonus pour accélérer votre épargne 🚀';
+  }
+
+  @override
+  String praiseAllowancePlan(Object amount) {
+    return 'De petites gouttes finissent par former un océan ! Dans un an, vous aurez $amount won(s) d\'un magnifique juice épargné ✨';
+  }
+
+  @override
+  String get guideExtendGoalPeriod => 'On allonge un peu la durée de l\'objectif pour épargner confortablement avec votre argent de poche ? 🍊';
+
+  @override
+  String freqConversionCaption(Object monthly, Object weekly) {
+    return '≈ $monthly won(s)/mois · environ $weekly won(s)/semaine disponibles 🍊';
+  }
 
   @override
   String get wonSuffixSpaced => ' won';

@@ -288,13 +288,41 @@
   "cardUnassigned": "未指定卡片",
   "fillJuiceButton": "装满果汁",
   "finishWizardButton": "以此配方开始使用果汁",
-  "incomeTypeFixedLabel": "固定收入(上班族)",
-  "incomeTypeIrregularLabel": "不稳定收入(自由职业者・个体经营)",
-  "incomeTypeAllowanceLabel": "零花钱・启动资金(学生)",
-  "incomeStepQuestion": "每月会有多少果汁\n(收入)入账呢?",
-  "incomeStepSubtitle": "请输入实际入账的税后金额。",
-  "incomeStepIrregularLabel": "请填写最低限度、\n稳定到账的安全月收入。",
-  "incomeStepIrregularCaption": "保守估算,淡季时果汁才不会枯竭 🍊",
+  "incomeTypeFixed": "固定收入 (工资)",
+  "incomeTypeVariable": "非固定收入 (自由职业/个体)",
+  "incomeTypeAllowance": "零花钱・启动资金 (学生)",
+  "freqMonthly": "每月",
+  "freqBiweekly": "双周",
+  "freqWeekly": "每周",
+  "questionIncomeFixed": "每月会有多少果汁(收入)入账呢? 💰",
+  "questionIncomeFixedSub": "请输入实际入账的金额。",
+  "questionIncomeVariable": "即使在淡季,最低能保证的安全收入是多少? 💼",
+  "questionIncomeVariableSub": "保守估算,工作量少的月份也能维持计划。",
+  "questionWeeklyExpenseVariable": "每周您预计花多少生活费(变动支出)?",
+  "questionIncomeAllowance": "您领到的零花钱或已存下的金额是多少? 🌱",
+  "subAllowanceRegular": "🗓️ 定期零花钱",
+  "subAllowanceIrregular": "🎲 不定期零花钱・打工",
+  "questionIrregularMinSave": "每个月「一定能存下」的最低金额是多少呢? 🪙",
+  "praiseVariablePlan": "🍊 以淡季为基准,一年至少能稳稳守住 {amount} 元!\n收入较多的月份,就用奖励果汁加快储蓄速度吧 🚀",
+  "@praiseVariablePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "praiseAllowancePlan": "小水滴汇聚成海洋!一年后就能完成 {amount} 元的美好果汁 ✨",
+  "@praiseAllowancePlan": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "guideExtendGoalPeriod": "要不要稍微拉长目标期限,让您能在零花钱范围内轻松存钱呢? 🍊",
+  "freqConversionCaption": "≈ 月换算 {monthly} 元 / 每周约可用 {weekly} 元 🍊",
+  "@freqConversionCaption": {
+    "placeholders": {
+      "monthly": {},
+      "weekly": {}
+    }
+  },
   "wonSuffixSpaced": " 元",
   "goalStepQuestion": "想存多久、存多少呢?",
   "yearsFieldLabel": "年",

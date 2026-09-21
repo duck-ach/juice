@@ -856,25 +856,67 @@ class AppLocalizationsEn extends AppLocalizations {
   String get finishWizardButton => 'Start Juice with This Recipe';
 
   @override
-  String get incomeTypeFixedLabel => 'Fixed Income (Employee)';
+  String get incomeTypeFixed => 'Fixed Income (Salary)';
 
   @override
-  String get incomeTypeIrregularLabel => 'Irregular Income (Freelance/Self-employed)';
+  String get incomeTypeVariable => 'Variable Income (Freelance/Business)';
 
   @override
-  String get incomeTypeAllowanceLabel => 'Allowance/Seed Money (Student)';
+  String get incomeTypeAllowance => 'Allowance / Seed (Student)';
 
   @override
-  String get incomeStepQuestion => 'How much juice (income)\ncomes in each month?';
+  String get freqMonthly => 'Monthly';
 
   @override
-  String get incomeStepSubtitle => 'Enter the actual after-tax amount that hits your account.';
+  String get freqBiweekly => 'Bi-weekly';
 
   @override
-  String get incomeStepIrregularLabel => 'Enter the minimum safe\nmonthly income you can count on.';
+  String get freqWeekly => 'Weekly';
 
   @override
-  String get incomeStepIrregularCaption => 'Estimate conservatively so your juice doesn\'t run dry in the off-season 🍊';
+  String get questionIncomeFixed => 'How much juice (income) comes in each month? 💰';
+
+  @override
+  String get questionIncomeFixedSub => 'Enter the amount that actually lands in your account.';
+
+  @override
+  String get questionIncomeVariable => 'What\'s the minimum safe income you can count on, even in slow months? 💼';
+
+  @override
+  String get questionIncomeVariableSub => 'Estimate conservatively so your plan holds up even in a slow month.';
+
+  @override
+  String get questionWeeklyExpenseVariable => 'How much do you plan to spend on living costs (variable expenses) per week?';
+
+  @override
+  String get questionIncomeAllowance => 'How much allowance or savings do you have? 🌱';
+
+  @override
+  String get subAllowanceRegular => '🗓️ Regular allowance';
+
+  @override
+  String get subAllowanceIrregular => '🎲 Irregular allowance/part-time';
+
+  @override
+  String get questionIrregularMinSave => 'What\'s the minimum amount you\'re sure you can save each month? 🪙';
+
+  @override
+  String praiseVariablePlan(Object amount) {
+    return '🍊 Based on your slow-season minimum, you can safely save at least $amount won a year!\nIn months you earn more, use the bonus juice to speed up your savings 🚀';
+  }
+
+  @override
+  String praiseAllowancePlan(Object amount) {
+    return 'Small drops make an ocean! In a year, you\'ll have $amount won of wonderful juice saved up ✨';
+  }
+
+  @override
+  String get guideExtendGoalPeriod => 'Want to stretch the goal period a bit so you can save comfortably within your allowance? 🍊';
+
+  @override
+  String freqConversionCaption(Object monthly, Object weekly) {
+    return '≈ $monthly won/month · about $weekly won/week available 🍊';
+  }
 
   @override
   String get wonSuffixSpaced => ' won';
