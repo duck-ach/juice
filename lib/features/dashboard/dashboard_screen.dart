@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/widgets/edit_delete_slidable.dart';
+import '../../core/widgets/juice_appbar_title.dart';
 import '../../core/widgets/juice_segmented_tab.dart';
 import '../../data/models/budget_period.dart';
 import '../../l10n/app_localizations.dart';
@@ -48,7 +49,7 @@ class DashboardScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.appTitle),
+        title: JuiceAppBarTitle(AppLocalizations.of(context)!.appTitle),
         leading: IconButton(
           icon: const Icon(Icons.savings_outlined),
           tooltip: loc.savedJuiceStoreTooltip,

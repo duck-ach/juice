@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/widgets/juice_appbar_title.dart';
 import '../../core/widgets/juice_segmented_tab.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/currency_provider.dart';
@@ -45,7 +46,7 @@ class StatsScreen extends ConsumerWidget {
     };
 
     return Scaffold(
-      appBar: AppBar(title: Text(loc.statsTitle)),
+      appBar: AppBar(title: JuiceAppBarTitle(loc.statsTitle)),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 40),
         children: [

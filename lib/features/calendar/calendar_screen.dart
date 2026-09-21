@@ -8,6 +8,7 @@ import '../../core/theme/app_colors.dart';
 import '../../core/utils/compact_currency_formatter.dart';
 import '../../core/utils/week_utils.dart';
 import '../../core/widgets/edit_delete_slidable.dart';
+import '../../core/widgets/juice_appbar_title.dart';
 import '../../core/widgets/juice_segmented_tab.dart';
 import '../../data/models/week_start_day.dart';
 import '../../l10n/app_localizations.dart';
@@ -84,7 +85,7 @@ class CalendarScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(loc.calendarTitle),
+        title: JuiceAppBarTitle(loc.calendarTitle),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings_outlined),

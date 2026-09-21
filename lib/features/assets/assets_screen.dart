@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/widgets/juice_appbar_title.dart';
 import '../../core/widgets/juice_segmented_tab.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/asset_provider.dart';
@@ -32,7 +33,7 @@ class AssetsScreen extends ConsumerWidget {
     final themeColor = ref.watch(resolvedJuiceThemeProvider).highColor;
 
     return Scaffold(
-      appBar: AppBar(title: Text(loc.assetsTitle)),
+      appBar: AppBar(title: JuiceAppBarTitle(loc.assetsTitle)),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 40),
         children: [

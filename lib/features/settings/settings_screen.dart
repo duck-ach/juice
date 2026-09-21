@@ -12,6 +12,7 @@ import 'dart:io';
 import '../../core/constants/app_links.dart';
 import '../../core/utils/link_launcher.dart';
 import '../../core/utils/week_utils.dart';
+import '../../core/widgets/juice_appbar_title.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/budget_settings_provider.dart';
 import '../../providers/currency_provider.dart';
@@ -80,7 +81,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final currentJuiceTheme = ref.watch(resolvedJuiceThemeProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text(loc.settingsTitle)),
+      appBar: AppBar(title: JuiceAppBarTitle(loc.settingsTitle)),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 40),
         children: [
