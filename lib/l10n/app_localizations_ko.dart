@@ -127,6 +127,50 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String savingsPlanPaceFasterLine(Object months) {
+    return '현재 저축 페이스라면 목표보다 $months개월 빠르게 달성 중이에요! 🚀';
+  }
+
+  @override
+  String savingsPlanPaceSlowerLine(Object months) {
+    return '지금 페이스라면 목표보다 $months개월 늦어질 수 있어요. 조금만 더 힘내봐요 💪';
+  }
+
+  @override
+  String get savingsPlanPaceOnTrackLine => '지금 페이스가 계획과 딱 맞아요! 이대로 쭉 가봐요 🍊';
+
+  @override
+  String get recalibrateButton => '소득 변동 · 재조정';
+
+  @override
+  String get recalibrateSheetTitle => '플랜 재조정';
+
+  @override
+  String get recalibrateSheetSubtitle => '달라진 월 수입을 입력하면 두 가지 방법 중 골라 바로 반영할 수 있어요.';
+
+  @override
+  String get recalibrateIncomeFieldLabel => '새 월 수입';
+
+  @override
+  String get recalibrateShortenOption => '목표 기간 단축하기';
+
+  @override
+  String recalibrateShortenPreview(Object before, Object after) {
+    return '생활비는 지금 그대로, 목표 기간을 $before개월 → $after개월로 줄여요.';
+  }
+
+  @override
+  String get recalibrateShortenUnavailable => '새 수입으로는 지금 생활비를 유지한 채 기간을 줄일 수 없어요.';
+
+  @override
+  String get recalibrateBoostOption => '주스(생활비) 늘리기';
+
+  @override
+  String recalibrateBoostPreview(Object before, Object after) {
+    return '목표 기간은 그대로, 하루 주스를 $before mL → $after mL로 늘려요.';
+  }
+
+  @override
   String get settingsTitle => '설정';
 
   @override
@@ -812,10 +856,25 @@ class AppLocalizationsKo extends AppLocalizations {
   String get finishWizardButton => '이 레시피로 주스 시작하기';
 
   @override
+  String get incomeTypeFixedLabel => '고정 소득 (직장인)';
+
+  @override
+  String get incomeTypeIrregularLabel => '불규칙 소득 (프리랜서·자영업)';
+
+  @override
+  String get incomeTypeAllowanceLabel => '용돈·시드머니 (학생)';
+
+  @override
   String get incomeStepQuestion => '매달 들어오는 주스(월 수입)는\n얼마인가요?';
 
   @override
   String get incomeStepSubtitle => '세후 실제 통장에 찍히는 금액을 적어주세요.';
+
+  @override
+  String get incomeStepIrregularLabel => '최소한으로 들어오는\n안전 월수입을 적어주세요.';
+
+  @override
+  String get incomeStepIrregularCaption => '보수적으로 잡아야 비수기에도 주스가 마르지 않아요 🍊';
 
   @override
   String get wonSuffixSpaced => ' 원';

@@ -82,6 +82,40 @@
       "monthly": {}
     }
   },
+  "savingsPlanPaceFasterLine": "Với tốc độ hiện tại, bạn đang đạt mục tiêu sớm hơn {months} tháng! 🚀",
+  "@savingsPlanPaceFasterLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceSlowerLine": "Với tốc độ hiện tại, bạn có thể chậm hơn kế hoạch {months} tháng. Cố lên nhé 💪",
+  "@savingsPlanPaceSlowerLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceOnTrackLine": "Tốc độ hiện tại khớp hoàn hảo với kế hoạch! Cứ tiếp tục như vậy nhé 🍊",
+  "recalibrateButton": "Thay đổi thu nhập · Điều chỉnh",
+  "recalibrateSheetTitle": "Điều chỉnh kế hoạch",
+  "recalibrateSheetSubtitle": "Nhập thu nhập hàng tháng mới và chọn một trong hai cách để áp dụng ngay.",
+  "recalibrateIncomeFieldLabel": "Thu nhập hàng tháng mới",
+  "recalibrateShortenOption": "Rút ngắn thời hạn mục tiêu",
+  "recalibrateShortenPreview": "Giữ nguyên ngân sách sinh hoạt hiện tại, rút ngắn thời hạn mục tiêu từ {before} xuống {after} tháng.",
+  "@recalibrateShortenPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateShortenUnavailable": "Với thu nhập này, không thể rút ngắn thời hạn nếu vẫn giữ ngân sách sinh hoạt hiện tại.",
+  "recalibrateBoostOption": "Tăng juice (ngân sách sinh hoạt)",
+  "recalibrateBoostPreview": "Giữ nguyên thời hạn mục tiêu, tăng juice mỗi ngày từ {before} mL lên {after} mL.",
+  "@recalibrateBoostPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
   "settingsTitle": "Cài đặt",
   "savingsCardSectionTitle": "Thẻ tiết kiệm tuần này",
   "savingsCardSectionDescription": "Biến một tuần giữ vững ngân sách thành thẻ ảnh và chia sẻ nó.",
@@ -417,8 +451,13 @@
   "cardUnassigned": "Chưa gán thẻ",
   "fillJuiceButton": "Đổ đầy Juice",
   "finishWizardButton": "Bắt đầu Juice với công thức này",
+  "incomeTypeFixedLabel": "Thu nhập cố định (Nhân viên)",
+  "incomeTypeIrregularLabel": "Thu nhập không đều (Freelancer/Tự kinh doanh)",
+  "incomeTypeAllowanceLabel": "Trợ cấp/Vốn khởi đầu (Học sinh, sinh viên)",
   "incomeStepQuestion": "Mỗi tháng bạn có bao nhiêu\njuice (thu nhập)?",
   "incomeStepSubtitle": "Nhập số tiền thực nhận vào tài khoản sau thuế.",
+  "incomeStepIrregularLabel": "Hãy nhập mức thu nhập tháng\ntối thiểu an toàn bạn chắc chắn có.",
+  "incomeStepIrregularCaption": "Ước tính thận trọng để juice không cạn vào mùa thấp điểm 🍊",
   "wonSuffixSpaced": " won",
   "goalStepQuestion": "Bạn muốn tiết kiệm\nbao lâu và bao nhiêu?",
   "yearsFieldLabel": "năm",

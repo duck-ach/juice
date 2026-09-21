@@ -127,6 +127,50 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String savingsPlanPaceFasterLine(Object months) {
+    return 'At your current pace, you\'re on track to reach your goal $months months early! 🚀';
+  }
+
+  @override
+  String savingsPlanPaceSlowerLine(Object months) {
+    return 'At your current pace, you might be $months months behind schedule. You\'ve got this 💪';
+  }
+
+  @override
+  String get savingsPlanPaceOnTrackLine => 'Your current pace matches the plan perfectly! Keep it up 🍊';
+
+  @override
+  String get recalibrateButton => 'Income Change · Recalibrate';
+
+  @override
+  String get recalibrateSheetTitle => 'Recalibrate Plan';
+
+  @override
+  String get recalibrateSheetSubtitle => 'Enter your new monthly income and pick one of two ways to apply it right away.';
+
+  @override
+  String get recalibrateIncomeFieldLabel => 'New monthly income';
+
+  @override
+  String get recalibrateShortenOption => 'Shorten the goal period';
+
+  @override
+  String recalibrateShortenPreview(Object before, Object after) {
+    return 'Keep your current living budget, and shorten the goal period from $before to $after months.';
+  }
+
+  @override
+  String get recalibrateShortenUnavailable => 'With this income, the period can\'t be shortened while keeping your current living budget.';
+
+  @override
+  String get recalibrateBoostOption => 'Increase your juice (living budget)';
+
+  @override
+  String recalibrateBoostPreview(Object before, Object after) {
+    return 'Keep the same goal period, and raise your daily juice from $before mL to $after mL.';
+  }
+
+  @override
   String get settingsTitle => 'Settings';
 
   @override
@@ -812,10 +856,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get finishWizardButton => 'Start Juice with This Recipe';
 
   @override
+  String get incomeTypeFixedLabel => 'Fixed Income (Employee)';
+
+  @override
+  String get incomeTypeIrregularLabel => 'Irregular Income (Freelance/Self-employed)';
+
+  @override
+  String get incomeTypeAllowanceLabel => 'Allowance/Seed Money (Student)';
+
+  @override
   String get incomeStepQuestion => 'How much juice (income)\ncomes in each month?';
 
   @override
   String get incomeStepSubtitle => 'Enter the actual after-tax amount that hits your account.';
+
+  @override
+  String get incomeStepIrregularLabel => 'Enter the minimum safe\nmonthly income you can count on.';
+
+  @override
+  String get incomeStepIrregularCaption => 'Estimate conservatively so your juice doesn\'t run dry in the off-season 🍊';
 
   @override
   String get wonSuffixSpaced => ' won';

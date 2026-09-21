@@ -127,6 +127,50 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String savingsPlanPaceFasterLine(Object months) {
+    return 'No ritmo atual, você vai atingir a meta $months meses mais cedo! 🚀';
+  }
+
+  @override
+  String savingsPlanPaceSlowerLine(Object months) {
+    return 'No ritmo atual, você pode ficar $months meses atrás do planejado. Você consegue 💪';
+  }
+
+  @override
+  String get savingsPlanPaceOnTrackLine => 'Seu ritmo atual está perfeitamente alinhado com o plano! Continue assim 🍊';
+
+  @override
+  String get recalibrateButton => 'Mudança de renda · Recalibrar';
+
+  @override
+  String get recalibrateSheetTitle => 'Recalibrar plano';
+
+  @override
+  String get recalibrateSheetSubtitle => 'Informe sua nova renda mensal e escolha uma das duas formas de aplicá-la agora.';
+
+  @override
+  String get recalibrateIncomeFieldLabel => 'Nova renda mensal';
+
+  @override
+  String get recalibrateShortenOption => 'Encurtar o prazo da meta';
+
+  @override
+  String recalibrateShortenPreview(Object before, Object after) {
+    return 'Mantenha seu orçamento de vida atual e encurte o prazo de $before para $after meses.';
+  }
+
+  @override
+  String get recalibrateShortenUnavailable => 'Com essa renda, não é possível encurtar o prazo mantendo seu orçamento de vida atual.';
+
+  @override
+  String get recalibrateBoostOption => 'Aumentar o juice (orçamento de vida)';
+
+  @override
+  String recalibrateBoostPreview(Object before, Object after) {
+    return 'Mantenha o mesmo prazo e aumente seu juice diário de $before mL para $after mL.';
+  }
+
+  @override
   String get settingsTitle => 'Configurações';
 
   @override
@@ -812,10 +856,25 @@ class AppLocalizationsPt extends AppLocalizations {
   String get finishWizardButton => 'Começar com esta receita';
 
   @override
+  String get incomeTypeFixedLabel => 'Renda fixa (CLT/empregado)';
+
+  @override
+  String get incomeTypeIrregularLabel => 'Renda irregular (freelancer/autônomo)';
+
+  @override
+  String get incomeTypeAllowanceLabel => 'Mesada/capital inicial (estudante)';
+
+  @override
   String get incomeStepQuestion => 'Quanto juice (receita)\nentra por mês?';
 
   @override
   String get incomeStepSubtitle => 'Informe o valor líquido real que cai na sua conta.';
+
+  @override
+  String get incomeStepIrregularLabel => 'Informe a renda mensal mínima\nsegura que você recebe.';
+
+  @override
+  String get incomeStepIrregularCaption => 'Estime de forma conservadora para o juice não secar na baixa temporada 🍊';
 
   @override
   String get wonSuffixSpaced => ' won';

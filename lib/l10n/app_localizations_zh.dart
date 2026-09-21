@@ -127,6 +127,50 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String savingsPlanPaceFasterLine(Object months) {
+    return '按目前的储蓄节奏,有望提前 $months 个月达成目标! 🚀';
+  }
+
+  @override
+  String savingsPlanPaceSlowerLine(Object months) {
+    return '按目前的节奏,可能会比计划晚 $months 个月达成,再加把劲吧 💪';
+  }
+
+  @override
+  String get savingsPlanPaceOnTrackLine => '目前的节奏和计划完全吻合!就这样继续下去吧 🍊';
+
+  @override
+  String get recalibrateButton => '收入变动・重新调整';
+
+  @override
+  String get recalibrateSheetTitle => '重新调整计划';
+
+  @override
+  String get recalibrateSheetSubtitle => '输入变动后的月收入,即可从两种方式中选择一种立即应用。';
+
+  @override
+  String get recalibrateIncomeFieldLabel => '新的月收入';
+
+  @override
+  String get recalibrateShortenOption => '缩短目标期限';
+
+  @override
+  String recalibrateShortenPreview(Object before, Object after) {
+    return '生活费维持现状,目标期限从 $before 个月缩短为 $after 个月。';
+  }
+
+  @override
+  String get recalibrateShortenUnavailable => '以这个收入,无法在维持目前生活费的情况下缩短期限。';
+
+  @override
+  String get recalibrateBoostOption => '增加果汁(生活费)';
+
+  @override
+  String recalibrateBoostPreview(Object before, Object after) {
+    return '目标期限维持不变,每日果汁从 $before mL 提升为 $after mL。';
+  }
+
+  @override
   String get settingsTitle => '设置';
 
   @override
@@ -812,10 +856,25 @@ class AppLocalizationsZh extends AppLocalizations {
   String get finishWizardButton => '以此配方开始使用果汁';
 
   @override
+  String get incomeTypeFixedLabel => '固定收入(上班族)';
+
+  @override
+  String get incomeTypeIrregularLabel => '不稳定收入(自由职业者・个体经营)';
+
+  @override
+  String get incomeTypeAllowanceLabel => '零花钱・启动资金(学生)';
+
+  @override
   String get incomeStepQuestion => '每月会有多少果汁\n(收入)入账呢?';
 
   @override
   String get incomeStepSubtitle => '请输入实际入账的税后金额。';
+
+  @override
+  String get incomeStepIrregularLabel => '请填写最低限度、\n稳定到账的安全月收入。';
+
+  @override
+  String get incomeStepIrregularCaption => '保守估算,淡季时果汁才不会枯竭 🍊';
 
   @override
   String get wonSuffixSpaced => ' 元';
@@ -1466,6 +1525,50 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   }
 
   @override
+  String savingsPlanPaceFasterLine(Object months) {
+    return '按目前的储蓄节奏,有望提前 $months 个月达成目标! 🚀';
+  }
+
+  @override
+  String savingsPlanPaceSlowerLine(Object months) {
+    return '按目前的节奏,可能会比计划晚 $months 个月达成,再加把劲吧 💪';
+  }
+
+  @override
+  String get savingsPlanPaceOnTrackLine => '目前的节奏和计划完全吻合!就这样继续下去吧 🍊';
+
+  @override
+  String get recalibrateButton => '收入变动・重新调整';
+
+  @override
+  String get recalibrateSheetTitle => '重新调整计划';
+
+  @override
+  String get recalibrateSheetSubtitle => '输入变动后的月收入,即可从两种方式中选择一种立即应用。';
+
+  @override
+  String get recalibrateIncomeFieldLabel => '新的月收入';
+
+  @override
+  String get recalibrateShortenOption => '缩短目标期限';
+
+  @override
+  String recalibrateShortenPreview(Object before, Object after) {
+    return '生活费维持现状,目标期限从 $before 个月缩短为 $after 个月。';
+  }
+
+  @override
+  String get recalibrateShortenUnavailable => '以这个收入,无法在维持目前生活费的情况下缩短期限。';
+
+  @override
+  String get recalibrateBoostOption => '增加果汁(生活费)';
+
+  @override
+  String recalibrateBoostPreview(Object before, Object after) {
+    return '目标期限维持不变,每日果汁从 $before mL 提升为 $after mL。';
+  }
+
+  @override
   String get settingsTitle => '设置';
 
   @override
@@ -2151,10 +2254,25 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get finishWizardButton => '以此配方开始使用果汁';
 
   @override
+  String get incomeTypeFixedLabel => '固定收入(上班族)';
+
+  @override
+  String get incomeTypeIrregularLabel => '不稳定收入(自由职业者・个体经营)';
+
+  @override
+  String get incomeTypeAllowanceLabel => '零花钱・启动资金(学生)';
+
+  @override
   String get incomeStepQuestion => '每月会有多少果汁\n(收入)入账呢?';
 
   @override
   String get incomeStepSubtitle => '请输入实际入账的税后金额。';
+
+  @override
+  String get incomeStepIrregularLabel => '请填写最低限度、\n稳定到账的安全月收入。';
+
+  @override
+  String get incomeStepIrregularCaption => '保守估算,淡季时果汁才不会枯竭 🍊';
 
   @override
   String get wonSuffixSpaced => ' 元';
@@ -2802,6 +2920,50 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   @override
   String savingsPlanRecommendedLine(Object daily, Object weekly, Object monthly) {
     return '建議果汁量:每日 $daily mL・每週 $weekly mL・每月 $monthly mL';
+  }
+
+  @override
+  String savingsPlanPaceFasterLine(Object months) {
+    return '以目前的儲蓄節奏,可望提前 $months 個月達成目標! 🚀';
+  }
+
+  @override
+  String savingsPlanPaceSlowerLine(Object months) {
+    return '以目前的節奏,可能會比計畫晚 $months 個月達成,再加把勁吧 💪';
+  }
+
+  @override
+  String get savingsPlanPaceOnTrackLine => '目前的節奏和計畫完全吻合!就這樣繼續下去吧 🍊';
+
+  @override
+  String get recalibrateButton => '收入變動・重新調整';
+
+  @override
+  String get recalibrateSheetTitle => '重新調整計畫';
+
+  @override
+  String get recalibrateSheetSubtitle => '輸入變動後的月收入,即可從兩種方式中擇一立即套用。';
+
+  @override
+  String get recalibrateIncomeFieldLabel => '新的月收入';
+
+  @override
+  String get recalibrateShortenOption => '縮短目標期間';
+
+  @override
+  String recalibrateShortenPreview(Object before, Object after) {
+    return '生活費維持現狀,目標期間從 $before 個月縮短為 $after 個月。';
+  }
+
+  @override
+  String get recalibrateShortenUnavailable => '以這個收入,無法在維持目前生活費的情況下縮短期間。';
+
+  @override
+  String get recalibrateBoostOption => '增加果汁(生活費)';
+
+  @override
+  String recalibrateBoostPreview(Object before, Object after) {
+    return '目標期間維持不變,每日果汁從 $before mL 提升為 $after mL。';
   }
 
   @override
@@ -3490,10 +3652,25 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get finishWizardButton => '以此配方開始使用果汁';
 
   @override
+  String get incomeTypeFixedLabel => '固定收入(上班族)';
+
+  @override
+  String get incomeTypeIrregularLabel => '不穩定收入(自由工作者・自營業)';
+
+  @override
+  String get incomeTypeAllowanceLabel => '零用錢・種子資金(學生)';
+
+  @override
   String get incomeStepQuestion => '每月會有多少果汁\n(收入)進帳呢?';
 
   @override
   String get incomeStepSubtitle => '請輸入實際入帳的稅後金額。';
+
+  @override
+  String get incomeStepIrregularLabel => '請填寫最低限度、\n穩定入帳的安全月收入。';
+
+  @override
+  String get incomeStepIrregularCaption => '保守估算,淡季時果汁才不會乾涸 🍊';
 
   @override
   String get wonSuffixSpaced => ' 元';

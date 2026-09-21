@@ -127,6 +127,50 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
+  String savingsPlanPaceFasterLine(Object months) {
+    return 'Với tốc độ hiện tại, bạn đang đạt mục tiêu sớm hơn $months tháng! 🚀';
+  }
+
+  @override
+  String savingsPlanPaceSlowerLine(Object months) {
+    return 'Với tốc độ hiện tại, bạn có thể chậm hơn kế hoạch $months tháng. Cố lên nhé 💪';
+  }
+
+  @override
+  String get savingsPlanPaceOnTrackLine => 'Tốc độ hiện tại khớp hoàn hảo với kế hoạch! Cứ tiếp tục như vậy nhé 🍊';
+
+  @override
+  String get recalibrateButton => 'Thay đổi thu nhập · Điều chỉnh';
+
+  @override
+  String get recalibrateSheetTitle => 'Điều chỉnh kế hoạch';
+
+  @override
+  String get recalibrateSheetSubtitle => 'Nhập thu nhập hàng tháng mới và chọn một trong hai cách để áp dụng ngay.';
+
+  @override
+  String get recalibrateIncomeFieldLabel => 'Thu nhập hàng tháng mới';
+
+  @override
+  String get recalibrateShortenOption => 'Rút ngắn thời hạn mục tiêu';
+
+  @override
+  String recalibrateShortenPreview(Object before, Object after) {
+    return 'Giữ nguyên ngân sách sinh hoạt hiện tại, rút ngắn thời hạn mục tiêu từ $before xuống $after tháng.';
+  }
+
+  @override
+  String get recalibrateShortenUnavailable => 'Với thu nhập này, không thể rút ngắn thời hạn nếu vẫn giữ ngân sách sinh hoạt hiện tại.';
+
+  @override
+  String get recalibrateBoostOption => 'Tăng juice (ngân sách sinh hoạt)';
+
+  @override
+  String recalibrateBoostPreview(Object before, Object after) {
+    return 'Giữ nguyên thời hạn mục tiêu, tăng juice mỗi ngày từ $before mL lên $after mL.';
+  }
+
+  @override
   String get settingsTitle => 'Cài đặt';
 
   @override
@@ -812,10 +856,25 @@ class AppLocalizationsVi extends AppLocalizations {
   String get finishWizardButton => 'Bắt đầu Juice với công thức này';
 
   @override
+  String get incomeTypeFixedLabel => 'Thu nhập cố định (Nhân viên)';
+
+  @override
+  String get incomeTypeIrregularLabel => 'Thu nhập không đều (Freelancer/Tự kinh doanh)';
+
+  @override
+  String get incomeTypeAllowanceLabel => 'Trợ cấp/Vốn khởi đầu (Học sinh, sinh viên)';
+
+  @override
   String get incomeStepQuestion => 'Mỗi tháng bạn có bao nhiêu\njuice (thu nhập)?';
 
   @override
   String get incomeStepSubtitle => 'Nhập số tiền thực nhận vào tài khoản sau thuế.';
+
+  @override
+  String get incomeStepIrregularLabel => 'Hãy nhập mức thu nhập tháng\ntối thiểu an toàn bạn chắc chắn có.';
+
+  @override
+  String get incomeStepIrregularCaption => 'Ước tính thận trọng để juice không cạn vào mùa thấp điểm 🍊';
 
   @override
   String get wonSuffixSpaced => ' won';

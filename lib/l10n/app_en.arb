@@ -36,6 +36,40 @@
   "savingsPlanGoalLine": "Goal: Save {amount} won over {duration}",
   "savingsPlanFixedExpenseLine": "Fixed costs (unavoidable): {amount} won/month",
   "savingsPlanRecommendedLine": "Recommended juice: {daily} mL/day · {weekly} mL/week · {monthly} mL/month",
+  "savingsPlanPaceFasterLine": "At your current pace, you're on track to reach your goal {months} months early! 🚀",
+  "@savingsPlanPaceFasterLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceSlowerLine": "At your current pace, you might be {months} months behind schedule. You've got this 💪",
+  "@savingsPlanPaceSlowerLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceOnTrackLine": "Your current pace matches the plan perfectly! Keep it up 🍊",
+  "recalibrateButton": "Income Change · Recalibrate",
+  "recalibrateSheetTitle": "Recalibrate Plan",
+  "recalibrateSheetSubtitle": "Enter your new monthly income and pick one of two ways to apply it right away.",
+  "recalibrateIncomeFieldLabel": "New monthly income",
+  "recalibrateShortenOption": "Shorten the goal period",
+  "recalibrateShortenPreview": "Keep your current living budget, and shorten the goal period from {before} to {after} months.",
+  "@recalibrateShortenPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateShortenUnavailable": "With this income, the period can't be shortened while keeping your current living budget.",
+  "recalibrateBoostOption": "Increase your juice (living budget)",
+  "recalibrateBoostPreview": "Keep the same goal period, and raise your daily juice from {before} mL to {after} mL.",
+  "@recalibrateBoostPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
   "settingsTitle": "Settings",
   "savingsCardSectionTitle": "This Week's Savings Card",
   "savingsCardSectionDescription": "Turn a budget-win week into a card and share it.",
@@ -254,8 +288,13 @@
   "cardUnassigned": "No Card Assigned",
   "fillJuiceButton": "Fill Juice",
   "finishWizardButton": "Start Juice with This Recipe",
+  "incomeTypeFixedLabel": "Fixed Income (Employee)",
+  "incomeTypeIrregularLabel": "Irregular Income (Freelance/Self-employed)",
+  "incomeTypeAllowanceLabel": "Allowance/Seed Money (Student)",
   "incomeStepQuestion": "How much juice (income)\ncomes in each month?",
   "incomeStepSubtitle": "Enter the actual after-tax amount that hits your account.",
+  "incomeStepIrregularLabel": "Enter the minimum safe\nmonthly income you can count on.",
+  "incomeStepIrregularCaption": "Estimate conservatively so your juice doesn't run dry in the off-season 🍊",
   "wonSuffixSpaced": " won",
   "goalStepQuestion": "How long, and how much\ndo you want to save?",
   "yearsFieldLabel": "years",

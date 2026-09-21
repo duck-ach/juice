@@ -127,6 +127,50 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String savingsPlanPaceFasterLine(Object months) {
+    return 'À ce rythme, vous atteindrez votre objectif $months mois plus tôt ! 🚀';
+  }
+
+  @override
+  String savingsPlanPaceSlowerLine(Object months) {
+    return 'À ce rythme, vous pourriez avoir $months mois de retard sur le plan. Vous allez y arriver 💪';
+  }
+
+  @override
+  String get savingsPlanPaceOnTrackLine => 'Votre rythme actuel correspond parfaitement au plan ! Continuez comme ça 🍊';
+
+  @override
+  String get recalibrateButton => 'Changement de revenu · Recalibrer';
+
+  @override
+  String get recalibrateSheetTitle => 'Recalibrer le plan';
+
+  @override
+  String get recalibrateSheetSubtitle => 'Indiquez votre nouveau revenu mensuel et choisissez l\'une des deux façons de l\'appliquer immédiatement.';
+
+  @override
+  String get recalibrateIncomeFieldLabel => 'Nouveau revenu mensuel';
+
+  @override
+  String get recalibrateShortenOption => 'Raccourcir la durée de l\'objectif';
+
+  @override
+  String recalibrateShortenPreview(Object before, Object after) {
+    return 'Gardez votre budget de vie actuel et raccourcissez la durée de $before à $after mois.';
+  }
+
+  @override
+  String get recalibrateShortenUnavailable => 'Avec ce revenu, impossible de raccourcir la durée en gardant votre budget de vie actuel.';
+
+  @override
+  String get recalibrateBoostOption => 'Augmenter le juice (budget de vie)';
+
+  @override
+  String recalibrateBoostPreview(Object before, Object after) {
+    return 'Gardez la même durée d\'objectif et augmentez votre juice quotidien de $before mL à $after mL.';
+  }
+
+  @override
   String get settingsTitle => 'Paramètres';
 
   @override
@@ -812,10 +856,25 @@ class AppLocalizationsFr extends AppLocalizations {
   String get finishWizardButton => 'Démarrer avec cette recette';
 
   @override
+  String get incomeTypeFixedLabel => 'Revenu fixe (salarié)';
+
+  @override
+  String get incomeTypeIrregularLabel => 'Revenu irrégulier (freelance/indépendant)';
+
+  @override
+  String get incomeTypeAllowanceLabel => 'Argent de poche/capital de départ (étudiant)';
+
+  @override
   String get incomeStepQuestion => 'Combien de juice (revenu)\nrentre chaque mois ?';
 
   @override
   String get incomeStepSubtitle => 'Indiquez le montant net réel qui arrive sur votre compte.';
+
+  @override
+  String get incomeStepIrregularLabel => 'Indiquez le revenu mensuel minimum\nsur lequel vous pouvez compter.';
+
+  @override
+  String get incomeStepIrregularCaption => 'Estimez prudemment pour que votre juice ne s\'épuise pas en basse saison 🍊';
 
   @override
   String get wonSuffixSpaced => ' won';

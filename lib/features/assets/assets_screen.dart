@@ -7,6 +7,7 @@ import '../../providers/asset_provider.dart';
 import '../../providers/currency_provider.dart';
 import '../../providers/juice_saving_provider.dart';
 import '../../providers/juice_theme_provider.dart';
+import '../../providers/savings_planner_provider.dart';
 import 'widgets/net_flow_bar_chart.dart';
 import 'widgets/savings_overview_section.dart';
 
@@ -26,6 +27,7 @@ class AssetsScreen extends ConsumerWidget {
     final periodScopeLabel =
         period == AssetPeriod.monthly ? loc.scopeThisMonth : loc.scopeThisYear;
     final accumulatedSavings = ref.watch(totalAccumulatedSavingsProvider);
+    final paceDeltaMonths = ref.watch(savingsPlanPaceProvider);
     final currency = ref.watch(currencyProvider).currency;
     final themeColor = ref.watch(resolvedJuiceThemeProvider).highColor;
 
@@ -82,6 +84,23 @@ class AssetsScreen extends ConsumerWidget {
                     const SizedBox(height: 4),
                     Text(loc.savingsAssetCardDescription,
                         style: Theme.of(context).textTheme.bodySmall),
+                    if (paceDeltaMonths != null) ...[
+                      const SizedBox(height: 8),
+                      Text(
+                        paceDeltaMonths > 0
+                            ? loc.savingsPlanPaceFasterLine(paceDeltaMonths)
+                            : (paceDeltaMonths < 0
+                                ? loc.savingsPlanPaceSlowerLine(
+                                    -paceDeltaMonths)
+                                : loc.savingsPlanPaceOnTrackLine),
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              fontWeight: FontWeight.w700,
+                              color: paceDeltaMonths >= 0
+                                  ? const Color(0xFF34C759)
+                                  : Theme.of(context).colorScheme.error,
+                            ),
+                      ),
+                    ],
                   ],
                 ),
               ),

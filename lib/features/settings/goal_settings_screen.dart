@@ -11,6 +11,7 @@ import '../../providers/budget_settings_provider.dart';
 import '../../providers/installment_settings_provider.dart';
 import '../../providers/saving_option_provider.dart';
 import '../../providers/savings_planner_provider.dart';
+import 'widgets/savings_plan_recalibration_sheet.dart';
 import 'widgets/savings_plan_wizard.dart';
 
 /// 목표 주기/주기별 목표 금액 + 중장기 저축 목표 플래너를 관리하는 서브 화면.
@@ -87,16 +88,9 @@ class GoalSettingsScreen extends ConsumerWidget {
       BuildContext context, WidgetRef ref, bool value) async {
     if (!value) {
       final plan = ref.read(savingsPlanProvider);
-      await ref.read(savingsPlanProvider.notifier).update(
-            SavingsPlan(
-              enabled: false,
-              monthlyIncome: plan.monthlyIncome,
-              goalYears: plan.goalYears,
-              goalMonths: plan.goalMonths,
-              goalAmount: plan.goalAmount,
-              fixedExpenses: plan.fixedExpenses,
-            ),
-          );
+      await ref
+          .read(savingsPlanProvider.notifier)
+          .update(plan.copyWith(enabled: false));
       return;
     }
     await showSavingsPlanWizard(context);
@@ -125,6 +119,7 @@ class GoalSettingsScreen extends ConsumerWidget {
     final weekStartDay = ref.watch(weekStartDayProvider);
     final periodTargets = ref.watch(periodTargetAmountsProvider);
     final plan = ref.watch(savingsPlanProvider);
+    final paceDeltaMonths = ref.watch(savingsPlanPaceProvider);
     final installmentMode = ref.watch(installmentBillingModeProvider);
     final savingOption = ref.watch(savingOptionProvider);
     final formatter = NumberFormat('#,###');
@@ -271,8 +266,10 @@ class GoalSettingsScreen extends ConsumerWidget {
             const SizedBox(height: 12),
             _SavingsPlanSummaryCard(
               plan: plan,
+              paceDeltaMonths: paceDeltaMonths,
               onEdit: () => showSavingsPlanWizard(context),
               onApply: () => _reapplyBudget(context, ref, plan, loc),
+              onRecalibrate: () => SavingsPlanRecalibrationSheet.show(context),
             ),
           ],
         ],
@@ -283,12 +280,19 @@ class GoalSettingsScreen extends ConsumerWidget {
 
 /// "🍊 나의 주스 플랜" 요약 카드. 위저드를 완료하면 복잡한 폼 대신 이 카드 한 장만 보여준다.
 class _SavingsPlanSummaryCard extends StatelessWidget {
-  const _SavingsPlanSummaryCard(
-      {required this.plan, required this.onEdit, required this.onApply});
+  const _SavingsPlanSummaryCard({
+    required this.plan,
+    required this.paceDeltaMonths,
+    required this.onEdit,
+    required this.onApply,
+    required this.onRecalibrate,
+  });
 
   final SavingsPlan plan;
+  final int? paceDeltaMonths;
   final VoidCallback onEdit;
   final VoidCallback onApply;
+  final VoidCallback onRecalibrate;
 
   String _durationLabel(AppLocalizations loc) {
     if (plan.goalYears > 0 && plan.goalMonths > 0) {
@@ -339,11 +343,32 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
             style: theme.textTheme.bodyLarge
                 ?.copyWith(fontWeight: FontWeight.w700),
           ),
+          if (paceDeltaMonths != null) ...[
+            const SizedBox(height: 10),
+            Text(
+              paceDeltaMonths! > 0
+                  ? loc.savingsPlanPaceFasterLine(paceDeltaMonths!)
+                  : (paceDeltaMonths! < 0
+                      ? loc.savingsPlanPaceSlowerLine(-paceDeltaMonths!)
+                      : loc.savingsPlanPaceOnTrackLine),
+              style: theme.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+                color: paceDeltaMonths! >= 0
+                    ? const Color(0xFF34C759)
+                    : theme.colorScheme.error,
+              ),
+            ),
+          ],
           const SizedBox(height: 16),
           Row(
             children: [
               TextButton(onPressed: onEdit, child: Text(loc.replanButton)),
               const Spacer(),
+              TextButton.icon(
+                onPressed: onRecalibrate,
+                icon: const Icon(Icons.trending_up, size: 18),
+                label: Text(loc.recalibrateButton),
+              ),
             ],
           ),
           SizedBox(

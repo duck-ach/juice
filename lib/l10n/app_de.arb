@@ -36,6 +36,40 @@
   "savingsPlanGoalLine": "Ziel: {amount} Won in {duration} sparen",
   "savingsPlanFixedExpenseLine": "Fixkosten (unvermeidlich): {amount} Won/Monat",
   "savingsPlanRecommendedLine": "Empfohlener Juice: {daily} mL/Tag · {weekly} mL/Woche · {monthly} mL/Monat",
+  "savingsPlanPaceFasterLine": "Bei deinem aktuellen Tempo erreichst du dein Ziel {months} Monate früher! 🚀",
+  "@savingsPlanPaceFasterLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceSlowerLine": "Bei deinem aktuellen Tempo könntest du {months} Monate hinter dem Plan liegen. Du schaffst das 💪",
+  "@savingsPlanPaceSlowerLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceOnTrackLine": "Dein aktuelles Tempo passt genau zum Plan! Mach weiter so 🍊",
+  "recalibrateButton": "Einkommensänderung · Neu kalibrieren",
+  "recalibrateSheetTitle": "Plan neu kalibrieren",
+  "recalibrateSheetSubtitle": "Gib dein neues Monatseinkommen ein und wähle eine von zwei Möglichkeiten, es sofort anzuwenden.",
+  "recalibrateIncomeFieldLabel": "Neues Monatseinkommen",
+  "recalibrateShortenOption": "Zielzeitraum verkürzen",
+  "recalibrateShortenPreview": "Dein Budget bleibt gleich, der Zielzeitraum verkürzt sich von {before} auf {after} Monate.",
+  "@recalibrateShortenPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateShortenUnavailable": "Mit diesem Einkommen lässt sich der Zeitraum bei gleichem Budget nicht verkürzen.",
+  "recalibrateBoostOption": "Juice (Budget) erhöhen",
+  "recalibrateBoostPreview": "Der Zielzeitraum bleibt gleich, dein tägliches Juice steigt von {before} mL auf {after} mL.",
+  "@recalibrateBoostPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
   "settingsTitle": "Einstellungen",
   "savingsCardSectionTitle": "Spar-Karte dieser Woche",
   "savingsCardSectionDescription": "Teile eine erfolgreiche Budget-Woche als Karte.",
@@ -254,8 +288,13 @@
   "cardUnassigned": "Keine Karte zugewiesen",
   "fillJuiceButton": "Juice auffüllen",
   "finishWizardButton": "Mit diesem Rezept starten",
+  "incomeTypeFixedLabel": "Festes Einkommen (Angestellte)",
+  "incomeTypeIrregularLabel": "Unregelmäßiges Einkommen (Freelancer/Selbstständig)",
+  "incomeTypeAllowanceLabel": "Taschengeld/Startkapital (Studierende)",
   "incomeStepQuestion": "Wie viel Juice (Einkommen)\nkommt monatlich rein?",
   "incomeStepSubtitle": "Gib den tatsächlichen Betrag nach Steuern ein.",
+  "incomeStepIrregularLabel": "Gib das minimale, sichere\nMonatseinkommen ein.",
+  "incomeStepIrregularCaption": "Schätze konservativ, damit dein Juice auch in der Nebensaison nicht ausgeht 🍊",
   "wonSuffixSpaced": " Won",
   "goalStepQuestion": "Wie lange und wie viel\nmöchtest du sparen?",
   "yearsFieldLabel": "Jahre",

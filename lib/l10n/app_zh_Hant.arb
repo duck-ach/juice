@@ -36,6 +36,40 @@
   "savingsPlanGoalLine": "目標:{duration}內存下 {amount} 元",
   "savingsPlanFixedExpenseLine": "固定支出(無法避免):每月 {amount} 元",
   "savingsPlanRecommendedLine": "建議果汁量:每日 {daily} mL・每週 {weekly} mL・每月 {monthly} mL",
+  "savingsPlanPaceFasterLine": "以目前的儲蓄節奏,可望提前 {months} 個月達成目標! 🚀",
+  "@savingsPlanPaceFasterLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceSlowerLine": "以目前的節奏,可能會比計畫晚 {months} 個月達成,再加把勁吧 💪",
+  "@savingsPlanPaceSlowerLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceOnTrackLine": "目前的節奏和計畫完全吻合!就這樣繼續下去吧 🍊",
+  "recalibrateButton": "收入變動・重新調整",
+  "recalibrateSheetTitle": "重新調整計畫",
+  "recalibrateSheetSubtitle": "輸入變動後的月收入,即可從兩種方式中擇一立即套用。",
+  "recalibrateIncomeFieldLabel": "新的月收入",
+  "recalibrateShortenOption": "縮短目標期間",
+  "recalibrateShortenPreview": "生活費維持現狀,目標期間從 {before} 個月縮短為 {after} 個月。",
+  "@recalibrateShortenPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateShortenUnavailable": "以這個收入,無法在維持目前生活費的情況下縮短期間。",
+  "recalibrateBoostOption": "增加果汁(生活費)",
+  "recalibrateBoostPreview": "目標期間維持不變,每日果汁從 {before} mL 提升為 {after} mL。",
+  "@recalibrateBoostPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
   "settingsTitle": "設定",
   "savingsCardSectionTitle": "本週儲蓄卡",
   "savingsCardSectionDescription": "把達成預算的一週做成卡片並分享。",
@@ -254,8 +288,13 @@
   "cardUnassigned": "未指定卡片",
   "fillJuiceButton": "裝滿果汁",
   "finishWizardButton": "以此配方開始使用果汁",
+  "incomeTypeFixedLabel": "固定收入(上班族)",
+  "incomeTypeIrregularLabel": "不穩定收入(自由工作者・自營業)",
+  "incomeTypeAllowanceLabel": "零用錢・種子資金(學生)",
   "incomeStepQuestion": "每月會有多少果汁\n(收入)進帳呢?",
   "incomeStepSubtitle": "請輸入實際入帳的稅後金額。",
+  "incomeStepIrregularLabel": "請填寫最低限度、\n穩定入帳的安全月收入。",
+  "incomeStepIrregularCaption": "保守估算,淡季時果汁才不會乾涸 🍊",
   "wonSuffixSpaced": " 元",
   "goalStepQuestion": "想存多久、存多少呢?",
   "yearsFieldLabel": "年",

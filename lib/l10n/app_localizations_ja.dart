@@ -127,6 +127,50 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String savingsPlanPaceFasterLine(Object months) {
+    return '今のペースなら目標より$monthsか月早く達成できそうです! 🚀';
+  }
+
+  @override
+  String savingsPlanPaceSlowerLine(Object months) {
+    return '今のペースだと目標より$monthsか月遅れるかもしれません。もう少し頑張りましょう 💪';
+  }
+
+  @override
+  String get savingsPlanPaceOnTrackLine => '今のペースが計画とぴったり合っています!このまま頑張りましょう 🍊';
+
+  @override
+  String get recalibrateButton => '収入変動・再調整';
+
+  @override
+  String get recalibrateSheetTitle => 'プラン再調整';
+
+  @override
+  String get recalibrateSheetSubtitle => '変わった月収を入力すると、2つの方法から選んですぐに反映できます。';
+
+  @override
+  String get recalibrateIncomeFieldLabel => '新しい月収';
+
+  @override
+  String get recalibrateShortenOption => '目標期間を短縮する';
+
+  @override
+  String recalibrateShortenPreview(Object before, Object after) {
+    return '生活費は今のまま、目標期間を$beforeか月→$afterか月に短縮します。';
+  }
+
+  @override
+  String get recalibrateShortenUnavailable => 'この収入では、今の生活費を維持したまま期間を短縮できません。';
+
+  @override
+  String get recalibrateBoostOption => 'ジュース(生活費)を増やす';
+
+  @override
+  String recalibrateBoostPreview(Object before, Object after) {
+    return '目標期間はそのまま、1日のジュースを${before}mL→${after}mLに増やします。';
+  }
+
+  @override
   String get settingsTitle => '設定';
 
   @override
@@ -812,10 +856,25 @@ class AppLocalizationsJa extends AppLocalizations {
   String get finishWizardButton => 'このレシピでジュースを始める';
 
   @override
+  String get incomeTypeFixedLabel => '固定収入(会社員)';
+
+  @override
+  String get incomeTypeIrregularLabel => '不規則な収入(フリーランス・自営業)';
+
+  @override
+  String get incomeTypeAllowanceLabel => 'お小遣い・シード資金(学生)';
+
+  @override
   String get incomeStepQuestion => '毎月入ってくるジュース(月収入)は\nいくらですか?';
 
   @override
   String get incomeStepSubtitle => '税引き後、実際に口座に入る金額を入力してください。';
+
+  @override
+  String get incomeStepIrregularLabel => '最低限入ってくる\n安全な月収を入力してください。';
+
+  @override
+  String get incomeStepIrregularCaption => '保守的に見積もると閑散期でもジュースが枯れません 🍊';
 
   @override
   String get wonSuffixSpaced => ' ウォン';

@@ -127,6 +127,50 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String savingsPlanPaceFasterLine(Object months) {
+    return 'Bei deinem aktuellen Tempo erreichst du dein Ziel $months Monate früher! 🚀';
+  }
+
+  @override
+  String savingsPlanPaceSlowerLine(Object months) {
+    return 'Bei deinem aktuellen Tempo könntest du $months Monate hinter dem Plan liegen. Du schaffst das 💪';
+  }
+
+  @override
+  String get savingsPlanPaceOnTrackLine => 'Dein aktuelles Tempo passt genau zum Plan! Mach weiter so 🍊';
+
+  @override
+  String get recalibrateButton => 'Einkommensänderung · Neu kalibrieren';
+
+  @override
+  String get recalibrateSheetTitle => 'Plan neu kalibrieren';
+
+  @override
+  String get recalibrateSheetSubtitle => 'Gib dein neues Monatseinkommen ein und wähle eine von zwei Möglichkeiten, es sofort anzuwenden.';
+
+  @override
+  String get recalibrateIncomeFieldLabel => 'Neues Monatseinkommen';
+
+  @override
+  String get recalibrateShortenOption => 'Zielzeitraum verkürzen';
+
+  @override
+  String recalibrateShortenPreview(Object before, Object after) {
+    return 'Dein Budget bleibt gleich, der Zielzeitraum verkürzt sich von $before auf $after Monate.';
+  }
+
+  @override
+  String get recalibrateShortenUnavailable => 'Mit diesem Einkommen lässt sich der Zeitraum bei gleichem Budget nicht verkürzen.';
+
+  @override
+  String get recalibrateBoostOption => 'Juice (Budget) erhöhen';
+
+  @override
+  String recalibrateBoostPreview(Object before, Object after) {
+    return 'Der Zielzeitraum bleibt gleich, dein tägliches Juice steigt von $before mL auf $after mL.';
+  }
+
+  @override
   String get settingsTitle => 'Einstellungen';
 
   @override
@@ -812,10 +856,25 @@ class AppLocalizationsDe extends AppLocalizations {
   String get finishWizardButton => 'Mit diesem Rezept starten';
 
   @override
+  String get incomeTypeFixedLabel => 'Festes Einkommen (Angestellte)';
+
+  @override
+  String get incomeTypeIrregularLabel => 'Unregelmäßiges Einkommen (Freelancer/Selbstständig)';
+
+  @override
+  String get incomeTypeAllowanceLabel => 'Taschengeld/Startkapital (Studierende)';
+
+  @override
   String get incomeStepQuestion => 'Wie viel Juice (Einkommen)\nkommt monatlich rein?';
 
   @override
   String get incomeStepSubtitle => 'Gib den tatsächlichen Betrag nach Steuern ein.';
+
+  @override
+  String get incomeStepIrregularLabel => 'Gib das minimale, sichere\nMonatseinkommen ein.';
+
+  @override
+  String get incomeStepIrregularCaption => 'Schätze konservativ, damit dein Juice auch in der Nebensaison nicht ausgeht 🍊';
 
   @override
   String get wonSuffixSpaced => ' Won';

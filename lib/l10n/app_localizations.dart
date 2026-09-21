@@ -325,6 +325,78 @@ abstract class AppLocalizations {
   /// **'추천 주스 한 잔: 하루 {daily} mL / 이번 주 {weekly} mL / 이번 달 {monthly} mL'**
   String savingsPlanRecommendedLine(Object daily, Object weekly, Object monthly);
 
+  /// No description provided for @savingsPlanPaceFasterLine.
+  ///
+  /// In ko, this message translates to:
+  /// **'현재 저축 페이스라면 목표보다 {months}개월 빠르게 달성 중이에요! 🚀'**
+  String savingsPlanPaceFasterLine(Object months);
+
+  /// No description provided for @savingsPlanPaceSlowerLine.
+  ///
+  /// In ko, this message translates to:
+  /// **'지금 페이스라면 목표보다 {months}개월 늦어질 수 있어요. 조금만 더 힘내봐요 💪'**
+  String savingsPlanPaceSlowerLine(Object months);
+
+  /// No description provided for @savingsPlanPaceOnTrackLine.
+  ///
+  /// In ko, this message translates to:
+  /// **'지금 페이스가 계획과 딱 맞아요! 이대로 쭉 가봐요 🍊'**
+  String get savingsPlanPaceOnTrackLine;
+
+  /// No description provided for @recalibrateButton.
+  ///
+  /// In ko, this message translates to:
+  /// **'소득 변동 · 재조정'**
+  String get recalibrateButton;
+
+  /// No description provided for @recalibrateSheetTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'플랜 재조정'**
+  String get recalibrateSheetTitle;
+
+  /// No description provided for @recalibrateSheetSubtitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'달라진 월 수입을 입력하면 두 가지 방법 중 골라 바로 반영할 수 있어요.'**
+  String get recalibrateSheetSubtitle;
+
+  /// No description provided for @recalibrateIncomeFieldLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'새 월 수입'**
+  String get recalibrateIncomeFieldLabel;
+
+  /// No description provided for @recalibrateShortenOption.
+  ///
+  /// In ko, this message translates to:
+  /// **'목표 기간 단축하기'**
+  String get recalibrateShortenOption;
+
+  /// No description provided for @recalibrateShortenPreview.
+  ///
+  /// In ko, this message translates to:
+  /// **'생활비는 지금 그대로, 목표 기간을 {before}개월 → {after}개월로 줄여요.'**
+  String recalibrateShortenPreview(Object before, Object after);
+
+  /// No description provided for @recalibrateShortenUnavailable.
+  ///
+  /// In ko, this message translates to:
+  /// **'새 수입으로는 지금 생활비를 유지한 채 기간을 줄일 수 없어요.'**
+  String get recalibrateShortenUnavailable;
+
+  /// No description provided for @recalibrateBoostOption.
+  ///
+  /// In ko, this message translates to:
+  /// **'주스(생활비) 늘리기'**
+  String get recalibrateBoostOption;
+
+  /// No description provided for @recalibrateBoostPreview.
+  ///
+  /// In ko, this message translates to:
+  /// **'목표 기간은 그대로, 하루 주스를 {before} mL → {after} mL로 늘려요.'**
+  String recalibrateBoostPreview(Object before, Object after);
+
   /// No description provided for @settingsTitle.
   ///
   /// In ko, this message translates to:
@@ -1603,6 +1675,24 @@ abstract class AppLocalizations {
   /// **'이 레시피로 주스 시작하기'**
   String get finishWizardButton;
 
+  /// No description provided for @incomeTypeFixedLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'고정 소득 (직장인)'**
+  String get incomeTypeFixedLabel;
+
+  /// No description provided for @incomeTypeIrregularLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'불규칙 소득 (프리랜서·자영업)'**
+  String get incomeTypeIrregularLabel;
+
+  /// No description provided for @incomeTypeAllowanceLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'용돈·시드머니 (학생)'**
+  String get incomeTypeAllowanceLabel;
+
   /// No description provided for @incomeStepQuestion.
   ///
   /// In ko, this message translates to:
@@ -1614,6 +1704,18 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'세후 실제 통장에 찍히는 금액을 적어주세요.'**
   String get incomeStepSubtitle;
+
+  /// No description provided for @incomeStepIrregularLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'최소한으로 들어오는\n안전 월수입을 적어주세요.'**
+  String get incomeStepIrregularLabel;
+
+  /// No description provided for @incomeStepIrregularCaption.
+  ///
+  /// In ko, this message translates to:
+  /// **'보수적으로 잡아야 비수기에도 주스가 마르지 않아요 🍊'**
+  String get incomeStepIrregularCaption;
 
   /// No description provided for @wonSuffixSpaced.
   ///

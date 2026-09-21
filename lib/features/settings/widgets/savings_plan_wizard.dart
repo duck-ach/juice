@@ -53,6 +53,7 @@ class _SavingsPlanWizardScreenState
   static const _presets = [6, 12, 24, 36];
 
   int _step = 0;
+  late IncomeType _incomeType;
   late final TextEditingController _incomeController;
   late final TextEditingController _goalAmountController;
   late final TextEditingController _yearsController;
@@ -65,6 +66,7 @@ class _SavingsPlanWizardScreenState
   void initState() {
     super.initState();
     final plan = ref.read(savingsPlanProvider);
+    _incomeType = plan.incomeType;
     _incomeController = TextEditingController(
       text: plan.monthlyIncome == null
           ? ''
@@ -121,6 +123,7 @@ class _SavingsPlanWizardScreenState
     return SavingsPlan(
       enabled: enabled,
       monthlyIncome: _income,
+      incomeType: _incomeType,
       goalYears: _totalMonths ~/ 12,
       goalMonths: _totalMonths % 12,
       goalAmount: _goalAmount,
@@ -163,7 +166,9 @@ class _SavingsPlanWizardScreenState
   }
 
   Future<void> _finish() async {
-    final plan = _buildPlan(enabled: true);
+    // 위저드로 플랜을 통째로 다시 짜는 것이므로 저축 페이스 기준 시각을 새로 찍는다
+    // (소득만 갱신하는 재조정과 달리, 이건 사실상 새 플랜 시작으로 취급).
+    final plan = _buildPlan(enabled: true).copyWith(createdAt: DateTime.now());
     final monthly =
         (plan.monthlyAvailable ?? 0).clamp(0, double.infinity).toDouble();
     final daily = monthly / 30;
@@ -240,7 +245,10 @@ class _SavingsPlanWizardScreenState
   Widget _buildStep(AppLocalizations loc) {
     return switch (_step) {
       0 => _IncomeStep(
-          controller: _incomeController, onChanged: () => setState(() {})),
+          controller: _incomeController,
+          incomeType: _incomeType,
+          onSelectIncomeType: (type) => setState(() => _incomeType = type),
+          onChanged: () => setState(() {})),
       1 => _GoalStep(
           goalAmountController: _goalAmountController,
           yearsController: _yearsController,
@@ -295,22 +303,55 @@ class _StepHeader extends StatelessWidget {
   }
 }
 
+extension on IncomeType {
+  String label(AppLocalizations loc) => switch (this) {
+        IncomeType.fixed => loc.incomeTypeFixedLabel,
+        IncomeType.irregular => loc.incomeTypeIrregularLabel,
+        IncomeType.allowance => loc.incomeTypeAllowanceLabel,
+      };
+}
+
 class _IncomeStep extends StatelessWidget {
-  const _IncomeStep({required this.controller, required this.onChanged});
+  const _IncomeStep({
+    required this.controller,
+    required this.incomeType,
+    required this.onSelectIncomeType,
+    required this.onChanged,
+  });
 
   final TextEditingController controller;
+  final IncomeType incomeType;
+  final ValueChanged<IncomeType> onSelectIncomeType;
   final VoidCallback onChanged;
 
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
+    final isIrregular = incomeType == IncomeType.irregular;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final type in IncomeType.values)
+              JuiceChoiceChip(
+                label: type.label(loc),
+                selected: incomeType == type,
+                onTap: () => onSelectIncomeType(type),
+              ),
+          ],
+        ),
+        const SizedBox(height: 20),
         _StepHeader(
           emoji: '💰',
-          question: loc.incomeStepQuestion,
-          subtitle: loc.incomeStepSubtitle,
+          question: isIrregular
+              ? loc.incomeStepIrregularLabel
+              : loc.incomeStepQuestion,
+          subtitle: isIrregular
+              ? loc.incomeStepIrregularCaption
+              : loc.incomeStepSubtitle,
         ),
         TextField(
           controller: controller,

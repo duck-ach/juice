@@ -82,6 +82,40 @@
       "monthly": {}
     }
   },
+  "savingsPlanPaceFasterLine": "현재 저축 페이스라면 목표보다 {months}개월 빠르게 달성 중이에요! 🚀",
+  "@savingsPlanPaceFasterLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceSlowerLine": "지금 페이스라면 목표보다 {months}개월 늦어질 수 있어요. 조금만 더 힘내봐요 💪",
+  "@savingsPlanPaceSlowerLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceOnTrackLine": "지금 페이스가 계획과 딱 맞아요! 이대로 쭉 가봐요 🍊",
+  "recalibrateButton": "소득 변동 · 재조정",
+  "recalibrateSheetTitle": "플랜 재조정",
+  "recalibrateSheetSubtitle": "달라진 월 수입을 입력하면 두 가지 방법 중 골라 바로 반영할 수 있어요.",
+  "recalibrateIncomeFieldLabel": "새 월 수입",
+  "recalibrateShortenOption": "목표 기간 단축하기",
+  "recalibrateShortenPreview": "생활비는 지금 그대로, 목표 기간을 {before}개월 → {after}개월로 줄여요.",
+  "@recalibrateShortenPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateShortenUnavailable": "새 수입으로는 지금 생활비를 유지한 채 기간을 줄일 수 없어요.",
+  "recalibrateBoostOption": "주스(생활비) 늘리기",
+  "recalibrateBoostPreview": "목표 기간은 그대로, 하루 주스를 {before} mL → {after} mL로 늘려요.",
+  "@recalibrateBoostPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
   "settingsTitle": "설정",
   "savingsCardSectionTitle": "이번 주 절약 카드",
   "savingsCardSectionDescription": "예산 방어에 성공한 한 주를 카드로 만들어 공유해보세요.",
@@ -417,8 +451,13 @@
   "cardUnassigned": "카드 미지정",
   "fillJuiceButton": "주스 채우기",
   "finishWizardButton": "이 레시피로 주스 시작하기",
+  "incomeTypeFixedLabel": "고정 소득 (직장인)",
+  "incomeTypeIrregularLabel": "불규칙 소득 (프리랜서·자영업)",
+  "incomeTypeAllowanceLabel": "용돈·시드머니 (학생)",
   "incomeStepQuestion": "매달 들어오는 주스(월 수입)는\n얼마인가요?",
   "incomeStepSubtitle": "세후 실제 통장에 찍히는 금액을 적어주세요.",
+  "incomeStepIrregularLabel": "최소한으로 들어오는\n안전 월수입을 적어주세요.",
+  "incomeStepIrregularCaption": "보수적으로 잡아야 비수기에도 주스가 마르지 않아요 🍊",
   "wonSuffixSpaced": " 원",
   "goalStepQuestion": "얼마 동안, 얼마를\n모으고 싶나요?",
   "yearsFieldLabel": "년",

@@ -36,6 +36,40 @@
   "savingsPlanGoalLine": "Objectif : épargner {amount} won(s) en {duration}",
   "savingsPlanFixedExpenseLine": "Dépenses fixes (incontournables) : {amount} won(s)/mois",
   "savingsPlanRecommendedLine": "Juice recommandé : {daily} mL/jour · {weekly} mL/semaine · {monthly} mL/mois",
+  "savingsPlanPaceFasterLine": "À ce rythme, vous atteindrez votre objectif {months} mois plus tôt ! 🚀",
+  "@savingsPlanPaceFasterLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceSlowerLine": "À ce rythme, vous pourriez avoir {months} mois de retard sur le plan. Vous allez y arriver 💪",
+  "@savingsPlanPaceSlowerLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceOnTrackLine": "Votre rythme actuel correspond parfaitement au plan ! Continuez comme ça 🍊",
+  "recalibrateButton": "Changement de revenu · Recalibrer",
+  "recalibrateSheetTitle": "Recalibrer le plan",
+  "recalibrateSheetSubtitle": "Indiquez votre nouveau revenu mensuel et choisissez l'une des deux façons de l'appliquer immédiatement.",
+  "recalibrateIncomeFieldLabel": "Nouveau revenu mensuel",
+  "recalibrateShortenOption": "Raccourcir la durée de l'objectif",
+  "recalibrateShortenPreview": "Gardez votre budget de vie actuel et raccourcissez la durée de {before} à {after} mois.",
+  "@recalibrateShortenPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateShortenUnavailable": "Avec ce revenu, impossible de raccourcir la durée en gardant votre budget de vie actuel.",
+  "recalibrateBoostOption": "Augmenter le juice (budget de vie)",
+  "recalibrateBoostPreview": "Gardez la même durée d'objectif et augmentez votre juice quotidien de {before} mL à {after} mL.",
+  "@recalibrateBoostPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
   "settingsTitle": "Paramètres",
   "savingsCardSectionTitle": "Carte d'épargne de la semaine",
   "savingsCardSectionDescription": "Transformez une semaine réussie en carte à partager.",
@@ -254,8 +288,13 @@
   "cardUnassigned": "Aucune carte assignée",
   "fillJuiceButton": "Remplir le juice",
   "finishWizardButton": "Démarrer avec cette recette",
+  "incomeTypeFixedLabel": "Revenu fixe (salarié)",
+  "incomeTypeIrregularLabel": "Revenu irrégulier (freelance/indépendant)",
+  "incomeTypeAllowanceLabel": "Argent de poche/capital de départ (étudiant)",
   "incomeStepQuestion": "Combien de juice (revenu)\nrentre chaque mois ?",
   "incomeStepSubtitle": "Indiquez le montant net réel qui arrive sur votre compte.",
+  "incomeStepIrregularLabel": "Indiquez le revenu mensuel minimum\nsur lequel vous pouvez compter.",
+  "incomeStepIrregularCaption": "Estimez prudemment pour que votre juice ne s'épuise pas en basse saison 🍊",
   "wonSuffixSpaced": " won",
   "goalStepQuestion": "Pendant combien de temps,\net combien voulez-vous épargner ?",
   "yearsFieldLabel": "ans",

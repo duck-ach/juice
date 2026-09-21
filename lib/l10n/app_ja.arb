@@ -36,6 +36,40 @@
   "savingsPlanGoalLine": "目標: {duration}で{amount}ウォン貯める",
   "savingsPlanFixedExpenseLine": "固定費(何もしなくても出るお金): 月{amount}ウォン",
   "savingsPlanRecommendedLine": "おすすめジュース: 1日{daily}mL・今週{weekly}mL・今月{monthly}mL",
+  "savingsPlanPaceFasterLine": "今のペースなら目標より{months}か月早く達成できそうです! 🚀",
+  "@savingsPlanPaceFasterLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceSlowerLine": "今のペースだと目標より{months}か月遅れるかもしれません。もう少し頑張りましょう 💪",
+  "@savingsPlanPaceSlowerLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceOnTrackLine": "今のペースが計画とぴったり合っています!このまま頑張りましょう 🍊",
+  "recalibrateButton": "収入変動・再調整",
+  "recalibrateSheetTitle": "プラン再調整",
+  "recalibrateSheetSubtitle": "変わった月収を入力すると、2つの方法から選んですぐに反映できます。",
+  "recalibrateIncomeFieldLabel": "新しい月収",
+  "recalibrateShortenOption": "目標期間を短縮する",
+  "recalibrateShortenPreview": "生活費は今のまま、目標期間を{before}か月→{after}か月に短縮します。",
+  "@recalibrateShortenPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateShortenUnavailable": "この収入では、今の生活費を維持したまま期間を短縮できません。",
+  "recalibrateBoostOption": "ジュース(生活費)を増やす",
+  "recalibrateBoostPreview": "目標期間はそのまま、1日のジュースを{before}mL→{after}mLに増やします。",
+  "@recalibrateBoostPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
   "settingsTitle": "設定",
   "savingsCardSectionTitle": "今週の節約カード",
   "savingsCardSectionDescription": "予算防衛に成功した1週間をカードにして共有しましょう。",
@@ -254,8 +288,13 @@
   "cardUnassigned": "カード未指定",
   "fillJuiceButton": "ジュースを満たす",
   "finishWizardButton": "このレシピでジュースを始める",
+  "incomeTypeFixedLabel": "固定収入(会社員)",
+  "incomeTypeIrregularLabel": "不規則な収入(フリーランス・自営業)",
+  "incomeTypeAllowanceLabel": "お小遣い・シード資金(学生)",
   "incomeStepQuestion": "毎月入ってくるジュース(月収入)は\nいくらですか?",
   "incomeStepSubtitle": "税引き後、実際に口座に入る金額を入力してください。",
+  "incomeStepIrregularLabel": "最低限入ってくる\n安全な月収を入力してください。",
+  "incomeStepIrregularCaption": "保守的に見積もると閑散期でもジュースが枯れません 🍊",
   "wonSuffixSpaced": " ウォン",
   "goalStepQuestion": "どのくらいの期間、いくら\n貯めたいですか?",
   "yearsFieldLabel": "年",

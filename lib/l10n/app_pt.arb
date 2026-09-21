@@ -36,6 +36,40 @@
   "savingsPlanGoalLine": "Meta: economizar {amount} em {duration}",
   "savingsPlanFixedExpenseLine": "Custos fixos (inevitáveis): {amount}/mês",
   "savingsPlanRecommendedLine": "Juice recomendado: {daily} mL/dia · {weekly} mL/semana · {monthly} mL/mês",
+  "savingsPlanPaceFasterLine": "No ritmo atual, você vai atingir a meta {months} meses mais cedo! 🚀",
+  "@savingsPlanPaceFasterLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceSlowerLine": "No ritmo atual, você pode ficar {months} meses atrás do planejado. Você consegue 💪",
+  "@savingsPlanPaceSlowerLine": {
+    "placeholders": {
+      "months": {}
+    }
+  },
+  "savingsPlanPaceOnTrackLine": "Seu ritmo atual está perfeitamente alinhado com o plano! Continue assim 🍊",
+  "recalibrateButton": "Mudança de renda · Recalibrar",
+  "recalibrateSheetTitle": "Recalibrar plano",
+  "recalibrateSheetSubtitle": "Informe sua nova renda mensal e escolha uma das duas formas de aplicá-la agora.",
+  "recalibrateIncomeFieldLabel": "Nova renda mensal",
+  "recalibrateShortenOption": "Encurtar o prazo da meta",
+  "recalibrateShortenPreview": "Mantenha seu orçamento de vida atual e encurte o prazo de {before} para {after} meses.",
+  "@recalibrateShortenPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateShortenUnavailable": "Com essa renda, não é possível encurtar o prazo mantendo seu orçamento de vida atual.",
+  "recalibrateBoostOption": "Aumentar o juice (orçamento de vida)",
+  "recalibrateBoostPreview": "Mantenha o mesmo prazo e aumente seu juice diário de {before} mL para {after} mL.",
+  "@recalibrateBoostPreview": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
   "settingsTitle": "Configurações",
   "savingsCardSectionTitle": "Cartão de economia da semana",
   "savingsCardSectionDescription": "Transforme uma semana dentro do orçamento em um cartão para compartilhar.",
@@ -254,8 +288,13 @@
   "cardUnassigned": "Sem cartão definido",
   "fillJuiceButton": "Encher o juice",
   "finishWizardButton": "Começar com esta receita",
+  "incomeTypeFixedLabel": "Renda fixa (CLT/empregado)",
+  "incomeTypeIrregularLabel": "Renda irregular (freelancer/autônomo)",
+  "incomeTypeAllowanceLabel": "Mesada/capital inicial (estudante)",
   "incomeStepQuestion": "Quanto juice (receita)\nentra por mês?",
   "incomeStepSubtitle": "Informe o valor líquido real que cai na sua conta.",
+  "incomeStepIrregularLabel": "Informe a renda mensal mínima\nsegura que você recebe.",
+  "incomeStepIrregularCaption": "Estime de forma conservadora para o juice não secar na baixa temporada 🍊",
   "wonSuffixSpaced": " won",
   "goalStepQuestion": "Por quanto tempo e quanto\nvocê quer economizar?",
   "yearsFieldLabel": "anos",
