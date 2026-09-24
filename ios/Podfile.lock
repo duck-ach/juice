@@ -43,13 +43,6 @@ PODS:
   - flutter_secure_storage_darwin (10.0.0):
     - Flutter
     - FlutterMacOS
-  - Google-Mobile-Ads-SDK (12.2.0):
-    - GoogleUserMessagingPlatform (>= 1.1)
-  - google_mobile_ads (6.0.0):
-    - Flutter
-    - Google-Mobile-Ads-SDK (~> 12.2.0)
-    - webview_flutter_wkwebview
-  - GoogleUserMessagingPlatform (3.1.0)
   - home_widget (0.0.1):
     - Flutter
   - image_picker_ios (0.0.1):
@@ -73,9 +66,6 @@ PODS:
   - SwiftyGif (5.4.5)
   - url_launcher_ios (0.0.1):
     - Flutter
-  - webview_flutter_wkwebview (0.0.1):
-    - Flutter
-    - FlutterMacOS
 
 DEPENDENCIES:
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
@@ -84,7 +74,6 @@ DEPENDENCIES:
   - flutter_email_sender (from `.symlinks/plugins/flutter_email_sender/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_secure_storage_darwin (from `.symlinks/plugins/flutter_secure_storage_darwin/darwin`)
-  - google_mobile_ads (from `.symlinks/plugins/google_mobile_ads/ios`)
   - home_widget (from `.symlinks/plugins/home_widget/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - local_auth_darwin (from `.symlinks/plugins/local_auth_darwin/darwin`)
@@ -93,14 +82,11 @@ DEPENDENCIES:
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
-  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/darwin`)
 
 SPEC REPOS:
   trunk:
     - DKImagePickerController
     - DKPhotoGallery
-    - Google-Mobile-Ads-SDK
-    - GoogleUserMessagingPlatform
     - SDWebImage
     - SwiftyGif
 
@@ -117,8 +103,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
   flutter_secure_storage_darwin:
     :path: ".symlinks/plugins/flutter_secure_storage_darwin/darwin"
-  google_mobile_ads:
-    :path: ".symlinks/plugins/google_mobile_ads/ios"
   home_widget:
     :path: ".symlinks/plugins/home_widget/ios"
   image_picker_ios:
@@ -135,8 +119,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
-  webview_flutter_wkwebview:
-    :path: ".symlinks/plugins/webview_flutter_wkwebview/darwin"
 
 SPEC CHECKSUMS:
   device_info_plus: 21fcca2080fbcd348be798aa36c3e5ed849eefbe
@@ -147,9 +129,6 @@ SPEC CHECKSUMS:
   flutter_email_sender: aa1e9772696691d02cd91fea829856c11efb8e58
   flutter_local_notifications: a5a732f069baa862e728d839dd2ebb904737effb
   flutter_secure_storage_darwin: acdb3f316ed05a3e68f856e0353b133eec373a23
-  Google-Mobile-Ads-SDK: 1dfb0c3cb46c7e2b00b0f4de74a1e06d9ea25d67
-  google_mobile_ads: 535223588a6791b7a3cc3513a1bc7b89d12f3e62
-  GoogleUserMessagingPlatform: befe603da6501006420c206222acd449bba45a9c
   home_widget: f169fc41fd807b4d46ab6615dc44d62adbf9f64f
   image_picker_ios: 7fe1ff8e34c1790d6fff70a32484959f563a928a
   local_auth_darwin: d2e8c53ef0c4f43c646462e3415432c4dab3ae19
@@ -160,7 +139,6 @@ SPEC CHECKSUMS:
   shared_preferences_foundation: 9e1978ff2562383bd5676f64ec4e9aa8fa06a6f7
   SwiftyGif: 706c60cf65fa2bc5ee0313beece843c8eb8194d4
   url_launcher_ios: 694010445543906933d732453a59da0a173ae33d
-  webview_flutter_wkwebview: 1821ceac936eba6f7984d89a9f3bcb4dea99ebb2
 
 PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
 

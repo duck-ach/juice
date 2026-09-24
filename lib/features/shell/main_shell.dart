@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/ads/juice_banner_ad.dart';
 import '../../l10n/app_localizations.dart';
 import '../assets/assets_screen.dart';
 import '../calendar/calendar_screen.dart';
@@ -31,12 +30,7 @@ class _MainShellState extends State<MainShell> {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(child: IndexedStack(index: _index, children: _screens)),
-          const JuiceBannerAd(),
-        ],
-      ),
+      body: IndexedStack(index: _index, children: _screens),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _index,
         onDestinationSelected: (index) => setState(() => _index = index),

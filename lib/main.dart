@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'core/navigation/root_navigator.dart';
@@ -28,7 +27,6 @@ Future<void> main() async {
   await PrefsService.init();
   await initializeDateFormatting('ko_KR');
   await HomeWidgetService.configure();
-  unawaited(MobileAds.instance.initialize());
   await NotificationService.init();
   await _refreshNotificationSchedule();
   // 포그라운드로 돌아올 때도 재방문 유도 알림의 "마지막 방문" 기준 시각을 갱신한다.
