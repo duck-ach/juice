@@ -7,13 +7,14 @@ import '../data/local/prefs_service.dart';
 const _localeTagKey = 'localeLanguageCode';
 
 class LanguageOption {
-  const LanguageOption(this.locale, this.flag, this.nativeName);
+  const LanguageOption(this.locale, this.nativeName);
 
   final Locale locale;
-  final String flag;
 
   /// 해당 언어의 고유 명칭(Native Name)만 표시 — 괄호 안 한국어 서브 라벨은 쓰지 않는다
   /// (외국어 환경에서 한국어 텍스트가 섞여 보이는 부자연스러움을 없애기 위함).
+  /// 국기 이모지도 쓰지 않는다 — 번체/간체 중국어처럼 국가 하나로 대표할 수 없는
+  /// 언어가 섞여 있어, 일부만 국기를 빼면 오히려 형평성 문제로 보일 수 있다.
   final String nativeName;
 
   /// 언어/스크립트를 함께 구분하는 고유 키(예: 'zh_Hant', 'ko'). 언어 선택 UI에서
@@ -38,17 +39,17 @@ Locale localeFromTag(String tag) {
 
 /// 언어 선택 화면(온보딩)과 설정 > 언어 설정 바텀시트가 공유하는 옵션 목록.
 const supportedLanguageOptions = [
-  LanguageOption(Locale('ko'), '🇰🇷', '한국어'),
-  LanguageOption(Locale('en'), '🇺🇸', 'English'),
-  LanguageOption(Locale('ja'), '🇯🇵', '日本語'),
-  LanguageOption(Locale('de'), '🇩🇪', 'Deutsch'),
-  LanguageOption(Locale('vi'), '🇻🇳', 'Tiếng Việt'),
-  LanguageOption(Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
-      '🇹🇼', '繁體中文'),
-  LanguageOption(Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
-      '🇨🇳', '简体中文'),
-  LanguageOption(Locale('fr'), '🇫🇷', 'Français'),
-  LanguageOption(Locale('pt'), '🇧🇷', 'Português'),
+  LanguageOption(Locale('ko'), '한국어'),
+  LanguageOption(Locale('en'), 'English'),
+  LanguageOption(Locale('ja'), '日本語'),
+  LanguageOption(Locale('de'), 'Deutsch'),
+  LanguageOption(Locale('vi'), 'Tiếng Việt'),
+  LanguageOption(
+      Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'), '繁體中文'),
+  LanguageOption(
+      Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), '简体中文'),
+  LanguageOption(Locale('fr'), 'Français'),
+  LanguageOption(Locale('pt'), 'Português'),
 ];
 
 final _supportedTags = supportedLanguageOptions.map((o) => o.tag).toSet();

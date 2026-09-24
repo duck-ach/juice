@@ -75,7 +75,7 @@ class _LanguageSelectScreenState extends ConsumerState<LanguageSelectScreen> {
                         value: option.locale,
                         groupValue: _selected,
                         onChanged: (value) => setState(() => _selected = value!),
-                        title: Text('${option.flag}  ${option.nativeName}'),
+                        title: Text(option.nativeName),
                       ),
                     );
                   },
