@@ -56,8 +56,11 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           '${dir.path}/juice_card_${DateTime.now().millisecondsSinceEpoch}.png');
       await file.writeAsBytes(bytes);
       if (!mounted) return;
+      final box = context.findRenderObject() as RenderBox?;
+      final origin = box != null ? box.localToGlobal(Offset.zero) & box.size : null;
       final result = await Share.shareXFiles([XFile(file.path)],
-          text: AppLocalizations.of(context)!.shareCardText);
+          text: AppLocalizations.of(context)!.shareCardText,
+          sharePositionOrigin: origin);
       debugPrint('shareCard result: ${result.status}');
     } catch (e, st) {
       debugPrint('shareCard failed: $e\n$st');
