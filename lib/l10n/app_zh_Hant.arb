@@ -109,7 +109,6 @@
   "privacyAgreeNotice": "Juice Budget 是 100% 裝置端本地記帳應用程式,絕不會將您的任何財務或個人資料傳送到外部伺服器。",
   "viewPrivacyPolicy": "查看完整隱私權政策",
   "agreeAndStart": "同意並開始使用",
-  "appNameShort": "Juice",
   "savingsCardSuccessMessage": "這一週的\n果汁維持新鮮!",
   "savingsCardOverMessage": "這一週的果汁\n灑出了一些",
   "savingsCardSpentLine": "已花費 {budget} 中的 {spent}",

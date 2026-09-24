@@ -48,12 +48,16 @@ class SavingsCard extends StatelessWidget {
               children: [
                 Text(theme.emoji, style: const TextStyle(fontSize: 28)),
                 const SizedBox(width: 8),
-                Text(
-                  loc.appNameShort,
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w800),
+                Flexible(
+                  child: Text(
+                    loc.appTitle,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800),
+                  ),
                 ),
                 const Spacer(),
                 Text(

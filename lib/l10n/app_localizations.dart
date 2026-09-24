@@ -631,12 +631,6 @@ abstract class AppLocalizations {
   /// **'동의하고 시작하기'**
   String get agreeAndStart;
 
-  /// No description provided for @appNameShort.
-  ///
-  /// In ko, this message translates to:
-  /// **'주스'**
-  String get appNameShort;
-
   /// No description provided for @savingsCardSuccessMessage.
   ///
   /// In ko, this message translates to:

@@ -109,7 +109,6 @@
   "privacyAgreeNotice": "Juice Budget is a 100% on-device local ledger — none of your financial or personal information is ever sent to an external server.",
   "viewPrivacyPolicy": "View full Privacy Policy",
   "agreeAndStart": "Agree & Get Started",
-  "appNameShort": "Juice",
   "savingsCardSuccessMessage": "You kept this week's\njuice fresh!",
   "savingsCardOverMessage": "This week's juice\nspilled a little",
   "savingsCardSpentLine": "Spent {spent} of {budget}",

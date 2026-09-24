@@ -155,7 +155,6 @@
   "privacyAgreeNotice": "Juice Budget là sổ chi tiêu cục bộ 100% trên thiết bị — không có bất kỳ thông tin tài chính hay cá nhân nào của bạn được gửi đến máy chủ bên ngoài.",
   "viewPrivacyPolicy": "Xem toàn bộ Chính sách bảo mật",
   "agreeAndStart": "Đồng ý & Bắt đầu",
-  "appNameShort": "Juice",
   "savingsCardSuccessMessage": "Bạn đã giữ juice\ntươi mới tuần này!",
   "savingsCardOverMessage": "Juice tuần này\nđã tràn một chút",
   "savingsCardSpentLine": "Đã chi {spent} trong {budget}",

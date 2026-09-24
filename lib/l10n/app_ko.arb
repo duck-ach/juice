@@ -155,7 +155,6 @@
   "privacyAgreeNotice": "주스 버젯은 100% 온디바이스 로컬 가계부로, 회원의 어떠한 금융 정보나 개인정보도 외부 서버로 전송하지 않습니다.",
   "viewPrivacyPolicy": "개인정보 처리방침 전문 보기",
   "agreeAndStart": "동의하고 시작하기",
-  "appNameShort": "주스",
   "savingsCardSuccessMessage": "이번 주 주스를\n신선하게 지켜냈어요!",
   "savingsCardOverMessage": "이번 주 주스가\n조금 넘쳤어요",
   "savingsCardSpentLine": "{budget} 중 {spent} 소비",

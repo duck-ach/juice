@@ -288,9 +288,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get agreeAndStart => 'Agree & Get Started';
 
   @override
-  String get appNameShort => 'Juice';
-
-  @override
   String get savingsCardSuccessMessage => 'You kept this week\'s\njuice fresh!';
 
   @override

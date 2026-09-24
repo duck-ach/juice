@@ -109,7 +109,6 @@
   "privacyAgreeNotice": "Juice Budget est un carnet de comptes 100 % local sur votre appareil — aucune de vos données financières ou personnelles n'est jamais envoyée à un serveur externe.",
   "viewPrivacyPolicy": "Voir la politique de confidentialité complète",
   "agreeAndStart": "Accepter et commencer",
-  "appNameShort": "Juice",
   "savingsCardSuccessMessage": "Le juice de cette semaine\nest resté frais !",
   "savingsCardOverMessage": "Le juice de cette semaine\na un peu débordé",
   "savingsCardSpentLine": "Dépensé {spent} sur {budget}",

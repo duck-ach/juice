@@ -288,9 +288,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get agreeAndStart => '同意并开始使用';
 
   @override
-  String get appNameShort => 'Juice';
-
-  @override
   String get savingsCardSuccessMessage => '这一周的\n果汁保持新鲜!';
 
   @override
@@ -1749,9 +1746,6 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get agreeAndStart => '同意并开始使用';
 
   @override
-  String get appNameShort => 'Juice';
-
-  @override
   String get savingsCardSuccessMessage => '这一周的\n果汁保持新鲜!';
 
   @override
@@ -3208,9 +3202,6 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get agreeAndStart => '同意並開始使用';
-
-  @override
-  String get appNameShort => 'Juice';
 
   @override
   String get savingsCardSuccessMessage => '這一週的\n果汁維持新鮮!';

@@ -288,9 +288,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get agreeAndStart => 'Concordar e começar';
 
   @override
-  String get appNameShort => 'Juice';
-
-  @override
   String get savingsCardSuccessMessage => 'O juice desta semana\nficou fresquinho!';
 
   @override

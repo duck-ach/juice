@@ -109,7 +109,6 @@
   "privacyAgreeNotice": "Juice Budgetは100%オンデバイスのローカル家計簿アプリです。会員の金融情報や個人情報を外部サーバーへ送信することは一切ありません。",
   "viewPrivacyPolicy": "プライバシーポリシー全文を見る",
   "agreeAndStart": "同意してはじめる",
-  "appNameShort": "ジュース",
   "savingsCardSuccessMessage": "今週のジュースを\n新鮮に守り抜きました!",
   "savingsCardOverMessage": "今週のジュースが\n少しあふれました",
   "savingsCardSpentLine": "{budget}中{spent}消費",

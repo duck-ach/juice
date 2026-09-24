@@ -288,9 +288,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get agreeAndStart => '同意してはじめる';
 
   @override
-  String get appNameShort => 'ジュース';
-
-  @override
   String get savingsCardSuccessMessage => '今週のジュースを\n新鮮に守り抜きました!';
 
   @override

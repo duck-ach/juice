@@ -288,9 +288,6 @@ class AppLocalizationsVi extends AppLocalizations {
   String get agreeAndStart => 'Đồng ý & Bắt đầu';
 
   @override
-  String get appNameShort => 'Juice';
-
-  @override
   String get savingsCardSuccessMessage => 'Bạn đã giữ juice\ntươi mới tuần này!';
 
   @override

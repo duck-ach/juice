@@ -288,9 +288,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get agreeAndStart => 'Accepter et commencer';
 
   @override
-  String get appNameShort => 'Juice';
-
-  @override
   String get savingsCardSuccessMessage => 'Le juice de cette semaine\nest resté frais !';
 
   @override

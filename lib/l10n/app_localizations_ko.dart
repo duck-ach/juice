@@ -288,9 +288,6 @@ class AppLocalizationsKo extends AppLocalizations {
   String get agreeAndStart => '동의하고 시작하기';
 
   @override
-  String get appNameShort => '주스';
-
-  @override
   String get savingsCardSuccessMessage => '이번 주 주스를\n신선하게 지켜냈어요!';
 
   @override
