@@ -26,6 +26,10 @@ import 'widgets/calendar_settings_bottom_sheet.dart';
 /// [month]를 [startDay] 기준 달력 격자로 그릴 때 필요한 주(row) 수(보통 5, 1일의
 /// 요일에 따라 6이 될 수 있음). TableCalendar가 내부적으로 계산하는 것과 같은 규칙을
 /// 미리 계산해, 6주짜리 달에서만 셀 높이를 살짝 줄여 세로 오버플로우를 막는 데 쓴다.
+/// 캘린더 상단 "전체지출 / 변동지출" 토글의 표시 순서. [ExpenseFilter] 선언 순서와
+/// 달라서 인덱스 매핑을 따로 둔다.
+const _calendarFilterOrder = [ExpenseFilter.all, ExpenseFilter.variableOnly];
+
 int _monthGridRowCount(DateTime month, WeekStartDay startDay) {
   final first = DateTime(month.year, month.month, 1);
   final daysInMonth = DateTime(month.year, month.month + 1, 0).day;
@@ -143,11 +147,11 @@ class CalendarScreen extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: JuiceSegmentedTab(
-              items: [loc.filterVariableOnlyShort, loc.filterAllShort],
-              selectedIndex: ExpenseFilter.values.indexOf(filter),
+              items: [loc.filterAllShort, loc.filterVariableOnlyShort],
+              selectedIndex: _calendarFilterOrder.indexOf(filter),
               onTabChanged: (index) => ref
                   .read(calendarExpenseFilterProvider.notifier)
-                  .state = ExpenseFilter.values[index],
+                  .state = _calendarFilterOrder[index],
             ),
           ),
           const SizedBox(height: 6),
