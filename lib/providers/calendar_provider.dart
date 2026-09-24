@@ -16,7 +16,7 @@ final calendarSelectedDayProvider =
 
 /// 캘린더 탭 전용 지출 필터: 변동지출만 vs 전체(고정지출 포함).
 final calendarExpenseFilterProvider =
-    StateProvider<ExpenseFilter>((ref) => ExpenseFilter.variableOnly);
+    StateProvider<ExpenseFilter>((ref) => ExpenseFilter.all);
 
 final calendarMonthRangeProvider = Provider<DateRange>((ref) {
   final month = ref.watch(calendarFocusedMonthProvider);
