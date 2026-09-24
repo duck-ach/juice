@@ -75,6 +75,12 @@
   "savingsCardSectionDescription": "Turn a budget-win week into a card and share it.",
   "generatingCard": "Generating card...",
   "shareCardButton": "Share Card",
+  "shareCardFailedMessage": "Failed to share the card: {error}",
+  "@shareCardFailedMessage": {
+    "placeholders": {
+      "error": {}
+    }
+  },
   "setTargetAmountFirst": "Please set a target amount first",
   "menuGoalSettingsTitle": "Goal Settings",
   "menuGoalSettingsSubtitle": "Long-term savings goal, goal period, target per period",

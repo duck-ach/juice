@@ -121,6 +121,12 @@
   "savingsCardSectionDescription": "예산 방어에 성공한 한 주를 카드로 만들어 공유해보세요.",
   "generatingCard": "카드 생성 중...",
   "shareCardButton": "카드 공유하기",
+  "shareCardFailedMessage": "카드 공유에 실패했어요: {error}",
+  "@shareCardFailedMessage": {
+    "placeholders": {
+      "error": {}
+    }
+  },
   "setTargetAmountFirst": "목표 금액을 먼저 설정해주세요",
   "menuGoalSettingsTitle": "목표 설정",
   "menuGoalSettingsSubtitle": "장기 저축 목표, 목표 주기, 주기별 목표 금액",

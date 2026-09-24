@@ -186,6 +186,11 @@ class AppLocalizationsJa extends AppLocalizations {
   String get shareCardButton => 'カードを共有';
 
   @override
+  String shareCardFailedMessage(Object error) {
+    return 'カードの共有に失敗しました: $error';
+  }
+
+  @override
   String get setTargetAmountFirst => '先に目標金額を設定してください';
 
   @override

@@ -186,6 +186,11 @@ class AppLocalizationsKo extends AppLocalizations {
   String get shareCardButton => '카드 공유하기';
 
   @override
+  String shareCardFailedMessage(Object error) {
+    return '카드 공유에 실패했어요: $error';
+  }
+
+  @override
   String get setTargetAmountFirst => '목표 금액을 먼저 설정해주세요';
 
   @override

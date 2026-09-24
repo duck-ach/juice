@@ -427,6 +427,12 @@ abstract class AppLocalizations {
   /// **'카드 공유하기'**
   String get shareCardButton;
 
+  /// No description provided for @shareCardFailedMessage.
+  ///
+  /// In ko, this message translates to:
+  /// **'카드 공유에 실패했어요: {error}'**
+  String shareCardFailedMessage(Object error);
+
   /// No description provided for @setTargetAmountFirst.
   ///
   /// In ko, this message translates to:

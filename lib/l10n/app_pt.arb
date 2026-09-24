@@ -75,6 +75,12 @@
   "savingsCardSectionDescription": "Transforme uma semana dentro do orçamento em um cartão para compartilhar.",
   "generatingCard": "Gerando cartão...",
   "shareCardButton": "Compartilhar cartão",
+  "shareCardFailedMessage": "Falha ao compartilhar o cartão: {error}",
+  "@shareCardFailedMessage": {
+    "placeholders": {
+      "error": {}
+    }
+  },
   "setTargetAmountFirst": "Defina primeiro um valor meta",
   "menuGoalSettingsTitle": "Configurações de meta",
   "menuGoalSettingsSubtitle": "Meta de poupança de longo prazo, período de meta, meta por período",

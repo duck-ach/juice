@@ -186,6 +186,11 @@ class AppLocalizationsVi extends AppLocalizations {
   String get shareCardButton => 'Chia sẻ thẻ';
 
   @override
+  String shareCardFailedMessage(Object error) {
+    return 'Chia sẻ thẻ thất bại: $error';
+  }
+
+  @override
   String get setTargetAmountFirst => 'Vui lòng đặt số tiền mục tiêu trước';
 
   @override

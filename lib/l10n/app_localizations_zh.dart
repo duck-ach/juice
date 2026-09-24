@@ -186,6 +186,11 @@ class AppLocalizationsZh extends AppLocalizations {
   String get shareCardButton => '分享卡片';
 
   @override
+  String shareCardFailedMessage(Object error) {
+    return '分享卡片失败：$error';
+  }
+
+  @override
   String get setTargetAmountFirst => '请先设置目标金额';
 
   @override
@@ -1644,6 +1649,11 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get shareCardButton => '分享卡片';
 
   @override
+  String shareCardFailedMessage(Object error) {
+    return '分享卡片失败：$error';
+  }
+
+  @override
   String get setTargetAmountFirst => '请先设置目标金额';
 
   @override
@@ -3100,6 +3110,11 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get shareCardButton => '分享卡片';
+
+  @override
+  String shareCardFailedMessage(Object error) {
+    return '分享卡片失敗：$error';
+  }
 
   @override
   String get setTargetAmountFirst => '請先設定目標金額';

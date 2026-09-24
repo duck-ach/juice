@@ -75,6 +75,12 @@
   "savingsCardSectionDescription": "Transformez une semaine réussie en carte à partager.",
   "generatingCard": "Génération de la carte...",
   "shareCardButton": "Partager la carte",
+  "shareCardFailedMessage": "Échec du partage de la carte : {error}",
+  "@shareCardFailedMessage": {
+    "placeholders": {
+      "error": {}
+    }
+  },
   "setTargetAmountFirst": "Veuillez d'abord définir un montant cible",
   "menuGoalSettingsTitle": "Paramètres d'objectif",
   "menuGoalSettingsSubtitle": "Objectif d'épargne à long terme, période d'objectif, cible par période",

@@ -75,6 +75,12 @@
   "savingsCardSectionDescription": "Teile eine erfolgreiche Budget-Woche als Karte.",
   "generatingCard": "Karte wird erstellt …",
   "shareCardButton": "Karte teilen",
+  "shareCardFailedMessage": "Karte konnte nicht geteilt werden: {error}",
+  "@shareCardFailedMessage": {
+    "placeholders": {
+      "error": {}
+    }
+  },
   "setTargetAmountFirst": "Bitte zuerst einen Zielbetrag festlegen",
   "menuGoalSettingsTitle": "Zieleinstellungen",
   "menuGoalSettingsSubtitle": "Langfristiges Sparziel, Zielzeitraum, Zielbetrag pro Zeitraum",

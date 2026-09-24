@@ -186,6 +186,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shareCardButton => 'Share Card';
 
   @override
+  String shareCardFailedMessage(Object error) {
+    return 'Failed to share the card: $error';
+  }
+
+  @override
   String get setTargetAmountFirst => 'Please set a target amount first';
 
   @override

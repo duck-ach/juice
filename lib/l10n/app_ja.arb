@@ -75,6 +75,12 @@
   "savingsCardSectionDescription": "予算防衛に成功した1週間をカードにして共有しましょう。",
   "generatingCard": "カード生成中...",
   "shareCardButton": "カードを共有",
+  "shareCardFailedMessage": "カードの共有に失敗しました: {error}",
+  "@shareCardFailedMessage": {
+    "placeholders": {
+      "error": {}
+    }
+  },
   "setTargetAmountFirst": "先に目標金額を設定してください",
   "menuGoalSettingsTitle": "目標設定",
   "menuGoalSettingsSubtitle": "長期貯蓄目標、目標周期、周期別目標金額",

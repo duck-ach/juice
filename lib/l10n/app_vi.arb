@@ -121,6 +121,12 @@
   "savingsCardSectionDescription": "Biến một tuần giữ vững ngân sách thành thẻ ảnh và chia sẻ nó.",
   "generatingCard": "Đang tạo thẻ...",
   "shareCardButton": "Chia sẻ thẻ",
+  "shareCardFailedMessage": "Chia sẻ thẻ thất bại: {error}",
+  "@shareCardFailedMessage": {
+    "placeholders": {
+      "error": {}
+    }
+  },
   "setTargetAmountFirst": "Vui lòng đặt số tiền mục tiêu trước",
   "menuGoalSettingsTitle": "Cài đặt mục tiêu",
   "menuGoalSettingsSubtitle": "Mục tiêu tiết kiệm dài hạn, chu kỳ mục tiêu, số tiền mục tiêu theo chu kỳ",

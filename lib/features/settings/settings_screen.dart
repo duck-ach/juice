@@ -56,8 +56,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           '${dir.path}/juice_card_${DateTime.now().millisecondsSinceEpoch}.png');
       await file.writeAsBytes(bytes);
       if (!mounted) return;
-      await Share.shareXFiles([XFile(file.path)],
+      final result = await Share.shareXFiles([XFile(file.path)],
           text: AppLocalizations.of(context)!.shareCardText);
+      debugPrint('shareCard result: ${result.status}');
+    } catch (e, st) {
+      debugPrint('shareCard failed: $e\n$st');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(AppLocalizations.of(context)!
+              .shareCardFailedMessage(e.toString()))),
+        );
+      }
     } finally {
       if (mounted) setState(() => _sharingCard = false);
     }

@@ -186,6 +186,11 @@ class AppLocalizationsDe extends AppLocalizations {
   String get shareCardButton => 'Karte teilen';
 
   @override
+  String shareCardFailedMessage(Object error) {
+    return 'Karte konnte nicht geteilt werden: $error';
+  }
+
+  @override
   String get setTargetAmountFirst => 'Bitte zuerst einen Zielbetrag festlegen';
 
   @override

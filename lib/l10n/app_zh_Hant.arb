@@ -75,6 +75,12 @@
   "savingsCardSectionDescription": "把達成預算的一週做成卡片並分享。",
   "generatingCard": "卡片產生中...",
   "shareCardButton": "分享卡片",
+  "shareCardFailedMessage": "分享卡片失敗：{error}",
+  "@shareCardFailedMessage": {
+    "placeholders": {
+      "error": {}
+    }
+  },
   "setTargetAmountFirst": "請先設定目標金額",
   "menuGoalSettingsTitle": "目標設定",
   "menuGoalSettingsSubtitle": "長期儲蓄目標、目標週期、各週期目標金額",
