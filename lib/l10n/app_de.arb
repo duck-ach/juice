@@ -207,7 +207,7 @@
   "navCalendar": "Kalender",
   "navAssets": "Vermögen",
   "navStats": "Statistik",
-  "navSettings": "Einstellungen",
+  "navSettings": "Optionen",
   "todayInstallmentLabel": "🧊 Heutiger Ratenanteil: {amount} mL",
   "filterVariableOnlyLong": "Nur variable anzeigen",
   "filterAllLong": "Alle anzeigen",

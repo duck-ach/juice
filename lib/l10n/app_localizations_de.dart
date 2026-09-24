@@ -590,7 +590,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get navStats => 'Statistik';
 
   @override
-  String get navSettings => 'Einstellungen';
+  String get navSettings => 'Optionen';
 
   @override
   String todayInstallmentLabel(Object amount) {
