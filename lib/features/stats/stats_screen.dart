@@ -13,6 +13,10 @@ import 'widgets/category_donut_chart.dart';
 import 'widgets/payment_method_chart.dart';
 import 'widgets/spend_bar_chart.dart';
 
+/// 통계 화면 "고정비 포함 / 변동지출만" 토글의 표시 순서. [ExpenseFilter] 선언 순서와
+/// 달라서 인덱스 매핑을 따로 둔다.
+const _statsFilterOrder = [ExpenseFilter.all, ExpenseFilter.variableOnly];
+
 class StatsScreen extends ConsumerWidget {
   const StatsScreen({super.key});
 
@@ -86,11 +90,11 @@ class StatsScreen extends ConsumerWidget {
           if (category == StatsCategory.expense) ...[
             const SizedBox(height: 12),
             JuiceSegmentedTab(
-              items: [loc.filterVariableOnlyShort, loc.filterFixedIncluded],
-              selectedIndex: ExpenseFilter.values.indexOf(filter),
+              items: [loc.filterFixedIncluded, loc.filterVariableOnlyShort],
+              selectedIndex: _statsFilterOrder.indexOf(filter),
               onTabChanged: (index) => ref
                   .read(statsExpenseFilterProvider.notifier)
-                  .state = ExpenseFilter.values[index],
+                  .state = _statsFilterOrder[index],
             ),
           ],
           const SizedBox(height: 20),

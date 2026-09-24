@@ -21,6 +21,11 @@ import 'widgets/juice_gauge.dart';
 import 'widgets/juice_tip_card.dart';
 import 'widgets/saving_history_bottom_sheet.dart';
 
+/// 홈 상단 "전체 내역 보기 / 변동지출만 보기" 토글의 표시 순서. [ExpenseFilter] 선언
+/// 순서와 달라서 인덱스 매핑을 따로 둔다. 기본 선택값(변동지출만)은
+/// [expenseFilterProvider]의 초기값을 그대로 따른다.
+const _dashboardFilterOrder = [ExpenseFilter.all, ExpenseFilter.variableOnly];
+
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
 
@@ -131,11 +136,11 @@ class DashboardScreen extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: JuiceSegmentedTab(
-              items: [loc.filterVariableOnlyLong, loc.filterAllLong],
-              selectedIndex: ExpenseFilter.values.indexOf(filter),
+              items: [loc.filterAllLong, loc.filterVariableOnlyLong],
+              selectedIndex: _dashboardFilterOrder.indexOf(filter),
               onTabChanged: (index) => ref
                   .read(expenseFilterProvider.notifier)
-                  .state = ExpenseFilter.values[index],
+                  .state = _dashboardFilterOrder[index],
             ),
           ),
           const SizedBox(height: 8),

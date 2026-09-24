@@ -36,7 +36,7 @@ final statsCategoryProvider =
 
 /// 통계 화면 전용 지출 필터: 변동지출만 vs 고정비 포함. [StatsCategory.expense]에서만 쓰인다.
 final statsExpenseFilterProvider =
-    StateProvider<ExpenseFilter>((ref) => ExpenseFilter.variableOnly);
+    StateProvider<ExpenseFilter>((ref) => ExpenseFilter.all);
 
 /// 선택된 기간에 해당하는 날짜 범위. 월별/연도별은 차트가 보여주는 전체 범위
 /// (각각 올해, 최근 5년)를 카테고리별 도넛 차트 집계에도 함께 사용한다.
