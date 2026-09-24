@@ -106,16 +106,18 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
           const SizedBox(height: 12),
           if (targetAmount != null) ...[
-            ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 320),
-              child: RepaintBoundary(
-                key: _cardKey,
-                child: SavingsCard(
-                    budget: targetAmount,
-                    spent: spent,
-                    weekLabel: weekLabel,
-                    currency: currentCurrency,
-                    theme: currentJuiceTheme),
+            Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 320),
+                child: RepaintBoundary(
+                  key: _cardKey,
+                  child: SavingsCard(
+                      budget: targetAmount,
+                      spent: spent,
+                      weekLabel: weekLabel,
+                      currency: currentCurrency,
+                      theme: currentJuiceTheme),
+                ),
               ),
             ),
             const SizedBox(height: 16),
