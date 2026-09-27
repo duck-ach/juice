@@ -34,6 +34,7 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: AppColors.lightSurface,
         elevation: 0,
+        clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
           side: const BorderSide(color: AppColors.lightBorder),
@@ -87,6 +88,7 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: AppColors.darkSurface,
         elevation: 0,
+        clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
           side: const BorderSide(color: AppColors.darkBorder),

@@ -49,6 +49,19 @@ class _CategoryManageScreenState extends ConsumerState<CategoryManageScreen> {
             child: ReorderableListView.builder(
               padding: const EdgeInsets.fromLTRB(20, 4, 20, 96),
               buildDefaultDragHandles: false,
+              // 드래그 중인 카드의 기본 그림자(Material)는 각진 사각형이라 카드의
+              // 둥근 모서리(Card 테마의 borderRadius: 20)와 어긋나 보인다. 카드와
+              // 같은 모양으로 직접 그려서 드래그 중에도 라운드가 유지되게 한다.
+              proxyDecorator: (child, index, animation) {
+                return Material(
+                  color: Colors.transparent,
+                  elevation: 4,
+                  shadowColor: Colors.black26,
+                  borderRadius: BorderRadius.circular(20),
+                  clipBehavior: Clip.antiAlias,
+                  child: child,
+                );
+              },
               itemCount: categories.length,
               onReorder: (oldIndex, newIndex) {
                 if (oldIndex < newIndex) newIndex -= 1;
@@ -63,36 +76,49 @@ class _CategoryManageScreenState extends ConsumerState<CategoryManageScreen> {
                 return Padding(
                   key: ValueKey(category.id),
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: EditDeleteSlidable(
-                    key: ValueKey(category.id),
-                    onEdit: () => showEditCategorySheet(context, ref, category),
-                    onDelete: () => _confirmDelete(context, ref, category),
-                    child: Card(
-                      margin: EdgeInsets.zero,
-                      child: ListTile(
-                        onTap: () =>
-                            showEditCategorySheet(context, ref, category),
-                        leading: CircleAvatar(
-                          backgroundColor: color.withValues(alpha: 0.18),
-                          child: Icon(
-                            IconData(category.iconCodePoint,
-                                fontFamily:
-                                    category.iconFontFamily ?? 'MaterialIcons'),
-                            color: color,
+                  child: Card(
+                    margin: EdgeInsets.zero,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: EditDeleteSlidable(
+                            key: ValueKey(category.id),
+                            onEdit: () =>
+                                showEditCategorySheet(context, ref, category),
+                            onDelete: () =>
+                                _confirmDelete(context, ref, category),
+                            child: ListTile(
+                              onTap: () =>
+                                  showEditCategorySheet(context, ref, category),
+                              leading: CircleAvatar(
+                                backgroundColor: color.withValues(alpha: 0.18),
+                                child: Icon(
+                                  IconData(category.iconCodePoint,
+                                      fontFamily: category.iconFontFamily ??
+                                          'MaterialIcons'),
+                                  color: color,
+                                ),
+                              ),
+                              title: Text(category.getLocalizedName(context)),
+                              subtitle: Text(
+                                  category.getLocalizedDescription(context),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis),
+                            ),
                           ),
                         ),
-                        title: Text(category.getLocalizedName(context)),
-                        subtitle: Text(category.getLocalizedDescription(context),
-                            maxLines: 1, overflow: TextOverflow.ellipsis),
-                        trailing: ReorderableDragStartListener(
+                        // 드래그 핸들은 EditDeleteSlidable(좌우 스와이프) 밖에 둬야 한다 —
+                        // 안쪽에 있으면 스와이프 제스처와 드래그 제스처가 서로 우선권을
+                        // 다투면서(제스처 아레나 충돌) 드래그 시작이 늦어지고 끊긴다.
+                        ReorderableDragStartListener(
                           index: index,
                           child: const Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: 4, vertical: 12),
+                                horizontal: 16, vertical: 12),
                             child: Icon(Icons.drag_handle),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 );
