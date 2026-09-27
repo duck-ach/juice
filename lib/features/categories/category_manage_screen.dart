@@ -51,15 +51,26 @@ class _CategoryManageScreenState extends ConsumerState<CategoryManageScreen> {
               buildDefaultDragHandles: false,
               // 드래그 중인 카드의 기본 그림자(Material)는 각진 사각형이라 카드의
               // 둥근 모서리(Card 테마의 borderRadius: 20)와 어긋나 보인다. 카드와
-              // 같은 모양으로 직접 그려서 드래그 중에도 라운드가 유지되게 한다.
+              // 같은 모양으로 직접 그려서 드래그 중에도 라운드가 유지되게 하고,
+              // 집어든 느낌을 주려고 애니메이션에 맞춰 살짝 확대 + 그림자를 키운다.
               proxyDecorator: (child, index, animation) {
-                return Material(
-                  color: Colors.transparent,
-                  elevation: 4,
-                  shadowColor: Colors.black26,
-                  borderRadius: BorderRadius.circular(20),
-                  clipBehavior: Clip.antiAlias,
+                return AnimatedBuilder(
+                  animation: animation,
                   child: child,
+                  builder: (context, child) {
+                    final t = Curves.easeOut.transform(animation.value);
+                    return Transform.scale(
+                      scale: 1.0 + 0.05 * t,
+                      child: Material(
+                        color: Colors.transparent,
+                        elevation: 2 + 6 * t,
+                        shadowColor: Colors.black38,
+                        borderRadius: BorderRadius.circular(20),
+                        clipBehavior: Clip.antiAlias,
+                        child: child,
+                      ),
+                    );
+                  },
                 );
               },
               itemCount: categories.length,
