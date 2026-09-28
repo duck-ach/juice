@@ -195,13 +195,19 @@ class SavingsPlan {
   double get fixedExpenseTotal =>
       fixedExpenses.fold(0.0, (sum, e) => sum + e.amount);
 
+  /// 목표를 남은 기간 내 달성하려면 매달 저축해야 하는 금액 = 목표 금액 / 총
+  /// 개월 수. [monthlyAvailable](생활비로 쓸 수 있는 돈)과 달리, "저축 그 자체"의
+  /// 금액을 직접 보여주는 값 — 요약 카드 최상단 헤드라인에 쓰인다.
+  double? get monthlySavingsRequired {
+    if (goalAmount == null || totalMonths <= 0) return null;
+    return goalAmount! / totalMonths;
+  }
+
   /// 월 가용 생활비(= 스마트 주스 용량) = 월 수입 - 고정지출 합계 - (목표 금액 / 총 개월 수).
   /// 입력이 아직 부족하면 null.
   double? get monthlyAvailable {
-    if (monthlyIncome == null || goalAmount == null || totalMonths <= 0) {
-      return null;
-    }
-    final monthlySavingNeeded = goalAmount! / totalMonths;
+    final monthlySavingNeeded = monthlySavingsRequired;
+    if (monthlyIncome == null || monthlySavingNeeded == null) return null;
     return monthlyIncome! - fixedExpenseTotal - monthlySavingNeeded;
   }
 

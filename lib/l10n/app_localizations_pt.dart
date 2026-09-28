@@ -122,6 +122,32 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get savingsPlanMonthlyRequiredLabel => 'Valor a poupar por mês';
+
+  @override
+  String savingsPlanMonthlyRequiredAmount(Object amount) {
+    return '$amount';
+  }
+
+  @override
+  String get savingsPlanAchievementRateLabel => 'Taxa de conquista da meta';
+
+  @override
+  String get savingsPlanRecommendedSectionLabel => 'Orçamento de gastos recomendado';
+
+  @override
+  String get savingsPlanDailyGridLabel => 'Por dia';
+
+  @override
+  String get savingsPlanWeeklyGridLabel => 'Esta semana';
+
+  @override
+  String get savingsPlanMonthlyGridLabel => 'Este mês';
+
+  @override
+  String get savingsPlanViewInAssetsButton => 'Ver detalhes na aba Patrimônio';
+
+  @override
   String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
     return 'Poupança real $actual / meta $goal ($percent%)';
   }

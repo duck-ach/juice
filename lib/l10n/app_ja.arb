@@ -35,6 +35,19 @@
   "durationMonthsOnly": "{months}ヶ月",
   "savingsPlanGoalLine": "目標: {duration}で{amount}ウォン貯める",
   "savingsPlanFixedExpenseLine": "固定費(何もしなくても出るお金): 月{amount}ウォン",
+  "savingsPlanMonthlyRequiredLabel": "毎月貯めるべき金額",
+  "savingsPlanMonthlyRequiredAmount": "{amount}ウォン",
+  "@savingsPlanMonthlyRequiredAmount": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "savingsPlanAchievementRateLabel": "目標達成率",
+  "savingsPlanRecommendedSectionLabel": "おすすめ使用可能額",
+  "savingsPlanDailyGridLabel": "1日",
+  "savingsPlanWeeklyGridLabel": "今週",
+  "savingsPlanMonthlyGridLabel": "今月",
+  "savingsPlanViewInAssetsButton": "資産タブで詳しく見る",
   "savingsPlanActualTraceLine": "実際の貯蓄 {actual} / 目標 {goal}（{percent}%）",
   "@savingsPlanActualTraceLine": {
     "placeholders": {

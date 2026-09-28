@@ -69,6 +69,19 @@
     }
   },
   "savingsPlanFixedExpenseLine": "Chi phí cố định (không thể tránh): {amount}/tháng",
+  "savingsPlanMonthlyRequiredLabel": "Số tiền cần tiết kiệm mỗi tháng",
+  "savingsPlanMonthlyRequiredAmount": "{amount}",
+  "@savingsPlanMonthlyRequiredAmount": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "savingsPlanAchievementRateLabel": "Tỷ lệ đạt mục tiêu",
+  "savingsPlanRecommendedSectionLabel": "Ngân sách chi tiêu đề xuất",
+  "savingsPlanDailyGridLabel": "Hằng ngày",
+  "savingsPlanWeeklyGridLabel": "Tuần này",
+  "savingsPlanMonthlyGridLabel": "Tháng này",
+  "savingsPlanViewInAssetsButton": "Xem chi tiết trong tab Tài sản",
   "@savingsPlanFixedExpenseLine": {
     "placeholders": {
       "amount": {}

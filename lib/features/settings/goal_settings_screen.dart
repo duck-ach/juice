@@ -12,6 +12,7 @@ import '../../providers/budget_settings_provider.dart';
 import '../../providers/installment_settings_provider.dart';
 import '../../providers/saving_option_provider.dart';
 import '../../providers/savings_planner_provider.dart';
+import '../assets/assets_screen.dart';
 import 'widgets/fixed_income_manage_sheet.dart';
 import 'widgets/savings_plan_recalibration_sheet.dart';
 import 'widgets/savings_plan_wizard.dart';
@@ -277,6 +278,9 @@ class GoalSettingsScreen extends ConsumerWidget {
               onManageFixedIncomes: plan.incomeType == IncomeType.fixed
                   ? () => FixedIncomeManageSheet.show(context)
                   : null,
+              onViewInAssets: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const AssetsScreen()),
+              ),
             ),
           ],
         ],
@@ -286,6 +290,8 @@ class GoalSettingsScreen extends ConsumerWidget {
 }
 
 /// "🍊 나의 주스 플랜" 요약 카드. 위저드를 완료하면 복잡한 폼 대신 이 카드 한 장만 보여준다.
+/// 핵심 정보(월 저축액 → 목표 달성률 → 하루/주/달 추천 예산) 순으로 시각적 위계를
+/// 잡아, 번잡한 텍스트 나열 대신 헤드라인 + 그리드 구조로 한눈에 들어오게 한다.
 class _SavingsPlanSummaryCard extends StatelessWidget {
   const _SavingsPlanSummaryCard({
     required this.plan,
@@ -295,13 +301,14 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
     required this.onApply,
     required this.onRecalibrate,
     this.onManageFixedIncomes,
+    required this.onViewInAssets,
   });
 
   final SavingsPlan plan;
   final int? paceDeltaMonths;
 
   /// 저축 카테고리로 실제 기록된 전체 저축/투자 누적액([totalSavingsProvider]) —
-  /// 목표 대비 실제 얼마나 쌓이고 있는지 실시간 트레이스.
+  /// 자산 탭의 '저축·투자 현황' 전체 누적과 동일한 값이라, 두 화면 수치가 항상 일치한다.
   final double actualSavings;
   final VoidCallback onEdit;
   final VoidCallback onApply;
@@ -309,6 +316,10 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
 
   /// [IncomeType.fixed]일 때만 제공 — 고정수입 CRUD 바텀시트를 연다.
   final VoidCallback? onManageFixedIncomes;
+
+  /// 자산 탭(저축·투자 현황)으로 이동 — 같은 실제 저축액을 더 자세히 확인할 수 있음을
+  /// 명시적으로 연결해준다.
+  final VoidCallback onViewInAssets;
 
   String _durationLabel(AppLocalizations loc) {
     if (plan.goalYears > 0 && plan.goalMonths > 0) {
@@ -327,95 +338,124 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
         (plan.monthlyAvailable ?? 0).clamp(0, double.infinity).toDouble();
     final weekly = monthly / 30 * 7;
     final daily = monthly / 30;
+    final monthlyRequired = plan.monthlySavingsRequired ?? 0;
 
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.primary.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(20),
-        border:
-            Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.3)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(loc.savingsPlanSummaryTitle,
-              style: theme.textTheme.titleMedium
-                  ?.copyWith(fontWeight: FontWeight.w800)),
-          const SizedBox(height: 12),
-          Text(
-              loc.savingsPlanGoalLine(
-                  _durationLabel(loc), formatter.format(plan.goalAmount)),
-              style: theme.textTheme.bodyMedium),
-          const SizedBox(height: 4),
-          Text(
-              loc.savingsPlanFixedExpenseLine(
-                  formatter.format(plan.fixedExpenseTotal)),
-              style: theme.textTheme.bodyMedium),
-          const SizedBox(height: 10),
-          _ActualSavingsTrace(
-              actualSavings: actualSavings, goalAmount: plan.goalAmount ?? 0),
-          const SizedBox(height: 12),
-          Text(
-            loc.savingsPlanRecommendedLine(formatter.format(daily),
-                formatter.format(weekly), formatter.format(monthly)),
-            style: theme.textTheme.bodyLarge
-                ?.copyWith(fontWeight: FontWeight.w700),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primary.withValues(alpha: 0.08),
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(
+                color: theme.colorScheme.primary.withValues(alpha: 0.3)),
           ),
-          if (paceDeltaMonths != null) ...[
-            const SizedBox(height: 10),
-            Text(
-              paceDeltaMonths! > 0
-                  ? loc.savingsPlanPaceFasterLine(paceDeltaMonths!)
-                  : (paceDeltaMonths! < 0
-                      ? loc.savingsPlanPaceSlowerLine(-paceDeltaMonths!)
-                      : loc.savingsPlanPaceOnTrackLine),
-              style: theme.textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-                color: paceDeltaMonths! >= 0
-                    ? const Color(0xFF34C759)
-                    : theme.colorScheme.error,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(loc.savingsPlanSummaryTitle,
+                  style: theme.textTheme.titleMedium
+                      ?.copyWith(fontWeight: FontWeight.w800)),
+              const SizedBox(height: 18),
+              Text(loc.savingsPlanMonthlyRequiredLabel,
+                  style: theme.textTheme.bodyMedium
+                      ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+              const SizedBox(height: 2),
+              Text(
+                loc.savingsPlanMonthlyRequiredAmount(
+                    formatter.format(monthlyRequired)),
+                style: theme.textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.w900,
+                    color: theme.colorScheme.primary),
               ),
-            ),
+              const SizedBox(height: 4),
+              Text(
+                  loc.savingsPlanGoalLine(
+                      _durationLabel(loc), formatter.format(plan.goalAmount)),
+                  style: theme.textTheme.bodySmall
+                      ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+              const SizedBox(height: 16),
+              Divider(height: 1, color: theme.dividerColor.withValues(alpha: 0.4)),
+              const SizedBox(height: 16),
+              _AchievementRateBlock(
+                  actualSavings: actualSavings, goalAmount: plan.goalAmount ?? 0),
+              if (paceDeltaMonths != null) ...[
+                const SizedBox(height: 12),
+                _PaceBanner(months: paceDeltaMonths!),
+              ],
+            ],
+          ),
+        ),
+        const SizedBox(height: 16),
+        Text(loc.savingsPlanRecommendedSectionLabel,
+            style: theme.textTheme.labelLarge),
+        const SizedBox(height: 8),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+                child: _MiniStatCard(
+                    label: loc.savingsPlanDailyGridLabel, value: daily)),
+            const SizedBox(width: 8),
+            Expanded(
+                child: _MiniStatCard(
+                    label: loc.savingsPlanWeeklyGridLabel, value: weekly)),
+            const SizedBox(width: 8),
+            Expanded(
+                child: _MiniStatCard(
+                    label: loc.savingsPlanMonthlyGridLabel, value: monthly)),
           ],
-          if (onManageFixedIncomes != null) ...[
-            const SizedBox(height: 4),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: TextButton.icon(
+        ),
+        const SizedBox(height: 16),
+        Text(
+            loc.savingsPlanFixedExpenseLine(
+                formatter.format(plan.fixedExpenseTotal)),
+            style: theme.textTheme.bodySmall
+                ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+        Wrap(
+          spacing: 4,
+          children: [
+            if (onManageFixedIncomes != null)
+              TextButton.icon(
                 onPressed: onManageFixedIncomes,
                 icon: const Icon(Icons.payments_outlined, size: 18),
                 label: Text(loc.manageFixedIncomesButton),
               ),
+            TextButton.icon(
+              onPressed: onViewInAssets,
+              icon: const Icon(Icons.bar_chart_outlined, size: 18),
+              label: Text(loc.savingsPlanViewInAssetsButton),
             ),
           ],
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              TextButton(onPressed: onEdit, child: Text(loc.replanButton)),
-              const Spacer(),
-              TextButton.icon(
-                onPressed: onRecalibrate,
-                icon: const Icon(Icons.trending_up, size: 18),
-                label: Text(loc.recalibrateButton),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 48,
-            child: FilledButton(
-                onPressed: onApply, child: Text(loc.applyBudgetButton)),
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 8),
+        Row(
+          children: [
+            TextButton(onPressed: onEdit, child: Text(loc.replanButton)),
+            const Spacer(),
+            TextButton.icon(
+              onPressed: onRecalibrate,
+              icon: const Icon(Icons.trending_up, size: 18),
+              label: Text(loc.recalibrateButton),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 48,
+          child:
+              FilledButton(onPressed: onApply, child: Text(loc.applyBudgetButton)),
+        ),
+      ],
     );
   }
 }
 
-/// 저축 카테고리로 실제 기록된 금액 대비 목표 금액 진행률 — [totalSavingsProvider]를
-/// 그대로 반영하므로 저축 내역을 추가/수정/삭제하는 즉시 갱신된다.
-class _ActualSavingsTrace extends StatelessWidget {
-  const _ActualSavingsTrace(
+/// 목표 달성률 헤드라인 — 저축 카테고리로 실제 기록된 금액 대비 목표 금액 진행률.
+/// [totalSavingsProvider]를 그대로 반영하므로 저축 내역을 추가/수정/삭제하는 즉시
+/// 갱신되고, 자산 탭의 '전체 누적'과 항상 같은 값을 보여준다.
+class _AchievementRateBlock extends StatelessWidget {
+  const _AchievementRateBlock(
       {required this.actualSavings, required this.goalAmount});
 
   final double actualSavings;
@@ -428,17 +468,23 @@ class _ActualSavingsTrace extends StatelessWidget {
     final formatter = NumberFormat('#,###');
     final progress =
         goalAmount <= 0 ? 0.0 : (actualSavings / goalAmount).clamp(0.0, 1.0);
+    final percent = (progress * 100).round();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          loc.savingsPlanActualTraceLine(formatter.format(actualSavings),
-              formatter.format(goalAmount), (progress * 100).round()),
-          style:
-              theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+        Row(
+          children: [
+            Text(loc.savingsPlanAchievementRateLabel,
+                style: theme.textTheme.bodyMedium),
+            const Spacer(),
+            Text('$percent%',
+                style: theme.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w800,
+                    color: theme.colorScheme.primary)),
+          ],
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 8),
         ClipRRect(
           borderRadius: BorderRadius.circular(6),
           child: LinearProgressIndicator(
@@ -447,7 +493,86 @@ class _ActualSavingsTrace extends StatelessWidget {
             backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.12),
           ),
         ),
+        const SizedBox(height: 6),
+        Text(
+          loc.savingsPlanActualTraceLine(
+              formatter.format(actualSavings), formatter.format(goalAmount), percent),
+          style: theme.textTheme.bodySmall
+              ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+        ),
       ],
+    );
+  }
+}
+
+/// 현재 저축 페이스가 계획보다 빠른지/느린지/딱 맞는지 알려주는 배너.
+class _PaceBanner extends StatelessWidget {
+  const _PaceBanner({required this.months});
+
+  final int months;
+
+  @override
+  Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    final isGood = months >= 0;
+    final color = isGood ? const Color(0xFF34C759) : theme.colorScheme.error;
+    final label = months > 0
+        ? loc.savingsPlanPaceFasterLine(months)
+        : (months < 0
+            ? loc.savingsPlanPaceSlowerLine(-months)
+            : loc.savingsPlanPaceOnTrackLine);
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Text(
+        label,
+        style: theme.textTheme.bodySmall
+            ?.copyWith(fontWeight: FontWeight.w700, color: color),
+      ),
+    );
+  }
+}
+
+/// 하루/이번 주/이번 달 추천 예산 그리드 셀.
+class _MiniStatCard extends StatelessWidget {
+  const _MiniStatCard({required this.label, required this.value});
+
+  final String label;
+  final double value;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final formatter = NumberFormat('#,###');
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.4),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        children: [
+          Text(label,
+              style: theme.textTheme.bodySmall,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis),
+          const SizedBox(height: 4),
+          Text(
+            '${formatter.format(value)} mL',
+            style: theme.textTheme.titleSmall
+                ?.copyWith(fontWeight: FontWeight.w800),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 }

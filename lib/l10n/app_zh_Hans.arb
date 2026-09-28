@@ -35,6 +35,19 @@
   "durationMonthsOnly": "{months}个月",
   "savingsPlanGoalLine": "目标:{duration}内存下 {amount} 元",
   "savingsPlanFixedExpenseLine": "固定支出(无法避免):每月 {amount} 元",
+  "savingsPlanMonthlyRequiredLabel": "每月应储蓄金额",
+  "savingsPlanMonthlyRequiredAmount": "{amount} 元",
+  "@savingsPlanMonthlyRequiredAmount": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "savingsPlanAchievementRateLabel": "目标达成率",
+  "savingsPlanRecommendedSectionLabel": "推荐可用预算",
+  "savingsPlanDailyGridLabel": "每日",
+  "savingsPlanWeeklyGridLabel": "本周",
+  "savingsPlanMonthlyGridLabel": "本月",
+  "savingsPlanViewInAssetsButton": "在资产标签页查看详情",
   "savingsPlanActualTraceLine": "实际储蓄 {actual} / 目标 {goal}（{percent}%）",
   "@savingsPlanActualTraceLine": {
     "placeholders": {

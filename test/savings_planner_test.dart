@@ -22,6 +22,31 @@ SavingsPlan _plan({
     );
 
 void main() {
+  group('monthlySavingsRequired(매월 저축해야 하는 금액)', () {
+    test('목표 금액 / 총 개월 수로 계산된다', () {
+      final plan = _plan(goalYears: 1, goalMonths: 0, goalAmount: 12000000);
+      expect(plan.monthlySavingsRequired, 1000000);
+    });
+
+    test('goalAmount가 없으면 null', () {
+      final plan = _plan(goalYears: 1, goalMonths: 0, goalAmount: null);
+      expect(plan.monthlySavingsRequired, isNull);
+    });
+
+    test('monthlyAvailable은 여전히 monthlySavingsRequired를 반영해 동일하게 계산된다', () {
+      final plan = _plan(
+        monthlyIncome: 3000000,
+        goalYears: 1,
+        goalMonths: 0,
+        goalAmount: 12000000,
+        fixedExpenses: const [FixedExpenseItem(name: '월세', amount: 500000)],
+      );
+      // 300만 - 50만(고정비) - 100만(월 저축액) = 150만.
+      expect(plan.monthlySavingsRequired, 1000000);
+      expect(plan.monthlyAvailable, 1500000);
+    });
+  });
+
   group('recalibrateShortenDuration', () {
     test('생활비는 그대로 두고, 늘어난 수입만큼 목표 기간을 앞당긴다', () {
       // 월 100만원, 고정비 없음, 목표 1200만원/12개월 => 월 저축필요액 100만원,

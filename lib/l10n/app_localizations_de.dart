@@ -122,6 +122,32 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String get savingsPlanMonthlyRequiredLabel => 'Monatlich zu sparender Betrag';
+
+  @override
+  String savingsPlanMonthlyRequiredAmount(Object amount) {
+    return '$amount Won';
+  }
+
+  @override
+  String get savingsPlanAchievementRateLabel => 'Zielerreichung';
+
+  @override
+  String get savingsPlanRecommendedSectionLabel => 'Empfohlenes Ausgabenbudget';
+
+  @override
+  String get savingsPlanDailyGridLabel => 'Täglich';
+
+  @override
+  String get savingsPlanWeeklyGridLabel => 'Diese Woche';
+
+  @override
+  String get savingsPlanMonthlyGridLabel => 'Diesen Monat';
+
+  @override
+  String get savingsPlanViewInAssetsButton => 'Details im Tab „Vermögen“ ansehen';
+
+  @override
   String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
     return 'Tatsächlich gespart: $actual / Ziel $goal ($percent%)';
   }

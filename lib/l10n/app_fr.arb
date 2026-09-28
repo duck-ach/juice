@@ -35,6 +35,19 @@
   "durationMonthsOnly": "{months} mois",
   "savingsPlanGoalLine": "Objectif : épargner {amount} won(s) en {duration}",
   "savingsPlanFixedExpenseLine": "Dépenses fixes (incontournables) : {amount} won(s)/mois",
+  "savingsPlanMonthlyRequiredLabel": "Montant à épargner chaque mois",
+  "savingsPlanMonthlyRequiredAmount": "{amount} won(s)",
+  "@savingsPlanMonthlyRequiredAmount": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "savingsPlanAchievementRateLabel": "Taux d'atteinte de l'objectif",
+  "savingsPlanRecommendedSectionLabel": "Budget de dépense recommandé",
+  "savingsPlanDailyGridLabel": "Par jour",
+  "savingsPlanWeeklyGridLabel": "Cette semaine",
+  "savingsPlanMonthlyGridLabel": "Ce mois-ci",
+  "savingsPlanViewInAssetsButton": "Voir le détail dans l'onglet Actifs",
   "savingsPlanActualTraceLine": "Épargne réelle {actual} / objectif {goal} ({percent} %)",
   "@savingsPlanActualTraceLine": {
     "placeholders": {

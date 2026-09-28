@@ -35,6 +35,19 @@
   "durationMonthsOnly": "{months} Monate",
   "savingsPlanGoalLine": "Ziel: {amount} Won in {duration} sparen",
   "savingsPlanFixedExpenseLine": "Fixkosten (unvermeidlich): {amount} Won/Monat",
+  "savingsPlanMonthlyRequiredLabel": "Monatlich zu sparender Betrag",
+  "savingsPlanMonthlyRequiredAmount": "{amount} Won",
+  "@savingsPlanMonthlyRequiredAmount": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "savingsPlanAchievementRateLabel": "Zielerreichung",
+  "savingsPlanRecommendedSectionLabel": "Empfohlenes Ausgabenbudget",
+  "savingsPlanDailyGridLabel": "Täglich",
+  "savingsPlanWeeklyGridLabel": "Diese Woche",
+  "savingsPlanMonthlyGridLabel": "Diesen Monat",
+  "savingsPlanViewInAssetsButton": "Details im Tab „Vermögen“ ansehen",
   "savingsPlanActualTraceLine": "Tatsächlich gespart: {actual} / Ziel {goal} ({percent}%)",
   "@savingsPlanActualTraceLine": {
     "placeholders": {

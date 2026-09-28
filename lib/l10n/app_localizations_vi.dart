@@ -122,6 +122,32 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
+  String get savingsPlanMonthlyRequiredLabel => 'Số tiền cần tiết kiệm mỗi tháng';
+
+  @override
+  String savingsPlanMonthlyRequiredAmount(Object amount) {
+    return '$amount';
+  }
+
+  @override
+  String get savingsPlanAchievementRateLabel => 'Tỷ lệ đạt mục tiêu';
+
+  @override
+  String get savingsPlanRecommendedSectionLabel => 'Ngân sách chi tiêu đề xuất';
+
+  @override
+  String get savingsPlanDailyGridLabel => 'Hằng ngày';
+
+  @override
+  String get savingsPlanWeeklyGridLabel => 'Tuần này';
+
+  @override
+  String get savingsPlanMonthlyGridLabel => 'Tháng này';
+
+  @override
+  String get savingsPlanViewInAssetsButton => 'Xem chi tiết trong tab Tài sản';
+
+  @override
   String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
     return 'Đã tiết kiệm thực tế $actual / mục tiêu $goal ($percent%)';
   }

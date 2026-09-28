@@ -122,6 +122,32 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String get savingsPlanMonthlyRequiredLabel => '매월 저축해야 하는 금액';
+
+  @override
+  String savingsPlanMonthlyRequiredAmount(Object amount) {
+    return '$amount원';
+  }
+
+  @override
+  String get savingsPlanAchievementRateLabel => '목표 달성률';
+
+  @override
+  String get savingsPlanRecommendedSectionLabel => '추천 사용 가능 금액';
+
+  @override
+  String get savingsPlanDailyGridLabel => '하루';
+
+  @override
+  String get savingsPlanWeeklyGridLabel => '이번 주';
+
+  @override
+  String get savingsPlanMonthlyGridLabel => '이번 달';
+
+  @override
+  String get savingsPlanViewInAssetsButton => '자산 탭에서 자세히 보기';
+
+  @override
   String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
     return '실제 저축 $actual원 / 목표 $goal원 ($percent%)';
   }

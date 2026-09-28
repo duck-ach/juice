@@ -122,6 +122,32 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get savingsPlanMonthlyRequiredLabel => '毎月貯めるべき金額';
+
+  @override
+  String savingsPlanMonthlyRequiredAmount(Object amount) {
+    return '$amountウォン';
+  }
+
+  @override
+  String get savingsPlanAchievementRateLabel => '目標達成率';
+
+  @override
+  String get savingsPlanRecommendedSectionLabel => 'おすすめ使用可能額';
+
+  @override
+  String get savingsPlanDailyGridLabel => '1日';
+
+  @override
+  String get savingsPlanWeeklyGridLabel => '今週';
+
+  @override
+  String get savingsPlanMonthlyGridLabel => '今月';
+
+  @override
+  String get savingsPlanViewInAssetsButton => '資産タブで詳しく見る';
+
+  @override
   String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
     return '実際の貯蓄 $actual / 目標 $goal（$percent%）';
   }

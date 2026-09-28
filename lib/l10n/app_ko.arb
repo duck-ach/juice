@@ -74,6 +74,19 @@
       "amount": {}
     }
   },
+  "savingsPlanMonthlyRequiredLabel": "매월 저축해야 하는 금액",
+  "savingsPlanMonthlyRequiredAmount": "{amount}원",
+  "@savingsPlanMonthlyRequiredAmount": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "savingsPlanAchievementRateLabel": "목표 달성률",
+  "savingsPlanRecommendedSectionLabel": "추천 사용 가능 금액",
+  "savingsPlanDailyGridLabel": "하루",
+  "savingsPlanWeeklyGridLabel": "이번 주",
+  "savingsPlanMonthlyGridLabel": "이번 달",
+  "savingsPlanViewInAssetsButton": "자산 탭에서 자세히 보기",
   "savingsPlanActualTraceLine": "실제 저축 {actual}원 / 목표 {goal}원 ({percent}%)",
   "@savingsPlanActualTraceLine": {
     "placeholders": {

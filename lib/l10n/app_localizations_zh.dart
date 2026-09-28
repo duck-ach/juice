@@ -122,6 +122,32 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get savingsPlanMonthlyRequiredLabel => '每月应储蓄金额';
+
+  @override
+  String savingsPlanMonthlyRequiredAmount(Object amount) {
+    return '$amount 元';
+  }
+
+  @override
+  String get savingsPlanAchievementRateLabel => '目标达成率';
+
+  @override
+  String get savingsPlanRecommendedSectionLabel => '推荐可用预算';
+
+  @override
+  String get savingsPlanDailyGridLabel => '每日';
+
+  @override
+  String get savingsPlanWeeklyGridLabel => '本周';
+
+  @override
+  String get savingsPlanMonthlyGridLabel => '本月';
+
+  @override
+  String get savingsPlanViewInAssetsButton => '在资产标签页查看详情';
+
+  @override
   String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
     return '实际储蓄 $actual / 目标 $goal（$percent%）';
   }
@@ -1647,6 +1673,32 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   }
 
   @override
+  String get savingsPlanMonthlyRequiredLabel => '每月应储蓄金额';
+
+  @override
+  String savingsPlanMonthlyRequiredAmount(Object amount) {
+    return '$amount 元';
+  }
+
+  @override
+  String get savingsPlanAchievementRateLabel => '目标达成率';
+
+  @override
+  String get savingsPlanRecommendedSectionLabel => '推荐可用预算';
+
+  @override
+  String get savingsPlanDailyGridLabel => '每日';
+
+  @override
+  String get savingsPlanWeeklyGridLabel => '本周';
+
+  @override
+  String get savingsPlanMonthlyGridLabel => '本月';
+
+  @override
+  String get savingsPlanViewInAssetsButton => '在资产标签页查看详情';
+
+  @override
   String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
     return '实际储蓄 $actual / 目标 $goal（$percent%）';
   }
@@ -3170,6 +3222,32 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String savingsPlanFixedExpenseLine(Object amount) {
     return '固定支出(無法避免):每月 $amount 元';
   }
+
+  @override
+  String get savingsPlanMonthlyRequiredLabel => '每月應儲蓄金額';
+
+  @override
+  String savingsPlanMonthlyRequiredAmount(Object amount) {
+    return '$amount 元';
+  }
+
+  @override
+  String get savingsPlanAchievementRateLabel => '目標達成率';
+
+  @override
+  String get savingsPlanRecommendedSectionLabel => '推薦可用預算';
+
+  @override
+  String get savingsPlanDailyGridLabel => '每日';
+
+  @override
+  String get savingsPlanWeeklyGridLabel => '本週';
+
+  @override
+  String get savingsPlanMonthlyGridLabel => '本月';
+
+  @override
+  String get savingsPlanViewInAssetsButton => '在資產頁籤查看詳情';
 
   @override
   String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {

@@ -319,6 +319,54 @@ abstract class AppLocalizations {
   /// **'숨만 쉬어도 나가는 돈(고정비): 월 {amount}원'**
   String savingsPlanFixedExpenseLine(Object amount);
 
+  /// No description provided for @savingsPlanMonthlyRequiredLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'매월 저축해야 하는 금액'**
+  String get savingsPlanMonthlyRequiredLabel;
+
+  /// No description provided for @savingsPlanMonthlyRequiredAmount.
+  ///
+  /// In ko, this message translates to:
+  /// **'{amount}원'**
+  String savingsPlanMonthlyRequiredAmount(Object amount);
+
+  /// No description provided for @savingsPlanAchievementRateLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'목표 달성률'**
+  String get savingsPlanAchievementRateLabel;
+
+  /// No description provided for @savingsPlanRecommendedSectionLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'추천 사용 가능 금액'**
+  String get savingsPlanRecommendedSectionLabel;
+
+  /// No description provided for @savingsPlanDailyGridLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'하루'**
+  String get savingsPlanDailyGridLabel;
+
+  /// No description provided for @savingsPlanWeeklyGridLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'이번 주'**
+  String get savingsPlanWeeklyGridLabel;
+
+  /// No description provided for @savingsPlanMonthlyGridLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'이번 달'**
+  String get savingsPlanMonthlyGridLabel;
+
+  /// No description provided for @savingsPlanViewInAssetsButton.
+  ///
+  /// In ko, this message translates to:
+  /// **'자산 탭에서 자세히 보기'**
+  String get savingsPlanViewInAssetsButton;
+
   /// No description provided for @savingsPlanActualTraceLine.
   ///
   /// In ko, this message translates to:

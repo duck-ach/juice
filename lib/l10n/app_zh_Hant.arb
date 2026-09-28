@@ -35,6 +35,19 @@
   "durationMonthsOnly": "{months}個月",
   "savingsPlanGoalLine": "目標:{duration}內存下 {amount} 元",
   "savingsPlanFixedExpenseLine": "固定支出(無法避免):每月 {amount} 元",
+  "savingsPlanMonthlyRequiredLabel": "每月應儲蓄金額",
+  "savingsPlanMonthlyRequiredAmount": "{amount} 元",
+  "@savingsPlanMonthlyRequiredAmount": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "savingsPlanAchievementRateLabel": "目標達成率",
+  "savingsPlanRecommendedSectionLabel": "推薦可用預算",
+  "savingsPlanDailyGridLabel": "每日",
+  "savingsPlanWeeklyGridLabel": "本週",
+  "savingsPlanMonthlyGridLabel": "本月",
+  "savingsPlanViewInAssetsButton": "在資產頁籤查看詳情",
   "savingsPlanActualTraceLine": "實際儲蓄 {actual} / 目標 {goal}（{percent}%）",
   "@savingsPlanActualTraceLine": {
     "placeholders": {

@@ -35,6 +35,19 @@
   "durationMonthsOnly": "{months} months",
   "savingsPlanGoalLine": "Goal: Save {amount} won over {duration}",
   "savingsPlanFixedExpenseLine": "Fixed costs (unavoidable): {amount} won/month",
+  "savingsPlanMonthlyRequiredLabel": "Amount to save each month",
+  "savingsPlanMonthlyRequiredAmount": "{amount} won",
+  "@savingsPlanMonthlyRequiredAmount": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "savingsPlanAchievementRateLabel": "Goal achievement",
+  "savingsPlanRecommendedSectionLabel": "Recommended spending budget",
+  "savingsPlanDailyGridLabel": "Daily",
+  "savingsPlanWeeklyGridLabel": "This week",
+  "savingsPlanMonthlyGridLabel": "This month",
+  "savingsPlanViewInAssetsButton": "View details in Assets tab",
   "savingsPlanActualTraceLine": "Actual savings {actual} / goal {goal} ({percent}%)",
   "@savingsPlanActualTraceLine": {
     "placeholders": {
