@@ -286,7 +286,7 @@
   "cardNameLabel": "카드 이름",
   "cardTypeLabel": "카드 종류",
   "cardManagementTitle": "내 카드 관리",
-  "defaultCardUndeletable": "기본 카드는 삭제할 수 없어요",
+  "defaultCardLastOneUndeletable": "같은 종류의 카드가 이것뿐이라 삭제할 수 없어요. 다른 카드를 먼저 추가해 주세요.",
   "cardTypeCorporate": "법인/업무용",
   "cardTypeCorporateExcluded": "법인(경비) · 주스 제외",
   "corporateExpenseNotice": "🏢 법인/업무용 지출은 카테고리 선택 없이 개인 지출에서 자동 제외돼요.",

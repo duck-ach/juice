@@ -219,7 +219,7 @@
   "cardNameLabel": "カード名",
   "cardTypeLabel": "カード種類",
   "cardManagementTitle": "マイカード管理",
-  "defaultCardUndeletable": "デフォルトカードは削除できません",
+  "defaultCardLastOneUndeletable": "この種類のカードがこれ一枚しかないため削除できません。先に別のカードを追加してください。",
   "cardTypeCorporate": "法人/業務用",
   "cardTypeCorporateExcluded": "法人(経費)・ジュース除外",
   "corporateExpenseNotice": "🏢 法人/業務用の支出はカテゴリ選択なしで、個人の支出から自動的に除外されます。",

@@ -552,7 +552,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get cardManagementTitle => 'Kartenverwaltung';
 
   @override
-  String get defaultCardUndeletable => 'Standardkarten können nicht gelöscht werden';
+  String get defaultCardLastOneUndeletable => 'Dies ist deine einzige Karte dieser Art und kann daher nicht gelöscht werden. Füge zuerst eine weitere hinzu.';
 
   @override
   String get cardTypeCorporate => 'Firmen-/Geschäftskarte';

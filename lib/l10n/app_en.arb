@@ -219,7 +219,7 @@
   "cardNameLabel": "Card Name",
   "cardTypeLabel": "Card Type",
   "cardManagementTitle": "My Card Management",
-  "defaultCardUndeletable": "Default cards can't be deleted",
+  "defaultCardLastOneUndeletable": "This is your only card of this type, so it can't be deleted. Add another one first.",
   "cardTypeCorporate": "Corporate/Business",
   "cardTypeCorporateExcluded": "Corporate (expense) · Excluded from juice",
   "corporateExpenseNotice": "🏢 Corporate/business expenses skip category selection and are automatically excluded from your personal spending.",

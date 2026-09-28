@@ -84,10 +84,17 @@ class _CardEditSheetState extends ConsumerState<_CardEditSheet> {
     }
   }
 
+  /// 기본 카드는 같은 종류(체크/신용)의 다른 카드가 1개 이상 있을 때만 삭제할 수 있다.
+  bool _canDelete(CardItem editing) =>
+      !editing.isDefault ||
+      ref
+          .read(cardProvider)
+          .any((c) => c.id != editing.id && c.type == editing.type);
+
   Future<void> _delete() async {
     final loc = AppLocalizations.of(context)!;
     final editing = widget.editing;
-    if (editing == null || editing.isDefault) return;
+    if (editing == null || !_canDelete(editing)) return;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
@@ -146,7 +153,7 @@ class _CardEditSheetState extends ConsumerState<_CardEditSheet> {
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
-                  if (_isEditing && !widget.editing!.isDefault)
+                  if (_isEditing && _canDelete(widget.editing!))
                     IconButton(
                       icon: const Icon(Icons.delete_outline),
                       tooltip: loc.commonDelete,

@@ -420,9 +420,9 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
     if (matchingCards.isEmpty) {
       _selectedCardId = null;
     } else if (!matchingCards.any((c) => c.id == _selectedCardId)) {
-      _selectedCardId = matchingCards
-          .firstWhere((c) => c.isDefault, orElse: () => matchingCards.first)
-          .id;
+      // 목록 맨 위(표시 순서 1번)의 카드가 기본 선택 — 카드 관리에서 순서를
+      // 바꾸면 그 카드가 곧바로 다음 지출 등록의 기본값이 된다.
+      _selectedCardId = matchingCards.first.id;
     }
 
     // 법인/업무용 카드가 선택되면 카테고리 선택 없이 [금액]+[메모]만으로 등록되도록

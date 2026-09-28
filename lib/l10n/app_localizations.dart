@@ -1123,11 +1123,11 @@ abstract class AppLocalizations {
   /// **'내 카드 관리'**
   String get cardManagementTitle;
 
-  /// No description provided for @defaultCardUndeletable.
+  /// No description provided for @defaultCardLastOneUndeletable.
   ///
   /// In ko, this message translates to:
-  /// **'기본 카드는 삭제할 수 없어요'**
-  String get defaultCardUndeletable;
+  /// **'같은 종류의 카드가 이것뿐이라 삭제할 수 없어요. 다른 카드를 먼저 추가해 주세요.'**
+  String get defaultCardLastOneUndeletable;
 
   /// No description provided for @cardTypeCorporate.
   ///

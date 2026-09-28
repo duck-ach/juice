@@ -552,7 +552,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get cardManagementTitle => '卡片管理';
 
   @override
-  String get defaultCardUndeletable => '默认卡片无法删除';
+  String get defaultCardLastOneUndeletable => '这是该类型下唯一的卡片，无法删除。请先添加另一张卡片。';
 
   @override
   String get cardTypeCorporate => '公司/业务用';
@@ -2077,7 +2077,7 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get cardManagementTitle => '卡片管理';
 
   @override
-  String get defaultCardUndeletable => '默认卡片无法删除';
+  String get defaultCardLastOneUndeletable => '这是该类型下唯一的卡片，无法删除。请先添加另一张卡片。';
 
   @override
   String get cardTypeCorporate => '公司/业务用';
@@ -3602,7 +3602,7 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get cardManagementTitle => '卡片管理';
 
   @override
-  String get defaultCardUndeletable => '預設卡片無法刪除';
+  String get defaultCardLastOneUndeletable => '這是該類型下唯一的卡片，無法刪除。請先新增另一張卡片。';
 
   @override
   String get cardTypeCorporate => '公司/業務用';

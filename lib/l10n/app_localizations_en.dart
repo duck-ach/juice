@@ -552,7 +552,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cardManagementTitle => 'My Card Management';
 
   @override
-  String get defaultCardUndeletable => 'Default cards can\'t be deleted';
+  String get defaultCardLastOneUndeletable => 'This is your only card of this type, so it can\'t be deleted. Add another one first.';
 
   @override
   String get cardTypeCorporate => 'Corporate/Business';

@@ -552,7 +552,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get cardManagementTitle => 'Gerenciar meus cartões';
 
   @override
-  String get defaultCardUndeletable => 'Cartões padrão não podem ser excluídos';
+  String get defaultCardLastOneUndeletable => 'Este é o único cartão deste tipo, por isso não pode ser excluído. Adicione outro primeiro.';
 
   @override
   String get cardTypeCorporate => 'Corporativo/Empresarial';

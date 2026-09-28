@@ -219,7 +219,7 @@
   "cardNameLabel": "Nome do cartão",
   "cardTypeLabel": "Tipo de cartão",
   "cardManagementTitle": "Gerenciar meus cartões",
-  "defaultCardUndeletable": "Cartões padrão não podem ser excluídos",
+  "defaultCardLastOneUndeletable": "Este é o único cartão deste tipo, por isso não pode ser excluído. Adicione outro primeiro.",
   "cardTypeCorporate": "Corporativo/Empresarial",
   "cardTypeCorporateExcluded": "Corporativo (despesa) · Excluído do juice",
   "corporateExpenseNotice": "🏢 Despesas corporativas/empresariais dispensam a seleção de categoria e são automaticamente excluídas dos seus gastos pessoais.",

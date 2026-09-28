@@ -552,7 +552,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get cardManagementTitle => '내 카드 관리';
 
   @override
-  String get defaultCardUndeletable => '기본 카드는 삭제할 수 없어요';
+  String get defaultCardLastOneUndeletable => '같은 종류의 카드가 이것뿐이라 삭제할 수 없어요. 다른 카드를 먼저 추가해 주세요.';
 
   @override
   String get cardTypeCorporate => '법인/업무용';

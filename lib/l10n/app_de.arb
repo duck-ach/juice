@@ -219,7 +219,7 @@
   "cardNameLabel": "Kartenname",
   "cardTypeLabel": "Kartentyp",
   "cardManagementTitle": "Kartenverwaltung",
-  "defaultCardUndeletable": "Standardkarten können nicht gelöscht werden",
+  "defaultCardLastOneUndeletable": "Dies ist deine einzige Karte dieser Art und kann daher nicht gelöscht werden. Füge zuerst eine weitere hinzu.",
   "cardTypeCorporate": "Firmen-/Geschäftskarte",
   "cardTypeCorporateExcluded": "Firma (Spesen) · vom Juice ausgeschlossen",
   "corporateExpenseNotice": "🏢 Geschäftliche Ausgaben werden ohne Kategorieauswahl erfasst und automatisch von deinen persönlichen Ausgaben ausgeschlossen.",

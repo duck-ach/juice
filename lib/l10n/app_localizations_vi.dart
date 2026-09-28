@@ -552,7 +552,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get cardManagementTitle => 'Quản lý thẻ của tôi';
 
   @override
-  String get defaultCardUndeletable => 'Không thể xóa thẻ mặc định';
+  String get defaultCardLastOneUndeletable => 'Đây là thẻ duy nhất thuộc loại này nên không thể xóa. Hãy thêm thẻ khác trước.';
 
   @override
   String get cardTypeCorporate => 'Thẻ công ty/công tác';

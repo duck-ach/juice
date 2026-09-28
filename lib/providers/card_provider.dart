@@ -40,11 +40,17 @@ class CardNotifier extends Notifier<List<CardItem>> {
     state = repo.getAll();
   }
 
-  /// 기본 제공 카드는 삭제할 수 없음.
+  /// 기본 제공 카드는 같은 종류(체크/신용)의 다른 카드가 1개 이상 등록되어
+  /// 있을 때만 삭제할 수 있다 — 해당 종류의 카드가 아예 없어지는 것을 막는다.
   Future<void> remove(String id) async {
     final repo = ref.read(cardRepositoryProvider);
     final matches = state.where((c) => c.id == id);
-    if (matches.isEmpty || matches.first.isDefault) return;
+    if (matches.isEmpty) return;
+    final target = matches.first;
+    if (target.isDefault &&
+        !state.any((c) => c.id != id && c.type == target.type)) {
+      return;
+    }
     await repo.delete(id);
     state = repo.getAll();
   }

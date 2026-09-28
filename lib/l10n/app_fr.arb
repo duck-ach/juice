@@ -219,7 +219,7 @@
   "cardNameLabel": "Nom de la carte",
   "cardTypeLabel": "Type de carte",
   "cardManagementTitle": "Gestion de mes cartes",
-  "defaultCardUndeletable": "Les cartes par défaut ne peuvent pas être supprimées",
+  "defaultCardLastOneUndeletable": "C'est votre seule carte de ce type, elle ne peut donc pas être supprimée. Ajoutez-en d'abord une autre.",
   "cardTypeCorporate": "Professionnelle/Entreprise",
   "cardTypeCorporateExcluded": "Professionnelle (dépense) · Exclue du juice",
   "corporateExpenseNotice": "🏢 Les dépenses professionnelles n'ont pas besoin de catégorie et sont automatiquement exclues de vos dépenses personnelles.",

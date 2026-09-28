@@ -104,14 +104,19 @@ class CardManagementScreen extends ConsumerWidget {
     );
   }
 
-  /// 기본 카드는 삭제할 수 없음. 커스텀 카드는 확인 후 삭제.
+  /// 기본 카드는 같은 종류(체크/신용)의 다른 카드가 1개 이상 있을 때만 삭제
+  /// 가능 — 그 종류의 카드가 아예 사라지는 것을 막는다. 커스텀 카드는 항상
+  /// 확인 후 삭제.
   Future<void> _confirmDelete(
       BuildContext context, WidgetRef ref, CardItem card) async {
     final loc = AppLocalizations.of(context)!;
-    if (card.isDefault) {
+    if (card.isDefault &&
+        !ref
+            .read(cardProvider)
+            .any((c) => c.id != card.id && c.type == card.type)) {
       ScaffoldMessenger.of(context)
         ..clearSnackBars()
-        ..showSnackBar(SnackBar(content: Text(loc.defaultCardUndeletable)));
+        ..showSnackBar(SnackBar(content: Text(loc.defaultCardLastOneUndeletable)));
       return;
     }
 

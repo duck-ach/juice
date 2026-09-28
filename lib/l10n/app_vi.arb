@@ -286,7 +286,7 @@
   "cardNameLabel": "Tên thẻ",
   "cardTypeLabel": "Loại thẻ",
   "cardManagementTitle": "Quản lý thẻ của tôi",
-  "defaultCardUndeletable": "Không thể xóa thẻ mặc định",
+  "defaultCardLastOneUndeletable": "Đây là thẻ duy nhất thuộc loại này nên không thể xóa. Hãy thêm thẻ khác trước.",
   "cardTypeCorporate": "Thẻ công ty/công tác",
   "cardTypeCorporateExcluded": "Công ty (chi phí) · Loại khỏi juice",
   "corporateExpenseNotice": "🏢 Chi tiêu công ty/công việc được ghi lại không cần chọn danh mục và tự động loại trừ khỏi chi tiêu cá nhân của bạn.",

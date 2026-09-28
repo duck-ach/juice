@@ -219,7 +219,7 @@
   "cardNameLabel": "卡片名稱",
   "cardTypeLabel": "卡片類型",
   "cardManagementTitle": "卡片管理",
-  "defaultCardUndeletable": "預設卡片無法刪除",
+  "defaultCardLastOneUndeletable": "這是該類型下唯一的卡片，無法刪除。請先新增另一張卡片。",
   "cardTypeCorporate": "公司/業務用",
   "cardTypeCorporateExcluded": "公司用(支出)・不計入果汁",
   "corporateExpenseNotice": "🏢 公司/業務支出不需選擇分類,將自動從個人支出中排除。",
