@@ -122,6 +122,7 @@
       "day": {}
     }
   },
+  "fixedExpenseLastDayOptionLabel": "Jour 31 (dernier jour du mois)",
   "calendarAutoFillTitle": "Saisie automatique des charges fixes",
   "calendarAutoFillSubtitle": "Enregistre automatiquement vos charges fixes dans le calendrier chaque mois",
   "menuThemeSettingsTitle": "Paramètres de thème",

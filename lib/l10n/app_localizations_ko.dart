@@ -253,6 +253,9 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String get fixedExpenseLastDayOptionLabel => '31일 (말일)';
+
+  @override
   String get calendarAutoFillTitle => '고정지출 캘린더 자동 기입';
 
   @override

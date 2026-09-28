@@ -541,6 +541,12 @@ abstract class AppLocalizations {
   /// **'{day}일'**
   String fixedExpenseDayOptionLabel(Object day);
 
+  /// No description provided for @fixedExpenseLastDayOptionLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'31일 (말일)'**
+  String get fixedExpenseLastDayOptionLabel;
+
   /// No description provided for @calendarAutoFillTitle.
   ///
   /// In ko, this message translates to:

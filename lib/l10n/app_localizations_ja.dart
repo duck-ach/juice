@@ -253,6 +253,9 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get fixedExpenseLastDayOptionLabel => '31日（月末）';
+
+  @override
   String get calendarAutoFillTitle => '固定費のカレンダー自動記入';
 
   @override

@@ -122,6 +122,7 @@
       "day": {}
     }
   },
+  "fixedExpenseLastDayOptionLabel": "31日（月底）",
   "calendarAutoFillTitle": "固定支出自動記入日曆",
   "calendarAutoFillSubtitle": "每月自動將已登記的固定支出記入日曆",
   "menuThemeSettingsTitle": "主題設定",

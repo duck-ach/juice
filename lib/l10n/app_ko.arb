@@ -168,6 +168,7 @@
       "day": {}
     }
   },
+  "fixedExpenseLastDayOptionLabel": "31일 (말일)",
   "calendarAutoFillTitle": "고정지출 캘린더 자동 기입",
   "calendarAutoFillSubtitle": "매월 등록한 고정지출을 캘린더에 자동으로 기록해요",
   "menuThemeSettingsTitle": "테마 설정",

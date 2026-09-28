@@ -253,6 +253,9 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String get fixedExpenseLastDayOptionLabel => 'Tag 31 (Monatsletzter)';
+
+  @override
   String get calendarAutoFillTitle => 'Fixkosten automatisch eintragen';
 
   @override

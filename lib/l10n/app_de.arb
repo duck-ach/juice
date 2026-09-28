@@ -122,6 +122,7 @@
       "day": {}
     }
   },
+  "fixedExpenseLastDayOptionLabel": "Tag 31 (Monatsletzter)",
   "calendarAutoFillTitle": "Fixkosten automatisch eintragen",
   "calendarAutoFillSubtitle": "Trägt deine hinterlegten Fixkosten jeden Monat automatisch in den Kalender ein",
   "menuThemeSettingsTitle": "Design-Einstellungen",

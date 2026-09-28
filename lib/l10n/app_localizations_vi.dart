@@ -253,6 +253,9 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
+  String get fixedExpenseLastDayOptionLabel => 'Ngày 31 (cuối tháng)';
+
+  @override
   String get calendarAutoFillTitle => 'Tự động ghi chi phí cố định';
 
   @override

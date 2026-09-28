@@ -260,7 +260,10 @@ class _ExpenseRowCard extends StatelessWidget {
                 items: [
                   for (var d = 1; d <= 31; d++)
                     DropdownMenuItem(
-                        value: d, child: Text(loc.fixedExpenseDayOptionLabel(d))),
+                        value: d,
+                        child: Text(d == 31
+                            ? loc.fixedExpenseLastDayOptionLabel
+                            : loc.fixedExpenseDayOptionLabel(d))),
                 ],
                 onChanged: (value) {
                   if (value != null) onDayChanged(value);

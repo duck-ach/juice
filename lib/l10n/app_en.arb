@@ -122,6 +122,7 @@
       "day": {}
     }
   },
+  "fixedExpenseLastDayOptionLabel": "Day 31 (last day)",
   "calendarAutoFillTitle": "Auto-fill fixed expenses",
   "calendarAutoFillSubtitle": "Automatically records your registered fixed expenses on the calendar every month",
   "menuThemeSettingsTitle": "Theme Settings",

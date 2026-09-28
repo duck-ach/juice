@@ -253,6 +253,9 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String get fixedExpenseLastDayOptionLabel => 'Jour 31 (dernier jour du mois)';
+
+  @override
   String get calendarAutoFillTitle => 'Saisie automatique des charges fixes';
 
   @override

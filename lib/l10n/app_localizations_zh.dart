@@ -253,6 +253,9 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get fixedExpenseLastDayOptionLabel => '31日（月末）';
+
+  @override
   String get calendarAutoFillTitle => '固定支出自动记入日历';
 
   @override
@@ -1775,6 +1778,9 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   }
 
   @override
+  String get fixedExpenseLastDayOptionLabel => '31日（月末）';
+
+  @override
   String get calendarAutoFillTitle => '固定支出自动记入日历';
 
   @override
@@ -3295,6 +3301,9 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String fixedExpenseDayOptionLabel(Object day) {
     return '$day日';
   }
+
+  @override
+  String get fixedExpenseLastDayOptionLabel => '31日（月底）';
 
   @override
   String get calendarAutoFillTitle => '固定支出自動記入日曆';

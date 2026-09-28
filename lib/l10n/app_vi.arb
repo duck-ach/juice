@@ -168,6 +168,7 @@
       "day": {}
     }
   },
+  "fixedExpenseLastDayOptionLabel": "Ngày 31 (cuối tháng)",
   "calendarAutoFillTitle": "Tự động ghi chi phí cố định",
   "calendarAutoFillSubtitle": "Tự động ghi các khoản chi cố định đã đăng ký vào lịch mỗi tháng",
   "menuThemeSettingsTitle": "Cài đặt giao diện",

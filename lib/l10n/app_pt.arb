@@ -122,6 +122,7 @@
       "day": {}
     }
   },
+  "fixedExpenseLastDayOptionLabel": "Dia 31 (último dia do mês)",
   "calendarAutoFillTitle": "Preenchimento automático de despesas fixas",
   "calendarAutoFillSubtitle": "Registra automaticamente suas despesas fixas no calendário todo mês",
   "menuThemeSettingsTitle": "Configurações de tema",
