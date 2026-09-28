@@ -27,8 +27,7 @@ class FixedExpenseAutoFillService {
 
   static Future<void> checkAndFillCurrentMonth(Ref ref, {DateTime? now}) async {
     final plan = ref.read(savingsPlanProvider);
-    final items =
-        plan.fixedExpenses.where((e) => e.amount > 0 && e.enabled).toList();
+    final items = plan.fixedExpenses.where((e) => e.amount > 0).toList();
     if (items.isEmpty) return;
 
     now ??= DateTime.now();

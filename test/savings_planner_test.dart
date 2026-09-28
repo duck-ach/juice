@@ -108,25 +108,21 @@ void main() {
   });
 
   group('FixedExpenseItem(고정지출 자동 기입일)', () {
-    test('dayOfMonth/enabled 기본값은 각각 1과 true', () {
+    test('dayOfMonth 기본값은 1', () {
       const item = FixedExpenseItem(name: '월세', amount: 500000);
       expect(item.dayOfMonth, 1);
-      expect(item.enabled, true);
     });
 
-    test('dayOfMonth/enabled이 JSON 왕복 직렬화된다', () {
-      const item =
-          FixedExpenseItem(name: '월세', amount: 500000, enabled: false, dayOfMonth: 25);
+    test('dayOfMonth가 JSON 왕복 직렬화된다', () {
+      const item = FixedExpenseItem(name: '월세', amount: 500000, dayOfMonth: 25);
       final restored = FixedExpenseItem.fromJson(item.toJson());
       expect(restored.dayOfMonth, 25);
-      expect(restored.enabled, false);
     });
 
-    test('구버전 데이터(dayOfMonth/enabled 키 없음)는 안전한 기본값으로 대체', () {
+    test('구버전 데이터(dayOfMonth 키 없음)는 안전한 기본값으로 대체', () {
       final legacy = {'name': '월세', 'amount': 500000.0};
       final restored = FixedExpenseItem.fromJson(legacy);
       expect(restored.dayOfMonth, 1);
-      expect(restored.enabled, true);
     });
   });
 

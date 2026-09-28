@@ -41,17 +41,11 @@ class FixedExpenseItem {
   const FixedExpenseItem({
     required this.name,
     required this.amount,
-    this.enabled = true,
     this.dayOfMonth = 1,
   });
 
   final String name;
   final double amount;
-
-  /// 이 항목만 개별적으로 캘린더 자동 기입 대상에서 제외할 수 있는 토글 — 마스터
-  /// 스위치([fixedExpenseAutoFillEnabledProvider])가 켜져 있어도 이게 false면 이
-  /// 항목은 자동 기입되지 않는다. 기본값 true(구버전 데이터도 전부 포함되던 동작 유지).
-  final bool enabled;
 
   /// 매월 이 항목이 캘린더/지출 내역에 자동 기입될 날짜(1~31). 31처럼 실제로 없는
   /// 달(2월, 30일까지인 달 등)이 있는 값을 고르면, 자동 기입 시점에 그 달의 마지막
@@ -62,7 +56,6 @@ class FixedExpenseItem {
   Map<String, dynamic> toJson() => {
         'name': name,
         'amount': amount,
-        'enabled': enabled,
         'dayOfMonth': dayOfMonth,
       };
 
@@ -70,16 +63,13 @@ class FixedExpenseItem {
       FixedExpenseItem(
         name: json['name'] as String? ?? '',
         amount: (json['amount'] as num?)?.toDouble() ?? 0,
-        enabled: json['enabled'] as bool? ?? true,
         dayOfMonth: json['dayOfMonth'] as int? ?? 1,
       );
 
-  FixedExpenseItem copyWith(
-          {String? name, double? amount, bool? enabled, int? dayOfMonth}) =>
+  FixedExpenseItem copyWith({String? name, double? amount, int? dayOfMonth}) =>
       FixedExpenseItem(
         name: name ?? this.name,
         amount: amount ?? this.amount,
-        enabled: enabled ?? this.enabled,
         dayOfMonth: dayOfMonth ?? this.dayOfMonth,
       );
 }

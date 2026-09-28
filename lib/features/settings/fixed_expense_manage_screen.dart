@@ -13,7 +13,6 @@ class _ExpenseRow {
   _ExpenseRow({
     required String name,
     required double amount,
-    required this.enabled,
     required this.dayOfMonth,
   })  : nameController = TextEditingController(text: name),
         amountController = TextEditingController(
@@ -22,13 +21,11 @@ class _ExpenseRow {
 
   final TextEditingController nameController;
   final TextEditingController amountController;
-  bool enabled;
   int dayOfMonth;
 
   FixedExpenseItem toItem() => FixedExpenseItem(
         name: nameController.text.trim(),
         amount: double.tryParse(amountController.text.replaceAll(',', '')) ?? 0,
-        enabled: enabled,
         dayOfMonth: dayOfMonth,
       );
 
@@ -39,9 +36,9 @@ class _ExpenseRow {
 }
 
 /// 고정지출(월세, 통신비 등) 항목을 관리하는 독립 서브 화면. 장기 저축 플랜을 켜지
-/// 않은(주 예산만 쓰는) 유저도 여기서 고정지출을 자유롭게 추가/수정/삭제할 수 있고,
-/// 상단 마스터 스위치로 캘린더 자동 기입 전체를 켜고 끄거나, 항목별로 개별 토글할 수
-/// 있다.
+/// 않은(주 예산만 쓰는) 유저도 여기서 고정지출을 자유롭게 추가/수정/삭제할 수 있다.
+/// 등록되어 있으면 고정지출로 반영되고 삭제하면 미반영되는 CRUD 구조 — 개별
+/// on/off 토글 없이, 상단 마스터 스위치로만 캘린더 자동 기입 전체를 켜고 끈다.
 class FixedExpenseManageScreen extends ConsumerStatefulWidget {
   const FixedExpenseManageScreen({super.key});
 
@@ -65,7 +62,6 @@ class _FixedExpenseManageScreenState
         .map((e) => _ExpenseRow(
               name: e.name,
               amount: e.amount,
-              enabled: e.enabled,
               dayOfMonth: e.dayOfMonth,
             ))
         .toList();
@@ -79,8 +75,8 @@ class _FixedExpenseManageScreenState
     super.dispose();
   }
 
-  void _addRow() => setState(() => _rows
-      .add(_ExpenseRow(name: '', amount: 0, enabled: true, dayOfMonth: 1)));
+  void _addRow() =>
+      setState(() => _rows.add(_ExpenseRow(name: '', amount: 0, dayOfMonth: 1)));
 
   void _removeRow(int index) {
     final removed = _rows.removeAt(index);
@@ -168,8 +164,6 @@ class _FixedExpenseManageScreenState
             _ExpenseRowCard(
               row: _rows[i],
               loc: loc,
-              onEnabledChanged: (value) =>
-                  setState(() => _rows[i].enabled = value),
               onDayChanged: (value) =>
                   setState(() => _rows[i].dayOfMonth = value),
               onFieldChanged: () => setState(() {}),
@@ -190,14 +184,12 @@ class _FixedExpenseManageScreenState
   }
 }
 
-/// 고정지출 한 항목의 카드. ON/OFF 상태를 배경/테두리 대비와 텍스트 디밍으로
-/// 명확히 구분한다 — 스위치와 삭제 버튼은 항상 또렷하게 유지해 조작성을 해치지
-/// 않고, 이름/금액/지급일 등 "정보" 영역만 꺼졌을 때 흐리게 표시한다.
+/// 고정지출 한 항목의 카드. 등록되어 있으면 고정지출로 반영되고 삭제하면
+/// 미반영되는 단순한 CRUD 구조 — 개별 on/off 토글 없이 이름/금액/지급일만 관리한다.
 class _ExpenseRowCard extends StatelessWidget {
   const _ExpenseRowCard({
     required this.row,
     required this.loc,
-    required this.onEnabledChanged,
     required this.onDayChanged,
     required this.onFieldChanged,
     required this.onRemove,
@@ -205,7 +197,6 @@ class _ExpenseRowCard extends StatelessWidget {
 
   final _ExpenseRow row;
   final AppLocalizations loc;
-  final ValueChanged<bool> onEnabledChanged;
   final ValueChanged<int> onDayChanged;
   final VoidCallback onFieldChanged;
   final VoidCallback onRemove;
@@ -213,93 +204,67 @@ class _ExpenseRowCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final isOn = row.enabled;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
-        color: isOn
-            ? colorScheme.primary.withValues(alpha: 0.06)
-            : colorScheme.surfaceContainerHighest.withValues(alpha: 0.35),
+        color: colorScheme.primary.withValues(alpha: 0.06),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: isOn
-              ? colorScheme.primary.withValues(alpha: 0.35)
-              : Colors.transparent,
+          color: colorScheme.primary.withValues(alpha: 0.35),
           width: 1.2,
         ),
       ),
-      child: Row(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Opacity(
-              opacity: isOn ? 1 : 0.45,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: TextField(
-                          controller: row.nameController,
-                          decoration:
-                              InputDecoration(hintText: loc.itemNameHint),
-                          onChanged: (_) => onFieldChanged(),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        flex: 3,
-                        child: TextField(
-                          controller: row.amountController,
-                          keyboardType: TextInputType.number,
-                          inputFormatters: [ThousandsSeparatorInputFormatter()],
-                          decoration: InputDecoration(
-                              hintText: '0', suffixText: loc.wonUnit),
-                          onChanged: (_) => onFieldChanged(),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 4),
-                  Row(
-                    children: [
-                      Text(loc.fixedExpensePaymentDayLabel,
-                          style: Theme.of(context).textTheme.bodySmall),
-                      const SizedBox(width: 4),
-                      DropdownButton<int>(
-                        value: row.dayOfMonth,
-                        underline: const SizedBox.shrink(),
-                        isDense: true,
-                        items: [
-                          for (var d = 1; d <= 31; d++)
-                            DropdownMenuItem(
-                                value: d,
-                                child: Text(loc.fixedExpenseDayOptionLabel(d))),
-                        ],
-                        onChanged: (value) {
-                          if (value != null) onDayChanged(value);
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Column(
+          Row(
             children: [
-              Switch(
-                value: isOn,
-                activeColor: colorScheme.primary,
-                onChanged: onEnabledChanged,
+              Expanded(
+                flex: 2,
+                child: TextField(
+                  controller: row.nameController,
+                  decoration: InputDecoration(hintText: loc.itemNameHint),
+                  onChanged: (_) => onFieldChanged(),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                flex: 3,
+                child: TextField(
+                  controller: row.amountController,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [ThousandsSeparatorInputFormatter()],
+                  decoration:
+                      InputDecoration(hintText: '0', suffixText: loc.wonUnit),
+                  onChanged: (_) => onFieldChanged(),
+                ),
               ),
               IconButton(
                 icon: const Icon(Icons.remove_circle_outline),
                 onPressed: onRemove,
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          Row(
+            children: [
+              Text(loc.fixedExpensePaymentDayLabel,
+                  style: Theme.of(context).textTheme.bodySmall),
+              const SizedBox(width: 4),
+              DropdownButton<int>(
+                value: row.dayOfMonth,
+                underline: const SizedBox.shrink(),
+                isDense: true,
+                items: [
+                  for (var d = 1; d <= 31; d++)
+                    DropdownMenuItem(
+                        value: d, child: Text(loc.fixedExpenseDayOptionLabel(d))),
+                ],
+                onChanged: (value) {
+                  if (value != null) onDayChanged(value);
+                },
               ),
             ],
           ),
