@@ -236,6 +236,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get menuGoalSettingsSubtitle => 'Meta de poupança de longo prazo, período de meta, meta por período';
 
   @override
+  String get menuFixedExpenseManagementTitle => 'Gerenciar despesas fixas';
+
+  @override
+  String get menuFixedExpenseManagementSubtitle => 'Gerencie itens de despesas fixas e as configurações de preenchimento automático do calendário';
+
+  @override
+  String get fixedExpenseManageInfoBanner => 'Vinculado às despesas fixas do seu plano de poupança de médio/longo prazo — se elas aumentarem ou diminuírem, seu orçamento diário/semanal/mensal disponível pode mudar.';
+
+  @override
   String get calendarAutoFillTitle => 'Preenchimento automático de despesas fixas';
 
   @override

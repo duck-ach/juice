@@ -38,17 +38,35 @@ extension IncomeFrequencyConvert on IncomeFrequency {
 }
 
 class FixedExpenseItem {
-  const FixedExpenseItem({required this.name, required this.amount});
+  const FixedExpenseItem({
+    required this.name,
+    required this.amount,
+    this.enabled = true,
+  });
 
   final String name;
   final double amount;
 
-  Map<String, dynamic> toJson() => {'name': name, 'amount': amount};
+  /// 이 항목만 개별적으로 캘린더 자동 기입 대상에서 제외할 수 있는 토글 — 마스터
+  /// 스위치([fixedExpenseAutoFillEnabledProvider])가 켜져 있어도 이게 false면 이
+  /// 항목은 자동 기입되지 않는다. 기본값 true(구버전 데이터도 전부 포함되던 동작 유지).
+  final bool enabled;
+
+  Map<String, dynamic> toJson() =>
+      {'name': name, 'amount': amount, 'enabled': enabled};
 
   factory FixedExpenseItem.fromJson(Map<String, dynamic> json) =>
       FixedExpenseItem(
         name: json['name'] as String? ?? '',
         amount: (json['amount'] as num?)?.toDouble() ?? 0,
+        enabled: json['enabled'] as bool? ?? true,
+      );
+
+  FixedExpenseItem copyWith({String? name, double? amount, bool? enabled}) =>
+      FixedExpenseItem(
+        name: name ?? this.name,
+        amount: amount ?? this.amount,
+        enabled: enabled ?? this.enabled,
       );
 }
 

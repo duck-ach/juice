@@ -236,6 +236,15 @@ class AppLocalizationsJa extends AppLocalizations {
   String get menuGoalSettingsSubtitle => '長期貯蓄目標、目標周期、周期別目標金額';
 
   @override
+  String get menuFixedExpenseManagementTitle => '固定支出の管理';
+
+  @override
+  String get menuFixedExpenseManagementSubtitle => '固定支出項目の管理とカレンダー自動記入の設定';
+
+  @override
+  String get fixedExpenseManageInfoBanner => '中長期貯蓄プランの固定支出と連動しており、固定支出が増減すると日/週/月の使用可能予算が変わることがあります。';
+
+  @override
   String get calendarAutoFillTitle => '固定費のカレンダー自動記入';
 
   @override

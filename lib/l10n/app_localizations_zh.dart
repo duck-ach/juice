@@ -236,6 +236,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get menuGoalSettingsSubtitle => '长期储蓄目标、目标周期、各周期目标金额';
 
   @override
+  String get menuFixedExpenseManagementTitle => '固定支出管理';
+
+  @override
+  String get menuFixedExpenseManagementSubtitle => '管理固定支出项目及日历自动记账设置';
+
+  @override
+  String get fixedExpenseManageInfoBanner => '与中长期储蓄计划中的固定支出联动，固定支出增加或减少时，日/周/月可用预算可能随之变化。';
+
+  @override
   String get calendarAutoFillTitle => '固定支出自动记入日历';
 
   @override
@@ -1741,6 +1750,15 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get menuGoalSettingsSubtitle => '长期储蓄目标、目标周期、各周期目标金额';
 
   @override
+  String get menuFixedExpenseManagementTitle => '固定支出管理';
+
+  @override
+  String get menuFixedExpenseManagementSubtitle => '管理固定支出项目及日历自动记账设置';
+
+  @override
+  String get fixedExpenseManageInfoBanner => '与中长期储蓄计划中的固定支出联动，固定支出增加或减少时，日/周/月可用预算可能随之变化。';
+
+  @override
   String get calendarAutoFillTitle => '固定支出自动记入日历';
 
   @override
@@ -3244,6 +3262,15 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get menuGoalSettingsSubtitle => '長期儲蓄目標、目標週期、各週期目標金額';
+
+  @override
+  String get menuFixedExpenseManagementTitle => '固定支出管理';
+
+  @override
+  String get menuFixedExpenseManagementSubtitle => '管理固定支出項目及日曆自動記帳設定';
+
+  @override
+  String get fixedExpenseManageInfoBanner => '與中長期儲蓄計劃中的固定支出聯動，固定支出增加或減少時，日/週/月可用預算可能隨之變化。';
 
   @override
   String get calendarAutoFillTitle => '固定支出自動記入日曆';

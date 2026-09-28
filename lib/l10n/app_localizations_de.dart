@@ -236,6 +236,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get menuGoalSettingsSubtitle => 'Langfristiges Sparziel, Zielzeitraum, Zielbetrag pro Zeitraum';
 
   @override
+  String get menuFixedExpenseManagementTitle => 'Feste Ausgaben verwalten';
+
+  @override
+  String get menuFixedExpenseManagementSubtitle => 'Feste Ausgabenposten verwalten und Kalender-Autoausfüllung einstellen';
+
+  @override
+  String get fixedExpenseManageInfoBanner => 'Verknüpft mit den festen Ausgaben deines mittel-/langfristigen Sparplans – wenn sich diese erhöhen oder verringern, kann sich dein verfügbares Tages-/Wochen-/Monatsbudget ändern.';
+
+  @override
   String get calendarAutoFillTitle => 'Fixkosten automatisch eintragen';
 
   @override

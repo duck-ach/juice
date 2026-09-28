@@ -17,11 +17,11 @@ import '../../l10n/app_localizations.dart';
 import '../../providers/budget_settings_provider.dart';
 import '../../providers/currency_provider.dart';
 import '../../providers/expense_provider.dart';
-import '../../providers/fixed_expense_autofill_provider.dart';
 import '../../providers/juice_theme_provider.dart';
 import '../../providers/locale_provider.dart';
 import 'backup_settings_screen.dart';
 import 'card_management_screen.dart';
+import 'fixed_expense_manage_screen.dart';
 import 'goal_settings_screen.dart';
 import 'notification_settings_screen.dart';
 import 'security_settings_screen.dart';
@@ -81,7 +81,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final loc = AppLocalizations.of(context)!;
     final weekStartDay = ref.watch(weekStartDayProvider);
     final targetAmount = ref.watch(targetAmountProvider);
-    final autoFillFixedExpenses = ref.watch(fixedExpenseAutoFillEnabledProvider);
     final spent = ref.watch(weeklySpentProvider);
     final range = currentWeekRange(null, weekStartDay);
     final weekLabel =
@@ -158,19 +157,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               MaterialPageRoute(builder: (_) => const GoalSettingsScreen()),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: Card(
-              margin: EdgeInsets.zero,
-              child: SwitchListTile(
-                secondary: const Text('📅', style: TextStyle(fontSize: 22)),
-                value: autoFillFixedExpenses,
-                onChanged: (value) => ref
-                    .read(fixedExpenseAutoFillEnabledProvider.notifier)
-                    .setEnabled(value),
-                title: Text(loc.calendarAutoFillTitle),
-                subtitle: Text(loc.calendarAutoFillSubtitle),
-              ),
+          _SettingsMenuTile(
+            emoji: '📅',
+            title: loc.menuFixedExpenseManagementTitle,
+            subtitle: loc.menuFixedExpenseManagementSubtitle,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const FixedExpenseManageScreen()),
             ),
           ),
           _SettingsMenuTile(

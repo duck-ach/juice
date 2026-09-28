@@ -236,6 +236,15 @@ class AppLocalizationsKo extends AppLocalizations {
   String get menuGoalSettingsSubtitle => '장기 저축 목표, 목표 주기, 주기별 목표 금액';
 
   @override
+  String get menuFixedExpenseManagementTitle => '고정지출 관리';
+
+  @override
+  String get menuFixedExpenseManagementSubtitle => '고정지출 항목 관리 및 캘린더 자동 기입 설정';
+
+  @override
+  String get fixedExpenseManageInfoBanner => '중/장기 저축플랜의 고정지출과 연동되어 고정지출이 늘어나거나 줄어들 경우 일/주/월 사용 가능 예산이 달라질 수 있습니다.';
+
+  @override
   String get calendarAutoFillTitle => '고정지출 캘린더 자동 기입';
 
   @override

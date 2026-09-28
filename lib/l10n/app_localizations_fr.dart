@@ -236,6 +236,15 @@ class AppLocalizationsFr extends AppLocalizations {
   String get menuGoalSettingsSubtitle => 'Objectif d\'épargne à long terme, période d\'objectif, cible par période';
 
   @override
+  String get menuFixedExpenseManagementTitle => 'Gérer les dépenses fixes';
+
+  @override
+  String get menuFixedExpenseManagementSubtitle => 'Gérer les postes de dépenses fixes et les paramètres de saisie automatique du calendrier';
+
+  @override
+  String get fixedExpenseManageInfoBanner => 'Lié aux dépenses fixes de votre plan d\'épargne à moyen/long terme — si elles augmentent ou diminuent, votre budget disponible quotidien/hebdomadaire/mensuel peut changer.';
+
+  @override
   String get calendarAutoFillTitle => 'Saisie automatique des charges fixes';
 
   @override

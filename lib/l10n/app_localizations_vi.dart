@@ -236,6 +236,15 @@ class AppLocalizationsVi extends AppLocalizations {
   String get menuGoalSettingsSubtitle => 'Mục tiêu tiết kiệm dài hạn, chu kỳ mục tiêu, số tiền mục tiêu theo chu kỳ';
 
   @override
+  String get menuFixedExpenseManagementTitle => 'Quản lý chi phí cố định';
+
+  @override
+  String get menuFixedExpenseManagementSubtitle => 'Quản lý các khoản chi phí cố định và cài đặt tự động điền lịch';
+
+  @override
+  String get fixedExpenseManageInfoBanner => 'Liên kết với các khoản chi phí cố định trong kế hoạch tiết kiệm trung/dài hạn — nếu chi phí cố định tăng hoặc giảm, ngân sách khả dụng theo ngày/tuần/tháng của bạn có thể thay đổi.';
+
+  @override
   String get calendarAutoFillTitle => 'Tự động ghi chi phí cố định';
 
   @override

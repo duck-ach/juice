@@ -236,6 +236,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get menuGoalSettingsSubtitle => 'Long-term savings goal, goal period, target per period';
 
   @override
+  String get menuFixedExpenseManagementTitle => 'Manage Fixed Expenses';
+
+  @override
+  String get menuFixedExpenseManagementSubtitle => 'Manage fixed expense items and calendar auto-fill settings';
+
+  @override
+  String get fixedExpenseManageInfoBanner => 'Linked to your mid/long-term savings plan\'s fixed expenses — if they increase or decrease, your available daily/weekly/monthly budget may change.';
+
+  @override
   String get calendarAutoFillTitle => 'Auto-fill fixed expenses';
 
   @override
