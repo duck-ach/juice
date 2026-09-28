@@ -391,21 +391,23 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
         Text(loc.savingsPlanRecommendedSectionLabel,
             style: theme.textTheme.labelLarge),
         const SizedBox(height: 8),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-                child: _MiniStatCard(
-                    label: loc.savingsPlanDailyGridLabel, value: daily)),
-            const SizedBox(width: 8),
-            Expanded(
-                child: _MiniStatCard(
-                    label: loc.savingsPlanWeeklyGridLabel, value: weekly)),
-            const SizedBox(width: 8),
-            Expanded(
-                child: _MiniStatCard(
-                    label: loc.savingsPlanMonthlyGridLabel, value: monthly)),
-          ],
+        IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                  child: _MiniStatCard(
+                      label: loc.savingsPlanDailyGridLabel, value: daily)),
+              const SizedBox(width: 8),
+              Expanded(
+                  child: _MiniStatCard(
+                      label: loc.savingsPlanWeeklyGridLabel, value: weekly)),
+              const SizedBox(width: 8),
+              Expanded(
+                  child: _MiniStatCard(
+                      label: loc.savingsPlanMonthlyGridLabel, value: monthly)),
+            ],
+          ),
         ),
         const SizedBox(height: 16),
         Text(
