@@ -7,10 +7,12 @@ import '../../core/widgets/juice_segmented_tab.dart';
 import '../../data/models/budget_period.dart';
 import '../../data/models/week_start_day.dart';
 import '../../l10n/app_localizations.dart';
+import '../../providers/asset_provider.dart';
 import '../../providers/budget_settings_provider.dart';
 import '../../providers/installment_settings_provider.dart';
 import '../../providers/saving_option_provider.dart';
 import '../../providers/savings_planner_provider.dart';
+import 'widgets/fixed_income_manage_sheet.dart';
 import 'widgets/savings_plan_recalibration_sheet.dart';
 import 'widgets/savings_plan_wizard.dart';
 
@@ -120,6 +122,7 @@ class GoalSettingsScreen extends ConsumerWidget {
     final periodTargets = ref.watch(periodTargetAmountsProvider);
     final plan = ref.watch(savingsPlanProvider);
     final paceDeltaMonths = ref.watch(savingsPlanPaceProvider);
+    final actualSavings = ref.watch(totalSavingsProvider);
     final installmentMode = ref.watch(installmentBillingModeProvider);
     final savingOption = ref.watch(savingOptionProvider);
     final formatter = NumberFormat('#,###');
@@ -267,9 +270,13 @@ class GoalSettingsScreen extends ConsumerWidget {
             _SavingsPlanSummaryCard(
               plan: plan,
               paceDeltaMonths: paceDeltaMonths,
+              actualSavings: actualSavings,
               onEdit: () => showSavingsPlanWizard(context),
               onApply: () => _reapplyBudget(context, ref, plan, loc),
               onRecalibrate: () => SavingsPlanRecalibrationSheet.show(context),
+              onManageFixedIncomes: plan.incomeType == IncomeType.fixed
+                  ? () => FixedIncomeManageSheet.show(context)
+                  : null,
             ),
           ],
         ],
@@ -283,16 +290,25 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
   const _SavingsPlanSummaryCard({
     required this.plan,
     required this.paceDeltaMonths,
+    required this.actualSavings,
     required this.onEdit,
     required this.onApply,
     required this.onRecalibrate,
+    this.onManageFixedIncomes,
   });
 
   final SavingsPlan plan;
   final int? paceDeltaMonths;
+
+  /// 저축 카테고리로 실제 기록된 전체 저축/투자 누적액([totalSavingsProvider]) —
+  /// 목표 대비 실제 얼마나 쌓이고 있는지 실시간 트레이스.
+  final double actualSavings;
   final VoidCallback onEdit;
   final VoidCallback onApply;
   final VoidCallback onRecalibrate;
+
+  /// [IncomeType.fixed]일 때만 제공 — 고정수입 CRUD 바텀시트를 연다.
+  final VoidCallback? onManageFixedIncomes;
 
   String _durationLabel(AppLocalizations loc) {
     if (plan.goalYears > 0 && plan.goalMonths > 0) {
@@ -336,6 +352,9 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
               loc.savingsPlanFixedExpenseLine(
                   formatter.format(plan.fixedExpenseTotal)),
               style: theme.textTheme.bodyMedium),
+          const SizedBox(height: 10),
+          _ActualSavingsTrace(
+              actualSavings: actualSavings, goalAmount: plan.goalAmount ?? 0),
           const SizedBox(height: 12),
           Text(
             loc.savingsPlanRecommendedLine(formatter.format(daily),
@@ -359,6 +378,17 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
               ),
             ),
           ],
+          if (onManageFixedIncomes != null) ...[
+            const SizedBox(height: 4),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton.icon(
+                onPressed: onManageFixedIncomes,
+                icon: const Icon(Icons.payments_outlined, size: 18),
+                label: Text(loc.manageFixedIncomesButton),
+              ),
+            ),
+          ],
           const SizedBox(height: 16),
           Row(
             children: [
@@ -378,6 +408,46 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// 저축 카테고리로 실제 기록된 금액 대비 목표 금액 진행률 — [totalSavingsProvider]를
+/// 그대로 반영하므로 저축 내역을 추가/수정/삭제하는 즉시 갱신된다.
+class _ActualSavingsTrace extends StatelessWidget {
+  const _ActualSavingsTrace(
+      {required this.actualSavings, required this.goalAmount});
+
+  final double actualSavings;
+  final double goalAmount;
+
+  @override
+  Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    final formatter = NumberFormat('#,###');
+    final progress =
+        goalAmount <= 0 ? 0.0 : (actualSavings / goalAmount).clamp(0.0, 1.0);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          loc.savingsPlanActualTraceLine(formatter.format(actualSavings),
+              formatter.format(goalAmount), (progress * 100).round()),
+          style:
+              theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+        ),
+        const SizedBox(height: 4),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(6),
+          child: LinearProgressIndicator(
+            value: progress,
+            minHeight: 8,
+            backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.12),
+          ),
+        ),
+      ],
     );
   }
 }

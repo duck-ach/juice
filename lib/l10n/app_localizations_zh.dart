@@ -122,6 +122,19 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
+    return '实际储蓄 $actual / 目标 $goal（$percent%）';
+  }
+
+  @override
+  String get manageFixedIncomesButton => '管理固定收入';
+
+  @override
+  String savingsPlanFixedIncomeTotalLine(Object total) {
+    return '固定收入总计：$total';
+  }
+
+  @override
   String savingsPlanRecommendedLine(Object daily, Object weekly, Object monthly) {
     return '建议果汁量:每日 $daily mL・每周 $weekly mL・每月 $monthly mL';
   }
@@ -171,6 +184,29 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get recalibrateBudgetSliderLabel => '本月生活费（果汁）预算';
+
+  @override
+  String get recalibrateWeeklyBudgetLabel => '每周目标';
+
+  @override
+  String recalibratePreviewLine(Object before, Object after) {
+    return '按此预算，目标期限将从$before个月变为$after个月';
+  }
+
+  @override
+  String get recalibrateNoSavingsWarning => '按此预算，本月将无法储蓄。请把滑块往左移。';
+
+  @override
+  String get recalibrateStatGoal => '目标金额';
+
+  @override
+  String get recalibrateStatSaved => '已储蓄金额';
+
+  @override
+  String get recalibrateStatRemaining => '剩余金额';
+
+  @override
   String get settingsTitle => '设置';
 
   @override
@@ -198,6 +234,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get menuGoalSettingsSubtitle => '长期储蓄目标、目标周期、各周期目标金额';
+
+  @override
+  String get calendarAutoFillTitle => '固定支出自动记入日历';
+
+  @override
+  String get calendarAutoFillSubtitle => '每月自动将已登记的固定支出记入日历';
 
   @override
   String get menuThemeSettingsTitle => '主题设置';
@@ -1585,6 +1627,19 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   }
 
   @override
+  String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
+    return '实际储蓄 $actual / 目标 $goal（$percent%）';
+  }
+
+  @override
+  String get manageFixedIncomesButton => '管理固定收入';
+
+  @override
+  String savingsPlanFixedIncomeTotalLine(Object total) {
+    return '固定收入总计：$total';
+  }
+
+  @override
   String savingsPlanRecommendedLine(Object daily, Object weekly, Object monthly) {
     return '建议果汁量:每日 $daily mL・每周 $weekly mL・每月 $monthly mL';
   }
@@ -1634,6 +1689,29 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   }
 
   @override
+  String get recalibrateBudgetSliderLabel => '本月生活费（果汁）预算';
+
+  @override
+  String get recalibrateWeeklyBudgetLabel => '每周目标';
+
+  @override
+  String recalibratePreviewLine(Object before, Object after) {
+    return '按此预算，目标期限将从$before个月变为$after个月';
+  }
+
+  @override
+  String get recalibrateNoSavingsWarning => '按此预算，本月将无法储蓄。请把滑块往左移。';
+
+  @override
+  String get recalibrateStatGoal => '目标金额';
+
+  @override
+  String get recalibrateStatSaved => '已储蓄金额';
+
+  @override
+  String get recalibrateStatRemaining => '剩余金额';
+
+  @override
   String get settingsTitle => '设置';
 
   @override
@@ -1661,6 +1739,12 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
 
   @override
   String get menuGoalSettingsSubtitle => '长期储蓄目标、目标周期、各周期目标金额';
+
+  @override
+  String get calendarAutoFillTitle => '固定支出自动记入日历';
+
+  @override
+  String get calendarAutoFillSubtitle => '每月自动将已登记的固定支出记入日历';
 
   @override
   String get menuThemeSettingsTitle => '主题设置';
@@ -3048,6 +3132,19 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   }
 
   @override
+  String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
+    return '實際儲蓄 $actual / 目標 $goal（$percent%）';
+  }
+
+  @override
+  String get manageFixedIncomesButton => '管理固定收入';
+
+  @override
+  String savingsPlanFixedIncomeTotalLine(Object total) {
+    return '固定收入總計：$total';
+  }
+
+  @override
   String savingsPlanRecommendedLine(Object daily, Object weekly, Object monthly) {
     return '建議果汁量:每日 $daily mL・每週 $weekly mL・每月 $monthly mL';
   }
@@ -3097,6 +3194,29 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   }
 
   @override
+  String get recalibrateBudgetSliderLabel => '本月生活費（果汁）預算';
+
+  @override
+  String get recalibrateWeeklyBudgetLabel => '每週目標';
+
+  @override
+  String recalibratePreviewLine(Object before, Object after) {
+    return '按此預算，目標期限將從$before個月變為$after個月';
+  }
+
+  @override
+  String get recalibrateNoSavingsWarning => '按此預算，本月將無法儲蓄。請將滑桿往左移。';
+
+  @override
+  String get recalibrateStatGoal => '目標金額';
+
+  @override
+  String get recalibrateStatSaved => '已儲蓄金額';
+
+  @override
+  String get recalibrateStatRemaining => '剩餘金額';
+
+  @override
   String get settingsTitle => '設定';
 
   @override
@@ -3124,6 +3244,12 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get menuGoalSettingsSubtitle => '長期儲蓄目標、目標週期、各週期目標金額';
+
+  @override
+  String get calendarAutoFillTitle => '固定支出自動記入日曆';
+
+  @override
+  String get calendarAutoFillSubtitle => '每月自動將已登記的固定支出記入日曆';
 
   @override
   String get menuThemeSettingsTitle => '主題設定';

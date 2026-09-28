@@ -122,6 +122,19 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
+    return '실제 저축 $actual원 / 목표 $goal원 ($percent%)';
+  }
+
+  @override
+  String get manageFixedIncomesButton => '고정수입 관리';
+
+  @override
+  String savingsPlanFixedIncomeTotalLine(Object total) {
+    return '고정수입 합계: $total원';
+  }
+
+  @override
   String savingsPlanRecommendedLine(Object daily, Object weekly, Object monthly) {
     return '추천 주스 한 잔: 하루 $daily mL / 이번 주 $weekly mL / 이번 달 $monthly mL';
   }
@@ -171,6 +184,29 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String get recalibrateBudgetSliderLabel => '이번 달 생활비(주스) 예산';
+
+  @override
+  String get recalibrateWeeklyBudgetLabel => '주간 목표';
+
+  @override
+  String recalibratePreviewLine(Object before, Object after) {
+    return '이 예산이면 목표 기간이 $before개월 → $after개월로 바뀌어요';
+  }
+
+  @override
+  String get recalibrateNoSavingsWarning => '이 예산이면 이번 달은 저축을 못 해요. 슬라이더를 왼쪽으로 옮겨보세요';
+
+  @override
+  String get recalibrateStatGoal => '목표 금액';
+
+  @override
+  String get recalibrateStatSaved => '모은 금액';
+
+  @override
+  String get recalibrateStatRemaining => '남은 금액';
+
+  @override
   String get settingsTitle => '설정';
 
   @override
@@ -198,6 +234,12 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get menuGoalSettingsSubtitle => '장기 저축 목표, 목표 주기, 주기별 목표 금액';
+
+  @override
+  String get calendarAutoFillTitle => '고정지출 캘린더 자동 기입';
+
+  @override
+  String get calendarAutoFillSubtitle => '매월 등록한 고정지출을 캘린더에 자동으로 기록해요';
 
   @override
   String get menuThemeSettingsTitle => '테마 설정';

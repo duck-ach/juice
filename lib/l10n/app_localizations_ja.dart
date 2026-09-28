@@ -122,6 +122,19 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
+    return '実際の貯蓄 $actual / 目標 $goal（$percent%）';
+  }
+
+  @override
+  String get manageFixedIncomesButton => '固定収入を管理';
+
+  @override
+  String savingsPlanFixedIncomeTotalLine(Object total) {
+    return '固定収入合計: $total';
+  }
+
+  @override
   String savingsPlanRecommendedLine(Object daily, Object weekly, Object monthly) {
     return 'おすすめジュース: 1日${daily}mL・今週${weekly}mL・今月${monthly}mL';
   }
@@ -171,6 +184,29 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get recalibrateBudgetSliderLabel => '今月の生活費（ジュース）予算';
+
+  @override
+  String get recalibrateWeeklyBudgetLabel => '週間目標';
+
+  @override
+  String recalibratePreviewLine(Object before, Object after) {
+    return 'この予算だと目標期間が$beforeヶ月→$afterヶ月に変わります';
+  }
+
+  @override
+  String get recalibrateNoSavingsWarning => 'この予算だと今月は貯蓄できません。スライダーを左に動かしてみてください';
+
+  @override
+  String get recalibrateStatGoal => '目標金額';
+
+  @override
+  String get recalibrateStatSaved => '貯まった金額';
+
+  @override
+  String get recalibrateStatRemaining => '残りの金額';
+
+  @override
   String get settingsTitle => '設定';
 
   @override
@@ -198,6 +234,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get menuGoalSettingsSubtitle => '長期貯蓄目標、目標周期、周期別目標金額';
+
+  @override
+  String get calendarAutoFillTitle => '固定費のカレンダー自動記入';
+
+  @override
+  String get calendarAutoFillSubtitle => '毎月登録した固定費をカレンダーに自動で記録します';
 
   @override
   String get menuThemeSettingsTitle => 'テーマ設定';

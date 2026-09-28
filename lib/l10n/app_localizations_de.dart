@@ -122,6 +122,19 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
+    return 'Tatsächlich gespart: $actual / Ziel $goal ($percent%)';
+  }
+
+  @override
+  String get manageFixedIncomesButton => 'Festes Einkommen verwalten';
+
+  @override
+  String savingsPlanFixedIncomeTotalLine(Object total) {
+    return 'Gesamtes festes Einkommen: $total';
+  }
+
+  @override
   String savingsPlanRecommendedLine(Object daily, Object weekly, Object monthly) {
     return 'Empfohlener Juice: $daily mL/Tag · $weekly mL/Woche · $monthly mL/Monat';
   }
@@ -171,6 +184,29 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String get recalibrateBudgetSliderLabel => 'Lebenshaltungsbudget (Juice) für diesen Monat';
+
+  @override
+  String get recalibrateWeeklyBudgetLabel => 'Wöchentliches Ziel';
+
+  @override
+  String recalibratePreviewLine(Object before, Object after) {
+    return 'Bei diesem Budget ändert sich dein Zielzeitraum von $before auf $after Monate';
+  }
+
+  @override
+  String get recalibrateNoSavingsWarning => 'Bei diesem Budget sparst du diesen Monat nichts. Schiebe den Regler nach links.';
+
+  @override
+  String get recalibrateStatGoal => 'Zielbetrag';
+
+  @override
+  String get recalibrateStatSaved => 'Bereits gespart';
+
+  @override
+  String get recalibrateStatRemaining => 'Verbleibend';
+
+  @override
   String get settingsTitle => 'Einstellungen';
 
   @override
@@ -198,6 +234,12 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get menuGoalSettingsSubtitle => 'Langfristiges Sparziel, Zielzeitraum, Zielbetrag pro Zeitraum';
+
+  @override
+  String get calendarAutoFillTitle => 'Fixkosten automatisch eintragen';
+
+  @override
+  String get calendarAutoFillSubtitle => 'Trägt deine hinterlegten Fixkosten jeden Monat automatisch in den Kalender ein';
 
   @override
   String get menuThemeSettingsTitle => 'Design-Einstellungen';

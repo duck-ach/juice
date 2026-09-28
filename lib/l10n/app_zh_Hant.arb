@@ -35,6 +35,21 @@
   "durationMonthsOnly": "{months}個月",
   "savingsPlanGoalLine": "目標:{duration}內存下 {amount} 元",
   "savingsPlanFixedExpenseLine": "固定支出(無法避免):每月 {amount} 元",
+  "savingsPlanActualTraceLine": "實際儲蓄 {actual} / 目標 {goal}（{percent}%）",
+  "@savingsPlanActualTraceLine": {
+    "placeholders": {
+      "actual": {},
+      "goal": {},
+      "percent": {}
+    }
+  },
+  "manageFixedIncomesButton": "管理固定收入",
+  "savingsPlanFixedIncomeTotalLine": "固定收入總計：{total}",
+  "@savingsPlanFixedIncomeTotalLine": {
+    "placeholders": {
+      "total": {}
+    }
+  },
   "savingsPlanRecommendedLine": "建議果汁量:每日 {daily} mL・每週 {weekly} mL・每月 {monthly} mL",
   "savingsPlanPaceFasterLine": "以目前的儲蓄節奏,可望提前 {months} 個月達成目標! 🚀",
   "@savingsPlanPaceFasterLine": {
@@ -70,6 +85,19 @@
       "after": {}
     }
   },
+  "recalibrateBudgetSliderLabel": "本月生活費（果汁）預算",
+  "recalibrateWeeklyBudgetLabel": "每週目標",
+  "recalibratePreviewLine": "按此預算，目標期限將從{before}個月變為{after}個月",
+  "@recalibratePreviewLine": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateNoSavingsWarning": "按此預算，本月將無法儲蓄。請將滑桿往左移。",
+  "recalibrateStatGoal": "目標金額",
+  "recalibrateStatSaved": "已儲蓄金額",
+  "recalibrateStatRemaining": "剩餘金額",
   "settingsTitle": "設定",
   "savingsCardSectionTitle": "本週儲蓄卡",
   "savingsCardSectionDescription": "把達成預算的一週做成卡片並分享。",
@@ -84,6 +112,8 @@
   "setTargetAmountFirst": "請先設定目標金額",
   "menuGoalSettingsTitle": "目標設定",
   "menuGoalSettingsSubtitle": "長期儲蓄目標、目標週期、各週期目標金額",
+  "calendarAutoFillTitle": "固定支出自動記入日曆",
+  "calendarAutoFillSubtitle": "每月自動將已登記的固定支出記入日曆",
   "menuThemeSettingsTitle": "主題設定",
   "menuThemeSettingsSubtitle": "畫面模式與果汁主題",
   "menuWidgetSettingsTitle": "小工具設定",

@@ -74,6 +74,21 @@
       "amount": {}
     }
   },
+  "savingsPlanActualTraceLine": "실제 저축 {actual}원 / 목표 {goal}원 ({percent}%)",
+  "@savingsPlanActualTraceLine": {
+    "placeholders": {
+      "actual": {},
+      "goal": {},
+      "percent": {}
+    }
+  },
+  "manageFixedIncomesButton": "고정수입 관리",
+  "savingsPlanFixedIncomeTotalLine": "고정수입 합계: {total}원",
+  "@savingsPlanFixedIncomeTotalLine": {
+    "placeholders": {
+      "total": {}
+    }
+  },
   "savingsPlanRecommendedLine": "추천 주스 한 잔: 하루 {daily} mL / 이번 주 {weekly} mL / 이번 달 {monthly} mL",
   "@savingsPlanRecommendedLine": {
     "placeholders": {
@@ -116,6 +131,19 @@
       "after": {}
     }
   },
+  "recalibrateBudgetSliderLabel": "이번 달 생활비(주스) 예산",
+  "recalibrateWeeklyBudgetLabel": "주간 목표",
+  "recalibratePreviewLine": "이 예산이면 목표 기간이 {before}개월 → {after}개월로 바뀌어요",
+  "@recalibratePreviewLine": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateNoSavingsWarning": "이 예산이면 이번 달은 저축을 못 해요. 슬라이더를 왼쪽으로 옮겨보세요",
+  "recalibrateStatGoal": "목표 금액",
+  "recalibrateStatSaved": "모은 금액",
+  "recalibrateStatRemaining": "남은 금액",
   "settingsTitle": "설정",
   "savingsCardSectionTitle": "이번 주 절약 카드",
   "savingsCardSectionDescription": "예산 방어에 성공한 한 주를 카드로 만들어 공유해보세요.",
@@ -130,6 +158,8 @@
   "setTargetAmountFirst": "목표 금액을 먼저 설정해주세요",
   "menuGoalSettingsTitle": "목표 설정",
   "menuGoalSettingsSubtitle": "장기 저축 목표, 목표 주기, 주기별 목표 금액",
+  "calendarAutoFillTitle": "고정지출 캘린더 자동 기입",
+  "calendarAutoFillSubtitle": "매월 등록한 고정지출을 캘린더에 자동으로 기록해요",
   "menuThemeSettingsTitle": "테마 설정",
   "menuThemeSettingsSubtitle": "화면 모드 및 주스 테마",
   "menuWidgetSettingsTitle": "위젯 설정",

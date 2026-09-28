@@ -35,6 +35,21 @@
   "durationMonthsOnly": "{months}ヶ月",
   "savingsPlanGoalLine": "目標: {duration}で{amount}ウォン貯める",
   "savingsPlanFixedExpenseLine": "固定費(何もしなくても出るお金): 月{amount}ウォン",
+  "savingsPlanActualTraceLine": "実際の貯蓄 {actual} / 目標 {goal}（{percent}%）",
+  "@savingsPlanActualTraceLine": {
+    "placeholders": {
+      "actual": {},
+      "goal": {},
+      "percent": {}
+    }
+  },
+  "manageFixedIncomesButton": "固定収入を管理",
+  "savingsPlanFixedIncomeTotalLine": "固定収入合計: {total}",
+  "@savingsPlanFixedIncomeTotalLine": {
+    "placeholders": {
+      "total": {}
+    }
+  },
   "savingsPlanRecommendedLine": "おすすめジュース: 1日{daily}mL・今週{weekly}mL・今月{monthly}mL",
   "savingsPlanPaceFasterLine": "今のペースなら目標より{months}か月早く達成できそうです! 🚀",
   "@savingsPlanPaceFasterLine": {
@@ -70,6 +85,19 @@
       "after": {}
     }
   },
+  "recalibrateBudgetSliderLabel": "今月の生活費（ジュース）予算",
+  "recalibrateWeeklyBudgetLabel": "週間目標",
+  "recalibratePreviewLine": "この予算だと目標期間が{before}ヶ月→{after}ヶ月に変わります",
+  "@recalibratePreviewLine": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateNoSavingsWarning": "この予算だと今月は貯蓄できません。スライダーを左に動かしてみてください",
+  "recalibrateStatGoal": "目標金額",
+  "recalibrateStatSaved": "貯まった金額",
+  "recalibrateStatRemaining": "残りの金額",
   "settingsTitle": "設定",
   "savingsCardSectionTitle": "今週の節約カード",
   "savingsCardSectionDescription": "予算防衛に成功した1週間をカードにして共有しましょう。",
@@ -84,6 +112,8 @@
   "setTargetAmountFirst": "先に目標金額を設定してください",
   "menuGoalSettingsTitle": "目標設定",
   "menuGoalSettingsSubtitle": "長期貯蓄目標、目標周期、周期別目標金額",
+  "calendarAutoFillTitle": "固定費のカレンダー自動記入",
+  "calendarAutoFillSubtitle": "毎月登録した固定費をカレンダーに自動で記録します",
   "menuThemeSettingsTitle": "テーマ設定",
   "menuThemeSettingsSubtitle": "画面モード及びジューステーマ",
   "menuWidgetSettingsTitle": "ウィジェット設定",

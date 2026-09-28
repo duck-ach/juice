@@ -35,6 +35,21 @@
   "durationMonthsOnly": "{months} months",
   "savingsPlanGoalLine": "Goal: Save {amount} won over {duration}",
   "savingsPlanFixedExpenseLine": "Fixed costs (unavoidable): {amount} won/month",
+  "savingsPlanActualTraceLine": "Actual savings {actual} / goal {goal} ({percent}%)",
+  "@savingsPlanActualTraceLine": {
+    "placeholders": {
+      "actual": {},
+      "goal": {},
+      "percent": {}
+    }
+  },
+  "manageFixedIncomesButton": "Manage fixed incomes",
+  "savingsPlanFixedIncomeTotalLine": "Total fixed income: {total}",
+  "@savingsPlanFixedIncomeTotalLine": {
+    "placeholders": {
+      "total": {}
+    }
+  },
   "savingsPlanRecommendedLine": "Recommended juice: {daily} mL/day · {weekly} mL/week · {monthly} mL/month",
   "savingsPlanPaceFasterLine": "At your current pace, you're on track to reach your goal {months} months early! 🚀",
   "@savingsPlanPaceFasterLine": {
@@ -70,6 +85,19 @@
       "after": {}
     }
   },
+  "recalibrateBudgetSliderLabel": "This month's living budget (Juice)",
+  "recalibrateWeeklyBudgetLabel": "Weekly target",
+  "recalibratePreviewLine": "At this budget, your goal period changes from {before} to {after} months",
+  "@recalibratePreviewLine": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateNoSavingsWarning": "At this budget, you won't save anything this month. Try moving the slider left.",
+  "recalibrateStatGoal": "Goal amount",
+  "recalibrateStatSaved": "Saved so far",
+  "recalibrateStatRemaining": "Remaining",
   "settingsTitle": "Settings",
   "savingsCardSectionTitle": "This Week's Savings Card",
   "savingsCardSectionDescription": "Turn a budget-win week into a card and share it.",
@@ -84,6 +112,8 @@
   "setTargetAmountFirst": "Please set a target amount first",
   "menuGoalSettingsTitle": "Goal Settings",
   "menuGoalSettingsSubtitle": "Long-term savings goal, goal period, target per period",
+  "calendarAutoFillTitle": "Auto-fill fixed expenses",
+  "calendarAutoFillSubtitle": "Automatically records your registered fixed expenses on the calendar every month",
   "menuThemeSettingsTitle": "Theme Settings",
   "menuThemeSettingsSubtitle": "Screen mode and juice theme",
   "menuWidgetSettingsTitle": "Widget Settings",

@@ -10,6 +10,7 @@ import '../../l10n/app_localizations.dart';
 import '../../providers/budget_settings_provider.dart';
 import '../../providers/category_provider.dart';
 import '../../providers/expense_provider.dart';
+import '../../providers/fixed_expense_autofill_provider.dart';
 import '../../providers/juice_theme_provider.dart';
 import '../../providers/period_budget_provider.dart';
 import '../categories/category_manage_screen.dart';
@@ -31,6 +32,8 @@ class DashboardScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // 세션당 1회, 고정지출 캘린더 자동 기입 켜져 있으면 이번 달 분을 채운다.
+    ref.watch(fixedExpenseAutoFillCheckProvider);
     final loc = AppLocalizations.of(context)!;
     final targetAmount = ref.watch(effectiveTargetAmountProvider);
     final period = ref.watch(budgetPeriodProvider);

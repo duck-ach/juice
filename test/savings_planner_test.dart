@@ -61,6 +61,52 @@ void main() {
     });
   });
 
+  group('recalibrateToBudget(드래그 슬라이더)', () {
+    test('생활비를 0으로 고르면 가용 재원 전액이 저축되어 가장 짧은 기간이 나온다', () {
+      // 새 수입 200만원, 고정비 없음, 목표 1200만원. 생활비 0원 선택 시 월 200만원
+      // 전액 저축 => 1200만원 / 200만원 = 6개월.
+      final plan = _plan(monthlyIncome: 1000000, goalAmount: 12000000);
+      final recalibrated = plan.recalibrateToBudget(2000000, 0);
+      expect(recalibrated.totalMonths, 6);
+      expect(recalibrated.monthlyAvailable, 0);
+    });
+
+    test('가용 재원 전액을 생활비로 고르면(저축 0) 개월 수를 계산할 수 없어 원래 개월 수를 유지', () {
+      final plan = _plan(monthlyIncome: 1000000, goalAmount: 12000000);
+      // 새 수입 200만원, 고정비 없음 => 가용 재원 200만원 전부를 생활비로 선택.
+      final recalibrated = plan.recalibrateToBudget(2000000, 2000000);
+      expect(plan.projectedTotalMonthsForBudget(2000000, 2000000), null);
+      expect(recalibrated.totalMonths, plan.totalMonths);
+      expect(recalibrated.monthlyIncome, 2000000);
+    });
+
+    test('중간값을 고르면 그 지점에 맞는 개월 수가 계산된다', () {
+      // 새 수입 300만원, 고정비 없음, 목표 1200만원. 생활비 100만원 선택 시 월
+      // 200만원 저축 => 1200만원 / 200만원 = 6개월.
+      final plan = _plan(monthlyIncome: 1000000, goalAmount: 12000000);
+      final months = plan.projectedTotalMonthsForBudget(3000000, 1000000);
+      expect(months, 6);
+    });
+  });
+
+  group('withFixedIncomes(고정수입 CRUD)', () {
+    test('항목 합계가 monthlyIncome에 즉시 동기화된다', () {
+      final plan = _plan(monthlyIncome: 500000, goalAmount: 12000000);
+      final updated = plan.withFixedIncomes(const [
+        FixedIncomeItem(name: '본업', amount: 3000000),
+        FixedIncomeItem(name: '부업', amount: 500000),
+      ]);
+      expect(updated.fixedIncomeTotal, 3500000);
+      expect(updated.monthlyIncome, 3500000);
+    });
+
+    test('빈 리스트면 합계 0으로 동기화된다', () {
+      final plan = _plan(monthlyIncome: 3000000, goalAmount: 12000000);
+      final updated = plan.withFixedIncomes(const []);
+      expect(updated.monthlyIncome, 0);
+    });
+  });
+
   group('저축 페이스', () {
     test('createdAt이 없으면(과거 저장된 플랜) 계산하지 않고 null', () {
       final plan = _plan(monthlyIncome: 1000000, goalAmount: 12000000);

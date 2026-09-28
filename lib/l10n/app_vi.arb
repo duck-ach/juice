@@ -74,6 +74,21 @@
       "amount": {}
     }
   },
+  "savingsPlanActualTraceLine": "Đã tiết kiệm thực tế {actual} / mục tiêu {goal} ({percent}%)",
+  "@savingsPlanActualTraceLine": {
+    "placeholders": {
+      "actual": {},
+      "goal": {},
+      "percent": {}
+    }
+  },
+  "manageFixedIncomesButton": "Quản lý thu nhập cố định",
+  "savingsPlanFixedIncomeTotalLine": "Tổng thu nhập cố định: {total}",
+  "@savingsPlanFixedIncomeTotalLine": {
+    "placeholders": {
+      "total": {}
+    }
+  },
   "savingsPlanRecommendedLine": "Juice đề xuất: {daily} mL/ngày · {weekly} mL/tuần · {monthly} mL/tháng",
   "@savingsPlanRecommendedLine": {
     "placeholders": {
@@ -116,6 +131,19 @@
       "after": {}
     }
   },
+  "recalibrateBudgetSliderLabel": "Ngân sách sinh hoạt (Juice) tháng này",
+  "recalibrateWeeklyBudgetLabel": "Mục tiêu hàng tuần",
+  "recalibratePreviewLine": "Với ngân sách này, thời gian mục tiêu đổi từ {before} sang {after} tháng",
+  "@recalibratePreviewLine": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateNoSavingsWarning": "Với ngân sách này, tháng này bạn sẽ không tiết kiệm được gì. Hãy kéo thanh trượt sang trái.",
+  "recalibrateStatGoal": "Số tiền mục tiêu",
+  "recalibrateStatSaved": "Đã tiết kiệm",
+  "recalibrateStatRemaining": "Còn lại",
   "settingsTitle": "Cài đặt",
   "savingsCardSectionTitle": "Thẻ tiết kiệm tuần này",
   "savingsCardSectionDescription": "Biến một tuần giữ vững ngân sách thành thẻ ảnh và chia sẻ nó.",
@@ -130,6 +158,8 @@
   "setTargetAmountFirst": "Vui lòng đặt số tiền mục tiêu trước",
   "menuGoalSettingsTitle": "Cài đặt mục tiêu",
   "menuGoalSettingsSubtitle": "Mục tiêu tiết kiệm dài hạn, chu kỳ mục tiêu, số tiền mục tiêu theo chu kỳ",
+  "calendarAutoFillTitle": "Tự động ghi chi phí cố định",
+  "calendarAutoFillSubtitle": "Tự động ghi các khoản chi cố định đã đăng ký vào lịch mỗi tháng",
   "menuThemeSettingsTitle": "Cài đặt giao diện",
   "menuThemeSettingsSubtitle": "Chế độ màn hình và chủ đề juice",
   "menuWidgetSettingsTitle": "Cài đặt widget",

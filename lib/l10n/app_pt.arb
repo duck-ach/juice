@@ -35,6 +35,21 @@
   "durationMonthsOnly": "{months} mês(es)",
   "savingsPlanGoalLine": "Meta: economizar {amount} em {duration}",
   "savingsPlanFixedExpenseLine": "Custos fixos (inevitáveis): {amount}/mês",
+  "savingsPlanActualTraceLine": "Poupança real {actual} / meta {goal} ({percent}%)",
+  "@savingsPlanActualTraceLine": {
+    "placeholders": {
+      "actual": {},
+      "goal": {},
+      "percent": {}
+    }
+  },
+  "manageFixedIncomesButton": "Gerenciar rendas fixas",
+  "savingsPlanFixedIncomeTotalLine": "Total de renda fixa: {total}",
+  "@savingsPlanFixedIncomeTotalLine": {
+    "placeholders": {
+      "total": {}
+    }
+  },
   "savingsPlanRecommendedLine": "Juice recomendado: {daily} mL/dia · {weekly} mL/semana · {monthly} mL/mês",
   "savingsPlanPaceFasterLine": "No ritmo atual, você vai atingir a meta {months} meses mais cedo! 🚀",
   "@savingsPlanPaceFasterLine": {
@@ -70,6 +85,19 @@
       "after": {}
     }
   },
+  "recalibrateBudgetSliderLabel": "Orçamento de vida (Juice) deste mês",
+  "recalibrateWeeklyBudgetLabel": "Meta semanal",
+  "recalibratePreviewLine": "Com esse orçamento, o prazo da meta muda de {before} para {after} meses",
+  "@recalibratePreviewLine": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateNoSavingsWarning": "Com esse orçamento, você não vai economizar nada este mês. Tente mover o controle deslizante para a esquerda.",
+  "recalibrateStatGoal": "Valor da meta",
+  "recalibrateStatSaved": "Já economizado",
+  "recalibrateStatRemaining": "Restante",
   "settingsTitle": "Configurações",
   "savingsCardSectionTitle": "Cartão de economia da semana",
   "savingsCardSectionDescription": "Transforme uma semana dentro do orçamento em um cartão para compartilhar.",
@@ -84,6 +112,8 @@
   "setTargetAmountFirst": "Defina primeiro um valor meta",
   "menuGoalSettingsTitle": "Configurações de meta",
   "menuGoalSettingsSubtitle": "Meta de poupança de longo prazo, período de meta, meta por período",
+  "calendarAutoFillTitle": "Preenchimento automático de despesas fixas",
+  "calendarAutoFillSubtitle": "Registra automaticamente suas despesas fixas no calendário todo mês",
   "menuThemeSettingsTitle": "Configurações de tema",
   "menuThemeSettingsSubtitle": "Modo de tela e tema de juice",
   "menuWidgetSettingsTitle": "Configurações do widget",

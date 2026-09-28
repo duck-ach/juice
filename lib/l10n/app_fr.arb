@@ -35,6 +35,21 @@
   "durationMonthsOnly": "{months} mois",
   "savingsPlanGoalLine": "Objectif : épargner {amount} won(s) en {duration}",
   "savingsPlanFixedExpenseLine": "Dépenses fixes (incontournables) : {amount} won(s)/mois",
+  "savingsPlanActualTraceLine": "Épargne réelle {actual} / objectif {goal} ({percent} %)",
+  "@savingsPlanActualTraceLine": {
+    "placeholders": {
+      "actual": {},
+      "goal": {},
+      "percent": {}
+    }
+  },
+  "manageFixedIncomesButton": "Gérer les revenus fixes",
+  "savingsPlanFixedIncomeTotalLine": "Total des revenus fixes : {total}",
+  "@savingsPlanFixedIncomeTotalLine": {
+    "placeholders": {
+      "total": {}
+    }
+  },
   "savingsPlanRecommendedLine": "Juice recommandé : {daily} mL/jour · {weekly} mL/semaine · {monthly} mL/mois",
   "savingsPlanPaceFasterLine": "À ce rythme, vous atteindrez votre objectif {months} mois plus tôt ! 🚀",
   "@savingsPlanPaceFasterLine": {
@@ -70,6 +85,19 @@
       "after": {}
     }
   },
+  "recalibrateBudgetSliderLabel": "Budget de vie (Juice) de ce mois-ci",
+  "recalibrateWeeklyBudgetLabel": "Objectif hebdomadaire",
+  "recalibratePreviewLine": "Avec ce budget, la durée de l'objectif passe de {before} à {after} mois",
+  "@recalibratePreviewLine": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateNoSavingsWarning": "Avec ce budget, vous n'épargnerez rien ce mois-ci. Essayez de déplacer le curseur vers la gauche.",
+  "recalibrateStatGoal": "Montant de l'objectif",
+  "recalibrateStatSaved": "Épargné jusqu'à présent",
+  "recalibrateStatRemaining": "Restant",
   "settingsTitle": "Paramètres",
   "savingsCardSectionTitle": "Carte d'épargne de la semaine",
   "savingsCardSectionDescription": "Transformez une semaine réussie en carte à partager.",
@@ -84,6 +112,8 @@
   "setTargetAmountFirst": "Veuillez d'abord définir un montant cible",
   "menuGoalSettingsTitle": "Paramètres d'objectif",
   "menuGoalSettingsSubtitle": "Objectif d'épargne à long terme, période d'objectif, cible par période",
+  "calendarAutoFillTitle": "Saisie automatique des charges fixes",
+  "calendarAutoFillSubtitle": "Enregistre automatiquement vos charges fixes dans le calendrier chaque mois",
   "menuThemeSettingsTitle": "Paramètres de thème",
   "menuThemeSettingsSubtitle": "Mode d'affichage et thème juice",
   "menuWidgetSettingsTitle": "Paramètres du widget",

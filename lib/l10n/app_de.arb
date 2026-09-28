@@ -35,6 +35,21 @@
   "durationMonthsOnly": "{months} Monate",
   "savingsPlanGoalLine": "Ziel: {amount} Won in {duration} sparen",
   "savingsPlanFixedExpenseLine": "Fixkosten (unvermeidlich): {amount} Won/Monat",
+  "savingsPlanActualTraceLine": "Tatsächlich gespart: {actual} / Ziel {goal} ({percent}%)",
+  "@savingsPlanActualTraceLine": {
+    "placeholders": {
+      "actual": {},
+      "goal": {},
+      "percent": {}
+    }
+  },
+  "manageFixedIncomesButton": "Festes Einkommen verwalten",
+  "savingsPlanFixedIncomeTotalLine": "Gesamtes festes Einkommen: {total}",
+  "@savingsPlanFixedIncomeTotalLine": {
+    "placeholders": {
+      "total": {}
+    }
+  },
   "savingsPlanRecommendedLine": "Empfohlener Juice: {daily} mL/Tag · {weekly} mL/Woche · {monthly} mL/Monat",
   "savingsPlanPaceFasterLine": "Bei deinem aktuellen Tempo erreichst du dein Ziel {months} Monate früher! 🚀",
   "@savingsPlanPaceFasterLine": {
@@ -70,6 +85,19 @@
       "after": {}
     }
   },
+  "recalibrateBudgetSliderLabel": "Lebenshaltungsbudget (Juice) für diesen Monat",
+  "recalibrateWeeklyBudgetLabel": "Wöchentliches Ziel",
+  "recalibratePreviewLine": "Bei diesem Budget ändert sich dein Zielzeitraum von {before} auf {after} Monate",
+  "@recalibratePreviewLine": {
+    "placeholders": {
+      "before": {},
+      "after": {}
+    }
+  },
+  "recalibrateNoSavingsWarning": "Bei diesem Budget sparst du diesen Monat nichts. Schiebe den Regler nach links.",
+  "recalibrateStatGoal": "Zielbetrag",
+  "recalibrateStatSaved": "Bereits gespart",
+  "recalibrateStatRemaining": "Verbleibend",
   "settingsTitle": "Einstellungen",
   "savingsCardSectionTitle": "Spar-Karte dieser Woche",
   "savingsCardSectionDescription": "Teile eine erfolgreiche Budget-Woche als Karte.",
@@ -84,6 +112,8 @@
   "setTargetAmountFirst": "Bitte zuerst einen Zielbetrag festlegen",
   "menuGoalSettingsTitle": "Zieleinstellungen",
   "menuGoalSettingsSubtitle": "Langfristiges Sparziel, Zielzeitraum, Zielbetrag pro Zeitraum",
+  "calendarAutoFillTitle": "Fixkosten automatisch eintragen",
+  "calendarAutoFillSubtitle": "Trägt deine hinterlegten Fixkosten jeden Monat automatisch in den Kalender ein",
   "menuThemeSettingsTitle": "Design-Einstellungen",
   "menuThemeSettingsSubtitle": "Bildschirmmodus und Juice-Design",
   "menuWidgetSettingsTitle": "Widget-Einstellungen",

@@ -122,6 +122,19 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
+    return 'Poupança real $actual / meta $goal ($percent%)';
+  }
+
+  @override
+  String get manageFixedIncomesButton => 'Gerenciar rendas fixas';
+
+  @override
+  String savingsPlanFixedIncomeTotalLine(Object total) {
+    return 'Total de renda fixa: $total';
+  }
+
+  @override
   String savingsPlanRecommendedLine(Object daily, Object weekly, Object monthly) {
     return 'Juice recomendado: $daily mL/dia · $weekly mL/semana · $monthly mL/mês';
   }
@@ -171,6 +184,29 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get recalibrateBudgetSliderLabel => 'Orçamento de vida (Juice) deste mês';
+
+  @override
+  String get recalibrateWeeklyBudgetLabel => 'Meta semanal';
+
+  @override
+  String recalibratePreviewLine(Object before, Object after) {
+    return 'Com esse orçamento, o prazo da meta muda de $before para $after meses';
+  }
+
+  @override
+  String get recalibrateNoSavingsWarning => 'Com esse orçamento, você não vai economizar nada este mês. Tente mover o controle deslizante para a esquerda.';
+
+  @override
+  String get recalibrateStatGoal => 'Valor da meta';
+
+  @override
+  String get recalibrateStatSaved => 'Já economizado';
+
+  @override
+  String get recalibrateStatRemaining => 'Restante';
+
+  @override
   String get settingsTitle => 'Configurações';
 
   @override
@@ -198,6 +234,12 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get menuGoalSettingsSubtitle => 'Meta de poupança de longo prazo, período de meta, meta por período';
+
+  @override
+  String get calendarAutoFillTitle => 'Preenchimento automático de despesas fixas';
+
+  @override
+  String get calendarAutoFillSubtitle => 'Registra automaticamente suas despesas fixas no calendário todo mês';
 
   @override
   String get menuThemeSettingsTitle => 'Configurações de tema';

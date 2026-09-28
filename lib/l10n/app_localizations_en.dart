@@ -122,6 +122,19 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
+    return 'Actual savings $actual / goal $goal ($percent%)';
+  }
+
+  @override
+  String get manageFixedIncomesButton => 'Manage fixed incomes';
+
+  @override
+  String savingsPlanFixedIncomeTotalLine(Object total) {
+    return 'Total fixed income: $total';
+  }
+
+  @override
   String savingsPlanRecommendedLine(Object daily, Object weekly, Object monthly) {
     return 'Recommended juice: $daily mL/day · $weekly mL/week · $monthly mL/month';
   }
@@ -171,6 +184,29 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get recalibrateBudgetSliderLabel => 'This month\'s living budget (Juice)';
+
+  @override
+  String get recalibrateWeeklyBudgetLabel => 'Weekly target';
+
+  @override
+  String recalibratePreviewLine(Object before, Object after) {
+    return 'At this budget, your goal period changes from $before to $after months';
+  }
+
+  @override
+  String get recalibrateNoSavingsWarning => 'At this budget, you won\'t save anything this month. Try moving the slider left.';
+
+  @override
+  String get recalibrateStatGoal => 'Goal amount';
+
+  @override
+  String get recalibrateStatSaved => 'Saved so far';
+
+  @override
+  String get recalibrateStatRemaining => 'Remaining';
+
+  @override
   String get settingsTitle => 'Settings';
 
   @override
@@ -198,6 +234,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get menuGoalSettingsSubtitle => 'Long-term savings goal, goal period, target per period';
+
+  @override
+  String get calendarAutoFillTitle => 'Auto-fill fixed expenses';
+
+  @override
+  String get calendarAutoFillSubtitle => 'Automatically records your registered fixed expenses on the calendar every month';
 
   @override
   String get menuThemeSettingsTitle => 'Theme Settings';

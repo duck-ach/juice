@@ -54,6 +54,25 @@ class FixedExpenseItem {
 
 const defaultFixedExpenseNames = ['월세', '통신비', '보험료', '구독료'];
 
+/// 장기 저축 플랜의 '고정수입' 항목(급여, 부수입 등). [FixedExpenseItem]과 달리 항상
+/// 월 환산된 금액으로 저장한다 — 온보딩 위저드의 단일 소득 입력과 달리 지급 주기
+/// 선택 UI를 다시 두지 않기 위한 의도적 단순화(항목이 여러 개라 주기가 제각각일 수
+/// 있어, 사용자가 각자 월 환산해서 넣거나 이미 월급 단위로 받는 경우를 가정).
+class FixedIncomeItem {
+  const FixedIncomeItem({required this.name, required this.amount});
+
+  final String name;
+  final double amount;
+
+  Map<String, dynamic> toJson() => {'name': name, 'amount': amount};
+
+  factory FixedIncomeItem.fromJson(Map<String, dynamic> json) =>
+      FixedIncomeItem(
+        name: json['name'] as String? ?? '',
+        amount: (json['amount'] as num?)?.toDouble() ?? 0,
+      );
+}
+
 /// 중/장기 저축 목표 플래너 입력값. 월 수입/고정지출/목표를 바탕으로
 /// "스마트 주스 용량"(월·주·일 변동지출 예산)을 계산하는 데 쓰인다.
 class SavingsPlan {
@@ -68,6 +87,7 @@ class SavingsPlan {
     this.goalMonths = 0,
     this.goalAmount,
     this.fixedExpenses = const [],
+    this.fixedIncomes = const [],
     this.createdAt,
   });
 
@@ -94,6 +114,11 @@ class SavingsPlan {
   final double? goalAmount;
   final List<FixedExpenseItem> fixedExpenses;
 
+  /// [IncomeType.fixed] 전용 — 고정수입 CRUD 목록(급여, 부수입 등). 항목이 하나라도
+  /// 있으면 이 합계가 [monthlyIncome]의 실제 값으로 쓰인다(항상 최신 합계로 동기화).
+  /// 다른 소득 형태(불규칙/용돈)는 항상 빈 리스트.
+  final List<FixedIncomeItem> fixedIncomes;
+
   /// 플랜이 (재)시작된 시각 — 재조정(recalibration)은 이 값을 보존하지만, 위저드로
   /// 플랜을 통째로 다시 짜면 갱신된다. 저축 페이스 계산의 기준선이며, 이 값이 없으면
   /// (과거에 저장된 플랜 등) 페이스는 계산하지 않는다.
@@ -110,6 +135,7 @@ class SavingsPlan {
     int? goalMonths,
     double? goalAmount,
     List<FixedExpenseItem>? fixedExpenses,
+    List<FixedIncomeItem>? fixedIncomes,
     DateTime? createdAt,
   }) =>
       SavingsPlan(
@@ -123,7 +149,19 @@ class SavingsPlan {
         goalMonths: goalMonths ?? this.goalMonths,
         goalAmount: goalAmount ?? this.goalAmount,
         fixedExpenses: fixedExpenses ?? this.fixedExpenses,
+        fixedIncomes: fixedIncomes ?? this.fixedIncomes,
         createdAt: createdAt ?? this.createdAt,
+      );
+
+  double get fixedIncomeTotal =>
+      fixedIncomes.fold(0.0, (sum, e) => sum + e.amount);
+
+  /// 고정수입 항목을 추가/수정/삭제한 뒤 호출 — 합계를 [monthlyIncome]에 즉시
+  /// 동기화한 새 플랜을 반환한다. 장기 저축 역산·가용 생활비 계산은 전부
+  /// [monthlyIncome]만 참조하므로, 이 한 번의 동기화로 모든 화면에 즉시 반영된다.
+  SavingsPlan withFixedIncomes(List<FixedIncomeItem> items) => copyWith(
+        fixedIncomes: items,
+        monthlyIncome: items.fold<double>(0.0, (sum, e) => sum + e.amount),
       );
 
   int get totalMonths => goalYears * 12 + goalMonths;
@@ -171,6 +209,7 @@ class SavingsPlan {
         'goalMonths': goalMonths,
         'goalAmount': goalAmount,
         'fixedExpenses': fixedExpenses.map((e) => e.toJson()).toList(),
+        'fixedIncomes': fixedIncomes.map((e) => e.toJson()).toList(),
         'createdAt': createdAt?.toIso8601String(),
       };
 
@@ -195,6 +234,10 @@ class SavingsPlan {
         fixedExpenses: (json['fixedExpenses'] as List<dynamic>? ?? [])
             .map((e) =>
                 FixedExpenseItem.fromJson(Map<String, dynamic>.from(e as Map)))
+            .toList(),
+        fixedIncomes: (json['fixedIncomes'] as List<dynamic>? ?? [])
+            .map((e) =>
+                FixedIncomeItem.fromJson(Map<String, dynamic>.from(e as Map)))
             .toList(),
         createdAt: json['createdAt'] == null
             ? null
@@ -230,6 +273,33 @@ extension SavingsPlanRecalibration on SavingsPlan {
   /// 방식 2) 목표 기간은 그대로 두고, 새 수입 기준으로 생활비(주스) 용량만 다시 계산한다.
   SavingsPlan recalibrateIncreaseBudget(double newIncome) =>
       copyWith(monthlyIncome: newIncome);
+
+  /// 방식 1·2를 하나의 연속된 값으로 일반화한 버전 — "새 수입에서 고정비를 뺀 나머지
+  /// (가용 재원)"를 생활비(주스)와 저축으로 유저가 드래그 슬라이더로 직접 배분한다.
+  /// [desiredMonthlyBudget]이 작을수록(저축 비중↑) 목표 기간이 짧아지고, 클수록
+  /// (저축 비중↓, 극단적으로 가용 재원 전부를 쓰면 저축 0) 목표 기간이 길어진다.
+  /// 새 월 저축여력이 0 이하가 되는 지점(가용 재원 전액을 생활비로 씀)에서는 이번 달
+  /// 저축 없이 현재 목표 금액을 그대로 유지만 하므로 개월 수를 계산할 수 없어 null.
+  int? projectedTotalMonthsForBudget(
+      double newIncome, double desiredMonthlyBudget) {
+    if (goalAmount == null) return null;
+    final pool = newIncome - fixedExpenseTotal;
+    final newMonthlySaving = pool - desiredMonthlyBudget;
+    if (newMonthlySaving <= 0) return null;
+    return (goalAmount! / newMonthlySaving).ceil();
+  }
+
+  SavingsPlan recalibrateToBudget(
+      double newIncome, double desiredMonthlyBudget) {
+    final newTotalMonths =
+        projectedTotalMonthsForBudget(newIncome, desiredMonthlyBudget);
+    if (newTotalMonths == null) return copyWith(monthlyIncome: newIncome);
+    return copyWith(
+      monthlyIncome: newIncome,
+      goalYears: newTotalMonths ~/ 12,
+      goalMonths: newTotalMonths % 12,
+    );
+  }
 }
 
 /// [createdAt] 시점 이후 실제 저축 페이스로 목표를 얼마나 앞당기고/늦추고 있는지 계산.

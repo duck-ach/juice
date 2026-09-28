@@ -122,6 +122,19 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
+  String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
+    return 'Đã tiết kiệm thực tế $actual / mục tiêu $goal ($percent%)';
+  }
+
+  @override
+  String get manageFixedIncomesButton => 'Quản lý thu nhập cố định';
+
+  @override
+  String savingsPlanFixedIncomeTotalLine(Object total) {
+    return 'Tổng thu nhập cố định: $total';
+  }
+
+  @override
   String savingsPlanRecommendedLine(Object daily, Object weekly, Object monthly) {
     return 'Juice đề xuất: $daily mL/ngày · $weekly mL/tuần · $monthly mL/tháng';
   }
@@ -171,6 +184,29 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
+  String get recalibrateBudgetSliderLabel => 'Ngân sách sinh hoạt (Juice) tháng này';
+
+  @override
+  String get recalibrateWeeklyBudgetLabel => 'Mục tiêu hàng tuần';
+
+  @override
+  String recalibratePreviewLine(Object before, Object after) {
+    return 'Với ngân sách này, thời gian mục tiêu đổi từ $before sang $after tháng';
+  }
+
+  @override
+  String get recalibrateNoSavingsWarning => 'Với ngân sách này, tháng này bạn sẽ không tiết kiệm được gì. Hãy kéo thanh trượt sang trái.';
+
+  @override
+  String get recalibrateStatGoal => 'Số tiền mục tiêu';
+
+  @override
+  String get recalibrateStatSaved => 'Đã tiết kiệm';
+
+  @override
+  String get recalibrateStatRemaining => 'Còn lại';
+
+  @override
   String get settingsTitle => 'Cài đặt';
 
   @override
@@ -198,6 +234,12 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get menuGoalSettingsSubtitle => 'Mục tiêu tiết kiệm dài hạn, chu kỳ mục tiêu, số tiền mục tiêu theo chu kỳ';
+
+  @override
+  String get calendarAutoFillTitle => 'Tự động ghi chi phí cố định';
+
+  @override
+  String get calendarAutoFillSubtitle => 'Tự động ghi các khoản chi cố định đã đăng ký vào lịch mỗi tháng';
 
   @override
   String get menuThemeSettingsTitle => 'Cài đặt giao diện';

@@ -319,6 +319,24 @@ abstract class AppLocalizations {
   /// **'숨만 쉬어도 나가는 돈(고정비): 월 {amount}원'**
   String savingsPlanFixedExpenseLine(Object amount);
 
+  /// No description provided for @savingsPlanActualTraceLine.
+  ///
+  /// In ko, this message translates to:
+  /// **'실제 저축 {actual}원 / 목표 {goal}원 ({percent}%)'**
+  String savingsPlanActualTraceLine(Object actual, Object goal, Object percent);
+
+  /// No description provided for @manageFixedIncomesButton.
+  ///
+  /// In ko, this message translates to:
+  /// **'고정수입 관리'**
+  String get manageFixedIncomesButton;
+
+  /// No description provided for @savingsPlanFixedIncomeTotalLine.
+  ///
+  /// In ko, this message translates to:
+  /// **'고정수입 합계: {total}원'**
+  String savingsPlanFixedIncomeTotalLine(Object total);
+
   /// No description provided for @savingsPlanRecommendedLine.
   ///
   /// In ko, this message translates to:
@@ -397,6 +415,48 @@ abstract class AppLocalizations {
   /// **'목표 기간은 그대로, 하루 주스를 {before} mL → {after} mL로 늘려요.'**
   String recalibrateBoostPreview(Object before, Object after);
 
+  /// No description provided for @recalibrateBudgetSliderLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'이번 달 생활비(주스) 예산'**
+  String get recalibrateBudgetSliderLabel;
+
+  /// No description provided for @recalibrateWeeklyBudgetLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'주간 목표'**
+  String get recalibrateWeeklyBudgetLabel;
+
+  /// No description provided for @recalibratePreviewLine.
+  ///
+  /// In ko, this message translates to:
+  /// **'이 예산이면 목표 기간이 {before}개월 → {after}개월로 바뀌어요'**
+  String recalibratePreviewLine(Object before, Object after);
+
+  /// No description provided for @recalibrateNoSavingsWarning.
+  ///
+  /// In ko, this message translates to:
+  /// **'이 예산이면 이번 달은 저축을 못 해요. 슬라이더를 왼쪽으로 옮겨보세요'**
+  String get recalibrateNoSavingsWarning;
+
+  /// No description provided for @recalibrateStatGoal.
+  ///
+  /// In ko, this message translates to:
+  /// **'목표 금액'**
+  String get recalibrateStatGoal;
+
+  /// No description provided for @recalibrateStatSaved.
+  ///
+  /// In ko, this message translates to:
+  /// **'모은 금액'**
+  String get recalibrateStatSaved;
+
+  /// No description provided for @recalibrateStatRemaining.
+  ///
+  /// In ko, this message translates to:
+  /// **'남은 금액'**
+  String get recalibrateStatRemaining;
+
   /// No description provided for @settingsTitle.
   ///
   /// In ko, this message translates to:
@@ -450,6 +510,18 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'장기 저축 목표, 목표 주기, 주기별 목표 금액'**
   String get menuGoalSettingsSubtitle;
+
+  /// No description provided for @calendarAutoFillTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'고정지출 캘린더 자동 기입'**
+  String get calendarAutoFillTitle;
+
+  /// No description provided for @calendarAutoFillSubtitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'매월 등록한 고정지출을 캘린더에 자동으로 기록해요'**
+  String get calendarAutoFillSubtitle;
 
   /// No description provided for @menuThemeSettingsTitle.
   ///

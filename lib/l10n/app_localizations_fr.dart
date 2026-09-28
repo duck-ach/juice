@@ -122,6 +122,19 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
+    return 'Épargne réelle $actual / objectif $goal ($percent %)';
+  }
+
+  @override
+  String get manageFixedIncomesButton => 'Gérer les revenus fixes';
+
+  @override
+  String savingsPlanFixedIncomeTotalLine(Object total) {
+    return 'Total des revenus fixes : $total';
+  }
+
+  @override
   String savingsPlanRecommendedLine(Object daily, Object weekly, Object monthly) {
     return 'Juice recommandé : $daily mL/jour · $weekly mL/semaine · $monthly mL/mois';
   }
@@ -171,6 +184,29 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String get recalibrateBudgetSliderLabel => 'Budget de vie (Juice) de ce mois-ci';
+
+  @override
+  String get recalibrateWeeklyBudgetLabel => 'Objectif hebdomadaire';
+
+  @override
+  String recalibratePreviewLine(Object before, Object after) {
+    return 'Avec ce budget, la durée de l\'objectif passe de $before à $after mois';
+  }
+
+  @override
+  String get recalibrateNoSavingsWarning => 'Avec ce budget, vous n\'épargnerez rien ce mois-ci. Essayez de déplacer le curseur vers la gauche.';
+
+  @override
+  String get recalibrateStatGoal => 'Montant de l\'objectif';
+
+  @override
+  String get recalibrateStatSaved => 'Épargné jusqu\'à présent';
+
+  @override
+  String get recalibrateStatRemaining => 'Restant';
+
+  @override
   String get settingsTitle => 'Paramètres';
 
   @override
@@ -198,6 +234,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get menuGoalSettingsSubtitle => 'Objectif d\'épargne à long terme, période d\'objectif, cible par période';
+
+  @override
+  String get calendarAutoFillTitle => 'Saisie automatique des charges fixes';
+
+  @override
+  String get calendarAutoFillSubtitle => 'Enregistre automatiquement vos charges fixes dans le calendrier chaque mois';
 
   @override
   String get menuThemeSettingsTitle => 'Paramètres de thème';
