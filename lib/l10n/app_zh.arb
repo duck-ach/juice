@@ -122,12 +122,6 @@
       "day": {}
     }
   },
-  "fixedExpenseAutoFillDayCaption": "每月{day}日自动记账",
-  "@fixedExpenseAutoFillDayCaption": {
-    "placeholders": {
-      "day": {}
-    }
-  },
   "calendarAutoFillTitle": "固定支出自动记入日历",
   "calendarAutoFillSubtitle": "每月自动将已登记的固定支出记入日历",
   "menuThemeSettingsTitle": "主题设置",

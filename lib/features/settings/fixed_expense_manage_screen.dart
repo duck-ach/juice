@@ -136,11 +136,23 @@ class _FixedExpenseManageScreenState
             ),
           ),
           const SizedBox(height: 16),
-          Card(
-            margin: EdgeInsets.zero,
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: autoFillEnabled
+                    ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.35)
+                    : Theme.of(context).dividerColor.withValues(alpha: 0.3),
+                width: 1.2,
+              ),
+            ),
             child: SwitchListTile(
+              contentPadding: EdgeInsets.zero,
               secondary: const Text('📅', style: TextStyle(fontSize: 22)),
               value: autoFillEnabled,
+              activeColor: Theme.of(context).colorScheme.primary,
               onChanged: (value) => ref
                   .read(fixedExpenseAutoFillEnabledProvider.notifier)
                   .setEnabled(value),
@@ -153,87 +165,15 @@ class _FixedExpenseManageScreenState
               style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: 8),
           for (var i = 0; i < _rows.length; i++)
-            Container(
-              margin: const EdgeInsets.only(bottom: 10),
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              decoration: BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(
-                        color: Theme.of(context).dividerColor.withValues(alpha: 0.4))),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: TextField(
-                          controller: _rows[i].nameController,
-                          decoration:
-                              InputDecoration(hintText: loc.itemNameHint),
-                          onChanged: (_) => setState(() {}),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        flex: 3,
-                        child: TextField(
-                          controller: _rows[i].amountController,
-                          keyboardType: TextInputType.number,
-                          inputFormatters: [ThousandsSeparatorInputFormatter()],
-                          decoration: InputDecoration(
-                              hintText: '0', suffixText: loc.wonUnit),
-                          onChanged: (_) => setState(() {}),
-                        ),
-                      ),
-                      Switch(
-                        value: _rows[i].enabled,
-                        onChanged: (value) =>
-                            setState(() => _rows[i].enabled = value),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.remove_circle_outline),
-                        onPressed: () => _removeRow(i),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text(loc.fixedExpensePaymentDayLabel,
-                          style: Theme.of(context).textTheme.bodySmall),
-                      const SizedBox(width: 8),
-                      DropdownButton<int>(
-                        value: _rows[i].dayOfMonth,
-                        underline: const SizedBox.shrink(),
-                        items: [
-                          for (var d = 1; d <= 31; d++)
-                            DropdownMenuItem(
-                                value: d,
-                                child: Text(loc.fixedExpenseDayOptionLabel(d))),
-                        ],
-                        onChanged: (value) {
-                          if (value == null) return;
-                          setState(() => _rows[i].dayOfMonth = value);
-                        },
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Text(
-                          loc.fixedExpenseAutoFillDayCaption(
-                              _rows[i].dayOfMonth),
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
-                              ?.copyWith(color: Theme.of(context).hintColor),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+            _ExpenseRowCard(
+              row: _rows[i],
+              loc: loc,
+              onEnabledChanged: (value) =>
+                  setState(() => _rows[i].enabled = value),
+              onDayChanged: (value) =>
+                  setState(() => _rows[i].dayOfMonth = value),
+              onFieldChanged: () => setState(() {}),
+              onRemove: () => _removeRow(i),
             ),
           TextButton.icon(
               onPressed: _addRow,
@@ -243,6 +183,125 @@ class _FixedExpenseManageScreenState
           SizedBox(
             height: 48,
             child: FilledButton(onPressed: _save, child: Text(loc.commonSave)),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// 고정지출 한 항목의 카드. ON/OFF 상태를 배경/테두리 대비와 텍스트 디밍으로
+/// 명확히 구분한다 — 스위치와 삭제 버튼은 항상 또렷하게 유지해 조작성을 해치지
+/// 않고, 이름/금액/지급일 등 "정보" 영역만 꺼졌을 때 흐리게 표시한다.
+class _ExpenseRowCard extends StatelessWidget {
+  const _ExpenseRowCard({
+    required this.row,
+    required this.loc,
+    required this.onEnabledChanged,
+    required this.onDayChanged,
+    required this.onFieldChanged,
+    required this.onRemove,
+  });
+
+  final _ExpenseRow row;
+  final AppLocalizations loc;
+  final ValueChanged<bool> onEnabledChanged;
+  final ValueChanged<int> onDayChanged;
+  final VoidCallback onFieldChanged;
+  final VoidCallback onRemove;
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isOn = row.enabled;
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      decoration: BoxDecoration(
+        color: isOn
+            ? colorScheme.primary.withValues(alpha: 0.06)
+            : colorScheme.surfaceContainerHighest.withValues(alpha: 0.35),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: isOn
+              ? colorScheme.primary.withValues(alpha: 0.35)
+              : Colors.transparent,
+          width: 1.2,
+        ),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Opacity(
+              opacity: isOn ? 1 : 0.45,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: TextField(
+                          controller: row.nameController,
+                          decoration:
+                              InputDecoration(hintText: loc.itemNameHint),
+                          onChanged: (_) => onFieldChanged(),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        flex: 3,
+                        child: TextField(
+                          controller: row.amountController,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [ThousandsSeparatorInputFormatter()],
+                          decoration: InputDecoration(
+                              hintText: '0', suffixText: loc.wonUnit),
+                          onChanged: (_) => onFieldChanged(),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Text(loc.fixedExpensePaymentDayLabel,
+                          style: Theme.of(context).textTheme.bodySmall),
+                      const SizedBox(width: 4),
+                      DropdownButton<int>(
+                        value: row.dayOfMonth,
+                        underline: const SizedBox.shrink(),
+                        isDense: true,
+                        items: [
+                          for (var d = 1; d <= 31; d++)
+                            DropdownMenuItem(
+                                value: d,
+                                child: Text(loc.fixedExpenseDayOptionLabel(d))),
+                        ],
+                        onChanged: (value) {
+                          if (value != null) onDayChanged(value);
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Column(
+            children: [
+              Switch(
+                value: isOn,
+                activeColor: colorScheme.primary,
+                onChanged: onEnabledChanged,
+              ),
+              IconButton(
+                icon: const Icon(Icons.remove_circle_outline),
+                onPressed: onRemove,
+              ),
+            ],
           ),
         ],
       ),

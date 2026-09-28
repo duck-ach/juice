@@ -122,12 +122,6 @@
       "day": {}
     }
   },
-  "fixedExpenseAutoFillDayCaption": "Automatically added on day {day} of each month",
-  "@fixedExpenseAutoFillDayCaption": {
-    "placeholders": {
-      "day": {}
-    }
-  },
   "calendarAutoFillTitle": "Auto-fill fixed expenses",
   "calendarAutoFillSubtitle": "Automatically records your registered fixed expenses on the calendar every month",
   "menuThemeSettingsTitle": "Theme Settings",

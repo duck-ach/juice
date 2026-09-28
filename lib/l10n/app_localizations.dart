@@ -541,12 +541,6 @@ abstract class AppLocalizations {
   /// **'{day}일'**
   String fixedExpenseDayOptionLabel(Object day);
 
-  /// No description provided for @fixedExpenseAutoFillDayCaption.
-  ///
-  /// In ko, this message translates to:
-  /// **'매월 {day}일에 자동 기입돼요'**
-  String fixedExpenseAutoFillDayCaption(Object day);
-
   /// No description provided for @calendarAutoFillTitle.
   ///
   /// In ko, this message translates to:

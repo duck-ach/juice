@@ -253,11 +253,6 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String fixedExpenseAutoFillDayCaption(Object day) {
-    return '每月$day日自动记账';
-  }
-
-  @override
   String get calendarAutoFillTitle => '固定支出自动记入日历';
 
   @override
@@ -1780,11 +1775,6 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   }
 
   @override
-  String fixedExpenseAutoFillDayCaption(Object day) {
-    return '每月$day日自动记账';
-  }
-
-  @override
   String get calendarAutoFillTitle => '固定支出自动记入日历';
 
   @override
@@ -3304,11 +3294,6 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   @override
   String fixedExpenseDayOptionLabel(Object day) {
     return '$day日';
-  }
-
-  @override
-  String fixedExpenseAutoFillDayCaption(Object day) {
-    return '每月$day日自動記帳';
   }
 
   @override

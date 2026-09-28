@@ -122,12 +122,6 @@
       "day": {}
     }
   },
-  "fixedExpenseAutoFillDayCaption": "Adicionado automaticamente no dia {day} de cada mês",
-  "@fixedExpenseAutoFillDayCaption": {
-    "placeholders": {
-      "day": {}
-    }
-  },
   "calendarAutoFillTitle": "Preenchimento automático de despesas fixas",
   "calendarAutoFillSubtitle": "Registra automaticamente suas despesas fixas no calendário todo mês",
   "menuThemeSettingsTitle": "Configurações de tema",

@@ -122,12 +122,6 @@
       "day": {}
     }
   },
-  "fixedExpenseAutoFillDayCaption": "Ajouté automatiquement le {day} de chaque mois",
-  "@fixedExpenseAutoFillDayCaption": {
-    "placeholders": {
-      "day": {}
-    }
-  },
   "calendarAutoFillTitle": "Saisie automatique des charges fixes",
   "calendarAutoFillSubtitle": "Enregistre automatiquement vos charges fixes dans le calendrier chaque mois",
   "menuThemeSettingsTitle": "Paramètres de thème",

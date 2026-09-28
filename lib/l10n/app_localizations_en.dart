@@ -253,11 +253,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String fixedExpenseAutoFillDayCaption(Object day) {
-    return 'Automatically added on day $day of each month';
-  }
-
-  @override
   String get calendarAutoFillTitle => 'Auto-fill fixed expenses';
 
   @override

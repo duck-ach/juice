@@ -253,11 +253,6 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String fixedExpenseAutoFillDayCaption(Object day) {
-    return '毎月$day日に自動で記入されます';
-  }
-
-  @override
   String get calendarAutoFillTitle => '固定費のカレンダー自動記入';
 
   @override

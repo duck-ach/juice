@@ -253,11 +253,6 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String fixedExpenseAutoFillDayCaption(Object day) {
-    return 'Tự động điền vào ngày $day hằng tháng';
-  }
-
-  @override
   String get calendarAutoFillTitle => 'Tự động ghi chi phí cố định';
 
   @override

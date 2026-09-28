@@ -168,12 +168,6 @@
       "day": {}
     }
   },
-  "fixedExpenseAutoFillDayCaption": "매월 {day}일에 자동 기입돼요",
-  "@fixedExpenseAutoFillDayCaption": {
-    "placeholders": {
-      "day": {}
-    }
-  },
   "calendarAutoFillTitle": "고정지출 캘린더 자동 기입",
   "calendarAutoFillSubtitle": "매월 등록한 고정지출을 캘린더에 자동으로 기록해요",
   "menuThemeSettingsTitle": "테마 설정",

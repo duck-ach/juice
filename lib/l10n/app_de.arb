@@ -122,12 +122,6 @@
       "day": {}
     }
   },
-  "fixedExpenseAutoFillDayCaption": "Wird jeden Monat am {day}. automatisch eingetragen",
-  "@fixedExpenseAutoFillDayCaption": {
-    "placeholders": {
-      "day": {}
-    }
-  },
   "calendarAutoFillTitle": "Fixkosten automatisch eintragen",
   "calendarAutoFillSubtitle": "Trägt deine hinterlegten Fixkosten jeden Monat automatisch in den Kalender ein",
   "menuThemeSettingsTitle": "Design-Einstellungen",

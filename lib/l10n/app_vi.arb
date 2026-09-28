@@ -168,12 +168,6 @@
       "day": {}
     }
   },
-  "fixedExpenseAutoFillDayCaption": "Tự động điền vào ngày {day} hằng tháng",
-  "@fixedExpenseAutoFillDayCaption": {
-    "placeholders": {
-      "day": {}
-    }
-  },
   "calendarAutoFillTitle": "Tự động ghi chi phí cố định",
   "calendarAutoFillSubtitle": "Tự động ghi các khoản chi cố định đã đăng ký vào lịch mỗi tháng",
   "menuThemeSettingsTitle": "Cài đặt giao diện",

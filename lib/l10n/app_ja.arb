@@ -122,12 +122,6 @@
       "day": {}
     }
   },
-  "fixedExpenseAutoFillDayCaption": "毎月{day}日に自動で記入されます",
-  "@fixedExpenseAutoFillDayCaption": {
-    "placeholders": {
-      "day": {}
-    }
-  },
   "calendarAutoFillTitle": "固定費のカレンダー自動記入",
   "calendarAutoFillSubtitle": "毎月登録した固定費をカレンダーに自動で記録します",
   "menuThemeSettingsTitle": "テーマ設定",
