@@ -9,7 +9,9 @@ android {
     namespace = "com.juiceapp.juice"
     // flutter_secure_storage requires compileSdk 36.
     compileSdk = 36
-    ndkVersion = flutter.ndkVersion
+    // flutter.ndkVersion(26.x)보다 플러그인들이 요구하는 버전(27.x)이 높아 경고가
+    // 떠서, 더 높은 버전으로 명시(하위 호환됨).
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
