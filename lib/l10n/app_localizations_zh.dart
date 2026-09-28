@@ -245,6 +245,19 @@ class AppLocalizationsZh extends AppLocalizations {
   String get fixedExpenseManageInfoBanner => '与中长期储蓄计划中的固定支出联动，固定支出增加或减少时，日/周/月可用预算可能随之变化。';
 
   @override
+  String get fixedExpensePaymentDayLabel => '扣款日';
+
+  @override
+  String fixedExpenseDayOptionLabel(Object day) {
+    return '$day日';
+  }
+
+  @override
+  String fixedExpenseAutoFillDayCaption(Object day) {
+    return '每月$day日自动记账';
+  }
+
+  @override
   String get calendarAutoFillTitle => '固定支出自动记入日历';
 
   @override
@@ -1759,6 +1772,19 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get fixedExpenseManageInfoBanner => '与中长期储蓄计划中的固定支出联动，固定支出增加或减少时，日/周/月可用预算可能随之变化。';
 
   @override
+  String get fixedExpensePaymentDayLabel => '扣款日';
+
+  @override
+  String fixedExpenseDayOptionLabel(Object day) {
+    return '$day日';
+  }
+
+  @override
+  String fixedExpenseAutoFillDayCaption(Object day) {
+    return '每月$day日自动记账';
+  }
+
+  @override
   String get calendarAutoFillTitle => '固定支出自动记入日历';
 
   @override
@@ -3271,6 +3297,19 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get fixedExpenseManageInfoBanner => '與中長期儲蓄計劃中的固定支出聯動，固定支出增加或減少時，日/週/月可用預算可能隨之變化。';
+
+  @override
+  String get fixedExpensePaymentDayLabel => '扣款日';
+
+  @override
+  String fixedExpenseDayOptionLabel(Object day) {
+    return '$day日';
+  }
+
+  @override
+  String fixedExpenseAutoFillDayCaption(Object day) {
+    return '每月$day日自動記帳';
+  }
 
   @override
   String get calendarAutoFillTitle => '固定支出自動記入日曆';

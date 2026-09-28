@@ -10,8 +10,12 @@ import '../../providers/fixed_expense_autofill_provider.dart';
 import '../../providers/savings_planner_provider.dart';
 
 class _ExpenseRow {
-  _ExpenseRow({required String name, required double amount, required this.enabled})
-      : nameController = TextEditingController(text: name),
+  _ExpenseRow({
+    required String name,
+    required double amount,
+    required this.enabled,
+    required this.dayOfMonth,
+  })  : nameController = TextEditingController(text: name),
         amountController = TextEditingController(
           text: amount == 0 ? '' : NumberFormat('#,###').format(amount),
         );
@@ -19,11 +23,13 @@ class _ExpenseRow {
   final TextEditingController nameController;
   final TextEditingController amountController;
   bool enabled;
+  int dayOfMonth;
 
   FixedExpenseItem toItem() => FixedExpenseItem(
         name: nameController.text.trim(),
         amount: double.tryParse(amountController.text.replaceAll(',', '')) ?? 0,
         enabled: enabled,
+        dayOfMonth: dayOfMonth,
       );
 
   void dispose() {
@@ -56,8 +62,12 @@ class _FixedExpenseManageScreenState
         ? [const FixedExpenseItem(name: '', amount: 0)]
         : plan.fixedExpenses;
     _rows = expenses
-        .map((e) =>
-            _ExpenseRow(name: e.name, amount: e.amount, enabled: e.enabled))
+        .map((e) => _ExpenseRow(
+              name: e.name,
+              amount: e.amount,
+              enabled: e.enabled,
+              dayOfMonth: e.dayOfMonth,
+            ))
         .toList();
   }
 
@@ -69,8 +79,8 @@ class _FixedExpenseManageScreenState
     super.dispose();
   }
 
-  void _addRow() =>
-      setState(() => _rows.add(_ExpenseRow(name: '', amount: 0, enabled: true)));
+  void _addRow() => setState(() => _rows
+      .add(_ExpenseRow(name: '', amount: 0, enabled: true, dayOfMonth: 1)));
 
   void _removeRow(int index) {
     final removed = _rows.removeAt(index);
@@ -143,38 +153,84 @@ class _FixedExpenseManageScreenState
               style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: 8),
           for (var i = 0; i < _rows.length; i++)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Row(
+            Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              decoration: BoxDecoration(
+                border: Border(
+                    bottom: BorderSide(
+                        color: Theme.of(context).dividerColor.withValues(alpha: 0.4))),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    flex: 2,
-                    child: TextField(
-                      controller: _rows[i].nameController,
-                      decoration: InputDecoration(hintText: loc.itemNameHint),
-                      onChanged: (_) => setState(() {}),
-                    ),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: TextField(
+                          controller: _rows[i].nameController,
+                          decoration:
+                              InputDecoration(hintText: loc.itemNameHint),
+                          onChanged: (_) => setState(() {}),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        flex: 3,
+                        child: TextField(
+                          controller: _rows[i].amountController,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [ThousandsSeparatorInputFormatter()],
+                          decoration: InputDecoration(
+                              hintText: '0', suffixText: loc.wonUnit),
+                          onChanged: (_) => setState(() {}),
+                        ),
+                      ),
+                      Switch(
+                        value: _rows[i].enabled,
+                        onChanged: (value) =>
+                            setState(() => _rows[i].enabled = value),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.remove_circle_outline),
+                        onPressed: () => _removeRow(i),
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    flex: 3,
-                    child: TextField(
-                      controller: _rows[i].amountController,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: [ThousandsSeparatorInputFormatter()],
-                      decoration: InputDecoration(
-                          hintText: '0', suffixText: loc.wonUnit),
-                      onChanged: (_) => setState(() {}),
-                    ),
-                  ),
-                  Switch(
-                    value: _rows[i].enabled,
-                    onChanged: (value) =>
-                        setState(() => _rows[i].enabled = value),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.remove_circle_outline),
-                    onPressed: () => _removeRow(i),
+                  Row(
+                    children: [
+                      Text(loc.fixedExpensePaymentDayLabel,
+                          style: Theme.of(context).textTheme.bodySmall),
+                      const SizedBox(width: 8),
+                      DropdownButton<int>(
+                        value: _rows[i].dayOfMonth,
+                        underline: const SizedBox.shrink(),
+                        items: [
+                          for (var d = 1; d <= 31; d++)
+                            DropdownMenuItem(
+                                value: d,
+                                child: Text(loc.fixedExpenseDayOptionLabel(d))),
+                        ],
+                        onChanged: (value) {
+                          if (value == null) return;
+                          setState(() => _rows[i].dayOfMonth = value);
+                        },
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          loc.fixedExpenseAutoFillDayCaption(
+                              _rows[i].dayOfMonth),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(color: Theme.of(context).hintColor),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

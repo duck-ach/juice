@@ -245,6 +245,19 @@ class AppLocalizationsJa extends AppLocalizations {
   String get fixedExpenseManageInfoBanner => '中長期貯蓄プランの固定支出と連動しており、固定支出が増減すると日/週/月の使用可能予算が変わることがあります。';
 
   @override
+  String get fixedExpensePaymentDayLabel => '支払日';
+
+  @override
+  String fixedExpenseDayOptionLabel(Object day) {
+    return '$day日';
+  }
+
+  @override
+  String fixedExpenseAutoFillDayCaption(Object day) {
+    return '毎月$day日に自動で記入されます';
+  }
+
+  @override
   String get calendarAutoFillTitle => '固定費のカレンダー自動記入';
 
   @override

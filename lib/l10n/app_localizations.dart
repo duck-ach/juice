@@ -529,6 +529,24 @@ abstract class AppLocalizations {
   /// **'중/장기 저축플랜의 고정지출과 연동되어 고정지출이 늘어나거나 줄어들 경우 일/주/월 사용 가능 예산이 달라질 수 있습니다.'**
   String get fixedExpenseManageInfoBanner;
 
+  /// No description provided for @fixedExpensePaymentDayLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'지급일'**
+  String get fixedExpensePaymentDayLabel;
+
+  /// No description provided for @fixedExpenseDayOptionLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'{day}일'**
+  String fixedExpenseDayOptionLabel(Object day);
+
+  /// No description provided for @fixedExpenseAutoFillDayCaption.
+  ///
+  /// In ko, this message translates to:
+  /// **'매월 {day}일에 자동 기입돼요'**
+  String fixedExpenseAutoFillDayCaption(Object day);
+
   /// No description provided for @calendarAutoFillTitle.
   ///
   /// In ko, this message translates to:

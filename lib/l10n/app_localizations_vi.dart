@@ -245,6 +245,19 @@ class AppLocalizationsVi extends AppLocalizations {
   String get fixedExpenseManageInfoBanner => 'Liên kết với các khoản chi phí cố định trong kế hoạch tiết kiệm trung/dài hạn — nếu chi phí cố định tăng hoặc giảm, ngân sách khả dụng theo ngày/tuần/tháng của bạn có thể thay đổi.';
 
   @override
+  String get fixedExpensePaymentDayLabel => 'Ngày thanh toán';
+
+  @override
+  String fixedExpenseDayOptionLabel(Object day) {
+    return 'Ngày $day';
+  }
+
+  @override
+  String fixedExpenseAutoFillDayCaption(Object day) {
+    return 'Tự động điền vào ngày $day hằng tháng';
+  }
+
+  @override
   String get calendarAutoFillTitle => 'Tự động ghi chi phí cố định';
 
   @override

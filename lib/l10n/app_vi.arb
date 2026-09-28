@@ -161,6 +161,19 @@
   "menuFixedExpenseManagementTitle": "Quản lý chi phí cố định",
   "menuFixedExpenseManagementSubtitle": "Quản lý các khoản chi phí cố định và cài đặt tự động điền lịch",
   "fixedExpenseManageInfoBanner": "Liên kết với các khoản chi phí cố định trong kế hoạch tiết kiệm trung/dài hạn — nếu chi phí cố định tăng hoặc giảm, ngân sách khả dụng theo ngày/tuần/tháng của bạn có thể thay đổi.",
+  "fixedExpensePaymentDayLabel": "Ngày thanh toán",
+  "fixedExpenseDayOptionLabel": "Ngày {day}",
+  "@fixedExpenseDayOptionLabel": {
+    "placeholders": {
+      "day": {}
+    }
+  },
+  "fixedExpenseAutoFillDayCaption": "Tự động điền vào ngày {day} hằng tháng",
+  "@fixedExpenseAutoFillDayCaption": {
+    "placeholders": {
+      "day": {}
+    }
+  },
   "calendarAutoFillTitle": "Tự động ghi chi phí cố định",
   "calendarAutoFillSubtitle": "Tự động ghi các khoản chi cố định đã đăng ký vào lịch mỗi tháng",
   "menuThemeSettingsTitle": "Cài đặt giao diện",

@@ -10,15 +10,20 @@ import '../providers/savings_planner_provider.dart';
 
 const _watermarkKey = 'fixedExpenseAutoFillWatermarkMonth';
 
-/// 장기 저축 플랜에 등록된 고정지출(월세, 통신비 등)을 매월 1일 자로 캘린더/지출
-/// 내역에 자동 기입한다. 한 달에 한 번만 채우도록 "마지막으로 채운 월" 워터마크를
-/// 저장해두고, 그 이후 달만 소급 생성한다(여러 달 건너뛰었다면 그만큼 모두 생성).
+/// 장기 저축 플랜에 등록된 고정지출(월세, 통신비 등)을 각 항목에 설정된
+/// [FixedExpenseItem.dayOfMonth]에 맞춰 매월 캘린더/지출 내역에 자동 기입한다.
+/// 한 달에 한 번만 채우도록 "마지막으로 채운 월" 워터마크를 저장해두고, 그 이후
+/// 달만 소급 생성한다(여러 달 건너뛰었다면 그만큼 모두 생성).
 class FixedExpenseAutoFillService {
   FixedExpenseAutoFillService._();
 
   static Box get _settingsBox => Hive.box(HiveBoxes.settings);
 
   static String _monthKey(DateTime d) => DateFormat('yyyyMM').format(d);
+
+  /// 실제 해당 월의 마지막 날짜(28~31) — [dayOfMonth]가 그 달에 없는 날(예: 2월 30일)
+  /// 이면 이 값으로 clamp한다.
+  static int _lastDayOf(int year, int month) => DateTime(year, month + 1, 0).day;
 
   static Future<void> checkAndFillCurrentMonth(Ref ref, {DateTime? now}) async {
     final plan = ref.read(savingsPlanProvider);
@@ -38,11 +43,12 @@ class FixedExpenseAutoFillService {
     final notifier = ref.read(expenseProvider.notifier);
     while (!cursor.isAfter(DateTime(now.year, now.month, 1))) {
       for (final item in items) {
+        final day = item.dayOfMonth.clamp(1, _lastDayOf(cursor.year, cursor.month));
         await notifier.upsert(Expense(
           id: const Uuid().v4(),
           amount: item.amount,
           categoryId: 'life',
-          date: cursor,
+          date: DateTime(cursor.year, cursor.month, day),
           memo: item.name,
           isFixed: true,
         ));

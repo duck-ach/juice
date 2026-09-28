@@ -115,6 +115,19 @@
   "menuFixedExpenseManagementTitle": "固定支出の管理",
   "menuFixedExpenseManagementSubtitle": "固定支出項目の管理とカレンダー自動記入の設定",
   "fixedExpenseManageInfoBanner": "中長期貯蓄プランの固定支出と連動しており、固定支出が増減すると日/週/月の使用可能予算が変わることがあります。",
+  "fixedExpensePaymentDayLabel": "支払日",
+  "fixedExpenseDayOptionLabel": "{day}日",
+  "@fixedExpenseDayOptionLabel": {
+    "placeholders": {
+      "day": {}
+    }
+  },
+  "fixedExpenseAutoFillDayCaption": "毎月{day}日に自動で記入されます",
+  "@fixedExpenseAutoFillDayCaption": {
+    "placeholders": {
+      "day": {}
+    }
+  },
   "calendarAutoFillTitle": "固定費のカレンダー自動記入",
   "calendarAutoFillSubtitle": "毎月登録した固定費をカレンダーに自動で記録します",
   "menuThemeSettingsTitle": "テーマ設定",

@@ -115,6 +115,19 @@
   "menuFixedExpenseManagementTitle": "Manage Fixed Expenses",
   "menuFixedExpenseManagementSubtitle": "Manage fixed expense items and calendar auto-fill settings",
   "fixedExpenseManageInfoBanner": "Linked to your mid/long-term savings plan's fixed expenses — if they increase or decrease, your available daily/weekly/monthly budget may change.",
+  "fixedExpensePaymentDayLabel": "Payment day",
+  "fixedExpenseDayOptionLabel": "Day {day}",
+  "@fixedExpenseDayOptionLabel": {
+    "placeholders": {
+      "day": {}
+    }
+  },
+  "fixedExpenseAutoFillDayCaption": "Automatically added on day {day} of each month",
+  "@fixedExpenseAutoFillDayCaption": {
+    "placeholders": {
+      "day": {}
+    }
+  },
   "calendarAutoFillTitle": "Auto-fill fixed expenses",
   "calendarAutoFillSubtitle": "Automatically records your registered fixed expenses on the calendar every month",
   "menuThemeSettingsTitle": "Theme Settings",

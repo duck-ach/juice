@@ -245,6 +245,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fixedExpenseManageInfoBanner => 'Linked to your mid/long-term savings plan\'s fixed expenses — if they increase or decrease, your available daily/weekly/monthly budget may change.';
 
   @override
+  String get fixedExpensePaymentDayLabel => 'Payment day';
+
+  @override
+  String fixedExpenseDayOptionLabel(Object day) {
+    return 'Day $day';
+  }
+
+  @override
+  String fixedExpenseAutoFillDayCaption(Object day) {
+    return 'Automatically added on day $day of each month';
+  }
+
+  @override
   String get calendarAutoFillTitle => 'Auto-fill fixed expenses';
 
   @override

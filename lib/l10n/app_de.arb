@@ -115,6 +115,19 @@
   "menuFixedExpenseManagementTitle": "Feste Ausgaben verwalten",
   "menuFixedExpenseManagementSubtitle": "Feste Ausgabenposten verwalten und Kalender-Autoausfüllung einstellen",
   "fixedExpenseManageInfoBanner": "Verknüpft mit den festen Ausgaben deines mittel-/langfristigen Sparplans – wenn sich diese erhöhen oder verringern, kann sich dein verfügbares Tages-/Wochen-/Monatsbudget ändern.",
+  "fixedExpensePaymentDayLabel": "Zahltag",
+  "fixedExpenseDayOptionLabel": "Tag {day}",
+  "@fixedExpenseDayOptionLabel": {
+    "placeholders": {
+      "day": {}
+    }
+  },
+  "fixedExpenseAutoFillDayCaption": "Wird jeden Monat am {day}. automatisch eingetragen",
+  "@fixedExpenseAutoFillDayCaption": {
+    "placeholders": {
+      "day": {}
+    }
+  },
   "calendarAutoFillTitle": "Fixkosten automatisch eintragen",
   "calendarAutoFillSubtitle": "Trägt deine hinterlegten Fixkosten jeden Monat automatisch in den Kalender ein",
   "menuThemeSettingsTitle": "Design-Einstellungen",

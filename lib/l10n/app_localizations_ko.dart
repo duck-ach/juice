@@ -245,6 +245,19 @@ class AppLocalizationsKo extends AppLocalizations {
   String get fixedExpenseManageInfoBanner => '중/장기 저축플랜의 고정지출과 연동되어 고정지출이 늘어나거나 줄어들 경우 일/주/월 사용 가능 예산이 달라질 수 있습니다.';
 
   @override
+  String get fixedExpensePaymentDayLabel => '지급일';
+
+  @override
+  String fixedExpenseDayOptionLabel(Object day) {
+    return '$day일';
+  }
+
+  @override
+  String fixedExpenseAutoFillDayCaption(Object day) {
+    return '매월 $day일에 자동 기입돼요';
+  }
+
+  @override
   String get calendarAutoFillTitle => '고정지출 캘린더 자동 기입';
 
   @override

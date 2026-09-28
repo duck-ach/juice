@@ -115,6 +115,19 @@
   "menuFixedExpenseManagementTitle": "Gerenciar despesas fixas",
   "menuFixedExpenseManagementSubtitle": "Gerencie itens de despesas fixas e as configurações de preenchimento automático do calendário",
   "fixedExpenseManageInfoBanner": "Vinculado às despesas fixas do seu plano de poupança de médio/longo prazo — se elas aumentarem ou diminuírem, seu orçamento diário/semanal/mensal disponível pode mudar.",
+  "fixedExpensePaymentDayLabel": "Dia de pagamento",
+  "fixedExpenseDayOptionLabel": "Dia {day}",
+  "@fixedExpenseDayOptionLabel": {
+    "placeholders": {
+      "day": {}
+    }
+  },
+  "fixedExpenseAutoFillDayCaption": "Adicionado automaticamente no dia {day} de cada mês",
+  "@fixedExpenseAutoFillDayCaption": {
+    "placeholders": {
+      "day": {}
+    }
+  },
   "calendarAutoFillTitle": "Preenchimento automático de despesas fixas",
   "calendarAutoFillSubtitle": "Registra automaticamente suas despesas fixas no calendário todo mês",
   "menuThemeSettingsTitle": "Configurações de tema",

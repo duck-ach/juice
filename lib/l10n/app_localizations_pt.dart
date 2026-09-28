@@ -245,6 +245,19 @@ class AppLocalizationsPt extends AppLocalizations {
   String get fixedExpenseManageInfoBanner => 'Vinculado às despesas fixas do seu plano de poupança de médio/longo prazo — se elas aumentarem ou diminuírem, seu orçamento diário/semanal/mensal disponível pode mudar.';
 
   @override
+  String get fixedExpensePaymentDayLabel => 'Dia de pagamento';
+
+  @override
+  String fixedExpenseDayOptionLabel(Object day) {
+    return 'Dia $day';
+  }
+
+  @override
+  String fixedExpenseAutoFillDayCaption(Object day) {
+    return 'Adicionado automaticamente no dia $day de cada mês';
+  }
+
+  @override
   String get calendarAutoFillTitle => 'Preenchimento automático de despesas fixas';
 
   @override

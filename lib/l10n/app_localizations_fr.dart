@@ -245,6 +245,19 @@ class AppLocalizationsFr extends AppLocalizations {
   String get fixedExpenseManageInfoBanner => 'Lié aux dépenses fixes de votre plan d\'épargne à moyen/long terme — si elles augmentent ou diminuent, votre budget disponible quotidien/hebdomadaire/mensuel peut changer.';
 
   @override
+  String get fixedExpensePaymentDayLabel => 'Jour de paiement';
+
+  @override
+  String fixedExpenseDayOptionLabel(Object day) {
+    return 'Jour $day';
+  }
+
+  @override
+  String fixedExpenseAutoFillDayCaption(Object day) {
+    return 'Ajouté automatiquement le $day de chaque mois';
+  }
+
+  @override
   String get calendarAutoFillTitle => 'Saisie automatique des charges fixes';
 
   @override

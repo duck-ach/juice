@@ -161,6 +161,19 @@
   "menuFixedExpenseManagementTitle": "고정지출 관리",
   "menuFixedExpenseManagementSubtitle": "고정지출 항목 관리 및 캘린더 자동 기입 설정",
   "fixedExpenseManageInfoBanner": "중/장기 저축플랜의 고정지출과 연동되어 고정지출이 늘어나거나 줄어들 경우 일/주/월 사용 가능 예산이 달라질 수 있습니다.",
+  "fixedExpensePaymentDayLabel": "지급일",
+  "fixedExpenseDayOptionLabel": "{day}일",
+  "@fixedExpenseDayOptionLabel": {
+    "placeholders": {
+      "day": {}
+    }
+  },
+  "fixedExpenseAutoFillDayCaption": "매월 {day}일에 자동 기입돼요",
+  "@fixedExpenseAutoFillDayCaption": {
+    "placeholders": {
+      "day": {}
+    }
+  },
   "calendarAutoFillTitle": "고정지출 캘린더 자동 기입",
   "calendarAutoFillSubtitle": "매월 등록한 고정지출을 캘린더에 자동으로 기록해요",
   "menuThemeSettingsTitle": "테마 설정",
