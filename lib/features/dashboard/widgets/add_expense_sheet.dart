@@ -783,7 +783,7 @@ class _CategoryChip extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        width: 72,
+        width: 82,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -810,7 +810,7 @@ class _CategoryChip extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium
-                  ?.copyWith(fontSize: 12, height: 1.15),
+                  ?.copyWith(fontSize: 11, height: 1.15),
             ),
           ],
         ),

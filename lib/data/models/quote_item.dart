@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 /// 홈 화면 '오늘의 주스 팁' 카드에 노출되는 금융 명언/브랜드 슬로건 하나.
-/// [text]/[author]는 언어 코드('ko'/'en'/'ja'/'vi') → 문자열 맵으로, 지원하지 않는
+/// [text]/[author]는 언어 코드('ko'/'en'/'ja'/'de'/'vi'/'zh_Hant'/'zh_Hans'/'fr'/'pt') → 문자열 맵으로, 지원하지 않는
 /// 언어면 영어로 대체(fallback)한다.
 class QuoteItem {
   const QuoteItem({
@@ -28,7 +28,14 @@ class QuoteItem {
       _localized(author, context);
 
   String _localized(Map<String, String> map, BuildContext context) {
-    final languageCode = Localizations.localeOf(context).languageCode;
-    return map[languageCode] ?? map['en'] ?? map.values.first;
+    final locale = Localizations.localeOf(context);
+    // 중국어는 번체/간체를 스크립트로 구분해(zh_Hant/zh_Hans) 먼저 찾고, 없으면 언어 코드로 대체.
+    final scriptKey = locale.scriptCode == null
+        ? null
+        : '${locale.languageCode}_${locale.scriptCode}';
+    return (scriptKey == null ? null : map[scriptKey]) ??
+        map[locale.languageCode] ??
+        map['en'] ??
+        map.values.first;
   }
 }

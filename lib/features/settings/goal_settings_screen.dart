@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/utils/ml_format.dart';
 import '../../core/utils/thousands_formatter.dart';
 import '../../core/widgets/juice_segmented_tab.dart';
 import '../../data/models/budget_period.dart';
@@ -128,7 +129,6 @@ class GoalSettingsScreen extends ConsumerWidget {
     final currency = ref.watch(currencyProvider).currency;
     final installmentMode = ref.watch(installmentBillingModeProvider);
     final savingOption = ref.watch(savingOptionProvider);
-    final formatter = NumberFormat('#,###');
 
     return Scaffold(
       appBar: AppBar(title: Text(loc.goalSettingsTitle)),
@@ -193,7 +193,7 @@ class GoalSettingsScreen extends ConsumerWidget {
                 title: Text(
                     '${period.settingLabel(loc)} ${loc.periodTargetAmountSuffix}'),
                 subtitle: Text(
-                    '${formatter.format(periodTargets.forPeriod(period) ?? 0)} mL'),
+                    '${formatMl(context, periodTargets.forPeriod(period) ?? 0)} mL'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => _editPeriodTarget(context, ref, period, loc),
               ),
@@ -438,10 +438,11 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 8),
-        Row(
+        Wrap(
+          alignment: WrapAlignment.spaceBetween,
+          crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             TextButton(onPressed: onEdit, child: Text(loc.replanButton)),
-            const Spacer(),
             TextButton.icon(
               onPressed: onRecalibrate,
               icon: const Icon(Icons.trending_up, size: 18),
@@ -559,7 +560,6 @@ class _MiniStatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final formatter = NumberFormat('#,###');
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
       decoration: BoxDecoration(
@@ -573,13 +573,15 @@ class _MiniStatCard extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis),
           const SizedBox(height: 4),
-          Text(
-            '${formatter.format(value)} mL',
-            style: theme.textTheme.titleSmall
-                ?.copyWith(fontWeight: FontWeight.w800),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              '${formatMl(context, value)} mL',
+              style: theme.textTheme.titleSmall
+                  ?.copyWith(fontWeight: FontWeight.w800),
+              maxLines: 1,
+              textAlign: TextAlign.center,
+            ),
           ),
         ],
       ),

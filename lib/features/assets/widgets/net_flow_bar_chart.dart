@@ -53,7 +53,13 @@ class NetFlowBarChart extends ConsumerWidget {
                   }
                   return Padding(
                     padding: const EdgeInsets.only(top: 6),
-                    child: Text(pointLabel(trend[index]), style: labelStyle),
+                    child: SizedBox(
+                      width: meta.parentAxisSize / trend.length,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(pointLabel(trend[index]), style: labelStyle),
+                      ),
+                    ),
                   );
                 },
               ),

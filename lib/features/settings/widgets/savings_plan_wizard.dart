@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../core/utils/budget_presets.dart';
+import '../../../core/utils/ml_format.dart';
 import '../../../core/utils/thousands_formatter.dart';
 import '../../../core/widgets/juice_choice_chip.dart';
 import '../../../l10n/app_localizations.dart';
@@ -844,7 +845,6 @@ class _ResultStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
-    final formatter = NumberFormat('#,###');
     final currency =
         ProviderScope.containerOf(context).read(currencyProvider).currency;
 
@@ -918,7 +918,7 @@ class _ResultStep extends StatelessWidget {
                     children: [
                       TextSpan(text: loc.resultWeeklyPrefix),
                       TextSpan(
-                        text: '${formatter.format(plan.weeklyAvailable)} mL',
+                        text: '${formatMl(context, plan.weeklyAvailable ?? 0)} mL',
                         style: const TextStyle(fontWeight: FontWeight.w800),
                       ),
                       TextSpan(text: loc.resultWeeklySuffix),
@@ -927,8 +927,8 @@ class _ResultStep extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  loc.resultDailyMonthlyLine(formatter.format(plan.dailyAvailable),
-                      formatter.format(monthly)),
+                  loc.resultDailyMonthlyLine(formatMl(context, plan.dailyAvailable ?? 0),
+                      formatMl(context, monthly)),
                   style: theme.textTheme.bodyMedium,
                 ),
               ],

@@ -5,8 +5,8 @@ import '../../providers/juice_theme_provider.dart';
 
 /// 앱 전역에서 쓰는 슬라이딩 캡슐(pill) 형태의 세그먼티드 탭. `SegmentedButton`/`ChoiceChip`을
 /// 대체해, 선택 표시에 체크 아이콘(✓)을 쓰지 않고 배경 캡슐이 선택된 탭 위치로 부드럽게
-/// 이동하는 방식으로 표현한다. 라벨은 항상 한 줄로 고정(overflow는 말줄임표)해 긴 텍스트로
-/// 인한 줄바꿈/레이아웃 깨짐을 막는다. 선택된 탭의 하이라이트/텍스트 색상은 현재 선택된
+/// 이동하는 방식으로 표현한다. 라벨은 기본 한 줄이지만 긴 번역문은 최대 두 줄까지 줄바꿈해 잘리지 않게 한다
+/// (글자를 줄이면 가독성이 떨어지므로 크기는 그대로 유지). 선택된 탭의 하이라이트/텍스트 색상은 현재 선택된
 /// 주스 테마([resolvedJuiceThemeProvider])를 따른다(고정 오렌지색이 아님).
 class JuiceSegmentedTab extends ConsumerWidget {
   const JuiceSegmentedTab({
@@ -67,18 +67,21 @@ class JuiceSegmentedTab extends ConsumerWidget {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 12, vertical: 10),
-                          child: Text(
-                            items[i],
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: i == selectedIndex
-                                  ? FontWeight.w600
-                                  : FontWeight.w400,
-                              color: i == selectedIndex
-                                  ? selectedTextColor
-                                  : unselectedTextColor,
+                          child: Center(
+                            child: Text(
+                              items[i],
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                height: 1.15,
+                                fontWeight: i == selectedIndex
+                                    ? FontWeight.w600
+                                    : FontWeight.w400,
+                                color: i == selectedIndex
+                                    ? selectedTextColor
+                                    : unselectedTextColor,
+                              ),
                             ),
                           ),
                         ),

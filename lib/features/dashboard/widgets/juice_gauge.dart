@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import '../../../core/utils/ml_format.dart';
 
 import '../../../l10n/app_localizations.dart';
 
@@ -91,7 +91,6 @@ class _JuiceGaugeState extends State<JuiceGauge> with TickerProviderStateMixin {
         : (((widget.total - widget.remaining) / widget.total) * 100)
             .round()
             .clamp(0, 999);
-    final formatter = NumberFormat('#,###');
 
     return Column(
       children: [
@@ -133,7 +132,7 @@ class _JuiceGaugeState extends State<JuiceGauge> with TickerProviderStateMixin {
         FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
-            '${formatter.format(widget.remaining)} / ${formatter.format(widget.total)} mL',
+            '${formatMl(context, widget.remaining)} / ${formatMl(context, widget.total)} mL',
             textAlign: TextAlign.center,
             maxLines: 1,
             style: Theme.of(context)
