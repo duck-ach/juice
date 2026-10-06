@@ -9,11 +9,14 @@ import '../data/models/budget_period.dart';
 import '../data/models/expense.dart';
 import '../providers/budget_settings_provider.dart';
 import '../providers/currency_provider.dart';
+import '../data/models/juice_saving_history.dart';
 import '../providers/expense_provider.dart';
+import '../providers/juice_saving_provider.dart';
+import '../providers/savings_planner_provider.dart';
 import 'exchange_rate_service.dart';
 
-/// 기준 통화를 바꿀 때, 이미 기록된 지출/수입과 주기별 목표 예산을 새 기준 통화로
-/// 일괄 환산한다(오늘 날짜 최신 환율 기준).
+/// 기준 통화를 바꿀 때, 이미 기록된 지출/수입, 주기별 목표 예산, 중/장기 저축 플랜,
+/// 마감된 주기 기록의 목표량을 새 기준 통화로 일괄 환산한다(오늘 날짜 최신 환율 기준).
 ///
 /// 외화(originalCurrency)로 기록된 지출은 [Expense.originalAmount]라는 불변의 원본이
 /// 이미 있어 항상 그 값을 기준으로 재환산하므로 여러 번 통화를 바꿔도 오차가 누적되지
@@ -61,10 +64,17 @@ class CurrencyMigrationService {
   }) {
     final existing = anchors[key] as Map<String, dynamic>?;
     if (existing != null) {
-      return (
-        currency: existing['currency'] as String,
-        amount: (existing['amount'] as num).toDouble(),
-      );
+      // 마지막 환산 결과('result')가 지금 값과 다르면, 그 사이 사용자가 직접 값을 고친 것이므로
+      // 옛 원본 앵커는 더 이상 유효하지 않다 — 지금 값을 새 원본으로 삼는다.
+      final lastResult = (existing['result'] as num?)?.toDouble();
+      final stale =
+          lastResult != null && (lastResult - currentAmount).abs() > 0.01;
+      if (!stale) {
+        return (
+          currency: existing['currency'] as String,
+          amount: (existing['amount'] as num).toDouble(),
+        );
+      }
     }
     anchors[key] = {'currency': currentCurrency, 'amount': currentAmount};
     return (currency: currentCurrency, amount: currentAmount);
@@ -105,6 +115,23 @@ class CurrencyMigrationService {
 
     var allConverted = true;
 
+    /// [key]의 최초 원본 앵커에서 새 기준 통화로 다시 환산한 값. 환율을 못 구하면 null.
+    Future<double?> convertAnchored(String key, double current) async {
+      final anchor = _anchorFor(anchors, key,
+          currentCurrency: fromCode, currentAmount: current);
+      final rate = await rateFromAnchor(anchor.currency);
+      double? result;
+      if (rate != null) {
+        result = _round(anchor.amount * rate, toCurrency);
+      } else if (baseRate != null) {
+        result = _round(current * baseRate, toCurrency);
+      }
+      if (result != null) {
+        (anchors[key] as Map<String, dynamic>)['result'] = result;
+      }
+      return result;
+    }
+
     final box = Hive.box<Expense>(HiveBoxes.expenses);
     for (final expense in box.values.toList()) {
       final originalCurrency = expense.originalCurrency;
@@ -128,17 +155,13 @@ class CurrencyMigrationService {
         }
         await expense.save();
       } else {
-        final anchor = _anchorFor(anchors, 'expense_${expense.id}',
-            currentCurrency: fromCode, currentAmount: expense.amount);
-        final rate = await rateFromAnchor(anchor.currency);
-        if (rate != null) {
-          expense.amount = _round(anchor.amount * rate, toCurrency);
-        } else if (baseRate != null) {
-          expense.amount = _round(expense.amount * baseRate, toCurrency);
-        } else {
+        final converted =
+            await convertAnchored('expense_${expense.id}', expense.amount);
+        if (converted == null) {
           allConverted = false;
           continue;
         }
+        expense.amount = converted;
         await expense.save();
       }
     }
@@ -149,17 +172,79 @@ class CurrencyMigrationService {
     for (final period in BudgetPeriod.values) {
       final current = amounts.forPeriod(period);
       if (current == null) continue;
-      final anchor = _anchorFor(anchors, _budgetAnchorKeys[period]!,
-          currentCurrency: fromCode, currentAmount: current);
-      final rate = await rateFromAnchor(anchor.currency);
-      if (rate != null) {
-        await notifier.setForPeriod(period, _round(anchor.amount * rate, toCurrency));
-      } else if (baseRate != null) {
-        await notifier.setForPeriod(period, _round(current * baseRate, toCurrency));
-      } else {
+      final converted =
+          await convertAnchored(_budgetAnchorKeys[period]!, current);
+      if (converted == null) {
         allConverted = false;
+      } else {
+        await notifier.setForPeriod(period, converted);
       }
     }
+
+    // 중/장기 저축 플랜(월 수입·목표 금액·고정지출·고정수입)도 같은 기준 통화 금액이라 함께 환산한다.
+    final plan = ref.read(savingsPlanProvider);
+    if (plan.monthlyIncome != null ||
+        plan.goalAmount != null ||
+        plan.weeklyLivingExpense != null ||
+        plan.fixedExpenses.isNotEmpty ||
+        plan.fixedIncomes.isNotEmpty) {
+      Future<double?> nullable(String key, double? value) async {
+        if (value == null) return null;
+        final converted = await convertAnchored(key, value);
+        if (converted == null) allConverted = false;
+        return converted ?? value;
+      }
+
+      final monthlyIncome = await nullable('plan_monthlyIncome', plan.monthlyIncome);
+      final weeklyLiving =
+          await nullable('plan_weeklyLiving', plan.weeklyLivingExpense);
+      final goalAmount = await nullable('plan_goalAmount', plan.goalAmount);
+      final fixedExpenses = <FixedExpenseItem>[];
+      for (var i = 0; i < plan.fixedExpenses.length; i++) {
+        final item = plan.fixedExpenses[i];
+        final converted = await nullable('plan_fixedExpense_$i', item.amount);
+        fixedExpenses.add(item.copyWith(amount: converted));
+      }
+      final fixedIncomes = <FixedIncomeItem>[];
+      for (var i = 0; i < plan.fixedIncomes.length; i++) {
+        final item = plan.fixedIncomes[i];
+        final converted = await nullable('plan_fixedIncome_$i', item.amount);
+        fixedIncomes.add(FixedIncomeItem(name: item.name, amount: converted!));
+      }
+
+      var migrated = SavingsPlan(
+        enabled: plan.enabled,
+        monthlyIncome: monthlyIncome,
+        incomeType: plan.incomeType,
+        incomeFrequency: plan.incomeFrequency,
+        allowanceSubType: plan.allowanceSubType,
+        weeklyLivingExpense: weeklyLiving,
+        goalYears: plan.goalYears,
+        goalMonths: plan.goalMonths,
+        goalAmount: goalAmount,
+        fixedExpenses: fixedExpenses,
+        fixedIncomes: fixedIncomes,
+        createdAt: plan.createdAt,
+      );
+      // 고정수입이 있으면 월 수입은 항상 그 합계여야 하므로, 항목별 반올림 오차가 생기지 않게 다시 합산한다.
+      if (fixedIncomes.isNotEmpty) migrated = migrated.withFixedIncomes(fixedIncomes);
+      await ref.read(savingsPlanProvider.notifier).update(migrated);
+    }
+
+    // 마감된 주기 기록의 목표량 스냅샷도 환산한다 — 안 하면 환산된 지출과 옛 통화의 목표를
+    // 비교해 절약/초과 판정이 틀어진다.
+    final historyBox = Hive.box<JuiceSavingHistory>(HiveBoxes.juiceSavingHistory);
+    for (final history in historyBox.values.toList()) {
+      final converted =
+          await convertAnchored('history_${history.id}', history.targetAmount);
+      if (converted == null) {
+        allConverted = false;
+        continue;
+      }
+      history.targetAmount = converted;
+      await history.save();
+    }
+    ref.invalidate(juiceSavingHistoryProvider);
 
     await _saveAnchors(anchors);
     return allConverted;
