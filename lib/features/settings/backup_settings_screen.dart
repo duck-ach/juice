@@ -10,6 +10,7 @@ import 'package:share_plus/share_plus.dart';
 
 import '../../core/utils/csv_export.dart';
 import '../../data/local/backup_service.dart';
+import '../../data/models/category.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/budget_settings_provider.dart';
 import '../../providers/category_provider.dart';
@@ -37,11 +38,13 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
     try {
       final expenses = ref.read(expenseProvider);
       final categories = ref.read(categoryProvider);
-      final categoryMap = {for (final c in categories) c.id: c};
-      final file = await buildExpenseCsvFile(expenses, categoryMap);
+      final loc = AppLocalizations.of(context)!;
+      final categoryNames = {
+        for (final c in categories) c.id: c.getLocalizedName(context)
+      };
+      final file = await buildExpenseCsvFile(expenses, categoryNames, loc);
       if (!mounted) return;
-      await Share.shareXFiles([XFile(file.path)],
-          text: AppLocalizations.of(context)!.csvShareText);
+      await Share.shareXFiles([XFile(file.path)], text: loc.csvShareText);
     } finally {
       if (mounted) setState(() => _exportingCsv = false);
     }

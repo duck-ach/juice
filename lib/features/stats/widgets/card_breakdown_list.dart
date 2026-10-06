@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../data/models/card_item.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/currency_provider.dart';
 import '../../../providers/stats_provider.dart';
@@ -57,7 +58,9 @@ class CardBreakdownList extends ConsumerWidget {
                       ),
                       const SizedBox(width: 8),
                       Expanded(
-                        child: Text(item.card?.name ?? loc.cardUnassigned,
+                        child: Text(
+                            item.card?.getLocalizedName(context) ??
+                                loc.cardUnassigned,
                             style: Theme.of(context).textTheme.bodyMedium),
                       ),
                       Text(

@@ -25,6 +25,12 @@ class AppLocalizationsKo extends AppLocalizations {
   String get paymentCreditCard => '신용카드';
 
   @override
+  String get defaultCheckCardName => '체크카드 (기본)';
+
+  @override
+  String get defaultCreditCardName => '신용카드 (기본)';
+
+  @override
   String get paymentCash => '현금·이체';
 
   @override
@@ -357,6 +363,18 @@ class AppLocalizationsKo extends AppLocalizations {
   String get feedbackDeviceInfoNotice => '원활한 문의 해결을 위해 기기/OS 정보가 함께 전송됩니다.';
 
   @override
+  String get feedbackComposeReplyEmail => '회신 이메일';
+
+  @override
+  String get feedbackComposeNotEntered => '(미입력)';
+
+  @override
+  String get feedbackComposeContent => '내용';
+
+  @override
+  String get feedbackComposeDeviceInfo => '기기 정보';
+
+  @override
   String get feedbackContentRequired => '문의 내용을 입력해 주세요';
 
   @override
@@ -453,6 +471,24 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get csvShareText => '주스 지출 내역';
+
+  @override
+  String get csvHeaderDate => '날짜';
+
+  @override
+  String get csvHeaderCategory => '카테고리';
+
+  @override
+  String get csvHeaderAmount => '금액';
+
+  @override
+  String get csvHeaderIsFixed => '고정지출 여부';
+
+  @override
+  String get csvHeaderMemo => '메모';
+
+  @override
+  String get csvUnknownCategory => '알 수 없음';
 
   @override
   String get backupShareText => '주스 데이터 백업';
@@ -784,6 +820,11 @@ class AppLocalizationsKo extends AppLocalizations {
   String get cardSelectLabel => '카드 선택';
 
   @override
+  String installmentMemoSuffix(Object index, Object months) {
+    return '($index/$months회차)';
+  }
+
+  @override
   String installmentEditNotice(Object index, Object months) {
     return '할부 $index/$months회차 — 다른 회차 금액은 함께 바뀌지 않아요';
   }
@@ -1028,6 +1069,18 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get fixedExpenseStepQuestion => '매달 고정으로\n빠져나가는 돈이 있나요?';
+
+  @override
+  String get fixedExpenseDefaultRent => '월세';
+
+  @override
+  String get fixedExpenseDefaultCommunication => '통신비';
+
+  @override
+  String get fixedExpenseDefaultInsurance => '보험료';
+
+  @override
+  String get fixedExpenseDefaultSubscription => '구독료';
 
   @override
   String get fixedExpenseStepSubtitle => '월세, 보험료, 통신비 등 주스 통에 담지 않을 비용이에요.';

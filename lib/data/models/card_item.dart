@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:hive/hive.dart';
 
 import '../../l10n/app_localizations.dart';
@@ -68,4 +69,18 @@ extension CardItemDisplay on CardItem {
         CardType.credit => loc.paymentCreditCard,
         CardType.corporate => loc.cardTypeCorporateExcluded,
       };
+}
+
+/// 기본 제공 카드(체크카드/신용카드)의 이름을 현재 언어로 실시간 번역해 보여준다.
+/// 사용자가 직접 추가/수정한 카드는 저장된 이름을 그대로 유지한다.
+extension CardItemL10n on CardItem {
+  String getLocalizedName(BuildContext context) {
+    if (!isDefault) return name;
+    final loc = AppLocalizations.of(context)!;
+    return switch (id) {
+      'default_check' => loc.defaultCheckCardName,
+      'default_credit' => loc.defaultCreditCardName,
+      _ => name,
+    };
+  }
 }

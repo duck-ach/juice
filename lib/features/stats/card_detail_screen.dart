@@ -71,7 +71,7 @@ class _CardDetailScreenState extends ConsumerState<CardDetailScreen> {
     final color = Color(card.colorValue);
 
     return Scaffold(
-      appBar: AppBar(title: Text(card.name)),
+      appBar: AppBar(title: Text(card.getLocalizedName(context))),
       body: Column(
         children: [
           Padding(

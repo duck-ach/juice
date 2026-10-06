@@ -74,7 +74,7 @@ class CardManagementScreen extends ConsumerWidget {
                           backgroundColor: color.withValues(alpha: 0.18),
                           child: Icon(Icons.credit_card, color: color),
                         ),
-                        title: Text(card.name,
+                        title: Text(card.getLocalizedName(context),
                             style: const TextStyle(fontWeight: FontWeight.w700)),
                         subtitle: Text(card.subtitleLabel(loc)),
                       ),
@@ -124,7 +124,7 @@ class CardManagementScreen extends ConsumerWidget {
       context: context,
       builder: (dialogContext) => AlertDialog(
         title: Text(loc.cardDeleteTitle),
-        content: Text(loc.cardDeleteConfirm(card.name)),
+        content: Text(loc.cardDeleteConfirm(card.getLocalizedName(context))),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(dialogContext).pop(false),

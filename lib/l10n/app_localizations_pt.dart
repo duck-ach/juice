@@ -25,6 +25,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get paymentCreditCard => 'Cartão de crédito';
 
   @override
+  String get defaultCheckCardName => 'Cartão de débito (padrão)';
+
+  @override
+  String get defaultCreditCardName => 'Cartão de crédito (padrão)';
+
+  @override
   String get paymentCash => 'Dinheiro · Transferência';
 
   @override
@@ -357,6 +363,18 @@ class AppLocalizationsPt extends AppLocalizations {
   String get feedbackDeviceInfoNotice => 'Informações do dispositivo/SO são incluídas para agilizar o atendimento.';
 
   @override
+  String get feedbackComposeReplyEmail => 'E-mail de resposta';
+
+  @override
+  String get feedbackComposeNotEntered => '(não informado)';
+
+  @override
+  String get feedbackComposeContent => 'Conteúdo';
+
+  @override
+  String get feedbackComposeDeviceInfo => 'Informações do dispositivo';
+
+  @override
   String get feedbackContentRequired => 'Digite sua mensagem';
 
   @override
@@ -453,6 +471,24 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get csvShareText => 'Histórico de despesas do Juice';
+
+  @override
+  String get csvHeaderDate => 'Data';
+
+  @override
+  String get csvHeaderCategory => 'Categoria';
+
+  @override
+  String get csvHeaderAmount => 'Valor';
+
+  @override
+  String get csvHeaderIsFixed => 'Despesa fixa';
+
+  @override
+  String get csvHeaderMemo => 'Nota';
+
+  @override
+  String get csvUnknownCategory => 'Desconhecido';
 
   @override
   String get backupShareText => 'Backup de dados do Juice';
@@ -784,6 +820,11 @@ class AppLocalizationsPt extends AppLocalizations {
   String get cardSelectLabel => 'Selecionar cartão';
 
   @override
+  String installmentMemoSuffix(Object index, Object months) {
+    return '(Parcela $index/$months)';
+  }
+
+  @override
   String installmentEditNotice(Object index, Object months) {
     return 'Parcela $index/$months — as outras parcelas não serão alteradas junto';
   }
@@ -1028,6 +1069,18 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get fixedExpenseStepQuestion => 'Você tem despesas\nfixas mensais?';
+
+  @override
+  String get fixedExpenseDefaultRent => 'Aluguel';
+
+  @override
+  String get fixedExpenseDefaultCommunication => 'Conta de telefone';
+
+  @override
+  String get fixedExpenseDefaultInsurance => 'Seguro';
+
+  @override
+  String get fixedExpenseDefaultSubscription => 'Assinaturas';
 
   @override
   String get fixedExpenseStepSubtitle => 'Aluguel, seguro, conta de telefone, etc. — custos não contabilizados no galão de juice.';

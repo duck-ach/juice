@@ -72,6 +72,10 @@ class _SavingsPlanWizardScreenState
   int? _selectedPreset;
   bool _customDuration = false;
 
+  /// initState 시점엔 AppLocalizations를 쓸 수 없어, 새 플랜(고정지출이 아직
+  /// 비어있는 경우)의 추천 항목 이름은 didChangeDependencies에서 한 번만 채운다.
+  bool _needsLocalizedFixedExpenseDefaults = false;
+
   /// 소득 형태별 스텝 구성.
   /// - 불규칙 소득: 목표를 직접 정하지 않고 최소 안전 수입에서 역산하므로 목표 스텝 없음.
   /// - 용돈·시드머니(비정기): 고정비도 의미가 없어 생략 — 질문 하나로 바로 결과.
@@ -133,12 +137,33 @@ class _SavingsPlanWizardScreenState
     } else if (plan.totalMonths > 0) {
       _customDuration = true;
     }
-    final expenses = plan.fixedExpenses.isEmpty
-        ? SavingsPlan.defaultFixedExpenses
-        : plan.fixedExpenses;
-    _fixedExpenseRows = expenses
-        .map((e) => _WizardFixedExpenseRow(name: e.name, amount: e.amount))
-        .toList();
+    if (plan.fixedExpenses.isEmpty) {
+      _fixedExpenseRows =
+          List.generate(4, (_) => _WizardFixedExpenseRow(name: '', amount: 0));
+      _needsLocalizedFixedExpenseDefaults = true;
+    } else {
+      _fixedExpenseRows = plan.fixedExpenses
+          .map((e) => _WizardFixedExpenseRow(name: e.name, amount: e.amount))
+          .toList();
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_needsLocalizedFixedExpenseDefaults) {
+      _needsLocalizedFixedExpenseDefaults = false;
+      final loc = AppLocalizations.of(context)!;
+      final defaultNames = [
+        loc.fixedExpenseDefaultRent,
+        loc.fixedExpenseDefaultCommunication,
+        loc.fixedExpenseDefaultInsurance,
+        loc.fixedExpenseDefaultSubscription,
+      ];
+      for (var i = 0; i < _fixedExpenseRows.length && i < defaultNames.length; i++) {
+        _fixedExpenseRows[i].nameController.text = defaultNames[i];
+      }
+    }
   }
 
   @override

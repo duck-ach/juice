@@ -145,6 +145,18 @@ abstract class AppLocalizations {
   /// **'신용카드'**
   String get paymentCreditCard;
 
+  /// No description provided for @defaultCheckCardName.
+  ///
+  /// In ko, this message translates to:
+  /// **'체크카드 (기본)'**
+  String get defaultCheckCardName;
+
+  /// No description provided for @defaultCreditCardName.
+  ///
+  /// In ko, this message translates to:
+  /// **'신용카드 (기본)'**
+  String get defaultCreditCardName;
+
   /// No description provided for @paymentCash.
   ///
   /// In ko, this message translates to:
@@ -745,6 +757,30 @@ abstract class AppLocalizations {
   /// **'원활한 문의 해결을 위해 기기/OS 정보가 함께 전송됩니다.'**
   String get feedbackDeviceInfoNotice;
 
+  /// No description provided for @feedbackComposeReplyEmail.
+  ///
+  /// In ko, this message translates to:
+  /// **'회신 이메일'**
+  String get feedbackComposeReplyEmail;
+
+  /// No description provided for @feedbackComposeNotEntered.
+  ///
+  /// In ko, this message translates to:
+  /// **'(미입력)'**
+  String get feedbackComposeNotEntered;
+
+  /// No description provided for @feedbackComposeContent.
+  ///
+  /// In ko, this message translates to:
+  /// **'내용'**
+  String get feedbackComposeContent;
+
+  /// No description provided for @feedbackComposeDeviceInfo.
+  ///
+  /// In ko, this message translates to:
+  /// **'기기 정보'**
+  String get feedbackComposeDeviceInfo;
+
   /// No description provided for @feedbackContentRequired.
   ///
   /// In ko, this message translates to:
@@ -936,6 +972,42 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'주스 지출 내역'**
   String get csvShareText;
+
+  /// No description provided for @csvHeaderDate.
+  ///
+  /// In ko, this message translates to:
+  /// **'날짜'**
+  String get csvHeaderDate;
+
+  /// No description provided for @csvHeaderCategory.
+  ///
+  /// In ko, this message translates to:
+  /// **'카테고리'**
+  String get csvHeaderCategory;
+
+  /// No description provided for @csvHeaderAmount.
+  ///
+  /// In ko, this message translates to:
+  /// **'금액'**
+  String get csvHeaderAmount;
+
+  /// No description provided for @csvHeaderIsFixed.
+  ///
+  /// In ko, this message translates to:
+  /// **'고정지출 여부'**
+  String get csvHeaderIsFixed;
+
+  /// No description provided for @csvHeaderMemo.
+  ///
+  /// In ko, this message translates to:
+  /// **'메모'**
+  String get csvHeaderMemo;
+
+  /// No description provided for @csvUnknownCategory.
+  ///
+  /// In ko, this message translates to:
+  /// **'알 수 없음'**
+  String get csvUnknownCategory;
 
   /// No description provided for @backupShareText.
   ///
@@ -1543,6 +1615,12 @@ abstract class AppLocalizations {
   /// **'카드 선택'**
   String get cardSelectLabel;
 
+  /// No description provided for @installmentMemoSuffix.
+  ///
+  /// In ko, this message translates to:
+  /// **'({index}/{months}회차)'**
+  String installmentMemoSuffix(Object index, Object months);
+
   /// No description provided for @installmentEditNotice.
   ///
   /// In ko, this message translates to:
@@ -1986,6 +2064,30 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'매달 고정으로\n빠져나가는 돈이 있나요?'**
   String get fixedExpenseStepQuestion;
+
+  /// No description provided for @fixedExpenseDefaultRent.
+  ///
+  /// In ko, this message translates to:
+  /// **'월세'**
+  String get fixedExpenseDefaultRent;
+
+  /// No description provided for @fixedExpenseDefaultCommunication.
+  ///
+  /// In ko, this message translates to:
+  /// **'통신비'**
+  String get fixedExpenseDefaultCommunication;
+
+  /// No description provided for @fixedExpenseDefaultInsurance.
+  ///
+  /// In ko, this message translates to:
+  /// **'보험료'**
+  String get fixedExpenseDefaultInsurance;
+
+  /// No description provided for @fixedExpenseDefaultSubscription.
+  ///
+  /// In ko, this message translates to:
+  /// **'구독료'**
+  String get fixedExpenseDefaultSubscription;
 
   /// No description provided for @fixedExpenseStepSubtitle.
   ///

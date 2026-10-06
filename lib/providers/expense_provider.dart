@@ -3,8 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/utils/week_utils.dart';
 import '../data/models/expense.dart';
 import '../data/repositories/expense_repository.dart';
+import '../l10n/app_localizations.dart';
 import 'budget_settings_provider.dart';
 import 'installment_settings_provider.dart';
+import 'locale_provider.dart';
 
 final expenseRepositoryProvider =
     Provider<ExpenseRepository>((ref) => ExpenseRepository());
@@ -25,7 +27,8 @@ class ExpenseNotifier extends Notifier<List<Expense>> {
   Future<void> upsertInstallment(Expense base, int months) async {
     final repo = ref.read(expenseRepositoryProvider);
     final mode = ref.read(installmentBillingModeProvider);
-    await repo.addInstallment(base, months, mode);
+    final loc = lookupAppLocalizations(ref.read(localeProvider).locale);
+    await repo.addInstallment(base, months, mode, loc);
     state = repo.getAll();
   }
 

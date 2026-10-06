@@ -25,6 +25,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get paymentCreditCard => 'Kreditkarte';
 
   @override
+  String get defaultCheckCardName => 'Debitkarte (Standard)';
+
+  @override
+  String get defaultCreditCardName => 'Kreditkarte (Standard)';
+
+  @override
   String get paymentCash => 'Bar · Überweisung';
 
   @override
@@ -357,6 +363,18 @@ class AppLocalizationsDe extends AppLocalizations {
   String get feedbackDeviceInfoNotice => 'Geräte-/OS-Informationen werden mitgeschickt, damit wir schneller helfen können.';
 
   @override
+  String get feedbackComposeReplyEmail => 'Antwort-E-Mail';
+
+  @override
+  String get feedbackComposeNotEntered => '(nicht angegeben)';
+
+  @override
+  String get feedbackComposeContent => 'Inhalt';
+
+  @override
+  String get feedbackComposeDeviceInfo => 'Geräteinformationen';
+
+  @override
   String get feedbackContentRequired => 'Bitte gib deine Nachricht ein';
 
   @override
@@ -453,6 +471,24 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get csvShareText => 'Juice-Ausgabenverlauf';
+
+  @override
+  String get csvHeaderDate => 'Datum';
+
+  @override
+  String get csvHeaderCategory => 'Kategorie';
+
+  @override
+  String get csvHeaderAmount => 'Betrag';
+
+  @override
+  String get csvHeaderIsFixed => 'Fixkosten';
+
+  @override
+  String get csvHeaderMemo => 'Notiz';
+
+  @override
+  String get csvUnknownCategory => 'Unbekannt';
 
   @override
   String get backupShareText => 'Juice-Datensicherung';
@@ -784,6 +820,11 @@ class AppLocalizationsDe extends AppLocalizations {
   String get cardSelectLabel => 'Karte auswählen';
 
   @override
+  String installmentMemoSuffix(Object index, Object months) {
+    return '(Rate $index/$months)';
+  }
+
+  @override
   String installmentEditNotice(Object index, Object months) {
     return 'Rate $index/$months — andere Raten ändern sich nicht mit';
   }
@@ -1028,6 +1069,18 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get fixedExpenseStepQuestion => 'Hast du monatliche\nFixkosten?';
+
+  @override
+  String get fixedExpenseDefaultRent => 'Miete';
+
+  @override
+  String get fixedExpenseDefaultCommunication => 'Telefonrechnung';
+
+  @override
+  String get fixedExpenseDefaultInsurance => 'Versicherung';
+
+  @override
+  String get fixedExpenseDefaultSubscription => 'Abonnements';
 
   @override
   String get fixedExpenseStepSubtitle => 'Miete, Versicherung, Handyrechnung usw. — nicht im Juice-Krug enthalten.';

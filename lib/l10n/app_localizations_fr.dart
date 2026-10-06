@@ -25,6 +25,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get paymentCreditCard => 'Carte de crédit';
 
   @override
+  String get defaultCheckCardName => 'Carte de débit (par défaut)';
+
+  @override
+  String get defaultCreditCardName => 'Carte de crédit (par défaut)';
+
+  @override
   String get paymentCash => 'Espèces · Virement';
 
   @override
@@ -357,6 +363,18 @@ class AppLocalizationsFr extends AppLocalizations {
   String get feedbackDeviceInfoNotice => 'Les infos appareil/OS sont incluses pour nous aider à résoudre votre demande plus vite.';
 
   @override
+  String get feedbackComposeReplyEmail => 'E-mail de réponse';
+
+  @override
+  String get feedbackComposeNotEntered => '(non renseigné)';
+
+  @override
+  String get feedbackComposeContent => 'Contenu';
+
+  @override
+  String get feedbackComposeDeviceInfo => 'Informations sur l\'appareil';
+
+  @override
   String get feedbackContentRequired => 'Veuillez saisir votre message';
 
   @override
@@ -453,6 +471,24 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get csvShareText => 'Historique des dépenses Juice';
+
+  @override
+  String get csvHeaderDate => 'Date';
+
+  @override
+  String get csvHeaderCategory => 'Catégorie';
+
+  @override
+  String get csvHeaderAmount => 'Montant';
+
+  @override
+  String get csvHeaderIsFixed => 'Dépense fixe';
+
+  @override
+  String get csvHeaderMemo => 'Note';
+
+  @override
+  String get csvUnknownCategory => 'Inconnu';
 
   @override
   String get backupShareText => 'Sauvegarde des données Juice';
@@ -784,6 +820,11 @@ class AppLocalizationsFr extends AppLocalizations {
   String get cardSelectLabel => 'Choisir la carte';
 
   @override
+  String installmentMemoSuffix(Object index, Object months) {
+    return '(Mensualité $index/$months)';
+  }
+
+  @override
   String installmentEditNotice(Object index, Object months) {
     return 'Échéance $index/$months — les autres échéances ne seront pas modifiées';
   }
@@ -1028,6 +1069,18 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get fixedExpenseStepQuestion => 'Avez-vous des dépenses\nfixes mensuelles ?';
+
+  @override
+  String get fixedExpenseDefaultRent => 'Loyer';
+
+  @override
+  String get fixedExpenseDefaultCommunication => 'Facture téléphonique';
+
+  @override
+  String get fixedExpenseDefaultInsurance => 'Assurance';
+
+  @override
+  String get fixedExpenseDefaultSubscription => 'Abonnements';
 
   @override
   String get fixedExpenseStepSubtitle => 'Loyer, assurance, forfait mobile, etc. — non comptabilisés dans le pichet de juice.';

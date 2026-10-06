@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../providers/installment_settings_provider.dart';
 import '../local/hive_service.dart';
 import '../models/expense.dart';
@@ -25,6 +26,7 @@ class ExpenseRepository {
     Expense base,
     int months,
     InstallmentBillingMode mode,
+    AppLocalizations loc,
   ) async {
     final perMonth = (base.amount / months).roundToDouble();
     final monthRemainder = base.amount - perMonth * months;
@@ -36,9 +38,10 @@ class ExpenseRepository {
       final index = i + 1;
       final monthAmount = index == 1 ? perMonth + monthRemainder : perMonth;
       final billingDate = DateTime(base.date.year, base.date.month + index, 1);
+      final suffix = loc.installmentMemoSuffix(index, months);
       final memo = (baseMemo == null || baseMemo.isEmpty)
-          ? '($index/$months회차)'
-          : '$baseMemo ($index/$months회차)';
+          ? suffix
+          : '$baseMemo $suffix';
 
       if (mode == InstallmentBillingMode.monthlyLumpNextMonth) {
         await _putInstallmentExpense(base,

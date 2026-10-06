@@ -99,7 +99,7 @@ class _CardEditSheetState extends ConsumerState<_CardEditSheet> {
       context: context,
       builder: (dialogContext) => AlertDialog(
         title: Text(loc.cardDeleteTitle),
-        content: Text(loc.cardDeleteConfirm(editing.name)),
+        content: Text(loc.cardDeleteConfirm(editing.getLocalizedName(context))),
         actions: [
           TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(false),

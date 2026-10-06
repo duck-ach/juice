@@ -25,6 +25,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get paymentCreditCard => '信用卡';
 
   @override
+  String get defaultCheckCardName => '借记卡（默认）';
+
+  @override
+  String get defaultCreditCardName => '信用卡（默认）';
+
+  @override
   String get paymentCash => '现金・转账';
 
   @override
@@ -357,6 +363,18 @@ class AppLocalizationsZh extends AppLocalizations {
   String get feedbackDeviceInfoNotice => '为了更快协助您,将一并发送设备/系统信息。';
 
   @override
+  String get feedbackComposeReplyEmail => '回复邮箱';
+
+  @override
+  String get feedbackComposeNotEntered => '（未填写）';
+
+  @override
+  String get feedbackComposeContent => '内容';
+
+  @override
+  String get feedbackComposeDeviceInfo => '设备信息';
+
+  @override
   String get feedbackContentRequired => '请输入内容';
 
   @override
@@ -453,6 +471,24 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get csvShareText => '果汁支出记录';
+
+  @override
+  String get csvHeaderDate => '日期';
+
+  @override
+  String get csvHeaderCategory => '类别';
+
+  @override
+  String get csvHeaderAmount => '金额';
+
+  @override
+  String get csvHeaderIsFixed => '是否为固定支出';
+
+  @override
+  String get csvHeaderMemo => '备注';
+
+  @override
+  String get csvUnknownCategory => '未知';
 
   @override
   String get backupShareText => '果汁数据备份';
@@ -784,6 +820,11 @@ class AppLocalizationsZh extends AppLocalizations {
   String get cardSelectLabel => '选择卡片';
 
   @override
+  String installmentMemoSuffix(Object index, Object months) {
+    return '（分期$index/$months期）';
+  }
+
+  @override
   String installmentEditNotice(Object index, Object months) {
     return '分期 $index/$months — 其他分期不会一并变更';
   }
@@ -1028,6 +1069,18 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get fixedExpenseStepQuestion => '每月有固定支出吗?';
+
+  @override
+  String get fixedExpenseDefaultRent => '房租';
+
+  @override
+  String get fixedExpenseDefaultCommunication => '通讯费';
+
+  @override
+  String get fixedExpenseDefaultInsurance => '保险费';
+
+  @override
+  String get fixedExpenseDefaultSubscription => '订阅费';
 
   @override
   String get fixedExpenseStepSubtitle => '房租、保险、电话费等 — 不计入果汁罐的费用。';
@@ -1576,6 +1629,12 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get paymentCreditCard => '信用卡';
 
   @override
+  String get defaultCheckCardName => '借记卡（默认）';
+
+  @override
+  String get defaultCreditCardName => '信用卡（默认）';
+
+  @override
   String get paymentCash => '现金・转账';
 
   @override
@@ -1908,6 +1967,18 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get feedbackDeviceInfoNotice => '为了更快协助您,将一并发送设备/系统信息。';
 
   @override
+  String get feedbackComposeReplyEmail => '回复邮箱';
+
+  @override
+  String get feedbackComposeNotEntered => '（未填写）';
+
+  @override
+  String get feedbackComposeContent => '内容';
+
+  @override
+  String get feedbackComposeDeviceInfo => '设备信息';
+
+  @override
   String get feedbackContentRequired => '请输入内容';
 
   @override
@@ -2004,6 +2075,24 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
 
   @override
   String get csvShareText => '果汁支出记录';
+
+  @override
+  String get csvHeaderDate => '日期';
+
+  @override
+  String get csvHeaderCategory => '类别';
+
+  @override
+  String get csvHeaderAmount => '金额';
+
+  @override
+  String get csvHeaderIsFixed => '是否为固定支出';
+
+  @override
+  String get csvHeaderMemo => '备注';
+
+  @override
+  String get csvUnknownCategory => '未知';
 
   @override
   String get backupShareText => '果汁数据备份';
@@ -2335,6 +2424,11 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get cardSelectLabel => '选择卡片';
 
   @override
+  String installmentMemoSuffix(Object index, Object months) {
+    return '（分期$index/$months期）';
+  }
+
+  @override
   String installmentEditNotice(Object index, Object months) {
     return '分期 $index/$months — 其他分期不会一并变更';
   }
@@ -2579,6 +2673,18 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
 
   @override
   String get fixedExpenseStepQuestion => '每月有固定支出吗?';
+
+  @override
+  String get fixedExpenseDefaultRent => '房租';
+
+  @override
+  String get fixedExpenseDefaultCommunication => '通讯费';
+
+  @override
+  String get fixedExpenseDefaultInsurance => '保险费';
+
+  @override
+  String get fixedExpenseDefaultSubscription => '订阅费';
 
   @override
   String get fixedExpenseStepSubtitle => '房租、保险、电话费等 — 不计入果汁罐的费用。';
@@ -3127,6 +3233,12 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get paymentCreditCard => '信用卡';
 
   @override
+  String get defaultCheckCardName => '金融卡（預設）';
+
+  @override
+  String get defaultCreditCardName => '信用卡（預設）';
+
+  @override
   String get paymentCash => '現金・轉帳';
 
   @override
@@ -3459,6 +3571,18 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get feedbackDeviceInfoNotice => '為了更快協助您,將一併傳送裝置/系統資訊。';
 
   @override
+  String get feedbackComposeReplyEmail => '回信信箱';
+
+  @override
+  String get feedbackComposeNotEntered => '（未填寫）';
+
+  @override
+  String get feedbackComposeContent => '內容';
+
+  @override
+  String get feedbackComposeDeviceInfo => '裝置資訊';
+
+  @override
   String get feedbackContentRequired => '請輸入內容';
 
   @override
@@ -3555,6 +3679,24 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get csvShareText => '果汁支出紀錄';
+
+  @override
+  String get csvHeaderDate => '日期';
+
+  @override
+  String get csvHeaderCategory => '類別';
+
+  @override
+  String get csvHeaderAmount => '金額';
+
+  @override
+  String get csvHeaderIsFixed => '是否為固定支出';
+
+  @override
+  String get csvHeaderMemo => '備註';
+
+  @override
+  String get csvUnknownCategory => '未知';
 
   @override
   String get backupShareText => '果汁資料備份';
@@ -3886,6 +4028,11 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get cardSelectLabel => '選擇卡片';
 
   @override
+  String installmentMemoSuffix(Object index, Object months) {
+    return '（分期$index/$months期）';
+  }
+
+  @override
   String installmentEditNotice(Object index, Object months) {
     return '分期 $index/$months — 其他分期不會一併變更';
   }
@@ -4130,6 +4277,18 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get fixedExpenseStepQuestion => '每月有固定支出嗎?';
+
+  @override
+  String get fixedExpenseDefaultRent => '房租';
+
+  @override
+  String get fixedExpenseDefaultCommunication => '通訊費';
+
+  @override
+  String get fixedExpenseDefaultInsurance => '保險費';
+
+  @override
+  String get fixedExpenseDefaultSubscription => '訂閱費';
 
   @override
   String get fixedExpenseStepSubtitle => '房租、保險、電話費等 — 不計入果汁罐的費用。';

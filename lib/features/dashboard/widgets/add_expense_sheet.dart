@@ -645,7 +645,8 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                               items: [
                                 for (final c in matchingCards)
                                   DropdownMenuItem(
-                                      value: c.id, child: Text(c.name)),
+                                      value: c.id,
+                                      child: Text(c.getLocalizedName(context))),
                               ],
                               onChanged: (value) => setState(() {
                                 _selectedCardId = value;

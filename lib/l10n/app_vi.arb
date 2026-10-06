@@ -18,6 +18,8 @@
   },
   "paymentCheckCard": "Thẻ ghi nợ",
   "paymentCreditCard": "Thẻ tín dụng",
+  "defaultCheckCardName": "Thẻ ghi nợ (Mặc định)",
+  "defaultCreditCardName": "Thẻ tín dụng (Mặc định)",
   "paymentCash": "Tiền mặt · Chuyển khoản",
   "commonCancel": "Hủy",
   "commonSave": "Lưu",
@@ -207,6 +209,10 @@
   "feedbackAttachImage": "Đính kèm ảnh chụp màn hình",
   "feedbackSubmit": "Gửi",
   "feedbackDeviceInfoNotice": "Thông tin thiết bị/hệ điều hành sẽ được gửi kèm để chúng tôi xử lý nhanh hơn.",
+  "feedbackComposeReplyEmail": "Email phản hồi",
+  "feedbackComposeNotEntered": "(chưa nhập)",
+  "feedbackComposeContent": "Nội dung",
+  "feedbackComposeDeviceInfo": "Thông tin thiết bị",
   "feedbackContentRequired": "Vui lòng nhập nội dung",
   "feedbackMailUnavailable": "Không thể mở ứng dụng Mail, nội dung đã được sao chép.",
   "privacyPolicyTitle": "Chính sách bảo mật",
@@ -245,6 +251,12 @@
   "biometricUseTitle": "Dùng sinh trắc học",
   "biometricUseDescription": "Mở khóa nhanh hơn bằng Face ID/vân tay.",
   "csvShareText": "Lịch sử chi tiêu Juice",
+  "csvHeaderDate": "Ngày",
+  "csvHeaderCategory": "Danh mục",
+  "csvHeaderAmount": "Số tiền",
+  "csvHeaderIsFixed": "Chi phí cố định",
+  "csvHeaderMemo": "Ghi chú",
+  "csvUnknownCategory": "Không xác định",
   "backupShareText": "Sao lưu dữ liệu Juice",
   "backupFailedMessage": "Sao lưu thất bại: {error}",
   "@backupFailedMessage": {
@@ -412,6 +424,13 @@
     }
   },
   "cardSelectLabel": "Chọn thẻ",
+  "installmentMemoSuffix": "(Trả góp {index}/{months})",
+  "@installmentMemoSuffix": {
+    "placeholders": {
+      "index": {},
+      "months": {}
+    }
+  },
   "installmentEditNotice": "Trả góp {index}/{months} — các kỳ trả góp khác sẽ không thay đổi theo",
   "@installmentEditNotice": {
     "placeholders": {
@@ -552,6 +571,10 @@
   "goalAmountFieldLabel": "Số tiền mục tiêu tiết kiệm",
   "wonUnit": "won",
   "fixedExpenseStepQuestion": "Bạn có khoản chi phí\ncố định hàng tháng nào không?",
+  "fixedExpenseDefaultRent": "Tiền thuê nhà",
+  "fixedExpenseDefaultCommunication": "Cước viễn thông",
+  "fixedExpenseDefaultInsurance": "Bảo hiểm",
+  "fixedExpenseDefaultSubscription": "Phí đăng ký",
   "fixedExpenseStepSubtitle": "Tiền thuê nhà, bảo hiểm, cước điện thoại, v.v. — chi phí không tính vào bình juice.",
   "itemNameHint": "Tên khoản mục",
   "addItemButton": "Thêm khoản mục",

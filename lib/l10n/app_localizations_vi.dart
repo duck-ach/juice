@@ -25,6 +25,12 @@ class AppLocalizationsVi extends AppLocalizations {
   String get paymentCreditCard => 'Thẻ tín dụng';
 
   @override
+  String get defaultCheckCardName => 'Thẻ ghi nợ (Mặc định)';
+
+  @override
+  String get defaultCreditCardName => 'Thẻ tín dụng (Mặc định)';
+
+  @override
   String get paymentCash => 'Tiền mặt · Chuyển khoản';
 
   @override
@@ -357,6 +363,18 @@ class AppLocalizationsVi extends AppLocalizations {
   String get feedbackDeviceInfoNotice => 'Thông tin thiết bị/hệ điều hành sẽ được gửi kèm để chúng tôi xử lý nhanh hơn.';
 
   @override
+  String get feedbackComposeReplyEmail => 'Email phản hồi';
+
+  @override
+  String get feedbackComposeNotEntered => '(chưa nhập)';
+
+  @override
+  String get feedbackComposeContent => 'Nội dung';
+
+  @override
+  String get feedbackComposeDeviceInfo => 'Thông tin thiết bị';
+
+  @override
   String get feedbackContentRequired => 'Vui lòng nhập nội dung';
 
   @override
@@ -453,6 +471,24 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get csvShareText => 'Lịch sử chi tiêu Juice';
+
+  @override
+  String get csvHeaderDate => 'Ngày';
+
+  @override
+  String get csvHeaderCategory => 'Danh mục';
+
+  @override
+  String get csvHeaderAmount => 'Số tiền';
+
+  @override
+  String get csvHeaderIsFixed => 'Chi phí cố định';
+
+  @override
+  String get csvHeaderMemo => 'Ghi chú';
+
+  @override
+  String get csvUnknownCategory => 'Không xác định';
 
   @override
   String get backupShareText => 'Sao lưu dữ liệu Juice';
@@ -784,6 +820,11 @@ class AppLocalizationsVi extends AppLocalizations {
   String get cardSelectLabel => 'Chọn thẻ';
 
   @override
+  String installmentMemoSuffix(Object index, Object months) {
+    return '(Trả góp $index/$months)';
+  }
+
+  @override
   String installmentEditNotice(Object index, Object months) {
     return 'Trả góp $index/$months — các kỳ trả góp khác sẽ không thay đổi theo';
   }
@@ -1028,6 +1069,18 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get fixedExpenseStepQuestion => 'Bạn có khoản chi phí\ncố định hàng tháng nào không?';
+
+  @override
+  String get fixedExpenseDefaultRent => 'Tiền thuê nhà';
+
+  @override
+  String get fixedExpenseDefaultCommunication => 'Cước viễn thông';
+
+  @override
+  String get fixedExpenseDefaultInsurance => 'Bảo hiểm';
+
+  @override
+  String get fixedExpenseDefaultSubscription => 'Phí đăng ký';
 
   @override
   String get fixedExpenseStepSubtitle => 'Tiền thuê nhà, bảo hiểm, cước điện thoại, v.v. — chi phí không tính vào bình juice.';

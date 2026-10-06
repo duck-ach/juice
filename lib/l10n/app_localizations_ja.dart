@@ -25,6 +25,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get paymentCreditCard => 'クレジットカード';
 
   @override
+  String get defaultCheckCardName => 'デビットカード（デフォルト）';
+
+  @override
+  String get defaultCreditCardName => 'クレジットカード（デフォルト）';
+
+  @override
   String get paymentCash => '現金・振込';
 
   @override
@@ -357,6 +363,18 @@ class AppLocalizationsJa extends AppLocalizations {
   String get feedbackDeviceInfoNotice => 'スムーズな対応のため、端末/OS情報が併せて送信されます。';
 
   @override
+  String get feedbackComposeReplyEmail => '返信先メール';
+
+  @override
+  String get feedbackComposeNotEntered => '（未入力）';
+
+  @override
+  String get feedbackComposeContent => '内容';
+
+  @override
+  String get feedbackComposeDeviceInfo => 'デバイス情報';
+
+  @override
   String get feedbackContentRequired => 'お問い合わせ内容を入力してください';
 
   @override
@@ -453,6 +471,24 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get csvShareText => 'ジュース支出履歴';
+
+  @override
+  String get csvHeaderDate => '日付';
+
+  @override
+  String get csvHeaderCategory => 'カテゴリ';
+
+  @override
+  String get csvHeaderAmount => '金額';
+
+  @override
+  String get csvHeaderIsFixed => '固定支出かどうか';
+
+  @override
+  String get csvHeaderMemo => 'メモ';
+
+  @override
+  String get csvUnknownCategory => '不明';
 
   @override
   String get backupShareText => 'ジュースデータバックアップ';
@@ -784,6 +820,11 @@ class AppLocalizationsJa extends AppLocalizations {
   String get cardSelectLabel => 'カード選択';
 
   @override
+  String installmentMemoSuffix(Object index, Object months) {
+    return '（分割$index/$months回目）';
+  }
+
+  @override
   String installmentEditNotice(Object index, Object months) {
     return '分割$index/$months回目 — 他の回の金額は一緒に変わりません';
   }
@@ -1028,6 +1069,18 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get fixedExpenseStepQuestion => '毎月固定で\n出ていくお金はありますか?';
+
+  @override
+  String get fixedExpenseDefaultRent => '家賃';
+
+  @override
+  String get fixedExpenseDefaultCommunication => '通信費';
+
+  @override
+  String get fixedExpenseDefaultInsurance => '保険料';
+
+  @override
+  String get fixedExpenseDefaultSubscription => 'サブスク料金';
 
   @override
   String get fixedExpenseStepSubtitle => '家賃、保険料、通信費などジュース入れに入れない費用です。';

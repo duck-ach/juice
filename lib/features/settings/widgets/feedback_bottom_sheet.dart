@@ -67,10 +67,11 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
     final email = _emailController.text.trim();
     final content = _contentController.text.trim();
     final deviceInfo = await buildDeviceInfoLine();
-    return '회신 이메일: ${email.isEmpty ? '(미입력)' : email}\n'
-        '내용:\n$content\n\n'
+    final emailValue = email.isEmpty ? loc.feedbackComposeNotEntered : email;
+    return '${loc.feedbackComposeReplyEmail}: $emailValue\n'
+        '${loc.feedbackComposeContent}:\n$content\n\n'
         '---\n'
-        '기기 정보: $deviceInfo';
+        '${loc.feedbackComposeDeviceInfo}: $deviceInfo';
   }
 
   Future<void> _submit() async {

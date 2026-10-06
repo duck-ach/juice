@@ -74,8 +74,6 @@ class FixedExpenseItem {
       );
 }
 
-const defaultFixedExpenseNames = ['월세', '통신비', '보험료', '구독료'];
-
 /// 장기 저축 플랜의 '고정수입' 항목(급여, 부수입 등). [FixedExpenseItem]과 달리 항상
 /// 월 환산된 금액으로 저장한다 — 온보딩 위저드의 단일 소득 입력과 달리 지급 주기
 /// 선택 UI를 다시 두지 않기 위한 의도적 단순화(항목이 여러 개라 주기가 제각각일 수
@@ -271,11 +269,6 @@ class SavingsPlan {
             ? null
             : DateTime.tryParse(json['createdAt'] as String),
       );
-
-  static List<FixedExpenseItem> get defaultFixedExpenses =>
-      defaultFixedExpenseNames
-          .map((n) => FixedExpenseItem(name: n, amount: 0))
-          .toList();
 }
 
 /// 연봉 인상·이직 등으로 수입이 바뀌었을 때, 목표(goalAmount)와 고정지출은 그대로 둔 채
@@ -364,12 +357,12 @@ class SavingsPlanNotifier extends Notifier<SavingsPlan> {
   SavingsPlan build() {
     final raw = Hive.box(HiveBoxes.settings).get(_savingsPlanKey) as String?;
     if (raw == null) {
-      return SavingsPlan(fixedExpenses: SavingsPlan.defaultFixedExpenses);
+      return const SavingsPlan();
     }
     try {
       return SavingsPlan.fromJson(jsonDecode(raw) as Map<String, dynamic>);
     } catch (_) {
-      return SavingsPlan(fixedExpenses: SavingsPlan.defaultFixedExpenses);
+      return const SavingsPlan();
     }
   }
 

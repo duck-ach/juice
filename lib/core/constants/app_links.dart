@@ -6,10 +6,4 @@ class AppLinks {
 
   static const privacyPolicyUrl =
       'https://cypress-pineapple-600.notion.site/Juice-Budget-3ac083f136a080adb088cd3607b329c8';
-
-  static Uri get supportEmailUri => Uri(
-        scheme: 'mailto',
-        path: supportEmail,
-        query: 'subject=${Uri.encodeComponent('[Juice Budget 문의/피드백]')}',
-      );
 }

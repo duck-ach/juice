@@ -18,6 +18,8 @@
   },
   "paymentCheckCard": "체크카드",
   "paymentCreditCard": "신용카드",
+  "defaultCheckCardName": "체크카드 (기본)",
+  "defaultCreditCardName": "신용카드 (기본)",
   "paymentCash": "현금·이체",
   "commonCancel": "취소",
   "commonSave": "저장",
@@ -207,6 +209,10 @@
   "feedbackAttachImage": "스크린샷 첨부",
   "feedbackSubmit": "보내기",
   "feedbackDeviceInfoNotice": "원활한 문의 해결을 위해 기기/OS 정보가 함께 전송됩니다.",
+  "feedbackComposeReplyEmail": "회신 이메일",
+  "feedbackComposeNotEntered": "(미입력)",
+  "feedbackComposeContent": "내용",
+  "feedbackComposeDeviceInfo": "기기 정보",
   "feedbackContentRequired": "문의 내용을 입력해 주세요",
   "feedbackMailUnavailable": "메일 앱을 열 수 없어 문의 내용이 복사되었어요.",
   "privacyPolicyTitle": "개인정보 처리방침",
@@ -245,6 +251,12 @@
   "biometricUseTitle": "생체인증 사용",
   "biometricUseDescription": "Face ID/지문으로 더 빠르게 잠금을 해제해요.",
   "csvShareText": "주스 지출 내역",
+  "csvHeaderDate": "날짜",
+  "csvHeaderCategory": "카테고리",
+  "csvHeaderAmount": "금액",
+  "csvHeaderIsFixed": "고정지출 여부",
+  "csvHeaderMemo": "메모",
+  "csvUnknownCategory": "알 수 없음",
   "backupShareText": "주스 데이터 백업",
   "backupFailedMessage": "백업에 실패했어요: {error}",
   "@backupFailedMessage": {
@@ -412,6 +424,13 @@
     }
   },
   "cardSelectLabel": "카드 선택",
+  "installmentMemoSuffix": "({index}/{months}회차)",
+  "@installmentMemoSuffix": {
+    "placeholders": {
+      "index": {},
+      "months": {}
+    }
+  },
   "installmentEditNotice": "할부 {index}/{months}회차 — 다른 회차 금액은 함께 바뀌지 않아요",
   "@installmentEditNotice": {
     "placeholders": {
@@ -552,6 +571,10 @@
   "goalAmountFieldLabel": "목표 모을 금액",
   "wonUnit": "원",
   "fixedExpenseStepQuestion": "매달 고정으로\n빠져나가는 돈이 있나요?",
+  "fixedExpenseDefaultRent": "월세",
+  "fixedExpenseDefaultCommunication": "통신비",
+  "fixedExpenseDefaultInsurance": "보험료",
+  "fixedExpenseDefaultSubscription": "구독료",
   "fixedExpenseStepSubtitle": "월세, 보험료, 통신비 등 주스 통에 담지 않을 비용이에요.",
   "itemNameHint": "항목명",
   "addItemButton": "항목 추가",
