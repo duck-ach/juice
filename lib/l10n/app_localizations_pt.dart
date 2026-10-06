@@ -1050,9 +1050,6 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get wonSuffixSpaced => ' won';
-
-  @override
   String get goalStepQuestion => 'Por quanto tempo e quanto\nvocê quer economizar?';
 
   @override
@@ -1063,9 +1060,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get goalAmountFieldLabel => 'Valor meta de poupança';
-
-  @override
-  String get wonUnit => 'won';
 
   @override
   String get fixedExpenseStepQuestion => 'Você tem despesas\nfixas mensais?';

@@ -63,21 +63,21 @@
       "months": {}
     }
   },
-  "savingsPlanGoalLine": "목표: {duration} 동안 {amount}원 모으기",
+  "savingsPlanGoalLine": "목표: {duration} 동안 {amount} 모으기",
   "@savingsPlanGoalLine": {
     "placeholders": {
       "duration": {},
       "amount": {}
     }
   },
-  "savingsPlanFixedExpenseLine": "숨만 쉬어도 나가는 돈(고정비): 월 {amount}원",
+  "savingsPlanFixedExpenseLine": "숨만 쉬어도 나가는 돈(고정비): 월 {amount}",
   "@savingsPlanFixedExpenseLine": {
     "placeholders": {
       "amount": {}
     }
   },
   "savingsPlanMonthlyRequiredLabel": "매월 저축해야 하는 금액",
-  "savingsPlanMonthlyRequiredAmount": "{amount}원",
+  "savingsPlanMonthlyRequiredAmount": "{amount}",
   "@savingsPlanMonthlyRequiredAmount": {
     "placeholders": {
       "amount": {}
@@ -89,7 +89,7 @@
   "savingsPlanWeeklyGridLabel": "이번 주",
   "savingsPlanMonthlyGridLabel": "이번 달",
   "savingsPlanViewInAssetsButton": "자산 탭에서 자세히 보기",
-  "savingsPlanActualTraceLine": "실제 저축 {actual}원 / 목표 {goal}원 ({percent}%)",
+  "savingsPlanActualTraceLine": "실제 저축 {actual} / 목표 {goal} ({percent}%)",
   "@savingsPlanActualTraceLine": {
     "placeholders": {
       "actual": {},
@@ -98,7 +98,7 @@
     }
   },
   "manageFixedIncomesButton": "고정수입 관리",
-  "savingsPlanFixedIncomeTotalLine": "고정수입 합계: {total}원",
+  "savingsPlanFixedIncomeTotalLine": "고정수입 합계: {total}",
   "@savingsPlanFixedIncomeTotalLine": {
     "placeholders": {
       "total": {}
@@ -544,32 +544,30 @@
   "subAllowanceRegular": "🗓️ 정기적인 용돈",
   "subAllowanceIrregular": "🎲 비정기 용돈/알바",
   "questionIrregularMinSave": "한 달에 '이 정도는 꼭 저축할 수 있다' 하는 최소 금액은 얼마인가요? 🪙",
-  "praiseVariablePlan": "🍊 비수기 기준, 1년에 최소 {amount}원은 든든하게 지켜낼 수 있어요!\n수입이 더 많이 들어온 달에는 보너스 주스로 저축 속도를 확 당겨봐요 🚀",
+  "praiseVariablePlan": "🍊 비수기 기준, 1년에 최소 {amount} 규모를 든든하게 지켜낼 수 있어요!\n수입이 더 많이 들어온 달에는 보너스 주스로 저축 속도를 확 당겨봐요 🚀",
   "@praiseVariablePlan": {
     "placeholders": {
       "amount": {}
     }
   },
-  "praiseAllowancePlan": "작은 물방울이 모여 바다가 돼요! 1년 뒤엔 {amount}원의 멋진 주스가 완성돼요 ✨",
+  "praiseAllowancePlan": "작은 물방울이 모여 바다가 돼요! 1년 뒤엔 {amount} 규모의 멋진 주스가 완성돼요 ✨",
   "@praiseAllowancePlan": {
     "placeholders": {
       "amount": {}
     }
   },
   "guideExtendGoalPeriod": "용돈 안에서 편안하게 모을 수 있도록 목표 기간을 조금만 늘려볼까요? 🍊",
-  "freqConversionCaption": "≈ 월 환산 {monthly}원 / 주간 가용 약 {weekly}원 🍊",
+  "freqConversionCaption": "≈ 월 환산 {monthly} / 주간 가용 약 {weekly} 🍊",
   "@freqConversionCaption": {
     "placeholders": {
       "monthly": {},
       "weekly": {}
     }
   },
-  "wonSuffixSpaced": " 원",
   "goalStepQuestion": "얼마 동안, 얼마를\n모으고 싶나요?",
   "yearsFieldLabel": "년",
   "monthsFieldLabel": "개월",
   "goalAmountFieldLabel": "목표 모을 금액",
-  "wonUnit": "원",
   "fixedExpenseStepQuestion": "매달 고정으로\n빠져나가는 돈이 있나요?",
   "fixedExpenseDefaultRent": "월세",
   "fixedExpenseDefaultCommunication": "통신비",
@@ -580,7 +578,7 @@
   "addItemButton": "항목 추가",
   "resultStepQuestion": "나만의 주스 플랜이\n완성되었어요!",
   "resultNegativeMessage": "고정지출과 저축액이 수입보다 많아요 😥 이전 단계로 돌아가 목표나 기간을 조정해보세요.",
-  "resultBreakdownLine": "월 수입 {income}원 - 고정비 {fixed}원 - 월 저축액을 빼면,",
+  "resultBreakdownLine": "월 수입 {income} - 고정비 {fixed} - 월 저축액을 빼면,",
   "@resultBreakdownLine": {
     "placeholders": {
       "income": {},

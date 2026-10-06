@@ -9,6 +9,7 @@ import '../../data/models/week_start_day.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/asset_provider.dart';
 import '../../providers/budget_settings_provider.dart';
+import '../../providers/currency_provider.dart';
 import '../../providers/installment_settings_provider.dart';
 import '../../providers/saving_option_provider.dart';
 import '../../providers/savings_planner_provider.dart';
@@ -124,6 +125,7 @@ class GoalSettingsScreen extends ConsumerWidget {
     final plan = ref.watch(savingsPlanProvider);
     final paceDeltaMonths = ref.watch(savingsPlanPaceProvider);
     final actualSavings = ref.watch(totalSavingsProvider);
+    final currency = ref.watch(currencyProvider).currency;
     final installmentMode = ref.watch(installmentBillingModeProvider);
     final savingOption = ref.watch(savingOptionProvider);
     final formatter = NumberFormat('#,###');
@@ -272,6 +274,7 @@ class GoalSettingsScreen extends ConsumerWidget {
               plan: plan,
               paceDeltaMonths: paceDeltaMonths,
               actualSavings: actualSavings,
+              currency: currency,
               onEdit: () => showSavingsPlanWizard(context),
               onApply: () => _reapplyBudget(context, ref, plan, loc),
               onRecalibrate: () => SavingsPlanRecalibrationSheet.show(context),
@@ -297,6 +300,7 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
     required this.plan,
     required this.paceDeltaMonths,
     required this.actualSavings,
+    required this.currency,
     required this.onEdit,
     required this.onApply,
     required this.onRecalibrate,
@@ -310,6 +314,7 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
   /// 저축 카테고리로 실제 기록된 전체 저축/투자 누적액([totalSavingsProvider]) —
   /// 자산 탭의 '저축·투자 현황' 전체 누적과 동일한 값이라, 두 화면 수치가 항상 일치한다.
   final double actualSavings;
+  final CurrencyItem currency;
   final VoidCallback onEdit;
   final VoidCallback onApply;
   final VoidCallback onRecalibrate;
@@ -333,7 +338,6 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    final formatter = NumberFormat('#,###');
     final monthly =
         (plan.monthlyAvailable ?? 0).clamp(0, double.infinity).toDouble();
     final weekly = monthly / 30 * 7;
@@ -364,7 +368,7 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
               const SizedBox(height: 2),
               Text(
                 loc.savingsPlanMonthlyRequiredAmount(
-                    formatter.format(monthlyRequired)),
+                    currency.format(monthlyRequired)),
                 style: theme.textTheme.headlineMedium?.copyWith(
                     fontWeight: FontWeight.w900,
                     color: theme.colorScheme.primary),
@@ -372,14 +376,16 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                   loc.savingsPlanGoalLine(
-                      _durationLabel(loc), formatter.format(plan.goalAmount)),
+                      _durationLabel(loc), currency.format(plan.goalAmount ?? 0)),
                   style: theme.textTheme.bodySmall
                       ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
               const SizedBox(height: 16),
               Divider(height: 1, color: theme.dividerColor.withValues(alpha: 0.4)),
               const SizedBox(height: 16),
               _AchievementRateBlock(
-                  actualSavings: actualSavings, goalAmount: plan.goalAmount ?? 0),
+                  actualSavings: actualSavings,
+                  goalAmount: plan.goalAmount ?? 0,
+                  currency: currency),
               if (paceDeltaMonths != null) ...[
                 const SizedBox(height: 12),
                 _PaceBanner(months: paceDeltaMonths!),
@@ -412,7 +418,7 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
         const SizedBox(height: 16),
         Text(
             loc.savingsPlanFixedExpenseLine(
-                formatter.format(plan.fixedExpenseTotal)),
+                currency.format(plan.fixedExpenseTotal)),
             style: theme.textTheme.bodySmall
                 ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
         Wrap(
@@ -458,16 +464,18 @@ class _SavingsPlanSummaryCard extends StatelessWidget {
 /// 갱신되고, 자산 탭의 '전체 누적'과 항상 같은 값을 보여준다.
 class _AchievementRateBlock extends StatelessWidget {
   const _AchievementRateBlock(
-      {required this.actualSavings, required this.goalAmount});
+      {required this.actualSavings,
+      required this.goalAmount,
+      required this.currency});
 
   final double actualSavings;
   final double goalAmount;
+  final CurrencyItem currency;
 
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    final formatter = NumberFormat('#,###');
     final progress =
         goalAmount <= 0 ? 0.0 : (actualSavings / goalAmount).clamp(0.0, 1.0);
     final percent = (progress * 100).round();
@@ -498,7 +506,7 @@ class _AchievementRateBlock extends StatelessWidget {
         const SizedBox(height: 6),
         Text(
           loc.savingsPlanActualTraceLine(
-              formatter.format(actualSavings), formatter.format(goalAmount), percent),
+              currency.format(actualSavings), currency.format(goalAmount), percent),
           style: theme.textTheme.bodySmall
               ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
         ),

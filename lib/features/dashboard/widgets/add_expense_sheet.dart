@@ -556,7 +556,7 @@ class _AddExpenseSheetState extends ConsumerState<AddExpenseSheet> {
                           )
                         else
                           SizedBox(
-                          height: 86,
+                          height: 96,
                           child: _isSavings || _isIncome
                               ? ListView.separated(
                                   scrollDirection: Axis.horizontal,
@@ -783,7 +783,7 @@ class _CategoryChip extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        width: 64,
+        width: 72,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -804,9 +804,13 @@ class _CategoryChip extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               category.getLocalizedName(context),
-              maxLines: 1,
+              maxLines: 2,
+              textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(fontSize: 12, height: 1.15),
             ),
           ],
         ),

@@ -35,10 +35,10 @@
   "durationYearsAndMonths": "{years}年{months}ヶ月",
   "durationYearsOnly": "{years}年",
   "durationMonthsOnly": "{months}ヶ月",
-  "savingsPlanGoalLine": "目標: {duration}で{amount}ウォン貯める",
-  "savingsPlanFixedExpenseLine": "固定費(何もしなくても出るお金): 月{amount}ウォン",
+  "savingsPlanGoalLine": "目標: {duration}で{amount}貯める",
+  "savingsPlanFixedExpenseLine": "固定費(何もしなくても出るお金): 月{amount}",
   "savingsPlanMonthlyRequiredLabel": "毎月貯めるべき金額",
-  "savingsPlanMonthlyRequiredAmount": "{amount}ウォン",
+  "savingsPlanMonthlyRequiredAmount": "{amount}",
   "@savingsPlanMonthlyRequiredAmount": {
     "placeholders": {
       "amount": {}
@@ -381,32 +381,30 @@
   "subAllowanceRegular": "🗓️ 定期的なお小遣い",
   "subAllowanceIrregular": "🎲 不定期なお小遣い・バイト",
   "questionIrregularMinSave": "1か月に「これだけは必ず貯められる」という最低金額はいくらですか? 🪙",
-  "praiseVariablePlan": "🍊 閑散期基準で、年間最低{amount}ウォンはしっかり守れます!\n収入が多い月はボーナスジュースで貯蓄スピードを上げましょう 🚀",
+  "praiseVariablePlan": "🍊 閑散期基準で、年間最低{amount}はしっかり守れます!\n収入が多い月はボーナスジュースで貯蓄スピードを上げましょう 🚀",
   "@praiseVariablePlan": {
     "placeholders": {
       "amount": {}
     }
   },
-  "praiseAllowancePlan": "小さな水滴が集まって海になります!1年後には{amount}ウォンの素敵なジュースが完成します ✨",
+  "praiseAllowancePlan": "小さな水滴が集まって海になります!1年後には{amount}の素敵なジュースが完成します ✨",
   "@praiseAllowancePlan": {
     "placeholders": {
       "amount": {}
     }
   },
   "guideExtendGoalPeriod": "お小遣いの範囲で無理なく貯められるよう、目標期間を少し延ばしてみましょうか? 🍊",
-  "freqConversionCaption": "≈ 月換算{monthly}ウォン / 週あたり約{weekly}ウォン利用可能 🍊",
+  "freqConversionCaption": "≈ 月換算{monthly} / 週あたり約{weekly}利用可能 🍊",
   "@freqConversionCaption": {
     "placeholders": {
       "monthly": {},
       "weekly": {}
     }
   },
-  "wonSuffixSpaced": " ウォン",
   "goalStepQuestion": "どのくらいの期間、いくら\n貯めたいですか?",
   "yearsFieldLabel": "年",
   "monthsFieldLabel": "ヶ月",
   "goalAmountFieldLabel": "目標貯蓄金額",
-  "wonUnit": "ウォン",
   "fixedExpenseStepQuestion": "毎月固定で\n出ていくお金はありますか?",
   "fixedExpenseDefaultRent": "家賃",
   "fixedExpenseDefaultCommunication": "通信費",
@@ -417,7 +415,7 @@
   "addItemButton": "項目追加",
   "resultStepQuestion": "自分だけのジュースプランが\n完成しました!",
   "resultNegativeMessage": "固定費と貯蓄額が収入より多いです😥前のステップに戻って目標や期間を調整してみてください。",
-  "resultBreakdownLine": "月収入{income}ウォン - 固定費{fixed}ウォン - 月貯蓄額を引くと、",
+  "resultBreakdownLine": "月収入{income} - 固定費{fixed} - 月貯蓄額を引くと、",
   "resultWeeklyPrefix": "今週 ",
   "resultWeeklySuffix": "のジュースが飲めます!🍊",
   "resultDailyMonthlyLine": "1日{daily}mL・1ヶ月{monthly}mL",

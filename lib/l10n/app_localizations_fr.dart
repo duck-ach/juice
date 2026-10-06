@@ -119,12 +119,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String savingsPlanGoalLine(Object duration, Object amount) {
-    return 'Objectif : épargner $amount won(s) en $duration';
+    return 'Objectif : épargner $amount en $duration';
   }
 
   @override
   String savingsPlanFixedExpenseLine(Object amount) {
-    return 'Dépenses fixes (incontournables) : $amount won(s)/mois';
+    return 'Dépenses fixes (incontournables) : $amount/mois';
   }
 
   @override
@@ -132,7 +132,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String savingsPlanMonthlyRequiredAmount(Object amount) {
-    return '$amount won(s)';
+    return '$amount';
   }
 
   @override
@@ -1033,12 +1033,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String praiseVariablePlan(Object amount) {
-    return '🍊 Sur la base de votre minimum en basse saison, vous pouvez épargner au moins $amount won(s) par an en toute sécurité !\nLes mois où vous gagnez plus, utilisez le juice bonus pour accélérer votre épargne 🚀';
+    return '🍊 Sur la base de votre minimum en basse saison, vous pouvez épargner au moins $amount par an en toute sécurité !\nLes mois où vous gagnez plus, utilisez le juice bonus pour accélérer votre épargne 🚀';
   }
 
   @override
   String praiseAllowancePlan(Object amount) {
-    return 'De petites gouttes finissent par former un océan ! Dans un an, vous aurez $amount won(s) d\'un magnifique juice épargné ✨';
+    return 'De petites gouttes finissent par former un océan ! Dans un an, vous aurez $amount d\'un magnifique juice épargné ✨';
   }
 
   @override
@@ -1046,11 +1046,8 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String freqConversionCaption(Object monthly, Object weekly) {
-    return '≈ $monthly won(s)/mois · environ $weekly won(s)/semaine disponibles 🍊';
+    return '≈ $monthly/mois · environ $weekly/semaine disponibles 🍊';
   }
-
-  @override
-  String get wonSuffixSpaced => ' won';
 
   @override
   String get goalStepQuestion => 'Pendant combien de temps,\net combien voulez-vous épargner ?';
@@ -1063,9 +1060,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get goalAmountFieldLabel => 'Montant d\'épargne cible';
-
-  @override
-  String get wonUnit => 'won';
 
   @override
   String get fixedExpenseStepQuestion => 'Avez-vous des dépenses\nfixes mensuelles ?';
@@ -1099,7 +1093,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String resultBreakdownLine(Object income, Object fixed) {
-    return 'Revenu mensuel $income won − dépenses fixes $fixed won − épargne mensuelle, il reste :';
+    return 'Revenu mensuel $income − dépenses fixes $fixed − épargne mensuelle, il reste :';
   }
 
   @override

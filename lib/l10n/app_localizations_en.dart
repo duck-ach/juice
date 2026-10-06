@@ -119,12 +119,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String savingsPlanGoalLine(Object duration, Object amount) {
-    return 'Goal: Save $amount won over $duration';
+    return 'Goal: Save $amount over $duration';
   }
 
   @override
   String savingsPlanFixedExpenseLine(Object amount) {
-    return 'Fixed costs (unavoidable): $amount won/month';
+    return 'Fixed costs (unavoidable): $amount/month';
   }
 
   @override
@@ -132,7 +132,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String savingsPlanMonthlyRequiredAmount(Object amount) {
-    return '$amount won';
+    return '$amount';
   }
 
   @override
@@ -1033,12 +1033,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String praiseVariablePlan(Object amount) {
-    return '🍊 Based on your slow-season minimum, you can safely save at least $amount won a year!\nIn months you earn more, use the bonus juice to speed up your savings 🚀';
+    return '🍊 Based on your slow-season minimum, you can safely save at least $amount a year!\nIn months you earn more, use the bonus juice to speed up your savings 🚀';
   }
 
   @override
   String praiseAllowancePlan(Object amount) {
-    return 'Small drops make an ocean! In a year, you\'ll have $amount won of wonderful juice saved up ✨';
+    return 'Small drops make an ocean! In a year, you\'ll have $amount of wonderful juice saved up ✨';
   }
 
   @override
@@ -1046,11 +1046,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String freqConversionCaption(Object monthly, Object weekly) {
-    return '≈ $monthly won/month · about $weekly won/week available 🍊';
+    return '≈ $monthly/month · about $weekly/week available 🍊';
   }
-
-  @override
-  String get wonSuffixSpaced => ' won';
 
   @override
   String get goalStepQuestion => 'How long, and how much\ndo you want to save?';
@@ -1063,9 +1060,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get goalAmountFieldLabel => 'Target Savings Amount';
-
-  @override
-  String get wonUnit => 'won';
 
   @override
   String get fixedExpenseStepQuestion => 'Do you have any fixed\nmonthly expenses?';
@@ -1099,7 +1093,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String resultBreakdownLine(Object income, Object fixed) {
-    return 'Monthly income $income won - fixed costs $fixed won - monthly savings, leaves:';
+    return 'Monthly income $income - fixed costs $fixed - monthly savings, leaves:';
   }
 
   @override

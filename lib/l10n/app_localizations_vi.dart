@@ -1050,9 +1050,6 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get wonSuffixSpaced => ' won';
-
-  @override
   String get goalStepQuestion => 'Bạn muốn tiết kiệm\nbao lâu và bao nhiêu?';
 
   @override
@@ -1063,9 +1060,6 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get goalAmountFieldLabel => 'Số tiền mục tiêu tiết kiệm';
-
-  @override
-  String get wonUnit => 'won';
 
   @override
   String get fixedExpenseStepQuestion => 'Bạn có khoản chi phí\ncố định hàng tháng nào không?';

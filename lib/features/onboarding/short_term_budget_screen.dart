@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/utils/budget_presets.dart';
 import '../../core/utils/thousands_formatter.dart';
 import '../../core/widgets/juice_choice_chip.dart';
 import '../../core/widgets/juice_segmented_tab.dart';
@@ -37,15 +38,7 @@ class _ShortTermBudgetScreenState
       double.tryParse(_budgetController.text.replaceAll(',', ''));
 
   List<double> _quickAmountsFor(BudgetPeriod period, String currencyCode) {
-    final weekly = switch (currencyCode) {
-      'USD' || 'EUR' => const [50.0, 75.0, 100.0, 150.0],
-      'JPY' => const [10000.0, 15000.0, 20000.0, 30000.0],
-      'VND' => const [1000000.0, 1500000.0, 2000000.0, 3000000.0],
-      'TWD' => const [1500.0, 2000.0, 3000.0, 4500.0],
-      'CNY' => const [300.0, 500.0, 700.0, 1000.0],
-      'BRL' => const [250.0, 400.0, 500.0, 750.0],
-      _ => const [100000.0, 150000.0, 200000.0, 300000.0], // KRW 등 기본값
-    };
+    final weekly = weeklyBudgetPresetsFor(currencyCode);
     return switch (period) {
       BudgetPeriod.weekly => weekly,
       BudgetPeriod.daily => weekly.map((v) => _roundNice(v / 7)).toList(),

@@ -119,12 +119,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String savingsPlanGoalLine(Object duration, Object amount) {
-    return '目標: $durationで$amountウォン貯める';
+    return '目標: $durationで$amount貯める';
   }
 
   @override
   String savingsPlanFixedExpenseLine(Object amount) {
-    return '固定費(何もしなくても出るお金): 月$amountウォン';
+    return '固定費(何もしなくても出るお金): 月$amount';
   }
 
   @override
@@ -132,7 +132,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String savingsPlanMonthlyRequiredAmount(Object amount) {
-    return '$amountウォン';
+    return '$amount';
   }
 
   @override
@@ -1033,12 +1033,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String praiseVariablePlan(Object amount) {
-    return '🍊 閑散期基準で、年間最低$amountウォンはしっかり守れます!\n収入が多い月はボーナスジュースで貯蓄スピードを上げましょう 🚀';
+    return '🍊 閑散期基準で、年間最低$amountはしっかり守れます!\n収入が多い月はボーナスジュースで貯蓄スピードを上げましょう 🚀';
   }
 
   @override
   String praiseAllowancePlan(Object amount) {
-    return '小さな水滴が集まって海になります!1年後には$amountウォンの素敵なジュースが完成します ✨';
+    return '小さな水滴が集まって海になります!1年後には$amountの素敵なジュースが完成します ✨';
   }
 
   @override
@@ -1046,11 +1046,8 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String freqConversionCaption(Object monthly, Object weekly) {
-    return '≈ 月換算$monthlyウォン / 週あたり約$weeklyウォン利用可能 🍊';
+    return '≈ 月換算$monthly / 週あたり約$weekly利用可能 🍊';
   }
-
-  @override
-  String get wonSuffixSpaced => ' ウォン';
 
   @override
   String get goalStepQuestion => 'どのくらいの期間、いくら\n貯めたいですか?';
@@ -1063,9 +1060,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get goalAmountFieldLabel => '目標貯蓄金額';
-
-  @override
-  String get wonUnit => 'ウォン';
 
   @override
   String get fixedExpenseStepQuestion => '毎月固定で\n出ていくお金はありますか?';
@@ -1099,7 +1093,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String resultBreakdownLine(Object income, Object fixed) {
-    return '月収入$incomeウォン - 固定費$fixedウォン - 月貯蓄額を引くと、';
+    return '月収入$income - 固定費$fixed - 月貯蓄額を引くと、';
   }
 
   @override

@@ -6,6 +6,7 @@ import '../../core/utils/thousands_formatter.dart';
 import '../../core/widgets/juice_appbar_title.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/budget_settings_provider.dart';
+import '../../providers/currency_provider.dart';
 import '../../providers/fixed_expense_autofill_provider.dart';
 import '../../providers/savings_planner_provider.dart';
 
@@ -164,6 +165,7 @@ class _FixedExpenseManageScreenState
             _ExpenseRowCard(
               row: _rows[i],
               loc: loc,
+              currencySymbol: ref.watch(currencyProvider).currency.symbol,
               onDayChanged: (value) =>
                   setState(() => _rows[i].dayOfMonth = value),
               onFieldChanged: () => setState(() {}),
@@ -190,6 +192,7 @@ class _ExpenseRowCard extends StatelessWidget {
   const _ExpenseRowCard({
     required this.row,
     required this.loc,
+    required this.currencySymbol,
     required this.onDayChanged,
     required this.onFieldChanged,
     required this.onRemove,
@@ -197,6 +200,7 @@ class _ExpenseRowCard extends StatelessWidget {
 
   final _ExpenseRow row;
   final AppLocalizations loc;
+  final String currencySymbol;
   final ValueChanged<int> onDayChanged;
   final VoidCallback onFieldChanged;
   final VoidCallback onRemove;
@@ -237,7 +241,7 @@ class _ExpenseRowCard extends StatelessWidget {
                   keyboardType: TextInputType.number,
                   inputFormatters: [ThousandsSeparatorInputFormatter()],
                   decoration:
-                      InputDecoration(hintText: '0', suffixText: loc.wonUnit),
+                      InputDecoration(hintText: '0', suffixText: currencySymbol),
                   onChanged: (_) => onFieldChanged(),
                 ),
               ),

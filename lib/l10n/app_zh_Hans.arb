@@ -35,10 +35,10 @@
   "durationYearsAndMonths": "{years}年{months}个月",
   "durationYearsOnly": "{years}年",
   "durationMonthsOnly": "{months}个月",
-  "savingsPlanGoalLine": "目标:{duration}内存下 {amount} 元",
-  "savingsPlanFixedExpenseLine": "固定支出(无法避免):每月 {amount} 元",
+  "savingsPlanGoalLine": "目标:{duration}内存下 {amount}",
+  "savingsPlanFixedExpenseLine": "固定支出(无法避免):每月 {amount}",
   "savingsPlanMonthlyRequiredLabel": "每月应储蓄金额",
-  "savingsPlanMonthlyRequiredAmount": "{amount} 元",
+  "savingsPlanMonthlyRequiredAmount": "{amount}",
   "@savingsPlanMonthlyRequiredAmount": {
     "placeholders": {
       "amount": {}
@@ -381,32 +381,30 @@
   "subAllowanceRegular": "🗓️ 定期零花钱",
   "subAllowanceIrregular": "🎲 不定期零花钱・打工",
   "questionIrregularMinSave": "每个月「一定能存下」的最低金额是多少呢? 🪙",
-  "praiseVariablePlan": "🍊 以淡季为基准,一年至少能稳稳守住 {amount} 元!\n收入较多的月份,就用奖励果汁加快储蓄速度吧 🚀",
+  "praiseVariablePlan": "🍊 以淡季为基准,一年至少能稳稳守住 {amount}!\n收入较多的月份,就用奖励果汁加快储蓄速度吧 🚀",
   "@praiseVariablePlan": {
     "placeholders": {
       "amount": {}
     }
   },
-  "praiseAllowancePlan": "小水滴汇聚成海洋!一年后就能完成 {amount} 元的美好果汁 ✨",
+  "praiseAllowancePlan": "小水滴汇聚成海洋!一年后就能完成 {amount}的美好果汁 ✨",
   "@praiseAllowancePlan": {
     "placeholders": {
       "amount": {}
     }
   },
   "guideExtendGoalPeriod": "要不要稍微拉长目标期限,让您能在零花钱范围内轻松存钱呢? 🍊",
-  "freqConversionCaption": "≈ 月换算 {monthly} 元 / 每周约可用 {weekly} 元 🍊",
+  "freqConversionCaption": "≈ 月换算 {monthly} / 每周约可用 {weekly} 🍊",
   "@freqConversionCaption": {
     "placeholders": {
       "monthly": {},
       "weekly": {}
     }
   },
-  "wonSuffixSpaced": " 元",
   "goalStepQuestion": "想存多久、存多少呢?",
   "yearsFieldLabel": "年",
   "monthsFieldLabel": "月",
   "goalAmountFieldLabel": "目标储蓄金额",
-  "wonUnit": "元",
   "fixedExpenseStepQuestion": "每月有固定支出吗?",
   "fixedExpenseDefaultRent": "房租",
   "fixedExpenseDefaultCommunication": "通讯费",
@@ -417,7 +415,7 @@
   "addItemButton": "添加项目",
   "resultStepQuestion": "你的专属果汁计划\n已经完成!",
   "resultNegativeMessage": "固定支出与储蓄超过收入了 😥 请返回调整目标或期限。",
-  "resultBreakdownLine": "每月收入 {income} 元 − 固定支出 {fixed} 元 − 每月储蓄后,剩下:",
+  "resultBreakdownLine": "每月收入 {income} − 固定支出 {fixed} − 每月储蓄后,剩下:",
   "resultWeeklyPrefix": "本周:",
   "resultWeeklySuffix": " 可以享用的果汁!🍊",
   "resultDailyMonthlyLine": "{daily} mL/日・{monthly} mL/月",

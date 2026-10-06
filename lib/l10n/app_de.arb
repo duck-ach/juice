@@ -35,10 +35,10 @@
   "durationYearsAndMonths": "{years} J. {months} M.",
   "durationYearsOnly": "{years} Jahre",
   "durationMonthsOnly": "{months} Monate",
-  "savingsPlanGoalLine": "Ziel: {amount} Won in {duration} sparen",
-  "savingsPlanFixedExpenseLine": "Fixkosten (unvermeidlich): {amount} Won/Monat",
+  "savingsPlanGoalLine": "Ziel: {amount} in {duration} sparen",
+  "savingsPlanFixedExpenseLine": "Fixkosten (unvermeidlich): {amount}/Monat",
   "savingsPlanMonthlyRequiredLabel": "Monatlich zu sparender Betrag",
-  "savingsPlanMonthlyRequiredAmount": "{amount} Won",
+  "savingsPlanMonthlyRequiredAmount": "{amount}",
   "@savingsPlanMonthlyRequiredAmount": {
     "placeholders": {
       "amount": {}
@@ -381,32 +381,30 @@
   "subAllowanceRegular": "🗓️ Regelmäßiges Taschengeld",
   "subAllowanceIrregular": "🎲 Unregelmäßiges Taschengeld/Nebenjob",
   "questionIrregularMinSave": "Wie viel kannst du dir sicher sein, jeden Monat mindestens zu sparen? 🪙",
-  "praiseVariablePlan": "🍊 Auf Basis deiner Nebensaison-Mindesteinnahmen kannst du sicher mindestens {amount} Won pro Jahr zurücklegen!\nIn Monaten mit mehr Einkommen kannst du mit Bonus-Juice dein Sparen beschleunigen 🚀",
+  "praiseVariablePlan": "🍊 Auf Basis deiner Nebensaison-Mindesteinnahmen kannst du sicher mindestens {amount} pro Jahr zurücklegen!\nIn Monaten mit mehr Einkommen kannst du mit Bonus-Juice dein Sparen beschleunigen 🚀",
   "@praiseVariablePlan": {
     "placeholders": {
       "amount": {}
     }
   },
-  "praiseAllowancePlan": "Kleine Tropfen ergeben ein Meer! In einem Jahr hast du {amount} Won wunderbaren Juice angespart ✨",
+  "praiseAllowancePlan": "Kleine Tropfen ergeben ein Meer! In einem Jahr hast du {amount} wunderbaren Juice angespart ✨",
   "@praiseAllowancePlan": {
     "placeholders": {
       "amount": {}
     }
   },
   "guideExtendGoalPeriod": "Sollen wir den Zielzeitraum etwas verlängern, damit du bequem innerhalb deines Taschengelds sparen kannst? 🍊",
-  "freqConversionCaption": "≈ {monthly} Won/Monat · ca. {weekly} Won/Woche verfügbar 🍊",
+  "freqConversionCaption": "≈ {monthly}/Monat · ca. {weekly}/Woche verfügbar 🍊",
   "@freqConversionCaption": {
     "placeholders": {
       "monthly": {},
       "weekly": {}
     }
   },
-  "wonSuffixSpaced": " Won",
   "goalStepQuestion": "Wie lange und wie viel\nmöchtest du sparen?",
   "yearsFieldLabel": "Jahre",
   "monthsFieldLabel": "Monate",
   "goalAmountFieldLabel": "Ziel-Sparbetrag",
-  "wonUnit": "Won",
   "fixedExpenseStepQuestion": "Hast du monatliche\nFixkosten?",
   "fixedExpenseDefaultRent": "Miete",
   "fixedExpenseDefaultCommunication": "Telefonrechnung",
@@ -417,7 +415,7 @@
   "addItemButton": "Posten hinzufügen",
   "resultStepQuestion": "Dein eigener Juice-Plan\nist fertig!",
   "resultNegativeMessage": "Fixkosten und Sparbetrag übersteigen das Einkommen 😥 Gehe zurück und passe Ziel oder Dauer an.",
-  "resultBreakdownLine": "Monatseinkommen {income} Won - Fixkosten {fixed} Won - monatliche Ersparnis ergibt:",
+  "resultBreakdownLine": "Monatseinkommen {income} - Fixkosten {fixed} - monatliche Ersparnis ergibt:",
   "resultWeeklyPrefix": "Diese Woche: ",
   "resultWeeklySuffix": " Juice zum Genießen! 🍊",
   "resultDailyMonthlyLine": "{daily} mL/Tag · {monthly} mL/Monat",

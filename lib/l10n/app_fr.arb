@@ -35,10 +35,10 @@
   "durationYearsAndMonths": "{years} an(s) {months} mois",
   "durationYearsOnly": "{years} an(s)",
   "durationMonthsOnly": "{months} mois",
-  "savingsPlanGoalLine": "Objectif : épargner {amount} won(s) en {duration}",
-  "savingsPlanFixedExpenseLine": "Dépenses fixes (incontournables) : {amount} won(s)/mois",
+  "savingsPlanGoalLine": "Objectif : épargner {amount} en {duration}",
+  "savingsPlanFixedExpenseLine": "Dépenses fixes (incontournables) : {amount}/mois",
   "savingsPlanMonthlyRequiredLabel": "Montant à épargner chaque mois",
-  "savingsPlanMonthlyRequiredAmount": "{amount} won(s)",
+  "savingsPlanMonthlyRequiredAmount": "{amount}",
   "@savingsPlanMonthlyRequiredAmount": {
     "placeholders": {
       "amount": {}
@@ -381,32 +381,30 @@
   "subAllowanceRegular": "🗓️ Argent de poche régulier",
   "subAllowanceIrregular": "🎲 Argent de poche/petit boulot irrégulier",
   "questionIrregularMinSave": "Quel est le montant minimum que vous êtes sûr de pouvoir épargner chaque mois ? 🪙",
-  "praiseVariablePlan": "🍊 Sur la base de votre minimum en basse saison, vous pouvez épargner au moins {amount} won(s) par an en toute sécurité !\nLes mois où vous gagnez plus, utilisez le juice bonus pour accélérer votre épargne 🚀",
+  "praiseVariablePlan": "🍊 Sur la base de votre minimum en basse saison, vous pouvez épargner au moins {amount} par an en toute sécurité !\nLes mois où vous gagnez plus, utilisez le juice bonus pour accélérer votre épargne 🚀",
   "@praiseVariablePlan": {
     "placeholders": {
       "amount": {}
     }
   },
-  "praiseAllowancePlan": "De petites gouttes finissent par former un océan ! Dans un an, vous aurez {amount} won(s) d'un magnifique juice épargné ✨",
+  "praiseAllowancePlan": "De petites gouttes finissent par former un océan ! Dans un an, vous aurez {amount} d'un magnifique juice épargné ✨",
   "@praiseAllowancePlan": {
     "placeholders": {
       "amount": {}
     }
   },
   "guideExtendGoalPeriod": "On allonge un peu la durée de l'objectif pour épargner confortablement avec votre argent de poche ? 🍊",
-  "freqConversionCaption": "≈ {monthly} won(s)/mois · environ {weekly} won(s)/semaine disponibles 🍊",
+  "freqConversionCaption": "≈ {monthly}/mois · environ {weekly}/semaine disponibles 🍊",
   "@freqConversionCaption": {
     "placeholders": {
       "monthly": {},
       "weekly": {}
     }
   },
-  "wonSuffixSpaced": " won",
   "goalStepQuestion": "Pendant combien de temps,\net combien voulez-vous épargner ?",
   "yearsFieldLabel": "ans",
   "monthsFieldLabel": "mois",
   "goalAmountFieldLabel": "Montant d'épargne cible",
-  "wonUnit": "won",
   "fixedExpenseStepQuestion": "Avez-vous des dépenses\nfixes mensuelles ?",
   "fixedExpenseDefaultRent": "Loyer",
   "fixedExpenseDefaultCommunication": "Facture téléphonique",
@@ -417,7 +415,7 @@
   "addItemButton": "Ajouter un élément",
   "resultStepQuestion": "Votre plan juice\nest prêt !",
   "resultNegativeMessage": "Les dépenses fixes et l'épargne dépassent les revenus 😥 Revenez ajuster l'objectif ou la durée.",
-  "resultBreakdownLine": "Revenu mensuel {income} won − dépenses fixes {fixed} won − épargne mensuelle, il reste :",
+  "resultBreakdownLine": "Revenu mensuel {income} − dépenses fixes {fixed} − épargne mensuelle, il reste :",
   "resultWeeklyPrefix": "Cette semaine : ",
   "resultWeeklySuffix": " de juice à savourer ! 🍊",
   "resultDailyMonthlyLine": "{daily} mL/jour · {monthly} mL/mois",

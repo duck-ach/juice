@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 import '../../../core/utils/thousands_formatter.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../../providers/currency_provider.dart';
 import '../../../providers/asset_provider.dart';
 import '../../../providers/budget_settings_provider.dart';
 import '../../../providers/savings_planner_provider.dart';
@@ -95,7 +96,7 @@ class _SavingsPlanRecalibrationSheetState
     final loc = AppLocalizations.of(context)!;
     final plan = ref.watch(savingsPlanProvider);
     final actualSavings = ref.watch(totalSavingsProvider);
-    final formatter = NumberFormat('#,###');
+    final currency = ref.watch(currencyProvider).currency;
     final newIncome = _newIncome;
     final canPreview = newIncome != null && newIncome > 0;
 
@@ -156,7 +157,7 @@ class _SavingsPlanRecalibrationSheetState
                   style: Theme.of(context).textTheme.headlineSmall,
                   decoration: InputDecoration(
                       labelText: loc.recalibrateIncomeFieldLabel,
-                      suffixText: loc.wonUnit),
+                      suffixText: currency.symbol),
                   onChanged: (_) => setState(() {}),
                 ),
                 if (canPreview) ...[
@@ -164,7 +165,7 @@ class _SavingsPlanRecalibrationSheetState
                   _StatRow(
                     goalAmount: plan.goalAmount ?? 0,
                     actualSavings: actualSavings,
-                    formatter: formatter,
+                    currency: currency,
                     loc: loc,
                   ),
                   const SizedBox(height: 20),
@@ -189,7 +190,7 @@ class _SavingsPlanRecalibrationSheetState
                           inputFormatters: [ThousandsSeparatorInputFormatter()],
                           decoration: InputDecoration(
                               labelText: loc.recalibrateWeeklyBudgetLabel,
-                              suffixText: loc.wonUnit),
+                              suffixText: currency.symbol),
                           onChanged: (text) {
                             final weekly =
                                 double.tryParse(text.replaceAll(',', ''));
@@ -246,13 +247,13 @@ class _StatRow extends StatelessWidget {
   const _StatRow({
     required this.goalAmount,
     required this.actualSavings,
-    required this.formatter,
+    required this.currency,
     required this.loc,
   });
 
   final double goalAmount;
   final double actualSavings;
-  final NumberFormat formatter;
+  final CurrencyItem currency;
   final AppLocalizations loc;
 
   @override
@@ -267,7 +268,7 @@ class _StatRow extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis),
               const SizedBox(height: 2),
-              Text(formatter.format(value),
+              Text(currency.format(value),
                   style: Theme.of(context)
                       .textTheme
                       .titleMedium

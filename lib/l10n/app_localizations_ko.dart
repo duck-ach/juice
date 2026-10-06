@@ -119,12 +119,12 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String savingsPlanGoalLine(Object duration, Object amount) {
-    return '목표: $duration 동안 $amount원 모으기';
+    return '목표: $duration 동안 $amount 모으기';
   }
 
   @override
   String savingsPlanFixedExpenseLine(Object amount) {
-    return '숨만 쉬어도 나가는 돈(고정비): 월 $amount원';
+    return '숨만 쉬어도 나가는 돈(고정비): 월 $amount';
   }
 
   @override
@@ -132,7 +132,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String savingsPlanMonthlyRequiredAmount(Object amount) {
-    return '$amount원';
+    return '$amount';
   }
 
   @override
@@ -155,7 +155,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String savingsPlanActualTraceLine(Object actual, Object goal, Object percent) {
-    return '실제 저축 $actual원 / 목표 $goal원 ($percent%)';
+    return '실제 저축 $actual / 목표 $goal ($percent%)';
   }
 
   @override
@@ -163,7 +163,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String savingsPlanFixedIncomeTotalLine(Object total) {
-    return '고정수입 합계: $total원';
+    return '고정수입 합계: $total';
   }
 
   @override
@@ -1033,12 +1033,12 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String praiseVariablePlan(Object amount) {
-    return '🍊 비수기 기준, 1년에 최소 $amount원은 든든하게 지켜낼 수 있어요!\n수입이 더 많이 들어온 달에는 보너스 주스로 저축 속도를 확 당겨봐요 🚀';
+    return '🍊 비수기 기준, 1년에 최소 $amount 규모를 든든하게 지켜낼 수 있어요!\n수입이 더 많이 들어온 달에는 보너스 주스로 저축 속도를 확 당겨봐요 🚀';
   }
 
   @override
   String praiseAllowancePlan(Object amount) {
-    return '작은 물방울이 모여 바다가 돼요! 1년 뒤엔 $amount원의 멋진 주스가 완성돼요 ✨';
+    return '작은 물방울이 모여 바다가 돼요! 1년 뒤엔 $amount 규모의 멋진 주스가 완성돼요 ✨';
   }
 
   @override
@@ -1046,11 +1046,8 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String freqConversionCaption(Object monthly, Object weekly) {
-    return '≈ 월 환산 $monthly원 / 주간 가용 약 $weekly원 🍊';
+    return '≈ 월 환산 $monthly / 주간 가용 약 $weekly 🍊';
   }
-
-  @override
-  String get wonSuffixSpaced => ' 원';
 
   @override
   String get goalStepQuestion => '얼마 동안, 얼마를\n모으고 싶나요?';
@@ -1063,9 +1060,6 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get goalAmountFieldLabel => '목표 모을 금액';
-
-  @override
-  String get wonUnit => '원';
 
   @override
   String get fixedExpenseStepQuestion => '매달 고정으로\n빠져나가는 돈이 있나요?';
@@ -1099,7 +1093,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String resultBreakdownLine(Object income, Object fixed) {
-    return '월 수입 $income원 - 고정비 $fixed원 - 월 저축액을 빼면,';
+    return '월 수입 $income - 고정비 $fixed - 월 저축액을 빼면,';
   }
 
   @override

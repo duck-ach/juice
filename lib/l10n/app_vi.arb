@@ -564,12 +564,10 @@
       "weekly": {}
     }
   },
-  "wonSuffixSpaced": " won",
   "goalStepQuestion": "Bạn muốn tiết kiệm\nbao lâu và bao nhiêu?",
   "yearsFieldLabel": "năm",
   "monthsFieldLabel": "tháng",
   "goalAmountFieldLabel": "Số tiền mục tiêu tiết kiệm",
-  "wonUnit": "won",
   "fixedExpenseStepQuestion": "Bạn có khoản chi phí\ncố định hàng tháng nào không?",
   "fixedExpenseDefaultRent": "Tiền thuê nhà",
   "fixedExpenseDefaultCommunication": "Cước viễn thông",

@@ -119,12 +119,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String savingsPlanGoalLine(Object duration, Object amount) {
-    return '目标:$duration内存下 $amount 元';
+    return '目标:$duration内存下 $amount';
   }
 
   @override
   String savingsPlanFixedExpenseLine(Object amount) {
-    return '固定支出(无法避免):每月 $amount 元';
+    return '固定支出(无法避免):每月 $amount';
   }
 
   @override
@@ -132,7 +132,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String savingsPlanMonthlyRequiredAmount(Object amount) {
-    return '$amount 元';
+    return '$amount';
   }
 
   @override
@@ -1033,12 +1033,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String praiseVariablePlan(Object amount) {
-    return '🍊 以淡季为基准,一年至少能稳稳守住 $amount 元!\n收入较多的月份,就用奖励果汁加快储蓄速度吧 🚀';
+    return '🍊 以淡季为基准,一年至少能稳稳守住 $amount!\n收入较多的月份,就用奖励果汁加快储蓄速度吧 🚀';
   }
 
   @override
   String praiseAllowancePlan(Object amount) {
-    return '小水滴汇聚成海洋!一年后就能完成 $amount 元的美好果汁 ✨';
+    return '小水滴汇聚成海洋!一年后就能完成 $amount的美好果汁 ✨';
   }
 
   @override
@@ -1046,11 +1046,8 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String freqConversionCaption(Object monthly, Object weekly) {
-    return '≈ 月换算 $monthly 元 / 每周约可用 $weekly 元 🍊';
+    return '≈ 月换算 $monthly / 每周约可用 $weekly 🍊';
   }
-
-  @override
-  String get wonSuffixSpaced => ' 元';
 
   @override
   String get goalStepQuestion => '想存多久、存多少呢?';
@@ -1063,9 +1060,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get goalAmountFieldLabel => '目标储蓄金额';
-
-  @override
-  String get wonUnit => '元';
 
   @override
   String get fixedExpenseStepQuestion => '每月有固定支出吗?';
@@ -1099,7 +1093,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String resultBreakdownLine(Object income, Object fixed) {
-    return '每月收入 $income 元 − 固定支出 $fixed 元 − 每月储蓄后,剩下:';
+    return '每月收入 $income − 固定支出 $fixed − 每月储蓄后,剩下:';
   }
 
   @override
@@ -1723,12 +1717,12 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
 
   @override
   String savingsPlanGoalLine(Object duration, Object amount) {
-    return '目标:$duration内存下 $amount 元';
+    return '目标:$duration内存下 $amount';
   }
 
   @override
   String savingsPlanFixedExpenseLine(Object amount) {
-    return '固定支出(无法避免):每月 $amount 元';
+    return '固定支出(无法避免):每月 $amount';
   }
 
   @override
@@ -1736,7 +1730,7 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
 
   @override
   String savingsPlanMonthlyRequiredAmount(Object amount) {
-    return '$amount 元';
+    return '$amount';
   }
 
   @override
@@ -2637,12 +2631,12 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
 
   @override
   String praiseVariablePlan(Object amount) {
-    return '🍊 以淡季为基准,一年至少能稳稳守住 $amount 元!\n收入较多的月份,就用奖励果汁加快储蓄速度吧 🚀';
+    return '🍊 以淡季为基准,一年至少能稳稳守住 $amount!\n收入较多的月份,就用奖励果汁加快储蓄速度吧 🚀';
   }
 
   @override
   String praiseAllowancePlan(Object amount) {
-    return '小水滴汇聚成海洋!一年后就能完成 $amount 元的美好果汁 ✨';
+    return '小水滴汇聚成海洋!一年后就能完成 $amount的美好果汁 ✨';
   }
 
   @override
@@ -2650,11 +2644,8 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
 
   @override
   String freqConversionCaption(Object monthly, Object weekly) {
-    return '≈ 月换算 $monthly 元 / 每周约可用 $weekly 元 🍊';
+    return '≈ 月换算 $monthly / 每周约可用 $weekly 🍊';
   }
-
-  @override
-  String get wonSuffixSpaced => ' 元';
 
   @override
   String get goalStepQuestion => '想存多久、存多少呢?';
@@ -2667,9 +2658,6 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
 
   @override
   String get goalAmountFieldLabel => '目标储蓄金额';
-
-  @override
-  String get wonUnit => '元';
 
   @override
   String get fixedExpenseStepQuestion => '每月有固定支出吗?';
@@ -2703,7 +2691,7 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
 
   @override
   String resultBreakdownLine(Object income, Object fixed) {
-    return '每月收入 $income 元 − 固定支出 $fixed 元 − 每月储蓄后,剩下:';
+    return '每月收入 $income − 固定支出 $fixed − 每月储蓄后,剩下:';
   }
 
   @override
@@ -3327,12 +3315,12 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String savingsPlanGoalLine(Object duration, Object amount) {
-    return '目標:$duration內存下 $amount 元';
+    return '目標:$duration內存下 $amount';
   }
 
   @override
   String savingsPlanFixedExpenseLine(Object amount) {
-    return '固定支出(無法避免):每月 $amount 元';
+    return '固定支出(無法避免):每月 $amount';
   }
 
   @override
@@ -3340,7 +3328,7 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String savingsPlanMonthlyRequiredAmount(Object amount) {
-    return '$amount 元';
+    return '$amount';
   }
 
   @override
@@ -4241,12 +4229,12 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String praiseVariablePlan(Object amount) {
-    return '🍊 以淡季為基準,一年至少能穩穩守住 $amount 元!\n收入較多的月份,就用獎勵果汁加快儲蓄速度吧 🚀';
+    return '🍊 以淡季為基準,一年至少能穩穩守住 $amount!\n收入較多的月份,就用獎勵果汁加快儲蓄速度吧 🚀';
   }
 
   @override
   String praiseAllowancePlan(Object amount) {
-    return '小水滴匯聚成海洋!一年後就能完成 $amount 元的美好果汁 ✨';
+    return '小水滴匯聚成海洋!一年後就能完成 $amount的美好果汁 ✨';
   }
 
   @override
@@ -4254,11 +4242,8 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String freqConversionCaption(Object monthly, Object weekly) {
-    return '≈ 月換算 $monthly 元 / 每週約可用 $weekly 元 🍊';
+    return '≈ 月換算 $monthly / 每週約可用 $weekly 🍊';
   }
-
-  @override
-  String get wonSuffixSpaced => ' 元';
 
   @override
   String get goalStepQuestion => '想存多久、存多少呢?';
@@ -4271,9 +4256,6 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get goalAmountFieldLabel => '目標儲蓄金額';
-
-  @override
-  String get wonUnit => '元';
 
   @override
   String get fixedExpenseStepQuestion => '每月有固定支出嗎?';
@@ -4307,7 +4289,7 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String resultBreakdownLine(Object income, Object fixed) {
-    return '每月收入 $income 元 − 固定支出 $fixed 元 − 每月儲蓄後,剩下:';
+    return '每月收入 $income − 固定支出 $fixed − 每月儲蓄後,剩下:';
   }
 
   @override

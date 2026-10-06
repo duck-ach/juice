@@ -322,13 +322,13 @@ abstract class AppLocalizations {
   /// No description provided for @savingsPlanGoalLine.
   ///
   /// In ko, this message translates to:
-  /// **'목표: {duration} 동안 {amount}원 모으기'**
+  /// **'목표: {duration} 동안 {amount} 모으기'**
   String savingsPlanGoalLine(Object duration, Object amount);
 
   /// No description provided for @savingsPlanFixedExpenseLine.
   ///
   /// In ko, this message translates to:
-  /// **'숨만 쉬어도 나가는 돈(고정비): 월 {amount}원'**
+  /// **'숨만 쉬어도 나가는 돈(고정비): 월 {amount}'**
   String savingsPlanFixedExpenseLine(Object amount);
 
   /// No description provided for @savingsPlanMonthlyRequiredLabel.
@@ -340,7 +340,7 @@ abstract class AppLocalizations {
   /// No description provided for @savingsPlanMonthlyRequiredAmount.
   ///
   /// In ko, this message translates to:
-  /// **'{amount}원'**
+  /// **'{amount}'**
   String savingsPlanMonthlyRequiredAmount(Object amount);
 
   /// No description provided for @savingsPlanAchievementRateLabel.
@@ -382,7 +382,7 @@ abstract class AppLocalizations {
   /// No description provided for @savingsPlanActualTraceLine.
   ///
   /// In ko, this message translates to:
-  /// **'실제 저축 {actual}원 / 목표 {goal}원 ({percent}%)'**
+  /// **'실제 저축 {actual} / 목표 {goal} ({percent}%)'**
   String savingsPlanActualTraceLine(Object actual, Object goal, Object percent);
 
   /// No description provided for @manageFixedIncomesButton.
@@ -394,7 +394,7 @@ abstract class AppLocalizations {
   /// No description provided for @savingsPlanFixedIncomeTotalLine.
   ///
   /// In ko, this message translates to:
-  /// **'고정수입 합계: {total}원'**
+  /// **'고정수입 합계: {total}'**
   String savingsPlanFixedIncomeTotalLine(Object total);
 
   /// No description provided for @savingsPlanRecommendedLine.
@@ -2002,13 +2002,13 @@ abstract class AppLocalizations {
   /// No description provided for @praiseVariablePlan.
   ///
   /// In ko, this message translates to:
-  /// **'🍊 비수기 기준, 1년에 최소 {amount}원은 든든하게 지켜낼 수 있어요!\n수입이 더 많이 들어온 달에는 보너스 주스로 저축 속도를 확 당겨봐요 🚀'**
+  /// **'🍊 비수기 기준, 1년에 최소 {amount} 규모를 든든하게 지켜낼 수 있어요!\n수입이 더 많이 들어온 달에는 보너스 주스로 저축 속도를 확 당겨봐요 🚀'**
   String praiseVariablePlan(Object amount);
 
   /// No description provided for @praiseAllowancePlan.
   ///
   /// In ko, this message translates to:
-  /// **'작은 물방울이 모여 바다가 돼요! 1년 뒤엔 {amount}원의 멋진 주스가 완성돼요 ✨'**
+  /// **'작은 물방울이 모여 바다가 돼요! 1년 뒤엔 {amount} 규모의 멋진 주스가 완성돼요 ✨'**
   String praiseAllowancePlan(Object amount);
 
   /// No description provided for @guideExtendGoalPeriod.
@@ -2020,14 +2020,8 @@ abstract class AppLocalizations {
   /// No description provided for @freqConversionCaption.
   ///
   /// In ko, this message translates to:
-  /// **'≈ 월 환산 {monthly}원 / 주간 가용 약 {weekly}원 🍊'**
+  /// **'≈ 월 환산 {monthly} / 주간 가용 약 {weekly} 🍊'**
   String freqConversionCaption(Object monthly, Object weekly);
-
-  /// No description provided for @wonSuffixSpaced.
-  ///
-  /// In ko, this message translates to:
-  /// **' 원'**
-  String get wonSuffixSpaced;
 
   /// No description provided for @goalStepQuestion.
   ///
@@ -2052,12 +2046,6 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'목표 모을 금액'**
   String get goalAmountFieldLabel;
-
-  /// No description provided for @wonUnit.
-  ///
-  /// In ko, this message translates to:
-  /// **'원'**
-  String get wonUnit;
 
   /// No description provided for @fixedExpenseStepQuestion.
   ///
@@ -2122,7 +2110,7 @@ abstract class AppLocalizations {
   /// No description provided for @resultBreakdownLine.
   ///
   /// In ko, this message translates to:
-  /// **'월 수입 {income}원 - 고정비 {fixed}원 - 월 저축액을 빼면,'**
+  /// **'월 수입 {income} - 고정비 {fixed} - 월 저축액을 빼면,'**
   String resultBreakdownLine(Object income, Object fixed);
 
   /// No description provided for @resultWeeklyPrefix.

@@ -401,12 +401,10 @@
       "weekly": {}
     }
   },
-  "wonSuffixSpaced": " won",
   "goalStepQuestion": "Por quanto tempo e quanto\nvocê quer economizar?",
   "yearsFieldLabel": "anos",
   "monthsFieldLabel": "meses",
   "goalAmountFieldLabel": "Valor meta de poupança",
-  "wonUnit": "won",
   "fixedExpenseStepQuestion": "Você tem despesas\nfixas mensais?",
   "fixedExpenseDefaultRent": "Aluguel",
   "fixedExpenseDefaultCommunication": "Conta de telefone",

@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 import '../../../core/utils/thousands_formatter.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../../providers/currency_provider.dart';
 import '../../../providers/budget_settings_provider.dart';
 import '../../../providers/savings_planner_provider.dart';
 
@@ -110,7 +111,7 @@ class _FixedIncomeManageSheetState
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
-    final formatter = NumberFormat('#,###');
+    final currency = ref.watch(currencyProvider).currency;
 
     return Padding(
       padding:
@@ -165,7 +166,7 @@ class _FixedIncomeManageSheetState
                               ThousandsSeparatorInputFormatter()
                             ],
                             decoration: InputDecoration(
-                                hintText: '0', suffixText: loc.wonUnit),
+                                hintText: '0', suffixText: currency.symbol),
                             onChanged: (_) => setState(() {}),
                           ),
                         ),
@@ -182,7 +183,7 @@ class _FixedIncomeManageSheetState
                     label: Text(loc.addItemButton)),
                 const SizedBox(height: 8),
                 Text(
-                  loc.savingsPlanFixedIncomeTotalLine(formatter.format(_total)),
+                  loc.savingsPlanFixedIncomeTotalLine(currency.format(_total)),
                   style: Theme.of(context)
                       .textTheme
                       .titleMedium

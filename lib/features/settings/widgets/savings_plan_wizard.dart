@@ -3,10 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../../core/utils/budget_presets.dart';
 import '../../../core/utils/thousands_formatter.dart';
 import '../../../core/widgets/juice_choice_chip.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/budget_settings_provider.dart';
+import '../../../providers/currency_provider.dart';
 import '../../../providers/savings_planner_provider.dart';
 
 /// 저축 목표 플래너 위저드. 소득 형태(고정/불규칙/용돈)에 따라 스텝 구성 자체가
@@ -57,7 +59,6 @@ enum _WizardStep { income, weeklyExpense, goal, fixedExpense, result }
 class _SavingsPlanWizardScreenState
     extends ConsumerState<SavingsPlanWizardScreen> {
   static const _presets = [6, 12, 24, 36];
-  static const _weeklyExpensePresets = [100000, 150000, 200000, 300000];
 
   int _step = 0;
   late IncomeType _incomeType;
@@ -384,7 +385,9 @@ class _SavingsPlanWizardScreenState
         ),
       _WizardStep.weeklyExpense => _WeeklyExpenseStep(
           controller: _weeklyExpenseController,
-          presets: _weeklyExpensePresets,
+          presets: weeklyBudgetPresetsFor(ref.watch(currencyProvider).currency.code)
+              .map((v) => v.round())
+              .toList(),
           onChanged: () => setState(() {}),
         ),
       _WizardStep.goal => _GoalStep(
@@ -496,7 +499,9 @@ class _IncomeStep extends StatelessWidget {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     final (question, subtitle) = _questionFor(loc);
-    final formatter = NumberFormat('#,###');
+    final currency =
+        ProviderScope.containerOf(context).read(currencyProvider).currency;
+
     final amount = double.tryParse(controller.text.replaceAll(',', '')) ?? 0;
     final showConversion =
         _usesFrequency && incomeFrequency != IncomeFrequency.monthly && amount > 0;
@@ -569,15 +574,15 @@ class _IncomeStep extends StatelessWidget {
           inputFormatters: [ThousandsSeparatorInputFormatter()],
           style: Theme.of(context).textTheme.headlineMedium,
           decoration: InputDecoration(
-              hintText: '0', suffixText: loc.wonSuffixSpaced, border: InputBorder.none),
+              hintText: '0', suffixText: currency.symbol, border: InputBorder.none),
           onChanged: (_) => onChanged(),
         ),
         if (showConversion) ...[
           const SizedBox(height: 8),
           Text(
             loc.freqConversionCaption(
-              formatter.format(monthlyEquivalent),
-              formatter.format(monthlyEquivalent / 30 * 7),
+              currency.format(monthlyEquivalent),
+              currency.format(monthlyEquivalent / 30 * 7),
             ),
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodySmall,
@@ -603,6 +608,9 @@ class _WeeklyExpenseStep extends StatelessWidget {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     final formatter = NumberFormat('#,###');
+    final currency =
+        ProviderScope.containerOf(context).read(currencyProvider).currency;
+
     final current = double.tryParse(controller.text.replaceAll(',', ''));
 
     return Column(
@@ -615,7 +623,7 @@ class _WeeklyExpenseStep extends StatelessWidget {
           children: [
             for (final preset in presets)
               JuiceChoiceChip(
-                label: formatter.format(preset),
+                label: currency.format(preset),
                 selected: current == preset.toDouble(),
                 onTap: () {
                   controller.text = formatter.format(preset);
@@ -631,7 +639,7 @@ class _WeeklyExpenseStep extends StatelessWidget {
           keyboardType: TextInputType.number,
           inputFormatters: [ThousandsSeparatorInputFormatter()],
           style: Theme.of(context).textTheme.headlineSmall,
-          decoration: InputDecoration(hintText: '0', suffixText: loc.wonUnit),
+          decoration: InputDecoration(hintText: '0', suffixText: currency.symbol),
           onChanged: (_) => onChanged(),
         ),
       ],
@@ -669,6 +677,8 @@ class _GoalStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
+    final currency =
+        ProviderScope.containerOf(context).read(currencyProvider).currency;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -726,7 +736,7 @@ class _GoalStep extends StatelessWidget {
           inputFormatters: [ThousandsSeparatorInputFormatter()],
           style: Theme.of(context).textTheme.headlineSmall,
           decoration: InputDecoration(
-              labelText: loc.goalAmountFieldLabel, suffixText: loc.wonUnit),
+              labelText: loc.goalAmountFieldLabel, suffixText: currency.symbol),
           onChanged: (_) => onChanged(),
         ),
       ],
@@ -750,6 +760,8 @@ class _FixedExpenseStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
+    final currency =
+        ProviderScope.containerOf(context).read(currencyProvider).currency;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -779,7 +791,7 @@ class _FixedExpenseStep extends StatelessWidget {
                     keyboardType: TextInputType.number,
                     inputFormatters: [ThousandsSeparatorInputFormatter()],
                     decoration:
-                        InputDecoration(hintText: '0', suffixText: loc.wonUnit),
+                        InputDecoration(hintText: '0', suffixText: currency.symbol),
                     onChanged: (_) => onChanged(),
                   ),
                 ),
@@ -833,6 +845,9 @@ class _ResultStep extends StatelessWidget {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     final formatter = NumberFormat('#,###');
+    final currency =
+        ProviderScope.containerOf(context).read(currencyProvider).currency;
+
     final theme = Theme.of(context);
 
     if (plan.incomeType == IncomeType.irregular) {
@@ -841,7 +856,7 @@ class _ResultStep extends StatelessWidget {
         children: [
           _StepHeader(emoji: '🍹', question: loc.resultStepQuestion),
           _PraiseCard(
-              message: loc.praiseVariablePlan(formatter.format(plan.goalAmount ?? 0))),
+              message: loc.praiseVariablePlan(currency.format(plan.goalAmount ?? 0))),
         ],
       );
     }
@@ -854,7 +869,7 @@ class _ResultStep extends StatelessWidget {
         children: [
           _StepHeader(emoji: '🍹', question: loc.resultStepQuestion),
           _PraiseCard(
-              message: loc.praiseAllowancePlan(formatter.format(plan.goalAmount ?? 0))),
+              message: loc.praiseAllowancePlan(currency.format(plan.goalAmount ?? 0))),
         ],
       );
     }
@@ -892,8 +907,8 @@ class _ResultStep extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  loc.resultBreakdownLine(formatter.format(plan.monthlyIncome),
-                      formatter.format(plan.fixedExpenseTotal)),
+                  loc.resultBreakdownLine(currency.format(plan.monthlyIncome ?? 0),
+                      currency.format(plan.fixedExpenseTotal)),
                   style: theme.textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 12),
