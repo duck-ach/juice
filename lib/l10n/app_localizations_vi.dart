@@ -1598,4 +1598,142 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get category_income_etc_desc => 'Các khoản thu nhập đa dạng khác 💧';
+
+  @override
+  String get notifEvening1Title => '🍊 Hôm nay bạn đã uống bao nhiêu mL nước ép?';
+
+  @override
+  String get notifEvening1Body => 'Hôm nay bạn đã vất vả rồi! Ghi chép nhanh trước khi ngủ để giữ ly nước ép ngày mai luôn tươi mới ✨';
+
+  @override
+  String get notifEvening2Title => '🍹 Từng giọt nước ép đều quý giá!';
+
+  @override
+  String get notifEvening2Body => 'Hôm nay có khoản chi bất ngờ nào không? Ghi lại ngay thì nước ép tuần sau sẽ ngọt hơn nhiều 🍯';
+
+  @override
+  String get notifEvening3Title => '🧃 Đến giờ kiểm tra ly nước ép!';
+
+  @override
+  String get notifEvening3Body => 'Ghi nhanh khoản đã chi hôm nay chỉ trong 1 giây và xem mực nước ép của bạn có an toàn không nhé?';
+
+  @override
+  String get notifEvening4Title => '🍋 Đổ đầy nước ép trước khi vứt hóa đơn!';
+
+  @override
+  String get notifEvening4Body => 'Khoản chi không ghi chép là đường tắt khiến nước ép rỉ ra! Hãy sắp xếp nhẹ chi tiêu hôm nay nhé 🏃‍♂️';
+
+  @override
+  String get notifEvening5Title => '🍏 Lời chúc tươi mát cuối ngày!';
+
+  @override
+  String get notifEvening5Body => 'Ghi xong chi tiêu hôm nay rồi nghỉ ngơi thật thoải mái nhé. Ngày mai chúng tôi sẽ đón bạn bằng ly nước ép không bao giờ cạn 🌙';
+
+  @override
+  String get notifMondayTitle => '🍊 Nước ép mới đã đầy ắp rồi!';
+
+  @override
+  String get notifMondayBody => 'Tuần trước bạn đã cố gắng rất tốt. Cùng bắt đầu tuần mới tươi mát với ngân sách đầy ắp nhé? ✨';
+
+  @override
+  String get notifWeekday1Title => '☕️ Lời nhắc cà phê trên đường đi làm';
+
+  @override
+  String get notifWeekday1Body => 'Cà phê buổi sáng nay, hãy xem đồng hồ nước ép trước khi uống nhé! Tiết kiệm một ngụm, nước ép cuối tuần sẽ mát gấp đôi.';
+
+  @override
+  String get notifWeekday2Title => '🚨 Dạo này bạn uống ừng ực quá không?';
+
+  @override
+  String get notifWeekday2Body => 'Dạo này bạn có đang uống nước ép quá nhanh không? Hôm nay hãy thưởng thức chậm lại một chút nhé! 🍊';
+
+  @override
+  String get notifWeekday3Title => '🌤 Hôm nay cũng thật sảng khoái!';
+
+  @override
+  String get notifWeekday3Body => 'Chúc bạn một ngày sảng khoái như thời tiết hôm nay! Cuối ngày luôn có ứng dụng nước ép đáng tin chờ bạn.';
+
+  @override
+  String get notifWeekday4Title => '🎯 Thử thách chi tiêu 0 mL hôm nay';
+
+  @override
+  String get notifWeekday4Body => 'Đạt \'chi tiêu 0 mL\' hôm nay, biết đâu cầu vồng sẽ hiện trên ly nước ép của bạn! Thử khóa ví đúng một ngày nhé? 🔒';
+
+  @override
+  String get notifWeekday5Title => '🍕 Chuẩn bị phòng thủ cuối tuần';
+
+  @override
+  String get notifWeekday5Body => 'Đừng mở tung nắp bình nước ép chỉ vì là cuối tuần! Hứa chỉ rót vừa đủ uống nhé 🤙';
+
+  @override
+  String get notifWeekday6Title => '🌱 Chi tiêu nhỏ cũng không sao';
+
+  @override
+  String get notifWeekday6Body => 'Tự thưởng cho bản thân một chút cũng không sao. Chỉ cần đừng quên ghi lại! Thói quen nhỏ sẽ bảo vệ bình nước ép của bạn.';
+
+  @override
+  String get notifWeekday7Title => '📊 Đã qua nửa tuần';
+
+  @override
+  String get notifWeekday7Body => 'Nửa tuần đã trôi qua. Mực nước ép của bạn có... an toàn không? Mở ứng dụng và kiểm tra tận mắt nhé 👀';
+
+  @override
+  String get notifWeekday8Title => '🧃 Hôm nay cũng đi làm rồi';
+
+  @override
+  String get notifWeekday8Body => 'Hôm nay lại đi làm để bảo vệ ví của bạn! Chúc bạn một ngày tràn đầy năng lượng như nước ép không bao giờ cạn 🍊';
+
+  @override
+  String get notifSunday1Title => '🧺 Giữ lấy ngụm nước ép cuối cùng của tuần!';
+
+  @override
+  String get notifSunday1Body => 'Chỉ cần vượt qua cám dỗ đặt đồ ăn tối Chủ nhật là đạt mục tiêu tuần này! Cẩn thận kẻo đổ nước ép nhé 🍊';
+
+  @override
+  String get notifSunday2Title => '🏆 Tuần này bạn vất vả rồi!';
+
+  @override
+  String get notifSunday2Body => 'Cùng xem tuần này bạn đã tiết kiệm được bao nhiêu nước ép nhé? Hãy chờ đón ly nước ép mới được đổ đầy vào ngày mai ✨';
+
+  @override
+  String get notifSunday3Title => '🧊 Ngày mai bình nước ép sẽ được đặt lại!';
+
+  @override
+  String get notifSunday3Body => 'Còn nước ép dư nghĩa là bạn đã tiết kiệm thành công! Lỡ tràn cũng không sao, hãy chuẩn bị sẵn công thức cho tuần sau 🧃';
+
+  @override
+  String get notifComeback1Title => '🍊 Quả cam buồn quá nên bắt đầu tự bóc vỏ.';
+
+  @override
+  String get notifComeback1Body => 'Hai ngày không ghé… chắc không phải vì lén tiêu tiền rồi ngại mở ứng dụng nước ép chứ? Vào ngay và thú nhận đi.';
+
+  @override
+  String get notifComeback2Title => '🧃 Đáy bình nước ép đang mọc mốc…';
+
+  @override
+  String get notifComeback2Body => 'Hóa đơn 3 ngày chưa ghi đang gặm nhấm tài khoản của bạn. Làm ơn mở tôi lên và cắt bỏ những khoản chi thối rữa đi! 😱';
+
+  @override
+  String get notifComeback3Title => '🍋 [KHẨN CẤP] Số dư tài khoản đang rỉ ra.';
+
+  @override
+  String get notifComeback3Body => 'Tưởng không mở ứng dụng thì tiền đã tiêu sẽ biến mất sao? Hóa đơn biết hết đấy. Hôm nay mà không vào, tôi sẽ hất đổ ly nước ép của bạn đấy? 💥';
+
+  @override
+  String get notifComeback4Title => '🫗 …Tôi đã làm gì sai sao?';
+
+  @override
+  String get notifComeback4Body => 'Cả tuần nay bạn bỏ đói nước ép rồi. Ly trống đang đóng bụi. Mục tiêu tiết kiệm của bạn cũng đang bay đi như bụi… hu hu.';
+
+  @override
+  String get notifComeback5Title => '💀 Chúc mừng! Nước ép đã bay hơi hoàn toàn.';
+
+  @override
+  String get notifComeback5Body => '2 tuần không ghé thì chắc đã cháy túi rồi nhỉ. Vào ngay để cứu lấy giọt lương tâm cuối cùng còn sót lại nhé? 🏃‍♂️💨';
+
+  @override
+  String get notifChannelName => 'Nhắc nhở Juice';
+
+  @override
+  String get notifChannelDescription => 'Nhắc ghi chép chi tiêu buổi sáng/tối và tin nhắn cổ vũ';
 }

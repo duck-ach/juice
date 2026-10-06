@@ -1598,4 +1598,142 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get category_income_etc_desc => '기타 다채로운 수입 💧';
+
+  @override
+  String get notifEvening1Title => '🍊 오늘 주스는 몇 mL나 마셨나요?';
+
+  @override
+  String get notifEvening1Body => '오늘 하루도 고생 많았어요! 잠들기 전 톡톡 기록하고, 내일 마실 주스를 신선하게 남겨봐요 ✨';
+
+  @override
+  String get notifEvening2Title => '🍹 주스 한 방울도 소중하니까!';
+
+  @override
+  String get notifEvening2Body => '오늘 나간 깜짝 지출이 있었나요? 지금 기록하면 다음 주 주스가 훨씬 달콤해져요 🍯';
+
+  @override
+  String get notifEvening3Title => '🧃 오늘 컵 상태 점검 시간!';
+
+  @override
+  String get notifEvening3Body => '오늘 쓴 돈 1초 만에 톡 털어 넣고, 내 통장 주스 수위가 안전한지 확인해 볼까요?';
+
+  @override
+  String get notifEvening4Title => '🍋 영수증 버리기 전에 주스 채우기!';
+
+  @override
+  String get notifEvening4Body => '기록하지 않은 소비는 주스가 줄줄 새는 지름길! 오늘 하루 소비를 가볍게 정리해 봐요 🏃‍♂️';
+
+  @override
+  String get notifEvening5Title => '🍏 오늘의 상큼한 마무리 톡!';
+
+  @override
+  String get notifEvening5Body => '오늘 지출 기록 완료하고 편안한 밤 보내세요. 내일도 마르지 않는 주스로 맞이할게요 🌙';
+
+  @override
+  String get notifMondayTitle => '🍊 새로운 주스가 가득 채워졌어요!';
+
+  @override
+  String get notifMondayBody => '지난주도 잘 버텨냈어요. 찰랑거리는 이번 주 예산과 함께 상큼하게 한 주를 시작해 볼까요? ✨';
+
+  @override
+  String get notifWeekday1Title => '☕️ 출근길 커피 잔소리';
+
+  @override
+  String get notifWeekday1Body => '오늘 아침 모닝커피, 주스 게이지 확인하고 마시기! 한 모금 아끼면 주말 주스가 두 배로 시원해져요.';
+
+  @override
+  String get notifWeekday2Title => '🚨 혹시 요즘 너무 벌컥벌컥?';
+
+  @override
+  String get notifWeekday2Body => '혹시 요즘 주스를 너무 벌컥벌컥 마시고 있진 않나요? 오늘은 조금만 천천히 음미해 봐요! 🍊';
+
+  @override
+  String get notifWeekday3Title => '🌤 오늘도 상쾌하게!';
+
+  @override
+  String get notifWeekday3Body => '오늘 날씨처럼 상쾌한 하루 보내세요! 당신의 하루 끝엔 항상 든든한 주스 앱이 기다리고 있어요.';
+
+  @override
+  String get notifWeekday4Title => '🎯 오늘 지출 0 mL 챌린지';
+
+  @override
+  String get notifWeekday4Body => '오늘 \'지출 0 mL\' 찍으면 주스 컵에 무지개가 뜰지도 몰라요! 오늘 딱 하루만 지갑 잠금 도전? 🔒';
+
+  @override
+  String get notifWeekday5Title => '🍕 불금/주말 방어 준비';
+
+  @override
+  String get notifWeekday5Body => '주말이라고 주스 뚜껑을 통째로 열어버리면 안 돼요! 딱 마실 만큼만 컵에 따라 마시기 약속 🤙';
+
+  @override
+  String get notifWeekday6Title => '🌱 소소한 소비는 괜찮아요';
+
+  @override
+  String get notifWeekday6Body => '나를 위한 작은 소비는 괜찮아요. 다만 기록만 잊지 말기! 작은 습관이 주스 통을 지켜줘요.';
+
+  @override
+  String get notifWeekday7Title => '📊 일주일의 절반';
+
+  @override
+  String get notifWeekday7Body => '일주일의 절반이 지나갔어요. 내 주스 통 수위는... 안전한가요? 지금 앱 열어서 눈으로 확인해 보세요 👀';
+
+  @override
+  String get notifWeekday8Title => '🧃 오늘도 출근 완료';
+
+  @override
+  String get notifWeekday8Body => '오늘도 당신의 지갑을 지키러 출근 완료! 마르지 않는 주스처럼 활력 넘치는 하루 되세요 🍊';
+
+  @override
+  String get notifSunday1Title => '🧺 이번 주 주스, 마지막 한 모금 지키기!';
+
+  @override
+  String get notifSunday1Body => '일요일 저녁 배달 유혹만 넘기면 이번 주 목표 달성이에요! 주스 쏟아지지 않게 조심조심 🍊';
+
+  @override
+  String get notifSunday2Title => '🏆 이번 주도 수고 많았어요!';
+
+  @override
+  String get notifSunday2Body => '한 주 동안 아낀 주스가 얼마인지 확인해 볼까요? 내일 채워질 새 주스를 기대해 주세요 ✨';
+
+  @override
+  String get notifSunday3Title => '🧊 내일이면 주스 통이 리셋돼요!';
+
+  @override
+  String get notifSunday3Body => '남은 주스가 있다면 멋진 세이빙 성공! 넘쳤더라도 괜찮아요, 다음 주 레시피를 미리 준비해 봐요 🧃';
+
+  @override
+  String get notifComeback1Title => '🍊 오렌지가 서운해서 껍질을 까기 시작했어요.';
+
+  @override
+  String get notifComeback1Body => '이틀 동안 안 오다니… 혹시 몰래 돈 펑펑 쓰고 주스 앱 눈치 보여서 못 켜는 거 아니죠? 지금 들어와서 자백하세요.';
+
+  @override
+  String get notifComeback2Title => '🧃 주스 통 바닥에 곰팡이가 피어오르는 중…';
+
+  @override
+  String get notifComeback2Body => '기록 안 한 3일 치 영수증이 당신의 통장을 갉아먹고 있어요. 제발 저를 켜서 썩은 지출을 도려내 주세요! 😱';
+
+  @override
+  String get notifComeback3Title => '🍋 [긴급] 통장 잔고가 줄줄 새고 있습니다.';
+
+  @override
+  String get notifComeback3Body => '앱 안 켠다고 쓴 돈이 사라질 것 같죠? 안 쓴 척해도 영수증은 다 알아요. 오늘 안 오면 주스 컵 확 엎어버립니다? 💥';
+
+  @override
+  String get notifComeback4Title => '🫗 …제가 무슨 잘못이라도 했나요?';
+
+  @override
+  String get notifComeback4Body => '일주일째 주스를 굶기고 계시네요. 텅 빈 컵에 먼지만 쌓여가요. 당신의 저축 목표도 먼지처럼 날아가는 중… 흑흑.';
+
+  @override
+  String get notifComeback5Title => '💀 축하합니다! 주스가 완전히 증발했습니다.';
+
+  @override
+  String get notifComeback5Body => '2주 동안 안 온 걸 보니 이미 거지가 되셨군요. 마지막 남은 양심 한 방울이라도 건지러 지금 당장 들어오시죠? 🏃‍♂️💨';
+
+  @override
+  String get notifChannelName => '주스 알림';
+
+  @override
+  String get notifChannelDescription => '아침/저녁 지출 기록 리마인더 및 응원 메시지';
 }

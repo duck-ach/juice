@@ -1598,4 +1598,142 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get category_income_etc_desc => 'その他の彩り豊かな収入 💧';
+
+  @override
+  String get notifEvening1Title => '🍊 今日のジュースは何mL飲みましたか？';
+
+  @override
+  String get notifEvening1Body => '今日も一日お疲れさま！寝る前にサッと記録して、明日のジュースを新鮮に残しておきましょう ✨';
+
+  @override
+  String get notifEvening2Title => '🍹 ジュース一滴も大切に！';
+
+  @override
+  String get notifEvening2Body => '今日、思わぬ出費はありませんでしたか？今記録すれば来週のジュースがぐっと甘くなりますよ 🍯';
+
+  @override
+  String get notifEvening3Title => '🧃 今日のコップ点検タイム！';
+
+  @override
+  String get notifEvening3Body => '今日使ったお金を1秒でポンと入力して、ジュースの水位が安全か確認してみませんか？';
+
+  @override
+  String get notifEvening4Title => '🍋 レシートを捨てる前にジュースを満タンに！';
+
+  @override
+  String get notifEvening4Body => '記録しない出費はジュースが漏れる近道！今日の支出を軽く整理しましょう 🏃‍♂️';
+
+  @override
+  String get notifEvening5Title => '🍏 今日のさわやかな締めくくり！';
+
+  @override
+  String get notifEvening5Body => '今日の支出を記録して、穏やかな夜をお過ごしください。明日も尽きないジュースでお迎えします 🌙';
+
+  @override
+  String get notifMondayTitle => '🍊 新しいジュースがなみなみ満タンです！';
+
+  @override
+  String get notifMondayBody => '先週もよく頑張りました。たっぷりの今週の予算で、さわやかに一週間をスタートしましょう ✨';
+
+  @override
+  String get notifWeekday1Title => '☕️ 通勤コーヒーのお小言';
+
+  @override
+  String get notifWeekday1Body => '今朝のモーニングコーヒー、ジュースゲージを確認してから！一口我慢すれば週末のジュースが2倍おいしくなります。';
+
+  @override
+  String get notifWeekday2Title => '🚨 最近、ゴクゴク飲みすぎていませんか？';
+
+  @override
+  String get notifWeekday2Body => '最近ジュースをゴクゴク飲みすぎていませんか？今日は少しゆっくり味わってみましょう！ 🍊';
+
+  @override
+  String get notifWeekday3Title => '🌤 今日もさわやかに！';
+
+  @override
+  String get notifWeekday3Body => '今日の天気のようにさわやかな一日を！一日の終わりには、いつも頼れるジュースアプリが待っています。';
+
+  @override
+  String get notifWeekday4Title => '🎯 今日の支出0 mLチャレンジ';
+
+  @override
+  String get notifWeekday4Body => '今日「支出0 mL」を達成したら、ジュースのコップに虹がかかるかも！たった1日、お財布ロックに挑戦？ 🔒';
+
+  @override
+  String get notifWeekday5Title => '🍕 金曜／週末ディフェンス準備';
+
+  @override
+  String get notifWeekday5Body => '週末だからってジュースのフタを丸ごと開けてはダメ！飲む分だけコップに注ぐ約束ですよ 🤙';
+
+  @override
+  String get notifWeekday6Title => '🌱 ちょっとした出費はOK';
+
+  @override
+  String get notifWeekday6Body => '自分のための小さな出費は大丈夫。ただし記録は忘れずに！小さな習慣がジュースの樽を守ってくれます。';
+
+  @override
+  String get notifWeekday7Title => '📊 一週間の折り返し';
+
+  @override
+  String get notifWeekday7Body => '一週間の半分が過ぎました。ジュースの水位は…安全ですか？今すぐアプリを開いて目で確かめましょう 👀';
+
+  @override
+  String get notifWeekday8Title => '🧃 今日も出勤完了';
+
+  @override
+  String get notifWeekday8Body => '今日もあなたのお財布を守りに出勤完了！尽きないジュースのように元気いっぱいの一日を 🍊';
+
+  @override
+  String get notifSunday1Title => '🧺 今週のジュース、最後のひと口を守ろう！';
+
+  @override
+  String get notifSunday1Body => '日曜夜のデリバリーの誘惑さえ乗り越えれば、今週の目標達成です！ジュースがこぼれないよう慎重に 🍊';
+
+  @override
+  String get notifSunday2Title => '🏆 今週もお疲れさまでした！';
+
+  @override
+  String get notifSunday2Body => '一週間で節約したジュースはいくらでしょう？明日満たされる新しいジュースをお楽しみに ✨';
+
+  @override
+  String get notifSunday3Title => '🧊 明日でジュースの樽がリセットされます！';
+
+  @override
+  String get notifSunday3Body => 'ジュースが残っていれば見事な節約成功！あふれてしまっても大丈夫、来週のレシピを先に準備しましょう 🧃';
+
+  @override
+  String get notifComeback1Title => '🍊 オレンジが寂しくて皮をむき始めました。';
+
+  @override
+  String get notifComeback1Body => '2日も来てくれないなんて…こっそりお金を使いすぎて、ジュースアプリに顔向けできないわけじゃないですよね？今すぐ入って白状してください。';
+
+  @override
+  String get notifComeback2Title => '🧃 ジュースの樽の底にカビが生え始めています…';
+
+  @override
+  String get notifComeback2Body => '記録していない3日分のレシートがあなたの口座をかじっています。どうか私を開いて、腐った出費を取り除いてください！ 😱';
+
+  @override
+  String get notifComeback3Title => '🍋 【緊急】口座残高が漏れ出しています。';
+
+  @override
+  String get notifComeback3Body => 'アプリを開かなければ使ったお金が消えると思いますか？使っていないフリをしてもレシートは全部知っています。今日来なければジュースのコップをひっくり返しますよ？ 💥';
+
+  @override
+  String get notifComeback4Title => '🫗 …私、何か悪いことをしましたか？';
+
+  @override
+  String get notifComeback4Body => '一週間もジュースを飢えさせていますね。空のコップにほこりが積もっていきます。あなたの貯蓄目標もほこりのように飛んでいます…しくしく。';
+
+  @override
+  String get notifComeback5Title => '💀 おめでとうございます！ジュースが完全に蒸発しました。';
+
+  @override
+  String get notifComeback5Body => '2週間も来ないなんて、もう文無しですね。最後に残った良心のひとしずくだけでも拾いに、今すぐ入ってきませんか？ 🏃‍♂️💨';
+
+  @override
+  String get notifChannelName => 'ジュース通知';
+
+  @override
+  String get notifChannelDescription => '朝・夜の支出記録リマインダーと応援メッセージ';
 }

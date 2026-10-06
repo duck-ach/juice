@@ -1598,4 +1598,142 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get category_income_etc_desc => 'Outras receitas variadas 💧';
+
+  @override
+  String get notifEvening1Title => '🍊 Quantos mL de juice você bebeu hoje?';
+
+  @override
+  String get notifEvening1Body => 'Mais um dia vencido! Anote antes de dormir e deixe o juice de amanhã fresquinho ✨';
+
+  @override
+  String get notifEvening2Title => '🍹 Cada gota de juice importa!';
+
+  @override
+  String get notifEvening2Body => 'Teve algum gasto surpresa hoje? Anote agora e o juice da semana que vem fica bem mais doce 🍯';
+
+  @override
+  String get notifEvening3Title => '🧃 Hora de checar o copo!';
+
+  @override
+  String get notifEvening3Body => 'Registre o que gastou hoje em 1 segundo e veja se o nível do seu juice está seguro.';
+
+  @override
+  String get notifEvening4Title => '🍋 Encha o juice antes de jogar o recibo fora!';
+
+  @override
+  String get notifEvening4Body => 'Gasto não anotado é o caminho mais curto para o vazamento! Faça um resumo rápido do dia 🏃‍♂️';
+
+  @override
+  String get notifEvening5Title => '🍏 Um toque fresquinho para fechar o dia!';
+
+  @override
+  String get notifEvening5Body => 'Anote os gastos de hoje e tenha uma noite tranquila. Amanhã, vamos te receber com um juice que nunca acaba 🌙';
+
+  @override
+  String get notifMondayTitle => '🍊 Seu juice novo está cheinho!';
+
+  @override
+  String get notifMondayBody => 'Você segurou bem a semana passada. Que tal começar a semana com um orçamento cheio e fresquinho? ✨';
+
+  @override
+  String get notifWeekday1Title => '☕️ O sermão do café a caminho do trabalho';
+
+  @override
+  String get notifWeekday1Body => 'Antes do café da manhã, confira o medidor de juice! Economize um golinho e seu juice do fim de semana fica o dobro de gelado.';
+
+  @override
+  String get notifWeekday2Title => '🚨 Será que está bebendo rápido demais?';
+
+  @override
+  String get notifWeekday2Body => 'Será que você anda tomando o juice goela abaixo? Hoje, saboreie um pouquinho mais devagar! 🍊';
+
+  @override
+  String get notifWeekday3Title => '🌤 Mais um dia fresquinho!';
+
+  @override
+  String get notifWeekday3Body => 'Tenha um dia tão fresquinho quanto o tempo de hoje! No fim do seu dia, um app de juice confiável sempre te espera.';
+
+  @override
+  String get notifWeekday4Title => '🎯 Desafio de gasto 0 mL';
+
+  @override
+  String get notifWeekday4Body => 'Se hoje fechar com \'gasto 0 mL\', talvez apareça um arco-íris no seu copo! Que tal trancar a carteira só por um dia? 🔒';
+
+  @override
+  String get notifWeekday5Title => '🍕 Defesa de sexta e fim de semana';
+
+  @override
+  String get notifWeekday5Body => 'Fim de semana não é motivo para abrir a tampa do juice de uma vez! Prometa servir só o que vai beber 🤙';
+
+  @override
+  String get notifWeekday6Title => '🌱 Gastinhos pequenos podem';
+
+  @override
+  String get notifWeekday6Body => 'Um mimo pequeno para você tudo bem. Só não esqueça de anotar! Pequenos hábitos protegem sua jarra de juice.';
+
+  @override
+  String get notifWeekday7Title => '📊 Metade da semana';
+
+  @override
+  String get notifWeekday7Body => 'Metade da semana já passou. O nível da sua jarra de juice está... seguro? Abra o app e confira com seus próprios olhos 👀';
+
+  @override
+  String get notifWeekday8Title => '🧃 Presença confirmada hoje também';
+
+  @override
+  String get notifWeekday8Body => 'Presente para proteger a sua carteira! Tenha um dia cheio de energia, como um juice que nunca acaba 🍊';
+
+  @override
+  String get notifSunday1Title => '🧺 Proteja o último gole da semana!';
+
+  @override
+  String get notifSunday1Body => 'Basta resistir ao delivery de domingo à noite para bater a meta da semana! Cuidado para não derramar 🍊';
+
+  @override
+  String get notifSunday2Title => '🏆 Ótima semana!';
+
+  @override
+  String get notifSunday2Body => 'Vamos ver quanto juice você economizou nesta semana? Aguarde o juice novinho que chega amanhã ✨';
+
+  @override
+  String get notifSunday3Title => '🧊 Amanhã sua jarra de juice reinicia!';
+
+  @override
+  String get notifSunday3Body => 'Sobrou juice? Ótima economia! Transbordou? Sem problema, já prepare a receita da próxima semana 🧃';
+
+  @override
+  String get notifComeback1Title => '🍊 A laranja ficou tão triste que começou a se descascar.';
+
+  @override
+  String get notifComeback1Body => 'Dois dias sem aparecer… você não está fugindo do app porque gastou escondido, está? Entre e confesse.';
+
+  @override
+  String get notifComeback2Title => '🧃 Está nascendo mofo no fundo da jarra de juice…';
+
+  @override
+  String get notifComeback2Body => 'Três dias de recibos sem anotar estão roendo sua conta. Por favor, me abra e corte os gastos podres! 😱';
+
+  @override
+  String get notifComeback3Title => '🍋 [URGENTE] Seu saldo está vazando.';
+
+  @override
+  String get notifComeback3Body => 'Acha que o dinheiro gasto some se não abrir o app? Os recibos sabem de tudo. Se não vier hoje, eu derrubo o seu copo de juice? 💥';
+
+  @override
+  String get notifComeback4Title => '🫗 …Eu fiz alguma coisa errada?';
+
+  @override
+  String get notifComeback4Body => 'Uma semana inteira deixando o juice passar fome. O copo vazio está juntando poeira. Sua meta de poupança está voando como poeira… buáá.';
+
+  @override
+  String get notifComeback5Title => '💀 Parabéns! Seu juice evaporou por completo.';
+
+  @override
+  String get notifComeback5Body => 'Duas semanas sem aparecer, deve estar quebrado. Que tal entrar agora para salvar ao menos a última gota de consciência? 🏃‍♂️💨';
+
+  @override
+  String get notifChannelName => 'Lembretes do Juice';
+
+  @override
+  String get notifChannelDescription => 'Lembretes matinais e noturnos para anotar gastos e mensagens de incentivo';
 }
