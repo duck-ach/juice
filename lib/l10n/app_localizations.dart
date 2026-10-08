@@ -3055,65 +3055,425 @@ abstract class AppLocalizations {
   /// **'기타 다채로운 수입 💧'**
   String get category_income_etc_desc;
 
-  /// No description provided for @notifEvening1Title.
+  /// No description provided for @notifEveningMon1Title.
   ///
   /// In ko, this message translates to:
-  /// **'🍊 오늘 주스는 몇 mL나 마셨나요?'**
-  String get notifEvening1Title;
+  /// **'🍊 월요일 고생 많았어요'**
+  String get notifEveningMon1Title;
 
-  /// No description provided for @notifEvening1Body.
+  /// No description provided for @notifEveningMon1Body.
   ///
   /// In ko, this message translates to:
-  /// **'오늘 하루도 고생 많았어요! 잠들기 전 톡톡 기록하고, 내일 마실 주스를 신선하게 남겨봐요 ✨'**
-  String get notifEvening1Body;
+  /// **'월요병 이겨낸 오늘, 영수증 3초 정리로 가볍게 마무리해요. 한 주의 첫 기록이 가장 달콤해요.'**
+  String get notifEveningMon1Body;
 
-  /// No description provided for @notifEvening2Title.
+  /// No description provided for @notifEveningMon2Title.
   ///
   /// In ko, this message translates to:
-  /// **'🍹 주스 한 방울도 소중하니까!'**
-  String get notifEvening2Title;
+  /// **'📒 월요일 가계부 정리 타임'**
+  String get notifEveningMon2Title;
 
-  /// No description provided for @notifEvening2Body.
+  /// No description provided for @notifEveningMon2Body.
   ///
   /// In ko, this message translates to:
-  /// **'오늘 나간 깜짝 지출이 있었나요? 지금 기록하면 다음 주 주스가 훨씬 달콤해져요 🍯'**
-  String get notifEvening2Body;
+  /// **'한 주의 시작이 가장 중요해요. 오늘 쓴 돈만 톡 기록하면 이번 주 주스 관리는 벌써 절반 성공!'**
+  String get notifEveningMon2Body;
 
-  /// No description provided for @notifEvening3Title.
+  /// No description provided for @notifEveningMon3Title.
   ///
   /// In ko, this message translates to:
-  /// **'🧃 오늘 컵 상태 점검 시간!'**
-  String get notifEvening3Title;
+  /// **'🧃 월요병 퇴치 완료!'**
+  String get notifEveningMon3Title;
 
-  /// No description provided for @notifEvening3Body.
+  /// No description provided for @notifEveningMon3Body.
   ///
   /// In ko, this message translates to:
-  /// **'오늘 쓴 돈 1초 만에 톡 털어 넣고, 내 통장 주스 수위가 안전한지 확인해 볼까요?'**
-  String get notifEvening3Body;
+  /// **'오늘도 해냈다니 대단해요. 퇴근길 지출 기록하고 따뜻한 저녁 보내세요.'**
+  String get notifEveningMon3Body;
 
-  /// No description provided for @notifEvening4Title.
+  /// No description provided for @notifEveningMon4Title.
   ///
   /// In ko, this message translates to:
-  /// **'🍋 영수증 버리기 전에 주스 채우기!'**
-  String get notifEvening4Title;
+  /// **'☕️ 월요일 커피값, 기록했나요?'**
+  String get notifEveningMon4Title;
 
-  /// No description provided for @notifEvening4Body.
+  /// No description provided for @notifEveningMon4Body.
   ///
   /// In ko, this message translates to:
-  /// **'기록하지 않은 소비는 주스가 줄줄 새는 지름길! 오늘 하루 소비를 가볍게 정리해 봐요 🏃‍♂️'**
-  String get notifEvening4Body;
+  /// **'월요일엔 커피가 평소보다 한 잔 더 들어가죠. 오늘 나간 소소한 지출도 빠짐없이 담아봐요.'**
+  String get notifEveningMon4Body;
 
-  /// No description provided for @notifEvening5Title.
+  /// No description provided for @notifEveningMon5Title.
   ///
   /// In ko, this message translates to:
-  /// **'🍏 오늘의 상큼한 마무리 톡!'**
-  String get notifEvening5Title;
+  /// **'🌙 한 주의 첫날, 컵은 안녕한가요?'**
+  String get notifEveningMon5Title;
 
-  /// No description provided for @notifEvening5Body.
+  /// No description provided for @notifEveningMon5Body.
   ///
   /// In ko, this message translates to:
-  /// **'오늘 지출 기록 완료하고 편안한 밤 보내세요. 내일도 마르지 않는 주스로 맞이할게요 🌙'**
-  String get notifEvening5Body;
+  /// **'이번 주 주스는 아직 넉넉해요. 쓴 만큼만 기록하면 남은 6일이 한결 여유로워져요.'**
+  String get notifEveningMon5Body;
+
+  /// No description provided for @notifEveningTue1Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🍊 화요일 주스 점검'**
+  String get notifEveningTue1Title;
+
+  /// No description provided for @notifEveningTue1Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'월요일의 기세, 화요일에도 이어가요! 오늘 쓴 돈을 기록하면 이번 주 흐름이 한눈에 보여요.'**
+  String get notifEveningTue1Body;
+
+  /// No description provided for @notifEveningTue2Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🧾 영수증이 쌓이기 전에!'**
+  String get notifEveningTue2Title;
+
+  /// No description provided for @notifEveningTue2Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'쌓인 영수증은 기록하기 더 귀찮아져요. 오늘 것만 딱 1분 투자해서 털어버려요.'**
+  String get notifEveningTue2Body;
+
+  /// No description provided for @notifEveningTue3Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🥤 오늘 점심값 기록했나요?'**
+  String get notifEveningTue3Title;
+
+  /// No description provided for @notifEveningTue3Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'점심, 커피, 간식… 소소해서 더 잊기 쉬워요. 자기 전에 한꺼번에 톡 기록해 볼까요?'**
+  String get notifEveningTue3Body;
+
+  /// No description provided for @notifEveningTue4Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🌿 소소한 습관이 주스를 지켜요'**
+  String get notifEveningTue4Title;
+
+  /// No description provided for @notifEveningTue4Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'화요일 밤의 1분 기록이 이번 달 통장을 지켜줘요. 오늘도 잘하고 있어요!'**
+  String get notifEveningTue4Body;
+
+  /// No description provided for @notifEveningTue5Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🎯 오늘 목표 달성했나요?'**
+  String get notifEveningTue5Title;
+
+  /// No description provided for @notifEveningTue5Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'오늘 쓸 주스를 넘기지 않았다면 칭찬받을 일! 결과가 궁금하다면 지금 앱을 열어보세요.'**
+  String get notifEveningTue5Body;
+
+  /// No description provided for @notifEveningWed1Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'⛰ 한 주의 정상, 수요일!'**
+  String get notifEveningWed1Title;
+
+  /// No description provided for @notifEveningWed1Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'일주일의 딱 절반이에요. 남은 주스가 충분한지 확인하고, 나머지 반을 계획해 봐요.'**
+  String get notifEveningWed1Body;
+
+  /// No description provided for @notifEveningWed2Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'📊 주스 수위 중간 점검'**
+  String get notifEveningWed2Title;
+
+  /// No description provided for @notifEveningWed2Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'수요일 밤은 중간 점검의 시간! 오늘 지출을 기록하고 이번 주 페이스를 확인해 보세요.'**
+  String get notifEveningWed2Body;
+
+  /// No description provided for @notifEveningWed3Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🍹 주중 반환점을 돌았어요'**
+  String get notifEveningWed3Title;
+
+  /// No description provided for @notifEveningWed3Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'여기까지 오느라 고생했어요. 오늘 쓴 돈만 기록하고 편하게 쉬세요.'**
+  String get notifEveningWed3Body;
+
+  /// No description provided for @notifEveningWed4Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🐪 낙타처럼 버텨봐요'**
+  String get notifEveningWed4Title;
+
+  /// No description provided for @notifEveningWed4Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'목요일, 금요일이 오기 전에 컵을 점검해 둬요. 지금 기록하면 주말이 훨씬 든든해져요.'**
+  String get notifEveningWed4Body;
+
+  /// No description provided for @notifEveningWed5Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🧮 절반 왔는데 주스는 얼마나 남았지?'**
+  String get notifEveningWed5Title;
+
+  /// No description provided for @notifEveningWed5Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'기록만 해두면 계산은 앱이 해줄게요. 오늘 지출을 톡 입력해 보세요.'**
+  String get notifEveningWed5Body;
+
+  /// No description provided for @notifEveningThu1Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🌆 내일이 금요일이에요!'**
+  String get notifEveningThu1Title;
+
+  /// No description provided for @notifEveningThu1Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'불금 전에 오늘 지출부터 정리해요. 주스 남은 양을 알면 내일이 더 즐거워져요.'**
+  String get notifEveningThu1Body;
+
+  /// No description provided for @notifEveningThu2Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🛡 금요일 대비 방어막 켜기'**
+  String get notifEveningThu2Title;
+
+  /// No description provided for @notifEveningThu2Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'내일 약속이 있다면 오늘 아낀 주스가 큰 힘이 돼요. 오늘 지출 기록하고 든든하게 준비!'**
+  String get notifEveningThu2Body;
+
+  /// No description provided for @notifEveningThu3Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🍋 목요일, 지갑이 슬슬 근질근질'**
+  String get notifEveningThu3Title;
+
+  /// No description provided for @notifEveningThu3Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'주말이 다가오면 지갑이 먼저 들떠요. 오늘의 소비를 기록하며 한 번 더 진정시켜 봐요.'**
+  String get notifEveningThu3Body;
+
+  /// No description provided for @notifEveningThu4Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'📝 한 주 거의 다 왔어요'**
+  String get notifEveningThu4Title;
+
+  /// No description provided for @notifEveningThu4Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'조금만 더 버티면 주말이에요! 목요일 기록 한 줄이 이번 주 목표를 지켜줘요.'**
+  String get notifEveningThu4Body;
+
+  /// No description provided for @notifEveningThu5Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🌙 오늘도 컵 점검 완료?'**
+  String get notifEveningThu5Title;
+
+  /// No description provided for @notifEveningThu5Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'남은 주스를 알고 맞는 금요일과 모르고 맞는 금요일은 달라요. 지금 확인해 보세요.'**
+  String get notifEveningThu5Body;
+
+  /// No description provided for @notifEveningFri1Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🍻 불금 방어전 시작!'**
+  String get notifEveningFri1Title;
+
+  /// No description provided for @notifEveningFri1Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'오늘 밤 지갑 사수 작전! 먹고 마시는 건 즐기되, 결제할 때마다 기록은 꼭 남겨요.'**
+  String get notifEveningFri1Body;
+
+  /// No description provided for @notifEveningFri2Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🔒 지갑 사수 모드 ON'**
+  String get notifEveningFri2Title;
+
+  /// No description provided for @notifEveningFri2Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'불금의 유혹이 몰려와요. 한 번만 참고, 오늘 기록부터 확인한 뒤에 즐겨요!'**
+  String get notifEveningFri2Body;
+
+  /// No description provided for @notifEveningFri3Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🍕 배달앱 열기 전에 잠깐!'**
+  String get notifEveningFri3Title;
+
+  /// No description provided for @notifEveningFri3Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'주스 수위부터 확인하고 주문해요. 남은 주스가 넉넉하다면 마음껏, 아니면 반만!'**
+  String get notifEveningFri3Body;
+
+  /// No description provided for @notifEveningFri4Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🎉 한 주 고생했어요, 불금이에요'**
+  String get notifEveningFri4Title;
+
+  /// No description provided for @notifEveningFri4Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'즐기는 건 좋지만 과소비는 NO! 오늘 쓴 만큼만 기록하면 월요일에 웃을 수 있어요.'**
+  String get notifEveningFri4Body;
+
+  /// No description provided for @notifEveningFri5Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🧃 금요일 밤, 컵이 쏟아지지 않게!'**
+  String get notifEveningFri5Title;
+
+  /// No description provided for @notifEveningFri5Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'신나는 금요일일수록 주스가 줄줄 새기 쉬워요. 오늘 지출을 챙겨 담아 둬요.'**
+  String get notifEveningFri5Body;
+
+  /// No description provided for @notifEveningSat1Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🛍 토요일 외출 지출 기록!'**
+  String get notifEveningSat1Title;
+
+  /// No description provided for @notifEveningSat1Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'친구 만나고, 쇼핑하고, 맛집 가고… 오늘 쓴 돈 잊기 전에 한꺼번에 기록해 두세요.'**
+  String get notifEveningSat1Body;
+
+  /// No description provided for @notifEveningSat2Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🌇 즐거운 주말 보내고 있나요?'**
+  String get notifEveningSat2Title;
+
+  /// No description provided for @notifEveningSat2Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'행복한 소비는 좋은 소비예요. 다만 기록은 잊지 말기! 내일 후회가 줄어들어요.'**
+  String get notifEveningSat2Body;
+
+  /// No description provided for @notifEveningSat3Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🍰 오늘의 달콤한 지출, 기록 완료?'**
+  String get notifEveningSat3Title;
+
+  /// No description provided for @notifEveningSat3Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'소소한 사치도 기록하면 죄책감이 사라져요. 지금 한 줄만 남겨볼까요?'**
+  String get notifEveningSat3Body;
+
+  /// No description provided for @notifEveningSat4Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🧺 주말 지출 정산 타임'**
+  String get notifEveningSat4Title;
+
+  /// No description provided for @notifEveningSat4Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'하루 종일 놀았다면 영수증도 한가득이겠죠? 잠들기 전 톡톡 정리해 봐요.'**
+  String get notifEveningSat4Body;
+
+  /// No description provided for @notifEveningSat5Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🌙 토요일 밤, 주스 점검'**
+  String get notifEveningSat5Title;
+
+  /// No description provided for @notifEveningSat5Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'내일 하루만 지나면 주스가 리셋돼요. 오늘 소비를 기록하고 마무리를 깔끔하게 해요.'**
+  String get notifEveningSat5Body;
+
+  /// No description provided for @notifEveningSun1Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🧺 일요일 저녁, 한 주 마무리'**
+  String get notifEveningSun1Title;
+
+  /// No description provided for @notifEveningSun1Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'이번 주 마지막 기록을 남겨요. 한 주를 돌아보면 다음 주가 훨씬 가벼워져요.'**
+  String get notifEveningSun1Body;
+
+  /// No description provided for @notifEveningSun2Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🔄 내일이면 주스가 리셋돼요'**
+  String get notifEveningSun2Title;
+
+  /// No description provided for @notifEveningSun2Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'오늘 지출까지 기록하면 이번 주 성적표 완성! 새 주스를 맞이할 준비를 해요.'**
+  String get notifEveningSun2Body;
+
+  /// No description provided for @notifEveningSun3Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🍽 일요일 저녁 배달의 유혹'**
+  String get notifEveningSun3Title;
+
+  /// No description provided for @notifEveningSun3Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'마지막 하루만 잘 넘기면 이번 주 목표 달성이에요! 주문 전에 주스 수위 확인!'**
+  String get notifEveningSun3Body;
+
+  /// No description provided for @notifEveningSun4Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🏆 이번 주도 수고했어요'**
+  String get notifEveningSun4Title;
+
+  /// No description provided for @notifEveningSun4Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'기록을 끝까지 이어온 당신, 정말 대단해요. 오늘 지출만 마저 적고 푹 쉬세요.'**
+  String get notifEveningSun4Body;
+
+  /// No description provided for @notifEveningSun5Title.
+  ///
+  /// In ko, this message translates to:
+  /// **'🌌 새로운 한 주를 위한 마지막 점검'**
+  String get notifEveningSun5Title;
+
+  /// No description provided for @notifEveningSun5Body.
+  ///
+  /// In ko, this message translates to:
+  /// **'내일부터 다시 가득 찬 컵이에요. 오늘의 기록으로 이번 주를 깔끔하게 닫아요.'**
+  String get notifEveningSun5Body;
 
   /// No description provided for @notifMondayTitle.
   ///
@@ -3130,133 +3490,133 @@ abstract class AppLocalizations {
   /// No description provided for @notifWeekday1Title.
   ///
   /// In ko, this message translates to:
-  /// **'☕️ 출근길 커피 잔소리'**
+  /// **'🌅 오늘의 한 줄 확언'**
   String get notifWeekday1Title;
 
   /// No description provided for @notifWeekday1Body.
   ///
   /// In ko, this message translates to:
-  /// **'오늘 아침 모닝커피, 주스 게이지 확인하고 마시기! 한 모금 아끼면 주말 주스가 두 배로 시원해져요.'**
+  /// **'나는 오늘도 내 주스를 똑똑하게 쓰는 사람이에요. 작게 아끼고 크게 웃는 하루 되세요!'**
   String get notifWeekday1Body;
 
   /// No description provided for @notifWeekday2Title.
   ///
   /// In ko, this message translates to:
-  /// **'🚨 혹시 요즘 너무 벌컥벌컥?'**
+  /// **'🔮 오늘의 주스 운세'**
   String get notifWeekday2Title;
 
   /// No description provided for @notifWeekday2Body.
   ///
   /// In ko, this message translates to:
-  /// **'혹시 요즘 주스를 너무 벌컥벌컥 마시고 있진 않나요? 오늘은 조금만 천천히 음미해 봐요! 🍊'**
+  /// **'오늘은 작은 선택 하나가 큰 달콤함이 되는 날! 충동구매 앞에서 딱 3초만 멈추면 행운이 따라와요 🍀'**
   String get notifWeekday2Body;
 
   /// No description provided for @notifWeekday3Title.
   ///
   /// In ko, this message translates to:
-  /// **'🌤 오늘도 상쾌하게!'**
+  /// **'📖 오늘의 한 줄 명언'**
   String get notifWeekday3Title;
 
   /// No description provided for @notifWeekday3Body.
   ///
   /// In ko, this message translates to:
-  /// **'오늘 날씨처럼 상쾌한 하루 보내세요! 당신의 하루 끝엔 항상 든든한 주스 앱이 기다리고 있어요.'**
+  /// **'“작은 물방울이 모여 바다를 이룬다.” 오늘 아낀 몇 mL가 언젠가 큰 목표가 돼요.'**
   String get notifWeekday3Body;
 
   /// No description provided for @notifWeekday4Title.
   ///
   /// In ko, this message translates to:
-  /// **'🎯 오늘 지출 0 mL 챌린지'**
+  /// **'☀️ 좋은 아침, 오늘도 상쾌하게!'**
   String get notifWeekday4Title;
 
   /// No description provided for @notifWeekday4Body.
   ///
   /// In ko, this message translates to:
-  /// **'오늘 \'지출 0 mL\' 찍으면 주스 컵에 무지개가 뜰지도 몰라요! 오늘 딱 하루만 지갑 잠금 도전? 🔒'**
+  /// **'오늘 하루도 당신이 원하는 모양으로 채워질 거예요. 한 모금 한 모금 여유롭게 시작해요.'**
   String get notifWeekday4Body;
 
   /// No description provided for @notifWeekday5Title.
   ///
   /// In ko, this message translates to:
-  /// **'🍕 불금/주말 방어 준비'**
+  /// **'🍀 오늘의 행운 포인트'**
   String get notifWeekday5Title;
 
   /// No description provided for @notifWeekday5Body.
   ///
   /// In ko, this message translates to:
-  /// **'주말이라고 주스 뚜껑을 통째로 열어버리면 안 돼요! 딱 마실 만큼만 컵에 따라 마시기 약속 🤙'**
+  /// **'오늘의 행운은 ‘기록하기’! 쓴 만큼 적으면 마음도 지갑도 가벼워지는 하루가 될 거예요.'**
   String get notifWeekday5Body;
 
   /// No description provided for @notifWeekday6Title.
   ///
   /// In ko, this message translates to:
-  /// **'🌱 소소한 소비는 괜찮아요'**
+  /// **'🌱 오늘의 마음가짐'**
   String get notifWeekday6Title;
 
   /// No description provided for @notifWeekday6Body.
   ///
   /// In ko, this message translates to:
-  /// **'나를 위한 작은 소비는 괜찮아요. 다만 기록만 잊지 말기! 작은 습관이 주스 통을 지켜줘요.'**
+  /// **'완벽하지 않아도 괜찮아요. 어제보다 조금만 더 알뜰하면 그걸로 충분히 잘하고 있는 거예요.'**
   String get notifWeekday6Body;
 
   /// No description provided for @notifWeekday7Title.
   ///
   /// In ko, this message translates to:
-  /// **'📊 일주일의 절반'**
+  /// **'🌈 오늘의 응원 한 스푼'**
   String get notifWeekday7Title;
 
   /// No description provided for @notifWeekday7Body.
   ///
   /// In ko, this message translates to:
-  /// **'일주일의 절반이 지나갔어요. 내 주스 통 수위는... 안전한가요? 지금 앱 열어서 눈으로 확인해 보세요 👀'**
+  /// **'당신은 생각보다 훨씬 잘하고 있어요. 오늘도 나를 위한 현명한 선택, 응원할게요!'**
   String get notifWeekday7Body;
 
   /// No description provided for @notifWeekday8Title.
   ///
   /// In ko, this message translates to:
-  /// **'🧃 오늘도 출근 완료'**
+  /// **'✨ 오늘의 운세: 대길'**
   String get notifWeekday8Title;
 
   /// No description provided for @notifWeekday8Body.
   ///
   /// In ko, this message translates to:
-  /// **'오늘도 당신의 지갑을 지키러 출근 완료! 마르지 않는 주스처럼 활력 넘치는 하루 되세요 🍊'**
+  /// **'오늘은 지갑이 든든해지는 기운이 가득해요. 필요한 곳엔 아낌없이, 아닌 곳엔 단호하게!'**
   String get notifWeekday8Body;
 
   /// No description provided for @notifSunday1Title.
   ///
   /// In ko, this message translates to:
-  /// **'🧺 이번 주 주스, 마지막 한 모금 지키기!'**
+  /// **'🌤 일요일의 한 줄 확언'**
   String get notifSunday1Title;
 
   /// No description provided for @notifSunday1Body.
   ///
   /// In ko, this message translates to:
-  /// **'일요일 저녁 배달 유혹만 넘기면 이번 주 목표 달성이에요! 주스 쏟아지지 않게 조심조심 🍊'**
+  /// **'나는 한 주를 잘 살아냈고, 새로운 한 주도 잘 해낼 거예요. 편안하게 쉬어가는 일요일 되세요.'**
   String get notifSunday1Body;
 
   /// No description provided for @notifSunday2Title.
   ///
   /// In ko, this message translates to:
-  /// **'🏆 이번 주도 수고 많았어요!'**
+  /// **'📖 일요일의 명언'**
   String get notifSunday2Title;
 
   /// No description provided for @notifSunday2Body.
   ///
   /// In ko, this message translates to:
-  /// **'한 주 동안 아낀 주스가 얼마인지 확인해 볼까요? 내일 채워질 새 주스를 기대해 주세요 ✨'**
+  /// **'“멈춰서 돌아보는 시간이 가장 멀리 가게 한다.” 오늘은 이번 주 주스를 가만히 돌아보는 날이에요.'**
   String get notifSunday2Body;
 
   /// No description provided for @notifSunday3Title.
   ///
   /// In ko, this message translates to:
-  /// **'🧊 내일이면 주스 통이 리셋돼요!'**
+  /// **'🔮 일요일 운세: 재충전'**
   String get notifSunday3Title;
 
   /// No description provided for @notifSunday3Body.
   ///
   /// In ko, this message translates to:
-  /// **'남은 주스가 있다면 멋진 세이빙 성공! 넘쳤더라도 괜찮아요, 다음 주 레시피를 미리 준비해 봐요 🧃'**
+  /// **'내일을 위해 충전하기 좋은 날! 무리한 지출 대신 여유로운 휴식이 행운을 불러와요 🍀'**
   String get notifSunday3Body;
 
   /// No description provided for @notifComeback1Title.

@@ -1600,34 +1600,214 @@ class AppLocalizationsDe extends AppLocalizations {
   String get category_income_etc_desc => 'Weitere bunte Einnahmen 💧';
 
   @override
-  String get notifEvening1Title => '🍊 Wie viele mL Juice hast du heute getrunken?';
+  String get notifEveningMon1Title => '🍊 Montag geschafft!';
 
   @override
-  String get notifEvening1Body => 'Heute war wieder ein langer Tag! Trag es vor dem Schlafen kurz ein und halte deinen Juice für morgen frisch ✨';
+  String get notifEveningMon1Body => 'Beende ihn mit einem 3-Sekunden-Belegcheck. Der erste Eintrag der Woche schmeckt am süßesten.';
 
   @override
-  String get notifEvening2Title => '🍹 Jeder Tropfen Juice zählt!';
+  String get notifEveningMon2Title => '📒 Montags-Kassensturz';
 
   @override
-  String get notifEvening2Body => 'Gab es heute überraschende Ausgaben? Wenn du sie jetzt einträgst, schmeckt dein Juice nächste Woche viel süßer 🍯';
+  String get notifEveningMon2Body => 'Der Wochenstart zählt am meisten. Trag heute Ausgegebenes ein – und dein Juice-Plan ist schon halb gewonnen!';
 
   @override
-  String get notifEvening3Title => '🧃 Zeit für den Becher-Check!';
+  String get notifEveningMon3Title => '🧃 Montagsblues besiegt!';
 
   @override
-  String get notifEvening3Body => 'Tippe in einer Sekunde ein, was du heute ausgegeben hast, und prüfe, ob dein Juice-Pegel sicher ist.';
+  String get notifEveningMon3Body => 'Du hast den ersten Arbeitstag gemeistert. Trag deine Ausgaben ein und genieße einen gemütlichen Abend.';
 
   @override
-  String get notifEvening4Title => '🍋 Juice auffüllen, bevor der Kassenbon im Müll landet!';
+  String get notifEveningMon4Title => '☕️ Montagskaffee schon eingetragen?';
 
   @override
-  String get notifEvening4Body => 'Nicht erfasste Ausgaben sind der kürzeste Weg zum Leck! Sortiere deine heutigen Ausgaben kurz 🏃‍♂️';
+  String get notifEveningMon4Body => 'Montags wandert oft ein Kaffee mehr über die Theke. Vergiss die kleinen Ausgaben von heute nicht.';
 
   @override
-  String get notifEvening5Title => '🍏 Ein frischer Abschluss für heute!';
+  String get notifEveningMon5Title => '🌙 Erster Wochentag – wie steht\'s ums Glas?';
 
   @override
-  String get notifEvening5Body => 'Trag deine Ausgaben ein und genieß eine ruhige Nacht. Morgen begrüßen wir dich mit Juice, der nie versiegt 🌙';
+  String get notifEveningMon5Body => 'Dein Juice ist noch reichlich da. Trag nur ein, was du ausgegeben hast, und die nächsten sechs Tage werden entspannter.';
+
+  @override
+  String get notifEveningTue1Title => '🍊 Dienstags-Juice-Check';
+
+  @override
+  String get notifEveningTue1Body => 'Halte den Schwung vom Montag! Trag heute Ausgegebenes ein und du siehst den Wochenverlauf auf einen Blick.';
+
+  @override
+  String get notifEveningTue2Title => '🧾 Bevor sich die Belege stapeln!';
+
+  @override
+  String get notifEveningTue2Body => 'Gestapelte Belege nerven beim Eintragen. Nimm dir eine Minute für die von heute.';
+
+  @override
+  String get notifEveningTue3Title => '🥤 Mittagessen heute schon eingetragen?';
+
+  @override
+  String get notifEveningTue3Body => 'Mittag, Kaffee, Snack … die Kleinen vergisst man am leichtesten. Alles vor dem Schlafen eintragen?';
+
+  @override
+  String get notifEveningTue4Title => '🌿 Kleine Gewohnheiten schützen deinen Juice';
+
+  @override
+  String get notifEveningTue4Body => 'Eine Minute Eintragen am Dienstagabend schützt deinen Kontostand diesen Monat. Du machst das super!';
+
+  @override
+  String get notifEveningTue5Title => '🎯 Heutiges Ziel geschafft?';
+
+  @override
+  String get notifEveningTue5Body => 'Wenn du heute im Rahmen geblieben bist, verdient das Applaus! Öffne die App und sieh nach.';
+
+  @override
+  String get notifEveningWed1Title => '⛰ Mittwoch – Gipfel der Woche!';
+
+  @override
+  String get notifEveningWed1Body => 'Genau die Halbzeit. Prüfe, ob dein Juice reicht, und plane die zweite Hälfte.';
+
+  @override
+  String get notifEveningWed2Title => '📊 Juice-Pegel: Zwischencheck';
+
+  @override
+  String get notifEveningWed2Body => 'Mittwochabend ist Kontrollzeit! Trag die heutigen Ausgaben ein und prüfe dein Wochentempo.';
+
+  @override
+  String get notifEveningWed3Title => '🍹 Die Wochenmitte ist geschafft';
+
+  @override
+  String get notifEveningWed3Body => 'Danke, dass du bis hierher durchgehalten hast. Trag ein, was du heute ausgegeben hast, und ruh dich aus.';
+
+  @override
+  String get notifEveningWed4Title => '🐪 Durchhalten wie ein Kamel';
+
+  @override
+  String get notifEveningWed4Body => 'Prüfe dein Glas, bevor Donnerstag und Freitag kommen. Wer jetzt einträgt, startet viel sicherer ins Wochenende.';
+
+  @override
+  String get notifEveningWed5Title => '🧮 Halbzeit – wie viel Juice ist noch übrig?';
+
+  @override
+  String get notifEveningWed5Body => 'Trag es einfach ein, den Rest rechnet die App. Gib die heutigen Ausgaben ein!';
+
+  @override
+  String get notifEveningThu1Title => '🌆 Morgen ist Freitag!';
+
+  @override
+  String get notifEveningThu1Body => 'Sortiere die heutigen Ausgaben vor dem Freitagsrausch. Wer seinen Pegel kennt, genießt morgen mehr.';
+
+  @override
+  String get notifEveningThu2Title => '🛡 Freitags-Schutzschild einschalten';
+
+  @override
+  String get notifEveningThu2Body => 'Wenn du morgen etwas vorhast, hilft dir der heute gesparte Juice enorm. Heute eintragen und gut vorbereitet sein!';
+
+  @override
+  String get notifEveningThu3Title => '🍋 Donnerstag – dein Portemonnaie kribbelt';
+
+  @override
+  String get notifEveningThu3Body => 'Je näher das Wochenende, desto aufgeregter wird die Geldbörse. Trag deine Ausgaben ein und beruhige sie noch einmal.';
+
+  @override
+  String get notifEveningThu4Title => '📝 Die Woche ist fast geschafft';
+
+  @override
+  String get notifEveningThu4Body => 'Noch ein bisschen durchhalten, dann ist Wochenende! Eine Zeile am Donnerstag schützt dein Wochenziel.';
+
+  @override
+  String get notifEveningThu5Title => '🌙 Glas-Check für heute erledigt?';
+
+  @override
+  String get notifEveningThu5Body => 'Ein Freitag mit bekanntem Juice-Pegel ist ein anderer als einer ohne. Schau jetzt nach.';
+
+  @override
+  String get notifEveningFri1Title => '🍻 Freitags-Abwehrschlacht beginnt!';
+
+  @override
+  String get notifEveningFri1Body => 'Heute Abend heißt es: Geldbeutel verteidigen! Genieße Essen und Trinken, aber trag jede Zahlung ein.';
+
+  @override
+  String get notifEveningFri2Title => '🔒 Geldbeutel-Schutzmodus AN';
+
+  @override
+  String get notifEveningFri2Body => 'Die Freitagsversuchungen rollen an. Kurz innehalten, heutigen Eintrag prüfen, dann genießen!';
+
+  @override
+  String get notifEveningFri3Title => '🍕 Stopp, bevor du die Liefer-App öffnest!';
+
+  @override
+  String get notifEveningFri3Body => 'Prüfe erst deinen Juice-Pegel. Noch reichlich? Los! Nicht mehr so viel? Bestell die halbe Portion!';
+
+  @override
+  String get notifEveningFri4Title => '🎉 Geschafft – es ist Freitag';
+
+  @override
+  String get notifEveningFri4Body => 'Genieße es, aber ohne Überausgaben! Wer einträgt, was er ausgibt, lächelt am Montag.';
+
+  @override
+  String get notifEveningFri5Title => '🧃 Freitagabend: nichts verschütten!';
+
+  @override
+  String get notifEveningFri5Body => 'Je lustiger der Freitag, desto schneller läuft der Juice aus. Fang die heutigen Ausgaben im Eintrag auf.';
+
+  @override
+  String get notifEveningSat1Title => '🛍 Samstags-Ausflug eintragen!';
+
+  @override
+  String get notifEveningSat1Body => 'Freunde, Shopping, gutes Essen … trag alles von heute ein, bevor du es vergisst.';
+
+  @override
+  String get notifEveningSat2Title => '🌇 Schönes Wochenende bisher?';
+
+  @override
+  String get notifEveningSat2Body => 'Glückliches Ausgeben ist gutes Ausgeben. Nur das Eintragen nicht vergessen! Dann bereust du morgen weniger.';
+
+  @override
+  String get notifEveningSat3Title => '🍰 Süße Ausgabe von heute – eingetragen?';
+
+  @override
+  String get notifEveningSat3Body => 'Auch kleine Luxusmomente eingetragen, und das schlechte Gewissen schmilzt. Eine Zeile jetzt?';
+
+  @override
+  String get notifEveningSat4Title => '🧺 Wochenend-Abrechnung';
+
+  @override
+  String get notifEveningSat4Body => 'Ein ganzer Tag unterwegs heißt viele Belege. Sortiere sie schnell vor dem Schlafen.';
+
+  @override
+  String get notifEveningSat5Title => '🌙 Samstagabend-Juice-Check';
+
+  @override
+  String get notifEveningSat5Body => 'Noch ein Tag, dann wird dein Juice zurückgesetzt. Trag die heutigen Ausgaben ein und schließe den Tag sauber ab.';
+
+  @override
+  String get notifEveningSun1Title => '🧺 Sonntagabend: Woche abschließen';
+
+  @override
+  String get notifEveningSun1Body => 'Mach den letzten Eintrag dieser Woche. Ein Rückblick macht die nächste Woche viel leichter.';
+
+  @override
+  String get notifEveningSun2Title => '🔄 Morgen wird dein Juice zurückgesetzt';
+
+  @override
+  String get notifEveningSun2Body => 'Trag auch die heutigen Ausgaben ein, und das Wochenzeugnis ist fertig! Mach dich bereit für frischen Juice.';
+
+  @override
+  String get notifEveningSun3Title => '🍽 Sonntagabend-Lieferversuchung';
+
+  @override
+  String get notifEveningSun3Body => 'Nur noch dieser letzte Tag, dann ist das Wochenziel geschafft! Prüfe vor dem Bestellen deinen Juice-Pegel.';
+
+  @override
+  String get notifEveningSun4Title => '🏆 Auch diese Woche stark gewesen';
+
+  @override
+  String get notifEveningSun4Body => 'Du hast bis zum Schluss mitgeschrieben – beeindruckend! Heutiges nachtragen und gut ausruhen.';
+
+  @override
+  String get notifEveningSun5Title => '🌌 Letzter Check für die neue Woche';
+
+  @override
+  String get notifEveningSun5Body => 'Ab morgen ist das Glas wieder voll. Schließe diese Woche mit dem heutigen Eintrag sauber ab.';
 
   @override
   String get notifMondayTitle => '🍊 Dein Juice ist wieder randvoll!';
@@ -1636,70 +1816,70 @@ class AppLocalizationsDe extends AppLocalizations {
   String get notifMondayBody => 'Die letzte Woche hast du gut gemeistert. Starte frisch in die Woche – mit einem herrlich vollen Budget ✨';
 
   @override
-  String get notifWeekday1Title => '☕️ Die Kaffee-Mahnung auf dem Arbeitsweg';
+  String get notifWeekday1Title => '🌅 Die Affirmation des Tages';
 
   @override
-  String get notifWeekday1Body => 'Check deine Juice-Anzeige, bevor du den Morgenkaffee trinkst! Ein Schluck weniger macht deinen Wochenend-Juice doppelt so kühl.';
+  String get notifWeekday1Body => 'Ich gehe heute klug mit meinem Juice um. Ein bisschen sparen, viel lächeln – einen schönen Tag!';
 
   @override
-  String get notifWeekday2Title => '🚨 Gerade etwas zu gierig am Trinken?';
+  String get notifWeekday2Title => '🔮 Dein Juice-Horoskop heute';
 
   @override
-  String get notifWeekday2Body => 'Trinkst du deinen Juice in letzter Zeit zu hastig? Genieß ihn heute ein bisschen langsamer! 🍊';
+  String get notifWeekday2Body => 'Eine kleine Entscheidung wird heute zu großer Süße! Halte vor einem Spontankauf 3 Sekunden inne, dann folgt das Glück 🍀';
 
   @override
-  String get notifWeekday3Title => '🌤 Auch heute wieder frisch!';
+  String get notifWeekday3Title => '📖 Zitat des Tages';
 
   @override
-  String get notifWeekday3Body => 'Hab einen Tag so frisch wie das Wetter! Am Ende deines Tages wartet immer deine verlässliche Juice-App.';
+  String get notifWeekday3Body => '„Kleine Tropfen machen ein Meer.“ Die paar mL, die du heute sparst, werden eines Tages ein großes Ziel.';
 
   @override
-  String get notifWeekday4Title => '🎯 Die 0-mL-Ausgaben-Challenge';
+  String get notifWeekday4Title => '☀️ Guten Morgen, bleib frisch!';
 
   @override
-  String get notifWeekday4Body => 'Schaffst du heute \'0 mL Ausgaben\', erscheint vielleicht ein Regenbogen über deinem Juice-Becher! Nur einen Tag den Geldbeutel sperren? 🔒';
+  String get notifWeekday4Body => 'Dieser Tag füllt sich genau so, wie du es willst. Starte langsam, Schluck für Schluck.';
 
   @override
-  String get notifWeekday5Title => '🍕 Freitags-/Wochenend-Abwehr';
+  String get notifWeekday5Title => '🍀 Dein Glückspunkt heute';
 
   @override
-  String get notifWeekday5Body => 'Nur weil Wochenende ist, den Juice-Deckel nicht ganz aufreißen! Versprich, nur so viel einzuschenken, wie du trinkst 🤙';
+  String get notifWeekday5Body => 'Dein Glück heute heißt „Eintragen“! Wer notiert, was er ausgibt, fühlt sich und seinen Geldbeutel leichter.';
 
   @override
-  String get notifWeekday6Title => '🌱 Kleine Gönnungen sind okay';
+  String get notifWeekday6Title => '🌱 Die Einstellung des Tages';
 
   @override
-  String get notifWeekday6Body => 'Kleine Belohnungen für dich sind in Ordnung. Nur das Eintragen nicht vergessen! Kleine Gewohnheiten schützen deinen Juice-Krug.';
+  String get notifWeekday6Body => 'Du musst nicht perfekt sein. Ein bisschen sparsamer als gestern – das reicht völlig.';
 
   @override
-  String get notifWeekday7Title => '📊 Halbzeit der Woche';
+  String get notifWeekday7Title => '🌈 Ein Löffel Ermutigung';
 
   @override
-  String get notifWeekday7Body => 'Die Hälfte der Woche ist vorbei. Ist dein Juice-Pegel … sicher? Öffne die App und sieh selbst nach 👀';
+  String get notifWeekday7Body => 'Du machst es viel besser, als du denkst. Ich feuere deine klugen Entscheidungen heute an!';
 
   @override
-  String get notifWeekday8Title => '🧃 Heute wieder zur Arbeit erschienen';
+  String get notifWeekday8Title => '✨ Horoskop heute: Glückstag';
 
   @override
-  String get notifWeekday8Body => 'Schon wieder zum Schutz deines Geldbeutels angetreten! Hab einen energiegeladenen Tag wie Juice, der nie versiegt 🍊';
+  String get notifWeekday8Body => 'Heute strotzt dein Geldbeutel vor guter Energie. Großzügig, wo es zählt, konsequent, wo nicht!';
 
   @override
-  String get notifSunday1Title => '🧺 Den letzten Schluck dieser Woche verteidigen!';
+  String get notifSunday1Title => '🌤 Affirmation für den Sonntag';
 
   @override
-  String get notifSunday1Body => 'Widerstehe nur der Sonntagabend-Bestellung, dann ist das Wochenziel geschafft! Vorsicht, nichts verschütten 🍊';
+  String get notifSunday1Body => 'Ich habe diese Woche gut gemeistert und schaffe auch die nächste. Einen erholsamen Sonntag!';
 
   @override
-  String get notifSunday2Title => '🏆 Starke Woche!';
+  String get notifSunday2Title => '📖 Sonntagszitat';
 
   @override
-  String get notifSunday2Body => 'Willst du sehen, wie viel Juice du diese Woche gespart hast? Freu dich auf den frischen Juice, der morgen nachgefüllt wird ✨';
+  String get notifSunday2Body => '„Die Zeit des Zurückblickens bringt dich am weitesten.“ Heute blickst du in Ruhe auf deinen Wochen-Juice zurück.';
 
   @override
-  String get notifSunday3Title => '🧊 Morgen wird dein Juice-Krug zurückgesetzt!';
+  String get notifSunday3Title => '🔮 Sonntagshoroskop: Aufladen';
 
   @override
-  String get notifSunday3Body => 'Juice übrig? Tolle Ersparnis! Übergelaufen? Kein Problem – bereite schon das Rezept für nächste Woche vor 🧃';
+  String get notifSunday3Body => 'Ein toller Tag, um für morgen aufzutanken! Ruhige Erholung statt großer Ausgaben bringt Glück 🍀';
 
   @override
   String get notifComeback1Title => '🍊 Die Orange ist so traurig, dass sie sich selbst schält.';

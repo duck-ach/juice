@@ -93,8 +93,7 @@ class NotificationService {
 
   /// 알림이 켜져 있을 때만 다시 예약한다(언어 변경 등 설정이 바뀐 직후 호출).
   static Future<void> rescheduleIfEnabled() async {
-    final enabled =
-        PrefsService.prefs.getBool(notificationsEnabledKey) ?? true;
+    final enabled = PrefsService.prefs.getBool(notificationsEnabledKey) ?? true;
     if (!enabled || !_initialized) return;
     await rescheduleAll();
   }
@@ -146,7 +145,8 @@ class NotificationService {
       tz.TZDateTime day, int dayOffset, AppLocalizations loc) async {
     final scheduled = tz.TZDateTime(tz.local, day.year, day.month, day.day, 20);
     if (scheduled.isBefore(tz.TZDateTime.now(tz.local))) return;
-    final pool = NotificationCopyPool.evening(loc);
+    // 요일별 풀(월~일)에서 고른다 — 같은 요일은 5주 주기로 다른 문구가 나오도록 시드는 날짜 기준.
+    final pool = NotificationCopyPool.eveningFor(loc, day.weekday);
     final (title, body) = pool[_seededIndex(day, pool.length, 1)];
     await _plugin.zonedSchedule(
       _eveningId(dayOffset),

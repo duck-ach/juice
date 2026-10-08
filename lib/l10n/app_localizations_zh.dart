@@ -1600,34 +1600,214 @@ class AppLocalizationsZh extends AppLocalizations {
   String get category_income_etc_desc => '其他多彩的收入 💧';
 
   @override
-  String get notifEvening1Title => '🍊 今天喝了多少 mL 果汁？';
+  String get notifEveningMon1Title => '🍊 周一辛苦啦';
 
   @override
-  String get notifEvening1Body => '今天也辛苦啦！睡前随手记一笔，让明天的果汁保持新鲜 ✨';
+  String get notifEveningMon1Body => '战胜周一综合征的今天，用3秒整理一下小票轻松收尾吧。一周里的第一笔记录最甜。';
 
   @override
-  String get notifEvening2Title => '🍹 每一滴果汁都很珍贵！';
+  String get notifEveningMon2Title => '📒 周一记账时间';
 
   @override
-  String get notifEvening2Body => '今天有没有突如其来的支出？现在记下来，下周的果汁会甜得多 🍯';
+  String get notifEveningMon2Body => '一周的开始最重要。记下今天花的钱，这周的果汁管理就已经成功一半！';
 
   @override
-  String get notifEvening3Title => '🧃 今日杯子检查时间！';
+  String get notifEveningMon3Title => '🧃 周一综合征，击退！';
 
   @override
-  String get notifEvening3Body => '1 秒钟记下今天花的钱，看看你的果汁水位是否安全？';
+  String get notifEveningMon3Body => '今天也撑过来了，真棒。记下下班路上的开销，度过温暖的夜晚吧。';
 
   @override
-  String get notifEvening4Title => '🍋 扔小票之前，先把果汁补满！';
+  String get notifEveningMon4Title => '☕️ 周一的咖啡钱记了吗？';
 
   @override
-  String get notifEvening4Body => '没记录的消费是果汁漏光的捷径！轻松整理一下今天的支出吧 🏃‍♂️';
+  String get notifEveningMon4Body => '周一常常会多喝一杯。今天的小额支出也别忘了一并记下来。';
 
   @override
-  String get notifEvening5Title => '🍏 今天清爽的收尾！';
+  String get notifEveningMon5Title => '🌙 一周第一天，杯子还好吗？';
 
   @override
-  String get notifEvening5Body => '记完今天的支出，度过安稳的夜晚。明天也会用不会干涸的果汁迎接你 🌙';
+  String get notifEveningMon5Body => '本周的果汁还很充足。只要记下花掉的部分，接下来的六天就会宽裕很多。';
+
+  @override
+  String get notifEveningTue1Title => '🍊 周二果汁检查';
+
+  @override
+  String get notifEveningTue1Body => '把周一的好势头保持到周二！记下今天的开销，本周走势一目了然。';
+
+  @override
+  String get notifEveningTue2Title => '🧾 趁小票还没堆起来！';
+
+  @override
+  String get notifEveningTue2Body => '堆积的小票会让记录更麻烦。花一分钟把今天的清掉吧。';
+
+  @override
+  String get notifEveningTue3Title => '🥤 今天的午餐钱记了吗？';
+
+  @override
+  String get notifEveningTue3Body => '午饭、咖啡、零食……越小的越容易忘。睡前一起记下来好吗？';
+
+  @override
+  String get notifEveningTue4Title => '🌿 小习惯守护你的果汁';
+
+  @override
+  String get notifEveningTue4Body => '周二晚上的一分钟记录，能守住这个月的账户。今天也做得很棒！';
+
+  @override
+  String get notifEveningTue5Title => '🎯 今天的目标达成了吗？';
+
+  @override
+  String get notifEveningTue5Body => '如果没有超出今天的果汁额度，值得表扬！想知道结果就打开应用看看吧。';
+
+  @override
+  String get notifEveningWed1Title => '⛰ 周三，一周的山顶！';
+
+  @override
+  String get notifEveningWed1Body => '正好是一周的一半。确认果汁够不够，再规划后半周吧。';
+
+  @override
+  String get notifEveningWed2Title => '📊 果汁水位中途检查';
+
+  @override
+  String get notifEveningWed2Body => '周三晚上是中途检查时间！记下今天的支出，看看本周的节奏。';
+
+  @override
+  String get notifEveningWed3Title => '🍹 已经过了一周的中点';
+
+  @override
+  String get notifEveningWed3Body => '一路走到这里辛苦了。记下今天花的钱，然后好好休息吧。';
+
+  @override
+  String get notifEveningWed4Title => '🐪 像骆驼一样坚持住';
+
+  @override
+  String get notifEveningWed4Body => '在周四、周五到来之前先检查一下杯子。现在记录，周末会安心得多。';
+
+  @override
+  String get notifEveningWed5Title => '🧮 过半了，果汁还剩多少？';
+
+  @override
+  String get notifEveningWed5Body => '只要记录下来，计算交给应用。快输入今天的支出吧！';
+
+  @override
+  String get notifEveningThu1Title => '🌆 明天就是周五啦！';
+
+  @override
+  String get notifEveningThu1Body => '在周五狂欢前先整理今天的支出。知道果汁还剩多少，明天会更开心。';
+
+  @override
+  String get notifEveningThu2Title => '🛡 开启周五防护罩';
+
+  @override
+  String get notifEveningThu2Body => '如果明天有约，今天省下的果汁就是大助力。记下今天的支出，做好准备！';
+
+  @override
+  String get notifEveningThu3Title => '🍋 周四，钱包开始蠢蠢欲动';
+
+  @override
+  String get notifEveningThu3Body => '周末越近，钱包越兴奋。记下今天的消费，再把它安抚一次吧。';
+
+  @override
+  String get notifEveningThu4Title => '📝 一周快结束了';
+
+  @override
+  String get notifEveningThu4Body => '再坚持一下就是周末！周四的一行记录能守住本周目标。';
+
+  @override
+  String get notifEveningThu5Title => '🌙 今天的杯子检查完了吗？';
+
+  @override
+  String get notifEveningThu5Body => '知道果汁余量迎接周五，和不知道就迎接周五，完全不一样。现在就确认吧。';
+
+  @override
+  String get notifEveningFri1Title => '🍻 周五保卫战开始！';
+
+  @override
+  String get notifEveningFri1Body => '今晚是钱包保卫行动！吃喝尽情享受，但每次付款都要留下记录。';
+
+  @override
+  String get notifEveningFri2Title => '🔒 钱包守卫模式 ON';
+
+  @override
+  String get notifEveningFri2Body => '周五的诱惑接踵而至。忍一下，先确认今天的记录再去玩吧！';
+
+  @override
+  String get notifEveningFri3Title => '🍕 打开外卖应用前先等等！';
+
+  @override
+  String get notifEveningFri3Body => '先看看果汁水位。还很充足就放心点，不太够就点一半！';
+
+  @override
+  String get notifEveningFri4Title => '🎉 辛苦一周，周五到啦';
+
+  @override
+  String get notifEveningFri4Body => '尽情享受，但不要过度消费！记下花掉的钱，周一你就能笑出来。';
+
+  @override
+  String get notifEveningFri5Title => '🧃 周五夜晚，别让杯子洒了！';
+
+  @override
+  String get notifEveningFri5Body => '越嗨的周五，果汁越容易漏光。把今天的支出稳稳记下来吧。';
+
+  @override
+  String get notifEveningSat1Title => '🛍 记下周六的出行开销！';
+
+  @override
+  String get notifEveningSat1Body => '见朋友、逛街、吃好吃的……趁还没忘，把今天花的钱一次记下来。';
+
+  @override
+  String get notifEveningSat2Title => '🌇 周末过得开心吗？';
+
+  @override
+  String get notifEveningSat2Body => '开心的消费就是好消费。只是别忘了记录！明天会少一点后悔。';
+
+  @override
+  String get notifEveningSat3Title => '🍰 今天的甜蜜支出，记了吗？';
+
+  @override
+  String get notifEveningSat3Body => '连小小的奢侈记下来，罪恶感也会消失。现在留一行好吗？';
+
+  @override
+  String get notifEveningSat4Title => '🧺 周末支出结算时间';
+
+  @override
+  String get notifEveningSat4Body => '玩了一整天，小票肯定一大把吧？睡前快速整理一下。';
+
+  @override
+  String get notifEveningSat5Title => '🌙 周六夜晚果汁检查';
+
+  @override
+  String get notifEveningSat5Body => '再过一天果汁就重置了。记下今天的消费，把这一天收得干净利落。';
+
+  @override
+  String get notifEveningSun1Title => '🧺 周日晚上，收尾这一周';
+
+  @override
+  String get notifEveningSun1Body => '留下本周最后一笔记录吧。回顾一周，下周会轻松得多。';
+
+  @override
+  String get notifEveningSun2Title => '🔄 明天果汁就重置啦';
+
+  @override
+  String get notifEveningSun2Body => '把今天的支出也记上，本周成绩单就完成了！准备迎接新鲜果汁吧。';
+
+  @override
+  String get notifEveningSun3Title => '🍽 周日晚上的外卖诱惑';
+
+  @override
+  String get notifEveningSun3Body => '只要熬过最后一天，本周目标就达成了！点单前先看看果汁水位！';
+
+  @override
+  String get notifEveningSun4Title => '🏆 这周也辛苦了';
+
+  @override
+  String get notifEveningSun4Body => '你坚持记录到了最后，太了不起了。补上今天的支出，好好休息吧。';
+
+  @override
+  String get notifEveningSun5Title => '🌌 为新一周做最后检查';
+
+  @override
+  String get notifEveningSun5Body => '明天起杯子又满了。用今天的记录把这一周漂亮地收尾。';
 
   @override
   String get notifMondayTitle => '🍊 新的果汁已经满满当当！';
@@ -1636,70 +1816,70 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notifMondayBody => '上周也辛苦撑过来了。带着满满当当的本周预算，清爽地开启新的一周吧？ ✨';
 
   @override
-  String get notifWeekday1Title => '☕️ 通勤咖啡的小唠叨';
+  String get notifWeekday1Title => '🌅 今日一句确言';
 
   @override
-  String get notifWeekday1Body => '今早的咖啡，先看看果汁仪表再喝！省下一口，周末的果汁就会加倍清凉。';
+  String get notifWeekday1Body => '我今天也聪明地使用我的果汁。小小节省，大大微笑——祝你有美好的一天！';
 
   @override
-  String get notifWeekday2Title => '🚨 最近是不是喝得太猛了？';
+  String get notifWeekday2Title => '🔮 今日果汁运势';
 
   @override
-  String get notifWeekday2Body => '最近是不是在咕咚咕咚猛灌果汁？今天试着慢慢品尝吧！ 🍊';
+  String get notifWeekday2Body => '今天一个小小的选择会变成大大的甜蜜！冲动消费前停下3秒，好运就会跟上来 🍀';
 
   @override
-  String get notifWeekday3Title => '🌤 今天也要清爽！';
+  String get notifWeekday3Title => '📖 今日一句名言';
 
   @override
-  String get notifWeekday3Body => '愿你的一天像今天的天气一样清爽！一天的尽头，可靠的果汁 App 始终等着你。';
+  String get notifWeekday3Body => '“小水滴汇聚成海洋。”今天省下的几mL，总有一天会变成大目标。';
 
   @override
-  String get notifWeekday4Title => '🎯 今日支出 0 mL 挑战';
+  String get notifWeekday4Title => '☀️ 早安，今天也清爽！';
 
   @override
-  String get notifWeekday4Body => '今天达成「支出 0 mL」，果汁杯上说不定会出现彩虹！就挑战一天锁住钱包？ 🔒';
+  String get notifWeekday4Body => '今天会按你想要的样子被填满。一口一口，从容地开始吧。';
 
   @override
-  String get notifWeekday5Title => '🍕 周五/周末防守准备';
+  String get notifWeekday5Title => '🍀 今日幸运点';
 
   @override
-  String get notifWeekday5Body => '不能因为是周末就把果汁盖子整个掀开！约好只倒出喝得完的量 🤙';
+  String get notifWeekday5Body => '今天的幸运在于“记录”！写下花掉的钱，心和钱包都会变轻松。';
 
   @override
-  String get notifWeekday6Title => '🌱 小小消费没关系';
+  String get notifWeekday6Title => '🌱 今日心态';
 
   @override
-  String get notifWeekday6Body => '为自己做的小消费没关系，只是别忘了记录！小习惯会守护你的果汁桶。';
+  String get notifWeekday6Body => '不需要完美。比昨天稍微节俭一点，就已经做得很好了。';
 
   @override
-  String get notifWeekday7Title => '📊 一周过半';
+  String get notifWeekday7Title => '🌈 今日加油一勺';
 
   @override
-  String get notifWeekday7Body => '一周已经过半。你的果汁水位……安全吗？现在就打开 App 亲眼看看 👀';
+  String get notifWeekday7Body => '你做得比想象中好得多。今天也为你聪明的选择加油！';
 
   @override
-  String get notifWeekday8Title => '🧃 今天也准时上岗';
+  String get notifWeekday8Title => '✨ 今日运势：大吉';
 
   @override
-  String get notifWeekday8Body => '今天也来守护你的钱包啦！祝你像不会干涸的果汁一样，活力满满 🍊';
+  String get notifWeekday8Body => '今天钱包充满好运的气息。该花的地方大方，不该花的地方坚决！';
 
   @override
-  String get notifSunday1Title => '🧺 守住本周最后一口果汁！';
+  String get notifSunday1Title => '🌤 周日一句确言';
 
   @override
-  String get notifSunday1Body => '只要扛过周日晚上的外卖诱惑，本周目标就达成啦！小心别把果汁洒了 🍊';
+  String get notifSunday1Body => '我把这一周过得很好，新的一周也一定能做到。祝你有个安心休息的周日。';
 
   @override
-  String get notifSunday2Title => '🏆 这周也辛苦啦！';
+  String get notifSunday2Title => '📖 周日名言';
 
   @override
-  String get notifSunday2Body => '来看看这一周省下了多少果汁吧？期待明天重新满上的新果汁 ✨';
+  String get notifSunday2Body => '“停下来回头看的时间，能让人走得最远。”今天是静静回顾本周果汁的日子。';
 
   @override
-  String get notifSunday3Title => '🧊 明天果汁桶就要重置啦！';
+  String get notifSunday3Title => '🔮 周日运势：充电';
 
   @override
-  String get notifSunday3Body => '还有剩余果汁就是成功省钱！就算溢出也没关系，提前准备下周的配方吧 🧃';
+  String get notifSunday3Body => '适合为明天充电的好日子！比起大额消费，从容休息更能带来好运 🍀';
 
   @override
   String get notifComeback1Title => '🍊 橙子太难过，开始自己剥皮了。';
@@ -3336,34 +3516,214 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get category_income_etc_desc => '其他多彩的收入 💧';
 
   @override
-  String get notifEvening1Title => '🍊 今天喝了多少 mL 果汁？';
+  String get notifEveningMon1Title => '🍊 周一辛苦啦';
 
   @override
-  String get notifEvening1Body => '今天也辛苦啦！睡前随手记一笔，让明天的果汁保持新鲜 ✨';
+  String get notifEveningMon1Body => '战胜周一综合征的今天，用3秒整理一下小票轻松收尾吧。一周里的第一笔记录最甜。';
 
   @override
-  String get notifEvening2Title => '🍹 每一滴果汁都很珍贵！';
+  String get notifEveningMon2Title => '📒 周一记账时间';
 
   @override
-  String get notifEvening2Body => '今天有没有突如其来的支出？现在记下来，下周的果汁会甜得多 🍯';
+  String get notifEveningMon2Body => '一周的开始最重要。记下今天花的钱，这周的果汁管理就已经成功一半！';
 
   @override
-  String get notifEvening3Title => '🧃 今日杯子检查时间！';
+  String get notifEveningMon3Title => '🧃 周一综合征，击退！';
 
   @override
-  String get notifEvening3Body => '1 秒钟记下今天花的钱，看看你的果汁水位是否安全？';
+  String get notifEveningMon3Body => '今天也撑过来了，真棒。记下下班路上的开销，度过温暖的夜晚吧。';
 
   @override
-  String get notifEvening4Title => '🍋 扔小票之前，先把果汁补满！';
+  String get notifEveningMon4Title => '☕️ 周一的咖啡钱记了吗？';
 
   @override
-  String get notifEvening4Body => '没记录的消费是果汁漏光的捷径！轻松整理一下今天的支出吧 🏃‍♂️';
+  String get notifEveningMon4Body => '周一常常会多喝一杯。今天的小额支出也别忘了一并记下来。';
 
   @override
-  String get notifEvening5Title => '🍏 今天清爽的收尾！';
+  String get notifEveningMon5Title => '🌙 一周第一天，杯子还好吗？';
 
   @override
-  String get notifEvening5Body => '记完今天的支出，度过安稳的夜晚。明天也会用不会干涸的果汁迎接你 🌙';
+  String get notifEveningMon5Body => '本周的果汁还很充足。只要记下花掉的部分，接下来的六天就会宽裕很多。';
+
+  @override
+  String get notifEveningTue1Title => '🍊 周二果汁检查';
+
+  @override
+  String get notifEveningTue1Body => '把周一的好势头保持到周二！记下今天的开销，本周走势一目了然。';
+
+  @override
+  String get notifEveningTue2Title => '🧾 趁小票还没堆起来！';
+
+  @override
+  String get notifEveningTue2Body => '堆积的小票会让记录更麻烦。花一分钟把今天的清掉吧。';
+
+  @override
+  String get notifEveningTue3Title => '🥤 今天的午餐钱记了吗？';
+
+  @override
+  String get notifEveningTue3Body => '午饭、咖啡、零食……越小的越容易忘。睡前一起记下来好吗？';
+
+  @override
+  String get notifEveningTue4Title => '🌿 小习惯守护你的果汁';
+
+  @override
+  String get notifEveningTue4Body => '周二晚上的一分钟记录，能守住这个月的账户。今天也做得很棒！';
+
+  @override
+  String get notifEveningTue5Title => '🎯 今天的目标达成了吗？';
+
+  @override
+  String get notifEveningTue5Body => '如果没有超出今天的果汁额度，值得表扬！想知道结果就打开应用看看吧。';
+
+  @override
+  String get notifEveningWed1Title => '⛰ 周三，一周的山顶！';
+
+  @override
+  String get notifEveningWed1Body => '正好是一周的一半。确认果汁够不够，再规划后半周吧。';
+
+  @override
+  String get notifEveningWed2Title => '📊 果汁水位中途检查';
+
+  @override
+  String get notifEveningWed2Body => '周三晚上是中途检查时间！记下今天的支出，看看本周的节奏。';
+
+  @override
+  String get notifEveningWed3Title => '🍹 已经过了一周的中点';
+
+  @override
+  String get notifEveningWed3Body => '一路走到这里辛苦了。记下今天花的钱，然后好好休息吧。';
+
+  @override
+  String get notifEveningWed4Title => '🐪 像骆驼一样坚持住';
+
+  @override
+  String get notifEveningWed4Body => '在周四、周五到来之前先检查一下杯子。现在记录，周末会安心得多。';
+
+  @override
+  String get notifEveningWed5Title => '🧮 过半了，果汁还剩多少？';
+
+  @override
+  String get notifEveningWed5Body => '只要记录下来，计算交给应用。快输入今天的支出吧！';
+
+  @override
+  String get notifEveningThu1Title => '🌆 明天就是周五啦！';
+
+  @override
+  String get notifEveningThu1Body => '在周五狂欢前先整理今天的支出。知道果汁还剩多少，明天会更开心。';
+
+  @override
+  String get notifEveningThu2Title => '🛡 开启周五防护罩';
+
+  @override
+  String get notifEveningThu2Body => '如果明天有约，今天省下的果汁就是大助力。记下今天的支出，做好准备！';
+
+  @override
+  String get notifEveningThu3Title => '🍋 周四，钱包开始蠢蠢欲动';
+
+  @override
+  String get notifEveningThu3Body => '周末越近，钱包越兴奋。记下今天的消费，再把它安抚一次吧。';
+
+  @override
+  String get notifEveningThu4Title => '📝 一周快结束了';
+
+  @override
+  String get notifEveningThu4Body => '再坚持一下就是周末！周四的一行记录能守住本周目标。';
+
+  @override
+  String get notifEveningThu5Title => '🌙 今天的杯子检查完了吗？';
+
+  @override
+  String get notifEveningThu5Body => '知道果汁余量迎接周五，和不知道就迎接周五，完全不一样。现在就确认吧。';
+
+  @override
+  String get notifEveningFri1Title => '🍻 周五保卫战开始！';
+
+  @override
+  String get notifEveningFri1Body => '今晚是钱包保卫行动！吃喝尽情享受，但每次付款都要留下记录。';
+
+  @override
+  String get notifEveningFri2Title => '🔒 钱包守卫模式 ON';
+
+  @override
+  String get notifEveningFri2Body => '周五的诱惑接踵而至。忍一下，先确认今天的记录再去玩吧！';
+
+  @override
+  String get notifEveningFri3Title => '🍕 打开外卖应用前先等等！';
+
+  @override
+  String get notifEveningFri3Body => '先看看果汁水位。还很充足就放心点，不太够就点一半！';
+
+  @override
+  String get notifEveningFri4Title => '🎉 辛苦一周，周五到啦';
+
+  @override
+  String get notifEveningFri4Body => '尽情享受，但不要过度消费！记下花掉的钱，周一你就能笑出来。';
+
+  @override
+  String get notifEveningFri5Title => '🧃 周五夜晚，别让杯子洒了！';
+
+  @override
+  String get notifEveningFri5Body => '越嗨的周五，果汁越容易漏光。把今天的支出稳稳记下来吧。';
+
+  @override
+  String get notifEveningSat1Title => '🛍 记下周六的出行开销！';
+
+  @override
+  String get notifEveningSat1Body => '见朋友、逛街、吃好吃的……趁还没忘，把今天花的钱一次记下来。';
+
+  @override
+  String get notifEveningSat2Title => '🌇 周末过得开心吗？';
+
+  @override
+  String get notifEveningSat2Body => '开心的消费就是好消费。只是别忘了记录！明天会少一点后悔。';
+
+  @override
+  String get notifEveningSat3Title => '🍰 今天的甜蜜支出，记了吗？';
+
+  @override
+  String get notifEveningSat3Body => '连小小的奢侈记下来，罪恶感也会消失。现在留一行好吗？';
+
+  @override
+  String get notifEveningSat4Title => '🧺 周末支出结算时间';
+
+  @override
+  String get notifEveningSat4Body => '玩了一整天，小票肯定一大把吧？睡前快速整理一下。';
+
+  @override
+  String get notifEveningSat5Title => '🌙 周六夜晚果汁检查';
+
+  @override
+  String get notifEveningSat5Body => '再过一天果汁就重置了。记下今天的消费，把这一天收得干净利落。';
+
+  @override
+  String get notifEveningSun1Title => '🧺 周日晚上，收尾这一周';
+
+  @override
+  String get notifEveningSun1Body => '留下本周最后一笔记录吧。回顾一周，下周会轻松得多。';
+
+  @override
+  String get notifEveningSun2Title => '🔄 明天果汁就重置啦';
+
+  @override
+  String get notifEveningSun2Body => '把今天的支出也记上，本周成绩单就完成了！准备迎接新鲜果汁吧。';
+
+  @override
+  String get notifEveningSun3Title => '🍽 周日晚上的外卖诱惑';
+
+  @override
+  String get notifEveningSun3Body => '只要熬过最后一天，本周目标就达成了！点单前先看看果汁水位！';
+
+  @override
+  String get notifEveningSun4Title => '🏆 这周也辛苦了';
+
+  @override
+  String get notifEveningSun4Body => '你坚持记录到了最后，太了不起了。补上今天的支出，好好休息吧。';
+
+  @override
+  String get notifEveningSun5Title => '🌌 为新一周做最后检查';
+
+  @override
+  String get notifEveningSun5Body => '明天起杯子又满了。用今天的记录把这一周漂亮地收尾。';
 
   @override
   String get notifMondayTitle => '🍊 新的果汁已经满满当当！';
@@ -3372,70 +3732,70 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get notifMondayBody => '上周也辛苦撑过来了。带着满满当当的本周预算，清爽地开启新的一周吧？ ✨';
 
   @override
-  String get notifWeekday1Title => '☕️ 通勤咖啡的小唠叨';
+  String get notifWeekday1Title => '🌅 今日一句确言';
 
   @override
-  String get notifWeekday1Body => '今早的咖啡，先看看果汁仪表再喝！省下一口，周末的果汁就会加倍清凉。';
+  String get notifWeekday1Body => '我今天也聪明地使用我的果汁。小小节省，大大微笑——祝你有美好的一天！';
 
   @override
-  String get notifWeekday2Title => '🚨 最近是不是喝得太猛了？';
+  String get notifWeekday2Title => '🔮 今日果汁运势';
 
   @override
-  String get notifWeekday2Body => '最近是不是在咕咚咕咚猛灌果汁？今天试着慢慢品尝吧！ 🍊';
+  String get notifWeekday2Body => '今天一个小小的选择会变成大大的甜蜜！冲动消费前停下3秒，好运就会跟上来 🍀';
 
   @override
-  String get notifWeekday3Title => '🌤 今天也要清爽！';
+  String get notifWeekday3Title => '📖 今日一句名言';
 
   @override
-  String get notifWeekday3Body => '愿你的一天像今天的天气一样清爽！一天的尽头，可靠的果汁 App 始终等着你。';
+  String get notifWeekday3Body => '“小水滴汇聚成海洋。”今天省下的几mL，总有一天会变成大目标。';
 
   @override
-  String get notifWeekday4Title => '🎯 今日支出 0 mL 挑战';
+  String get notifWeekday4Title => '☀️ 早安，今天也清爽！';
 
   @override
-  String get notifWeekday4Body => '今天达成「支出 0 mL」，果汁杯上说不定会出现彩虹！就挑战一天锁住钱包？ 🔒';
+  String get notifWeekday4Body => '今天会按你想要的样子被填满。一口一口，从容地开始吧。';
 
   @override
-  String get notifWeekday5Title => '🍕 周五/周末防守准备';
+  String get notifWeekday5Title => '🍀 今日幸运点';
 
   @override
-  String get notifWeekday5Body => '不能因为是周末就把果汁盖子整个掀开！约好只倒出喝得完的量 🤙';
+  String get notifWeekday5Body => '今天的幸运在于“记录”！写下花掉的钱，心和钱包都会变轻松。';
 
   @override
-  String get notifWeekday6Title => '🌱 小小消费没关系';
+  String get notifWeekday6Title => '🌱 今日心态';
 
   @override
-  String get notifWeekday6Body => '为自己做的小消费没关系，只是别忘了记录！小习惯会守护你的果汁桶。';
+  String get notifWeekday6Body => '不需要完美。比昨天稍微节俭一点，就已经做得很好了。';
 
   @override
-  String get notifWeekday7Title => '📊 一周过半';
+  String get notifWeekday7Title => '🌈 今日加油一勺';
 
   @override
-  String get notifWeekday7Body => '一周已经过半。你的果汁水位……安全吗？现在就打开 App 亲眼看看 👀';
+  String get notifWeekday7Body => '你做得比想象中好得多。今天也为你聪明的选择加油！';
 
   @override
-  String get notifWeekday8Title => '🧃 今天也准时上岗';
+  String get notifWeekday8Title => '✨ 今日运势：大吉';
 
   @override
-  String get notifWeekday8Body => '今天也来守护你的钱包啦！祝你像不会干涸的果汁一样，活力满满 🍊';
+  String get notifWeekday8Body => '今天钱包充满好运的气息。该花的地方大方，不该花的地方坚决！';
 
   @override
-  String get notifSunday1Title => '🧺 守住本周最后一口果汁！';
+  String get notifSunday1Title => '🌤 周日一句确言';
 
   @override
-  String get notifSunday1Body => '只要扛过周日晚上的外卖诱惑，本周目标就达成啦！小心别把果汁洒了 🍊';
+  String get notifSunday1Body => '我把这一周过得很好，新的一周也一定能做到。祝你有个安心休息的周日。';
 
   @override
-  String get notifSunday2Title => '🏆 这周也辛苦啦！';
+  String get notifSunday2Title => '📖 周日名言';
 
   @override
-  String get notifSunday2Body => '来看看这一周省下了多少果汁吧？期待明天重新满上的新果汁 ✨';
+  String get notifSunday2Body => '“停下来回头看的时间，能让人走得最远。”今天是静静回顾本周果汁的日子。';
 
   @override
-  String get notifSunday3Title => '🧊 明天果汁桶就要重置啦！';
+  String get notifSunday3Title => '🔮 周日运势：充电';
 
   @override
-  String get notifSunday3Body => '还有剩余果汁就是成功省钱！就算溢出也没关系，提前准备下周的配方吧 🧃';
+  String get notifSunday3Body => '适合为明天充电的好日子！比起大额消费，从容休息更能带来好运 🍀';
 
   @override
   String get notifComeback1Title => '🍊 橙子太难过，开始自己剥皮了。';
@@ -5072,34 +5432,214 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get category_income_etc_desc => '其他多彩的收入 💧';
 
   @override
-  String get notifEvening1Title => '🍊 今天喝了多少 mL 果汁？';
+  String get notifEveningMon1Title => '🍊 週一辛苦啦';
 
   @override
-  String get notifEvening1Body => '今天也辛苦了！睡前順手記一筆，讓明天的果汁保持新鮮 ✨';
+  String get notifEveningMon1Body => '戰勝週一症候群的今天，用3秒整理一下收據輕鬆收尾吧。一週裡的第一筆記錄最甜。';
 
   @override
-  String get notifEvening2Title => '🍹 每一滴果汁都很珍貴！';
+  String get notifEveningMon2Title => '📒 週一記帳時間';
 
   @override
-  String get notifEvening2Body => '今天有沒有突如其來的支出？現在記下來，下週的果汁會甜得多 🍯';
+  String get notifEveningMon2Body => '一週的開始最重要。記下今天花的錢，這週的果汁管理就已經成功一半！';
 
   @override
-  String get notifEvening3Title => '🧃 今日杯子檢查時間！';
+  String get notifEveningMon3Title => '🧃 週一症候群，擊退！';
 
   @override
-  String get notifEvening3Body => '1 秒鐘記下今天花的錢，看看你的果汁水位是否安全？';
+  String get notifEveningMon3Body => '今天也撐過來了，真棒。記下下班路上的開銷，度過溫暖的夜晚吧。';
 
   @override
-  String get notifEvening4Title => '🍋 丟收據之前，先把果汁補滿！';
+  String get notifEveningMon4Title => '☕️ 週一的咖啡錢記了嗎？';
 
   @override
-  String get notifEvening4Body => '沒記錄的消費是果汁漏光的捷徑！輕鬆整理一下今天的支出吧 🏃‍♂️';
+  String get notifEveningMon4Body => '週一常常會多喝一杯。今天的小額支出也別忘了一併記下來。';
 
   @override
-  String get notifEvening5Title => '🍏 今天清爽的收尾！';
+  String get notifEveningMon5Title => '🌙 一週第一天，杯子還好嗎？';
 
   @override
-  String get notifEvening5Body => '記完今天的支出，度過安穩的夜晚。明天也會用不會乾涸的果汁迎接你 🌙';
+  String get notifEveningMon5Body => '本週的果汁還很充足。只要記下花掉的部分，接下來的六天就會寬裕很多。';
+
+  @override
+  String get notifEveningTue1Title => '🍊 週二果汁檢查';
+
+  @override
+  String get notifEveningTue1Body => '把週一的好勢頭保持到週二！記下今天的開銷，本週走勢一目了然。';
+
+  @override
+  String get notifEveningTue2Title => '🧾 趁收據還沒堆起來！';
+
+  @override
+  String get notifEveningTue2Body => '堆積的收據會讓記錄更麻煩。花一分鐘把今天的清掉吧。';
+
+  @override
+  String get notifEveningTue3Title => '🥤 今天的午餐錢記了嗎？';
+
+  @override
+  String get notifEveningTue3Body => '午飯、咖啡、零食……越小的越容易忘。睡前一起記下來好嗎？';
+
+  @override
+  String get notifEveningTue4Title => '🌿 小習慣守護你的果汁';
+
+  @override
+  String get notifEveningTue4Body => '週二晚上的一分鐘記錄，能守住這個月的帳戶。今天也做得很棒！';
+
+  @override
+  String get notifEveningTue5Title => '🎯 今天的目標達成了嗎？';
+
+  @override
+  String get notifEveningTue5Body => '如果沒有超出今天的果汁額度，值得誇獎！想知道結果就打開應用程式看看吧。';
+
+  @override
+  String get notifEveningWed1Title => '⛰ 週三，一週的山頂！';
+
+  @override
+  String get notifEveningWed1Body => '正好是一週的一半。確認果汁夠不夠，再規劃後半週吧。';
+
+  @override
+  String get notifEveningWed2Title => '📊 果汁水位中途檢查';
+
+  @override
+  String get notifEveningWed2Body => '週三晚上是中途檢查時間！記下今天的支出，看看本週的節奏。';
+
+  @override
+  String get notifEveningWed3Title => '🍹 已經過了一週的中點';
+
+  @override
+  String get notifEveningWed3Body => '一路走到這裡辛苦了。記下今天花的錢，然後好好休息吧。';
+
+  @override
+  String get notifEveningWed4Title => '🐪 像駱駝一樣堅持住';
+
+  @override
+  String get notifEveningWed4Body => '在週四、週五到來之前先檢查一下杯子。現在記錄，週末會安心得多。';
+
+  @override
+  String get notifEveningWed5Title => '🧮 過半了，果汁還剩多少？';
+
+  @override
+  String get notifEveningWed5Body => '只要記錄下來，計算交給應用程式。快輸入今天的支出吧！';
+
+  @override
+  String get notifEveningThu1Title => '🌆 明天就是週五啦！';
+
+  @override
+  String get notifEveningThu1Body => '在週五狂歡前先整理今天的支出。知道果汁還剩多少，明天會更開心。';
+
+  @override
+  String get notifEveningThu2Title => '🛡 開啟週五防護罩';
+
+  @override
+  String get notifEveningThu2Body => '如果明天有約，今天省下的果汁就是大助力。記下今天的支出，做好準備！';
+
+  @override
+  String get notifEveningThu3Title => '🍋 週四，錢包開始蠢蠢欲動';
+
+  @override
+  String get notifEveningThu3Body => '週末越近，錢包越興奮。記下今天的消費，再把它安撫一次吧。';
+
+  @override
+  String get notifEveningThu4Title => '📝 一週快結束了';
+
+  @override
+  String get notifEveningThu4Body => '再堅持一下就是週末！週四的一行記錄能守住本週目標。';
+
+  @override
+  String get notifEveningThu5Title => '🌙 今天的杯子檢查完了嗎？';
+
+  @override
+  String get notifEveningThu5Body => '知道果汁餘量迎接週五，和不知道就迎接週五，完全不一樣。現在就確認吧。';
+
+  @override
+  String get notifEveningFri1Title => '🍻 週五保衛戰開始！';
+
+  @override
+  String get notifEveningFri1Body => '今晚是錢包保衛行動！吃喝盡情享受，但每次付款都要留下記錄。';
+
+  @override
+  String get notifEveningFri2Title => '🔒 錢包守衛模式 ON';
+
+  @override
+  String get notifEveningFri2Body => '週五的誘惑接踵而至。忍一下，先確認今天的記錄再去玩吧！';
+
+  @override
+  String get notifEveningFri3Title => '🍕 打開外送應用程式前先等等！';
+
+  @override
+  String get notifEveningFri3Body => '先看看果汁水位。還很充足就放心點，不太夠就點一半！';
+
+  @override
+  String get notifEveningFri4Title => '🎉 辛苦一週，週五到啦';
+
+  @override
+  String get notifEveningFri4Body => '盡情享受，但不要過度消費！記下花掉的錢，週一你就能笑出來。';
+
+  @override
+  String get notifEveningFri5Title => '🧃 週五夜晚，別讓杯子灑了！';
+
+  @override
+  String get notifEveningFri5Body => '越嗨的週五，果汁越容易漏光。把今天的支出穩穩記下來吧。';
+
+  @override
+  String get notifEveningSat1Title => '🛍 記下週六的出遊開銷！';
+
+  @override
+  String get notifEveningSat1Body => '見朋友、逛街、吃好吃的……趁還沒忘，把今天花的錢一次記下來。';
+
+  @override
+  String get notifEveningSat2Title => '🌇 週末過得開心嗎？';
+
+  @override
+  String get notifEveningSat2Body => '開心的消費就是好消費。只是別忘了記錄！明天會少一點後悔。';
+
+  @override
+  String get notifEveningSat3Title => '🍰 今天的甜蜜支出，記了嗎？';
+
+  @override
+  String get notifEveningSat3Body => '連小小的奢侈記下來，罪惡感也會消失。現在留一行好嗎？';
+
+  @override
+  String get notifEveningSat4Title => '🧺 週末支出結算時間';
+
+  @override
+  String get notifEveningSat4Body => '玩了一整天，收據肯定一大把吧？睡前快速整理一下。';
+
+  @override
+  String get notifEveningSat5Title => '🌙 週六夜晚果汁檢查';
+
+  @override
+  String get notifEveningSat5Body => '再過一天果汁就重置了。記下今天的消費，把這一天收得乾淨俐落。';
+
+  @override
+  String get notifEveningSun1Title => '🧺 週日晚上，收尾這一週';
+
+  @override
+  String get notifEveningSun1Body => '留下本週最後一筆記錄吧。回顧一週，下週會輕鬆得多。';
+
+  @override
+  String get notifEveningSun2Title => '🔄 明天果汁就重置啦';
+
+  @override
+  String get notifEveningSun2Body => '把今天的支出也記上，本週成績單就完成了！準備迎接新鮮果汁吧。';
+
+  @override
+  String get notifEveningSun3Title => '🍽 週日晚上的外送誘惑';
+
+  @override
+  String get notifEveningSun3Body => '只要熬過最後一天，本週目標就達成了！點餐前先看看果汁水位！';
+
+  @override
+  String get notifEveningSun4Title => '🏆 這週也辛苦了';
+
+  @override
+  String get notifEveningSun4Body => '你堅持記錄到了最後，太了不起了。補上今天的支出，好好休息吧。';
+
+  @override
+  String get notifEveningSun5Title => '🌌 為新一週做最後檢查';
+
+  @override
+  String get notifEveningSun5Body => '明天起杯子又滿了。用今天的記錄把這一週漂亮地收尾。';
 
   @override
   String get notifMondayTitle => '🍊 新的果汁已經滿滿當當！';
@@ -5108,70 +5648,70 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get notifMondayBody => '上週也辛苦撐過來了。帶著滿滿當當的本週預算，清爽地開啟新的一週吧？ ✨';
 
   @override
-  String get notifWeekday1Title => '☕️ 通勤咖啡的小叮嚀';
+  String get notifWeekday1Title => '🌅 今日一句肯定語';
 
   @override
-  String get notifWeekday1Body => '今早的咖啡，先看看果汁儀表再喝！省下一口，週末的果汁就會加倍清涼。';
+  String get notifWeekday1Body => '我今天也聰明地使用我的果汁。小小節省，大大微笑——祝你有美好的一天！';
 
   @override
-  String get notifWeekday2Title => '🚨 最近是不是喝得太猛了？';
+  String get notifWeekday2Title => '🔮 今日果汁運勢';
 
   @override
-  String get notifWeekday2Body => '最近是不是在咕嘟咕嘟猛灌果汁？今天試著慢慢品嚐吧！ 🍊';
+  String get notifWeekday2Body => '今天一個小小的選擇會變成大大的甜蜜！衝動消費前停下3秒，好運就會跟上來 🍀';
 
   @override
-  String get notifWeekday3Title => '🌤 今天也要清爽！';
+  String get notifWeekday3Title => '📖 今日一句名言';
 
   @override
-  String get notifWeekday3Body => '願你的一天像今天的天氣一樣清爽！一天的盡頭，可靠的果汁 App 始終等著你。';
+  String get notifWeekday3Body => '「小水滴匯聚成海洋。」今天省下的幾mL，總有一天會變成大目標。';
 
   @override
-  String get notifWeekday4Title => '🎯 今日支出 0 mL 挑戰';
+  String get notifWeekday4Title => '☀️ 早安，今天也清爽！';
 
   @override
-  String get notifWeekday4Body => '今天達成「支出 0 mL」，果汁杯上說不定會出現彩虹！就挑戰一天鎖住錢包？ 🔒';
+  String get notifWeekday4Body => '今天會依你想要的樣子被填滿。一口一口，從容地開始吧。';
 
   @override
-  String get notifWeekday5Title => '🍕 週五／週末防守準備';
+  String get notifWeekday5Title => '🍀 今日幸運點';
 
   @override
-  String get notifWeekday5Body => '不能因為是週末就把果汁蓋子整個掀開！約好只倒出喝得完的量 🤙';
+  String get notifWeekday5Body => '今天的幸運在於「記錄」！寫下花掉的錢，心和錢包都會變輕鬆。';
 
   @override
-  String get notifWeekday6Title => '🌱 小小消費沒關係';
+  String get notifWeekday6Title => '🌱 今日心態';
 
   @override
-  String get notifWeekday6Body => '為自己做的小消費沒關係，只是別忘了記錄！小習慣會守護你的果汁桶。';
+  String get notifWeekday6Body => '不需要完美。比昨天稍微節儉一點，就已經做得很好了。';
 
   @override
-  String get notifWeekday7Title => '📊 一週過半';
+  String get notifWeekday7Title => '🌈 今日加油一匙';
 
   @override
-  String get notifWeekday7Body => '一週已經過半。你的果汁水位……安全嗎？現在就打開 App 親眼看看 👀';
+  String get notifWeekday7Body => '你做得比想像中好得多。今天也為你聰明的選擇加油！';
 
   @override
-  String get notifWeekday8Title => '🧃 今天也準時上工';
+  String get notifWeekday8Title => '✨ 今日運勢：大吉';
 
   @override
-  String get notifWeekday8Body => '今天也來守護你的錢包啦！祝你像不會乾涸的果汁一樣，活力滿滿 🍊';
+  String get notifWeekday8Body => '今天錢包充滿好運的氣息。該花的地方大方，不該花的地方堅決！';
 
   @override
-  String get notifSunday1Title => '🧺 守住本週最後一口果汁！';
+  String get notifSunday1Title => '🌤 週日一句肯定語';
 
   @override
-  String get notifSunday1Body => '只要撐過週日晚上的外送誘惑，本週目標就達成啦！小心別把果汁灑了 🍊';
+  String get notifSunday1Body => '我把這一週過得很好，新的一週也一定能做到。祝你有個安心休息的週日。';
 
   @override
-  String get notifSunday2Title => '🏆 這週也辛苦啦！';
+  String get notifSunday2Title => '📖 週日名言';
 
   @override
-  String get notifSunday2Body => '來看看這一週省下了多少果汁吧？期待明天重新滿上的新果汁 ✨';
+  String get notifSunday2Body => '「停下來回頭看的時間，能讓人走得最遠。」今天是靜靜回顧本週果汁的日子。';
 
   @override
-  String get notifSunday3Title => '🧊 明天果汁桶就要重置啦！';
+  String get notifSunday3Title => '🔮 週日運勢：充電';
 
   @override
-  String get notifSunday3Body => '還有剩餘果汁就是成功省錢！就算溢出也沒關係，提前準備下週的配方吧 🧃';
+  String get notifSunday3Body => '適合為明天充電的好日子！比起大額消費，從容休息更能帶來好運 🍀';
 
   @override
   String get notifComeback1Title => '🍊 橙子太難過，開始自己剝皮了。';
