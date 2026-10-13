@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/responsive/responsive.dart';
 import '../../core/widgets/edit_delete_slidable.dart';
 import '../../core/widgets/juice_appbar_title.dart';
 import '../../core/widgets/juice_segmented_tab.dart';
@@ -55,6 +56,115 @@ class DashboardScreen extends ConsumerWidget {
     final rolloverBonus = ref.watch(rolloverBonusProvider);
     final formatter = NumberFormat('#,###');
 
+    // 요약(게이지/배지/팁)과 지출 목록을 따로 만들어 두고, 화면 크기·폴더블 자세에 따라
+    // 한 줄(세로 스택) 또는 2단으로 배치한다.
+    final summary = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(24, 12, 24, 8),
+          child: JuiceGauge(
+            remainingRatio: ratio,
+            remaining: remaining,
+            total: targetAmount,
+            periodLabel: period.label(loc),
+            color: gaugeColor,
+            isOverBudget: isOverBudget,
+          ),
+        ),
+        const SizedBox(height: 4),
+        if (rolloverBonus > 0)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: juiceTheme.highColor.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  loc.rolloverBonusLabel(formatter.format(rolloverBonus)),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: juiceTheme.highColor, fontWeight: FontWeight.w700),
+                ),
+              ),
+            ),
+          ),
+        if (todayInstallment > 0)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: Theme.of(context)
+                      .colorScheme
+                      .primary
+                      .withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  loc.todayInstallmentLabel(formatter.format(todayInstallment)),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.w700),
+                ),
+              ),
+            ),
+          ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          child: JuiceTipCard(),
+        ),
+      ],
+    );
+    final listPane = Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: JuiceSegmentedTab(
+            items: [loc.filterAllLong, loc.filterVariableOnlyLong],
+            selectedIndex: _dashboardFilterOrder.indexOf(filter),
+            onTabChanged: (index) => ref
+                .read(expenseFilterProvider.notifier)
+                .state = _dashboardFilterOrder[index],
+          ),
+        ),
+        const SizedBox(height: 8),
+        Expanded(
+          child: expenses.isEmpty
+              ? const _EmptyExpenseList()
+              : ListView.separated(
+                  padding: const EdgeInsets.fromLTRB(20, 4, 20, 96),
+                  itemCount: expenses.length,
+                  separatorBuilder: (_, __) => const SizedBox(height: 8),
+                  itemBuilder: (context, index) {
+                    final expense = expenses[index];
+                    final category = categoryMap[expense.categoryId];
+                    return EditDeleteSlidable(
+                      key: ValueKey(expense.id),
+                      onEdit: () =>
+                          showAddExpenseSheet(context, editingExpense: expense),
+                      onDelete: () =>
+                          deleteExpenseWithUndo(context, ref, expense),
+                      child: ExpenseTile(
+                        expense: expense,
+                        category: category,
+                        onTap: () => showAddExpenseSheet(context,
+                            editingExpense: expense),
+                      ),
+                    );
+                  },
+                ),
+        ),
+      ],
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: JuiceAppBarTitle(AppLocalizations.of(context)!.appTitle),
@@ -73,113 +183,26 @@ class DashboardScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(24, 12, 24, 8),
-            child: JuiceGauge(
-              remainingRatio: ratio,
-              remaining: remaining,
-              total: targetAmount,
-              periodLabel: period.label(loc),
-              color: gaugeColor,
-              isOverBudget: isOverBudget,
-            ),
-          ),
-          const SizedBox(height: 4),
-          if (rolloverBonus > 0)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: juiceTheme.highColor.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    loc.rolloverBonusLabel(formatter.format(rolloverBonus)),
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: juiceTheme.highColor,
-                        fontWeight: FontWeight.w700),
-                  ),
-                ),
-              ),
-            ),
-          if (todayInstallment > 0)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .primary
-                        .withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    loc.todayInstallmentLabel(formatter.format(todayInstallment)),
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.w700),
-                  ),
-                ),
-              ),
-            ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            child: JuiceTipCard(),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: JuiceSegmentedTab(
-              items: [loc.filterAllLong, loc.filterVariableOnlyLong],
-              selectedIndex: _dashboardFilterOrder.indexOf(filter),
-              onTabChanged: (index) => ref
-                  .read(expenseFilterProvider.notifier)
-                  .state = _dashboardFilterOrder[index],
-            ),
-          ),
-          const SizedBox(height: 8),
-          Expanded(
-            child: expenses.isEmpty
-                ? const _EmptyExpenseList()
-                : ListView.separated(
-                    padding: const EdgeInsets.fromLTRB(20, 4, 20, 96),
-                    itemCount: expenses.length,
-                    separatorBuilder: (_, __) => const SizedBox(height: 8),
-                    itemBuilder: (context, index) {
-                      final expense = expenses[index];
-                      final category = categoryMap[expense.categoryId];
-                      return EditDeleteSlidable(
-                        key: ValueKey(expense.id),
-                        onEdit: () => showAddExpenseSheet(context,
-                            editingExpense: expense),
-                        onDelete: () =>
-                            deleteExpenseWithUndo(context, ref, expense),
-                        child: ExpenseTile(
-                          expense: expense,
-                          category: category,
-                          onTap: () => showAddExpenseSheet(context,
-                              editingExpense: expense),
-                        ),
-                      );
-                    },
-                  ),
-          ),
-        ],
-      ),
+      body: _buildBody(context, summary: summary, listPane: listPane),
       floatingActionButton: FloatingActionButton(
         heroTag: 'dashboard_fab',
         onPressed: () => showAddExpenseSheet(context),
         child: const Icon(Icons.add),
       ),
+    );
+  }
+
+  /// 화면 크기/폴더블 자세별 배치:
+  /// - compact(스마트폰): 요약 위, 목록 아래의 한 줄 스택.
+  /// - medium 이상 또는 폴더블 접힘: 요약 | 목록 2단(book=좌우, tabletop=위아래, 일반=좌우 비율 분할).
+  Widget _buildBody(BuildContext context,
+      {required Widget summary, required Widget listPane}) {
+    if (!context.responsive.useTwoPane) {
+      return Column(children: [summary, Expanded(child: listPane)]);
+    }
+    return TwoPane(
+      primary: SingleChildScrollView(child: summary),
+      secondary: listPane,
     );
   }
 }
