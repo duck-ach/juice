@@ -17,7 +17,9 @@ import '../../providers/period_budget_provider.dart';
 import '../categories/category_manage_screen.dart';
 import '../settings/goal_settings_screen.dart';
 import 'widgets/add_expense_sheet.dart';
+import 'widgets/dashboard_insights.dart';
 import 'widgets/expense_actions.dart';
+import 'widgets/expense_timeline.dart';
 import 'widgets/expense_tile.dart';
 import 'widgets/juice_gauge.dart';
 import 'widgets/juice_tip_card.dart';
@@ -121,6 +123,8 @@ class DashboardScreen extends ConsumerWidget {
           padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           child: JuiceTipCard(),
         ),
+        // 2단 레이아웃의 왼쪽 패널이 비어 보이지 않도록 오늘의 지출/카테고리별 소진율을 채운다.
+        if (context.responsive.useTwoPane) const DashboardInsights(),
       ],
     );
     final listPane = Column(
@@ -139,27 +143,22 @@ class DashboardScreen extends ConsumerWidget {
         Expanded(
           child: expenses.isEmpty
               ? const _EmptyExpenseList()
-              : ListView.separated(
-                  padding: const EdgeInsets.fromLTRB(20, 4, 20, 96),
-                  itemCount: expenses.length,
-                  separatorBuilder: (_, __) => const SizedBox(height: 8),
-                  itemBuilder: (context, index) {
-                    final expense = expenses[index];
-                    final category = categoryMap[expense.categoryId];
-                    return EditDeleteSlidable(
-                      key: ValueKey(expense.id),
-                      onEdit: () =>
-                          showAddExpenseSheet(context, editingExpense: expense),
-                      onDelete: () =>
-                          deleteExpenseWithUndo(context, ref, expense),
-                      child: ExpenseTile(
-                        expense: expense,
-                        category: category,
-                        onTap: () => showAddExpenseSheet(context,
-                            editingExpense: expense),
-                      ),
-                    );
-                  },
+              : ExpenseTimeline(
+                  expenses: expenses,
+                  itemBuilder: (context, expense) => EditDeleteSlidable(
+                    key: ValueKey(expense.id),
+                    onEdit: () =>
+                        showAddExpenseSheet(context, editingExpense: expense),
+                    onDelete: () =>
+                        deleteExpenseWithUndo(context, ref, expense),
+                    child: ExpenseTile(
+                      expense: expense,
+                      category: categoryMap[expense.categoryId],
+                      showDate: false,
+                      onTap: () => showAddExpenseSheet(context,
+                          editingExpense: expense),
+                    ),
+                  ),
                 ),
         ),
       ],

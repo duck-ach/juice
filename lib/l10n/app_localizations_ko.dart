@@ -733,6 +733,31 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String get homeTodaySummaryTitle => '오늘의 지출';
+
+  @override
+  String get homeTodayEmptyMessage => '오늘은 아직 지출이 없어요. 무지출데이 도전 중! 🍊';
+
+  @override
+  String homeTodayCount(int count) {
+    return '$count건';
+  }
+
+  @override
+  String homeTodayTopCategory(Object category) {
+    return '가장 많이 쓴 곳 · $category';
+  }
+
+  @override
+  String get homeCategoryBurnTitle => '카테고리별 소진율';
+
+  @override
+  String get timelineToday => '오늘';
+
+  @override
+  String get timelineYesterday => '어제';
+
+  @override
   String get filterVariableOnlyLong => '변동지출만 보기';
 
   @override

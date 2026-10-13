@@ -25,11 +25,18 @@ String _formatAmount(Expense expense, CurrencyItem baseCurrency) {
 /// [category]는 호출부가 [Expense.categoryId]로 미리 조회해 전달한다(지출/수입 카테고리 공용).
 class ExpenseTile extends ConsumerWidget {
   const ExpenseTile(
-      {super.key, required this.expense, required this.category, this.onTap});
+      {super.key,
+      required this.expense,
+      required this.category,
+      this.onTap,
+      this.showDate = true});
 
   final Expense expense;
   final Category? category;
   final VoidCallback? onTap;
+
+  /// false면 부제목에서 날짜를 빼고 메모만 보여준다(타임라인처럼 날짜 헤더가 따로 있을 때).
+  final bool showDate;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -57,11 +64,7 @@ class ExpenseTile extends ConsumerWidget {
           child: Icon(icon, color: color),
         ),
         title: Text(name),
-        subtitle: Text(
-          expense.memo == null || expense.memo!.isEmpty
-              ? dateLabel
-              : '$dateLabel · ${expense.memo}',
-        ),
+        subtitle: _subtitle(dateLabel),
         trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -109,5 +112,12 @@ class ExpenseTile extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  Widget? _subtitle(String dateLabel) {
+    final memo = expense.memo;
+    final hasMemo = memo != null && memo.isNotEmpty;
+    if (!showDate) return hasMemo ? Text(memo) : null;
+    return Text(hasMemo ? '$dateLabel · $memo' : dateLabel);
   }
 }

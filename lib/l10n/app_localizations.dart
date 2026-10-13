@@ -1477,6 +1477,48 @@ abstract class AppLocalizations {
   /// **'🧊 오늘의 할부 분할액: {amount} mL'**
   String todayInstallmentLabel(Object amount);
 
+  /// No description provided for @homeTodaySummaryTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'오늘의 지출'**
+  String get homeTodaySummaryTitle;
+
+  /// No description provided for @homeTodayEmptyMessage.
+  ///
+  /// In ko, this message translates to:
+  /// **'오늘은 아직 지출이 없어요. 무지출데이 도전 중! 🍊'**
+  String get homeTodayEmptyMessage;
+
+  /// No description provided for @homeTodayCount.
+  ///
+  /// In ko, this message translates to:
+  /// **'{count}건'**
+  String homeTodayCount(int count);
+
+  /// No description provided for @homeTodayTopCategory.
+  ///
+  /// In ko, this message translates to:
+  /// **'가장 많이 쓴 곳 · {category}'**
+  String homeTodayTopCategory(Object category);
+
+  /// No description provided for @homeCategoryBurnTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'카테고리별 소진율'**
+  String get homeCategoryBurnTitle;
+
+  /// No description provided for @timelineToday.
+  ///
+  /// In ko, this message translates to:
+  /// **'오늘'**
+  String get timelineToday;
+
+  /// No description provided for @timelineYesterday.
+  ///
+  /// In ko, this message translates to:
+  /// **'어제'**
+  String get timelineYesterday;
+
   /// No description provided for @filterVariableOnlyLong.
   ///
   /// In ko, this message translates to:

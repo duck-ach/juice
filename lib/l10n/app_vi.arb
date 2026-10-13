@@ -355,6 +355,13 @@
       "amount": {}
     }
   },
+  "homeTodaySummaryTitle": "Chi tiêu hôm nay",
+  "homeTodayEmptyMessage": "Hôm nay chưa chi tiêu gì. Đang thử thách ngày không chi tiêu! 🍊",
+  "homeTodayCount": "{count} khoản",
+  "homeTodayTopCategory": "Chi nhiều nhất · {category}",
+  "homeCategoryBurnTitle": "Mức tiêu hao theo danh mục",
+  "timelineToday": "Hôm nay",
+  "timelineYesterday": "Hôm qua",
   "filterVariableOnlyLong": "Chỉ hiện chi tiêu biến đổi",
   "filterAllLong": "Hiện tất cả",
   "noGoalTitle": "Chưa đặt số tiền mục tiêu cho {period}",

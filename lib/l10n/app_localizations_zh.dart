@@ -733,6 +733,31 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get homeTodaySummaryTitle => '今日支出';
+
+  @override
+  String get homeTodayEmptyMessage => '今天还没有支出，正在挑战无支出日！🍊';
+
+  @override
+  String homeTodayCount(int count) {
+    return '$count笔';
+  }
+
+  @override
+  String homeTodayTopCategory(Object category) {
+    return '花得最多 · $category';
+  }
+
+  @override
+  String get homeCategoryBurnTitle => '各类别消耗率';
+
+  @override
+  String get timelineToday => '今天';
+
+  @override
+  String get timelineYesterday => '昨天';
+
+  @override
   String get filterVariableOnlyLong => '仅显示变动支出';
 
   @override
@@ -2658,6 +2683,31 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   }
 
   @override
+  String get homeTodaySummaryTitle => '今日支出';
+
+  @override
+  String get homeTodayEmptyMessage => '今天还没有支出，正在挑战无支出日！🍊';
+
+  @override
+  String homeTodayCount(int count) {
+    return '$count笔';
+  }
+
+  @override
+  String homeTodayTopCategory(Object category) {
+    return '花得最多 · $category';
+  }
+
+  @override
+  String get homeCategoryBurnTitle => '各类别消耗率';
+
+  @override
+  String get timelineToday => '今天';
+
+  @override
+  String get timelineYesterday => '昨天';
+
+  @override
   String get filterVariableOnlyLong => '仅显示变动支出';
 
   @override
@@ -4581,6 +4631,31 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String todayInstallmentLabel(Object amount) {
     return '🧊 今日分期金額:$amount mL';
   }
+
+  @override
+  String get homeTodaySummaryTitle => '今日支出';
+
+  @override
+  String get homeTodayEmptyMessage => '今天還沒有支出，正在挑戰無支出日！🍊';
+
+  @override
+  String homeTodayCount(int count) {
+    return '$count筆';
+  }
+
+  @override
+  String homeTodayTopCategory(Object category) {
+    return '花得最多 · $category';
+  }
+
+  @override
+  String get homeCategoryBurnTitle => '各類別消耗率';
+
+  @override
+  String get timelineToday => '今天';
+
+  @override
+  String get timelineYesterday => '昨天';
 
   @override
   String get filterVariableOnlyLong => '僅顯示變動支出';

@@ -733,6 +733,31 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get homeTodaySummaryTitle => '今日の支出';
+
+  @override
+  String get homeTodayEmptyMessage => '今日はまだ支出がありません。ノースペンドデーに挑戦中！🍊';
+
+  @override
+  String homeTodayCount(int count) {
+    return '$count件';
+  }
+
+  @override
+  String homeTodayTopCategory(Object category) {
+    return 'いちばん使ったところ · $category';
+  }
+
+  @override
+  String get homeCategoryBurnTitle => 'カテゴリ別の消費率';
+
+  @override
+  String get timelineToday => '今日';
+
+  @override
+  String get timelineYesterday => '昨日';
+
+  @override
   String get filterVariableOnlyLong => '変動費のみ表示';
 
   @override

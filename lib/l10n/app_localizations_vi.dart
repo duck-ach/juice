@@ -733,6 +733,31 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
+  String get homeTodaySummaryTitle => 'Chi tiêu hôm nay';
+
+  @override
+  String get homeTodayEmptyMessage => 'Hôm nay chưa chi tiêu gì. Đang thử thách ngày không chi tiêu! 🍊';
+
+  @override
+  String homeTodayCount(int count) {
+    return '$count khoản';
+  }
+
+  @override
+  String homeTodayTopCategory(Object category) {
+    return 'Chi nhiều nhất · $category';
+  }
+
+  @override
+  String get homeCategoryBurnTitle => 'Mức tiêu hao theo danh mục';
+
+  @override
+  String get timelineToday => 'Hôm nay';
+
+  @override
+  String get timelineYesterday => 'Hôm qua';
+
+  @override
   String get filterVariableOnlyLong => 'Chỉ hiện chi tiêu biến đổi';
 
   @override

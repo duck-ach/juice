@@ -733,6 +733,31 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get homeTodaySummaryTitle => 'Today\'s spending';
+
+  @override
+  String get homeTodayEmptyMessage => 'No spending yet today. Going for a no-spend day! 🍊';
+
+  @override
+  String homeTodayCount(int count) {
+    return 'Entries: $count';
+  }
+
+  @override
+  String homeTodayTopCategory(Object category) {
+    return 'Top spend · $category';
+  }
+
+  @override
+  String get homeCategoryBurnTitle => 'Burn rate by category';
+
+  @override
+  String get timelineToday => 'Today';
+
+  @override
+  String get timelineYesterday => 'Yesterday';
+
+  @override
   String get filterVariableOnlyLong => 'Show Variable Only';
 
   @override

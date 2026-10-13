@@ -733,6 +733,31 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String get homeTodaySummaryTitle => 'Dépenses du jour';
+
+  @override
+  String get homeTodayEmptyMessage => 'Aucune dépense aujourd\'hui. Objectif : journée sans dépense ! 🍊';
+
+  @override
+  String homeTodayCount(int count) {
+    return 'Opérations : $count';
+  }
+
+  @override
+  String homeTodayTopCategory(Object category) {
+    return 'Plus gros poste · $category';
+  }
+
+  @override
+  String get homeCategoryBurnTitle => 'Consommation par catégorie';
+
+  @override
+  String get timelineToday => 'Aujourd\'hui';
+
+  @override
+  String get timelineYesterday => 'Hier';
+
+  @override
   String get filterVariableOnlyLong => 'Afficher uniquement les dépenses variables';
 
   @override

@@ -355,6 +355,25 @@
       "amount": {}
     }
   },
+  "homeTodaySummaryTitle": "오늘의 지출",
+  "homeTodayEmptyMessage": "오늘은 아직 지출이 없어요. 무지출데이 도전 중! 🍊",
+  "homeTodayCount": "{count}건",
+  "@homeTodayCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeTodayTopCategory": "가장 많이 쓴 곳 · {category}",
+  "@homeTodayTopCategory": {
+    "placeholders": {
+      "category": {}
+    }
+  },
+  "homeCategoryBurnTitle": "카테고리별 소진율",
+  "timelineToday": "오늘",
+  "timelineYesterday": "어제",
   "filterVariableOnlyLong": "변동지출만 보기",
   "filterAllLong": "전체 내역 보기",
   "noGoalTitle": "{period} 목표 금액이 아직 없어요",
