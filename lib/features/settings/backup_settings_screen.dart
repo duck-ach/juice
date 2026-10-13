@@ -9,7 +9,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../core/utils/csv_export.dart';
+import '../../core/widgets/app_restart.dart';
 import '../../data/local/backup_service.dart';
+import '../../data/local/reset_service.dart';
 import '../../data/models/category.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/budget_settings_provider.dart';
@@ -32,6 +34,7 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
   bool _exportingCsv = false;
   bool _backingUp = false;
   bool _restoring = false;
+  bool _resetting = false;
 
   Future<void> _exportCsv() async {
     setState(() => _exportingCsv = true);
@@ -118,6 +121,42 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
     }
   }
 
+  /// 전체 데이터 초기화: 경고 확인 후 로컬 데이터를 모두 지우고 앱을 처음 상태로 재시작한다.
+  Future<void> _resetAllData() async {
+    final loc = AppLocalizations.of(context)!;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(loc.resetAllDataButton),
+        content: Text(loc.resetAllDataConfirm),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(false),
+              child: Text(loc.commonCancel)),
+          FilledButton(
+              style: FilledButton.styleFrom(
+                  backgroundColor: Theme.of(dialogContext).colorScheme.error,
+                  foregroundColor: Colors.white),
+              onPressed: () => Navigator.of(dialogContext).pop(true),
+              child: Text(loc.resetAllDataAction)),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+
+    setState(() => _resetting = true);
+    try {
+      await ResetService.resetAll();
+      if (mounted) AppRestart.restart(context);
+    } catch (e) {
+      if (mounted) {
+        setState(() => _resetting = false);
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(e.toString())));
+      }
+    }
+  }
+
   void _refreshAllProviders() {
     ref.invalidate(categoryProvider);
     ref.invalidate(expenseProvider);
@@ -150,7 +189,8 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
             child: OutlinedButton.icon(
               onPressed: _exportingCsv ? null : _exportCsv,
               icon: const Icon(Icons.table_chart_outlined),
-              label: Text(_exportingCsv ? loc.exportingCsv : loc.exportCsvButton),
+              label:
+                  Text(_exportingCsv ? loc.exportingCsv : loc.exportCsvButton),
             ),
           ),
           const SizedBox(height: 32),
@@ -185,6 +225,20 @@ class _BackupSettingsScreenState extends ConsumerState<BackupSettingsScreen> {
                   ? const _SmallSpinner()
                   : const Icon(Icons.chevron_right),
               onTap: _restoring ? null : _restoreData,
+            ),
+          ),
+          const SizedBox(height: 32),
+          // 빨간색 위험 동작 버튼
+          SizedBox(
+            height: 52,
+            child: FilledButton.icon(
+              style: FilledButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.error,
+                foregroundColor: Colors.white,
+              ),
+              onPressed: _resetting ? null : _resetAllData,
+              icon: const Icon(Icons.delete_forever_outlined),
+              label: Text(loc.resetAllDataButton),
             ),
           ),
         ],

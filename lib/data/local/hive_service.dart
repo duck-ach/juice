@@ -43,6 +43,11 @@ class HiveService {
       Hive.openBox<JuiceSavingHistory>(HiveBoxes.juiceSavingHistory),
     ]);
 
+    await seedDefaults();
+  }
+
+  /// 기본 카테고리/카드 시딩. 초기 실행과 "전체 데이터 초기화" 직후에 공통으로 쓴다.
+  static Future<void> seedDefaults() async {
     await _seedDefaultCategoriesIfNeeded();
     await _seedDefaultIncomeCategoriesIfNeeded();
     await _seedDefaultSavingsCategoriesIfNeeded();

@@ -8,6 +8,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'core/navigation/root_navigator.dart';
 import 'core/notifications/notification_service.dart';
 import 'core/theme/app_theme.dart';
+import 'core/widgets/app_restart.dart';
 import 'core/widget/home_widget_service.dart';
 import 'data/local/hive_service.dart';
 import 'data/local/prefs_service.dart';
@@ -33,7 +34,7 @@ Future<void> main() async {
   _notificationLifecycleListener = AppLifecycleListener(onResume: () {
     unawaited(_refreshNotificationSchedule());
   });
-  runApp(const ProviderScope(child: JuiceApp()));
+  runApp(const AppRestart(child: JuiceApp()));
 }
 
 /// 알림이 켜져 있으면 권한 확인 후 롤링 스케줄(아침/저녁/재방문 유도)을 새로 예약한다.

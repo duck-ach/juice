@@ -1117,6 +1117,24 @@ abstract class AppLocalizations {
   /// **'백업 파일을 선택해 기존 데이터를 덮어써요.'**
   String get restoreDataTileDescription;
 
+  /// No description provided for @resetAllDataButton.
+  ///
+  /// In ko, this message translates to:
+  /// **'전체 데이터 초기화'**
+  String get resetAllDataButton;
+
+  /// No description provided for @resetAllDataConfirm.
+  ///
+  /// In ko, this message translates to:
+  /// **'전체 데이터가 초기화 되고, 백업을 해놓지 않았다면 복구할 수 없습니다.'**
+  String get resetAllDataConfirm;
+
+  /// No description provided for @resetAllDataAction.
+  ///
+  /// In ko, this message translates to:
+  /// **'초기화'**
+  String get resetAllDataAction;
+
   /// No description provided for @categoryDefaultDescription.
   ///
   /// In ko, this message translates to:

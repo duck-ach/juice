@@ -547,6 +547,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get restoreDataTileDescription => '选择备份文件以覆盖现有数据。';
 
   @override
+  String get resetAllDataButton => '重置全部数据';
+
+  @override
+  String get resetAllDataConfirm => '所有数据将被清除，如果没有备份则无法恢复。';
+
+  @override
+  String get resetAllDataAction => '重置';
+
+  @override
   String get categoryDefaultDescription => '我的专属果汁配方';
 
   @override
@@ -2463,6 +2472,15 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get restoreDataTileDescription => '选择备份文件以覆盖现有数据。';
 
   @override
+  String get resetAllDataButton => '重置全部数据';
+
+  @override
+  String get resetAllDataConfirm => '所有数据将被清除，如果没有备份则无法恢复。';
+
+  @override
+  String get resetAllDataAction => '重置';
+
+  @override
   String get categoryDefaultDescription => '我的专属果汁配方';
 
   @override
@@ -4377,6 +4395,15 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get restoreDataTileDescription => '選擇備份檔案以覆寫現有資料。';
+
+  @override
+  String get resetAllDataButton => '重設全部資料';
+
+  @override
+  String get resetAllDataConfirm => '所有資料將被清除，若未備份則無法復原。';
+
+  @override
+  String get resetAllDataAction => '重設';
 
   @override
   String get categoryDefaultDescription => '我的專屬果汁配方';

@@ -547,6 +547,15 @@ class AppLocalizationsKo extends AppLocalizations {
   String get restoreDataTileDescription => '백업 파일을 선택해 기존 데이터를 덮어써요.';
 
   @override
+  String get resetAllDataButton => '전체 데이터 초기화';
+
+  @override
+  String get resetAllDataConfirm => '전체 데이터가 초기화 되고, 백업을 해놓지 않았다면 복구할 수 없습니다.';
+
+  @override
+  String get resetAllDataAction => '초기화';
+
+  @override
   String get categoryDefaultDescription => '나만의 특별한 주스 레시피';
 
   @override

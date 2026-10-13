@@ -547,6 +547,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get restoreDataTileDescription => 'Escolha um arquivo de backup para substituir os dados existentes.';
 
   @override
+  String get resetAllDataButton => 'Redefinir todos os dados';
+
+  @override
+  String get resetAllDataConfirm => 'Todos os dados serão apagados e não poderão ser recuperados se você não tiver feito backup.';
+
+  @override
+  String get resetAllDataAction => 'Redefinir';
+
+  @override
   String get categoryDefaultDescription => 'Minha receita especial de juice';
 
   @override

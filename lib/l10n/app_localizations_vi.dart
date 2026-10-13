@@ -547,6 +547,15 @@ class AppLocalizationsVi extends AppLocalizations {
   String get restoreDataTileDescription => 'Chọn một tệp sao lưu để ghi đè dữ liệu hiện tại.';
 
   @override
+  String get resetAllDataButton => 'Đặt lại toàn bộ dữ liệu';
+
+  @override
+  String get resetAllDataConfirm => 'Toàn bộ dữ liệu sẽ bị xóa và không thể khôi phục nếu bạn chưa sao lưu.';
+
+  @override
+  String get resetAllDataAction => 'Đặt lại';
+
+  @override
   String get categoryDefaultDescription => 'Công thức juice đặc biệt của tôi';
 
   @override

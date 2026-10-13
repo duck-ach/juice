@@ -547,6 +547,15 @@ class AppLocalizationsJa extends AppLocalizations {
   String get restoreDataTileDescription => 'バックアップファイルを選んで既存データを上書きします。';
 
   @override
+  String get resetAllDataButton => '全データを初期化';
+
+  @override
+  String get resetAllDataConfirm => 'すべてのデータが初期化されます。バックアップを取っていない場合は復元できません。';
+
+  @override
+  String get resetAllDataAction => '初期化';
+
+  @override
   String get categoryDefaultDescription => '私だけの特別なジュースレシピ';
 
   @override

@@ -10,6 +10,9 @@ const _pinSecureKey = 'app_lock_pin';
 
 const _secureStorage = FlutterSecureStorage();
 
+/// 저장된 앱 잠금 PIN만 지운다(전체 데이터 초기화용). 플래그는 설정 박스 초기화로 함께 사라진다.
+Future<void> clearStoredPin() => _secureStorage.delete(key: _pinSecureKey);
+
 class AppLockState {
   const AppLockState({required this.enabled, required this.biometricEnabled});
 

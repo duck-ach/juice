@@ -547,6 +547,15 @@ class AppLocalizationsFr extends AppLocalizations {
   String get restoreDataTileDescription => 'Choisissez un fichier de sauvegarde pour remplacer les données existantes.';
 
   @override
+  String get resetAllDataButton => 'Réinitialiser toutes les données';
+
+  @override
+  String get resetAllDataConfirm => 'Toutes les données seront effacées et ne pourront pas être récupérées sans sauvegarde.';
+
+  @override
+  String get resetAllDataAction => 'Réinitialiser';
+
+  @override
   String get categoryDefaultDescription => 'Ma recette juice personnelle';
 
   @override

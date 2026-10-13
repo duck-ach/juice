@@ -547,6 +547,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get restoreDataTileDescription => 'Wähle eine Sicherungsdatei, um vorhandene Daten zu überschreiben.';
 
   @override
+  String get resetAllDataButton => 'Alle Daten zurücksetzen';
+
+  @override
+  String get resetAllDataConfirm => 'Alle Daten werden gelöscht und können ohne Backup nicht wiederhergestellt werden.';
+
+  @override
+  String get resetAllDataAction => 'Zurücksetzen';
+
+  @override
   String get categoryDefaultDescription => 'Mein besonderes Juice-Rezept';
 
   @override
